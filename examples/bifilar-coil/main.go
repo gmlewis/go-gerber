@@ -13,16 +13,17 @@ import (
 )
 
 var (
-	step  = flag.Float64("step", 0.01, "Resolution (in radians) of the spiral")
-	n     = flag.Int("n", 100, "Number of full winds in each spiral")
-	gap   = flag.Float64("gap", 0.15, "Gap between traces in mm (6mil = 0.15mm)")
-	trace = flag.Float64("trace", 0.15, "Width of traces in mm")
+	step   = flag.Float64("step", 0.01, "Resolution (in radians) of the spiral")
+	n      = flag.Int("n", 100, "Number of full winds in each spiral")
+	gap    = flag.Float64("gap", 0.15, "Gap between traces in mm (6mil = 0.15mm)")
+	trace  = flag.Float64("trace", 0.15, "Width of traces in mm")
+	prefix = flag.String("prefix", "bifilar-coil", "Filename prefix for all Gerber files and zip")
 )
 
 func main() {
 	flag.Parse()
 
-	g := New("bifilar-coil")
+	g := New(*prefix)
 
 	s := newSpiral()
 	fmt.Printf("n=%v: (%.2f,%.2f)\n", *n, s.size, s.size)
@@ -117,7 +118,7 @@ func main() {
 		Arc(0, 0, 0.5*s.size+padD, CircleShape, 1, 1, 0, 360, 0, "", 0.1),
 	)
 
-	if err := g.Write(); err != nil {
+	if err := g.WriteGerber(); err != nil {
 		log.Fatal(err)
 	}
 	fmt.Println("Done.")

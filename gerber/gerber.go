@@ -1,6 +1,11 @@
 // Package gerber writes Gerber RS274X files (for PCBs).
 package gerber
 
+import (
+	"archive/zip"
+	"os"
+)
+
 // Gerber represents the layers needed to build a PCB.
 type Gerber struct {
 	// FilenamePrefix is the filename prefix for the Gerber design files.
@@ -15,4 +20,35 @@ func New(filenamePrefix string) *Gerber {
 	return &Gerber{
 		FilenamePrefix: filenamePrefix,
 	}
+}
+
+// WriteGerber writes all the Gerber layers to their respective files
+// then zips them all together into a ZIP file with the same prefix
+// for sending to PCB manufacturers.
+func (g *Gerber) WriteGerber() error {
+	zf, err := os.Create(g.FilenamePrefix + ".zip")
+	if err != nil {
+		return err
+	}
+	zw := zip.NewWriter(zf)
+	for _, layer := range g.Layers {
+		f, err := zw.Create(layer.Filename)
+		if err != nil {
+			return err
+		}
+		if err := layer.WriteGerber(f); err != nil {
+			return err
+		}
+		w, err := os.Create(layer.Filename)
+		if err != nil {
+			return err
+		}
+		if err := layer.WriteGerber(w); err != nil {
+			return err
+		}
+		if err := w.Close(); err != nil {
+			return err
+		}
+	}
+	return zw.Close()
 }

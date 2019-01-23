@@ -14,7 +14,7 @@ const (
 
 // Primitive is a Gerber primitive.
 type Primitive interface {
-	Write(w io.Writer) error
+	WriteGerber(w io.Writer) error
 }
 
 // Pt represents a 2D Point.
@@ -45,7 +45,7 @@ func Arc(
 	return &ArcT{}
 }
 
-func (p *ArcT) Write(w io.Writer) error {
+func (p *ArcT) WriteGerber(w io.Writer) error {
 	return nil
 }
 
@@ -59,7 +59,7 @@ func Circle(x, y float64, layer int, component string, thickness float64) *Circl
 	return &CircleT{}
 }
 
-func (p *CircleT) Write(w io.Writer) error {
+func (p *CircleT) WriteGerber(w io.Writer) error {
 	return nil
 }
 
@@ -73,7 +73,7 @@ func Line(x1, y1, x2, y2 float64, shape Shape, layer int, component string, thic
 	return &LineT{}
 }
 
-func (p *LineT) Write(w io.Writer) error {
+func (p *LineT) WriteGerber(w io.Writer) error {
 	return nil
 }
 
@@ -87,6 +87,6 @@ func Polygon(x, y float64, filled bool, points []Pt, layer int, component string
 	return &PolygonT{}
 }
 
-func (p *PolygonT) Write(w io.Writer) error {
+func (p *PolygonT) WriteGerber(w io.Writer) error {
 	return nil
 }
