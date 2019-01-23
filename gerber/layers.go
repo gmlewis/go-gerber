@@ -28,6 +28,8 @@ func (l *Layer) WriteGerber(w io.Writer) error {
 	for _, p := range l.Primitives {
 		p.WriteGerber(w)
 	}
+
+	io.WriteString(w, "M02*\n")
 	return nil
 }
 
