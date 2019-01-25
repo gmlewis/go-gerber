@@ -4,8 +4,16 @@ This is an experimental package used to write Gerber (RS274X) files
 and bundle them into a ZIP file to send to printed circuit board (PCB)
 manufacturers, all from Go code.
 
-Take a look at the examples directory for examples.
+## Example
 
+```bash
+go run examples/bifilar-coil/main.go
+gerbview bifilar-coil.g* bifilar-coil.xln
+```
+
+generates:
+
+![bifilar-coil](images/bifilar-coil.png)
 
 ## Docs
 
