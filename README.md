@@ -6,6 +6,11 @@ manufacturers, all from Go code.
 
 Take a look at the examples directory for examples.
 
+
+## Docs
+
+[![GoDoc](https://godoc.org/github.com/gmlewis/go-gerber/gerber?status.svg)](https://godoc.org/github.com/gmlewis/go-gerber/gerber)
+
 ----------------------------------------------------------------------
 
 Enjoy!

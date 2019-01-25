@@ -15,9 +15,9 @@ type Shape string
 
 const (
 	// RectShape uses rectangles for the aperture.
-	RectShape = "R"
+	RectShape Shape = "R"
 	// CircleShape uses circles for the aperture.
-	CircleShape = "C"
+	CircleShape Shape = "C"
 )
 
 // Primitive is a Gerber primitive.
