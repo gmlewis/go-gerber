@@ -10,12 +10,30 @@ type Layer struct {
 	Filename string
 	// Primitives represents the collection of primitives.
 	Primitives []Primitive
+	// Apertures represents the apertures used in the layer.
+	Apertures []*Aperture
 
-	g *Gerber // Root Gerber object.
+	// apertureMap maps an aperture to its index in the Apertures slice.
+	apertureMap map[string]int
+	// g is the root Gerber object.
+	g *Gerber
 }
 
 // Add adds primitives to a layer.
+// It generates new apertures as necessary.
 func (l *Layer) Add(primitives ...Primitive) {
+	for _, p := range primitives {
+		a := p.Aperture()
+		if a == nil {
+			continue // use the default layer
+		}
+		id := a.ID()
+		if _, ok := l.apertureMap[id]; ok {
+			continue
+		}
+		l.apertureMap[id] = len(l.Apertures)
+		l.Apertures = append(l.Apertures, a)
+	}
 	l.Primitives = append(l.Primitives, primitives...)
 }
 
@@ -25,70 +43,61 @@ func (l *Layer) WriteGerber(w io.Writer) error {
 	io.WriteString(w, "%MOMM*%\n")
 	io.WriteString(w, "%LPD*%\n")
 
+	io.WriteString(w, "%ADD11C,0.00100*%\n")
+	for i, a := range l.Apertures {
+		a.WriteGerber(w, 12+i)
+	}
+
 	for _, p := range l.Primitives {
-		p.WriteGerber(w)
+		ai := l.apertureMap[p.Aperture().ID()]
+		p.WriteGerber(w, 12+ai)
 	}
 
 	io.WriteString(w, "M02*\n")
 	return nil
 }
 
-// TopCopper adds a top copper layer to the design
-// and returns the layer.
-func (g *Gerber) TopCopper() *Layer {
+func (g *Gerber) makeLayer(extension string) *Layer {
 	layer := &Layer{
-		Filename: g.FilenamePrefix + ".gtl",
+		Filename:    g.FilenamePrefix + "." + extension,
+		apertureMap: map[string]int{"default": -1},
 	}
 	g.Layers = append(g.Layers, layer)
 	return layer
+}
+
+// TopCopper adds a top copper layer to the design
+// and returns the layer.
+func (g *Gerber) TopCopper() *Layer {
+	return g.makeLayer("gtl")
 }
 
 // TopSolderMask adds a top solder mask layer to the design
 // and returns the layer.
 func (g *Gerber) TopSolderMask() *Layer {
-	layer := &Layer{
-		Filename: g.FilenamePrefix + ".gts",
-	}
-	g.Layers = append(g.Layers, layer)
-	return layer
+	return g.makeLayer("gts")
 }
 
 // BottomCopper adds a bottom copper layer to the design
 // and returns the layer.
 func (g *Gerber) BottomCopper() *Layer {
-	layer := &Layer{
-		Filename: g.FilenamePrefix + ".gbl",
-	}
-	g.Layers = append(g.Layers, layer)
-	return layer
+	return g.makeLayer("gbl")
 }
 
 // BottomSolderMask adds a bottom solder mask layer to the design
 // and returns the layer.
 func (g *Gerber) BottomSolderMask() *Layer {
-	layer := &Layer{
-		Filename: g.FilenamePrefix + ".gbs",
-	}
-	g.Layers = append(g.Layers, layer)
-	return layer
+	return g.makeLayer("gbs")
 }
 
 // Drill adds a drill layer to the design
 // and returns the layer.
 func (g *Gerber) Drill() *Layer {
-	layer := &Layer{
-		Filename: g.FilenamePrefix + ".xln",
-	}
-	g.Layers = append(g.Layers, layer)
-	return layer
+	return g.makeLayer("xln")
 }
 
 // Outline adds an outline layer to the design
 // and returns the layer.
 func (g *Gerber) Outline() *Layer {
-	layer := &Layer{
-		Filename: g.FilenamePrefix + ".gko",
-	}
-	g.Layers = append(g.Layers, layer)
-	return layer
+	return g.makeLayer("gko")
 }

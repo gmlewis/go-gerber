@@ -50,72 +50,72 @@ func main() {
 
 	top := g.TopCopper()
 	top.Add(
-		Polygon(0, 0, true, spiralR, 0, "copper", 0.0),
-		Polygon(0, 0, true, spiralL, 0, "copper", 0.0),
+		Polygon(0, 0, true, spiralR, 0.0),
+		Polygon(0, 0, true, spiralL, 0.0),
 		// Lower connecting trace between two spirals
-		Circle(hole1.X, hole1.Y, 0, "copper", padD),
-		Circle(hole2.X, hole2.Y, 0, "copper", padD),
+		Circle(hole1.X, hole1.Y, padD),
+		Circle(hole2.X, hole2.Y, padD),
 		// Upper connecting trace for left spiral
-		Circle(hole3.X, hole3.Y, 0, "copper", padD),
-		Circle(hole4.X, hole4.Y, 0, "copper", padD),
+		Circle(hole3.X, hole3.Y, padD),
+		Circle(hole4.X, hole4.Y, padD),
 		// Lower connecting trace for right spiral
-		Circle(hole5.X, hole5.Y, 0, "copper", padD),
+		Circle(hole5.X, hole5.Y, padD),
 	)
 
 	topMask := g.TopSolderMask()
 	topMask.Add(
 		// Lower connecting trace between two spirals
-		Circle(hole1.X, hole1.Y, 0, "copper", padD),
-		Circle(hole2.X, hole2.Y, 0, "copper", padD),
+		Circle(hole1.X, hole1.Y, padD),
+		Circle(hole2.X, hole2.Y, padD),
 		// Upper connecting trace for left spiral
-		Circle(hole3.X, hole3.Y, 0, "copper", padD),
-		Circle(hole4.X, hole4.Y, 0, "copper", padD),
+		Circle(hole3.X, hole3.Y, padD),
+		Circle(hole4.X, hole4.Y, padD),
 		// Lower connecting trace for right spiral
-		Circle(hole5.X, hole5.Y, 0, "copper", padD),
+		Circle(hole5.X, hole5.Y, padD),
 	)
 
 	bottom := g.BottomCopper()
 	bottom.Add(
 		// Lower connecting trace between two spirals
-		Circle(hole1.X, hole1.Y, 0, "copper", padD),
-		Line(startR.X, startR.Y, endL.X, startR.Y, RectShape, 0, "copper", *trace),
-		Line(endL.X, startR.Y, endL.X, endL.Y, RectShape, 0, "copper", *trace),
-		Circle(hole2.X, hole2.Y, 0, "copper", padD),
+		Circle(hole1.X, hole1.Y, padD),
+		Line(startR.X, startR.Y, endL.X, startR.Y, RectShape, *trace),
+		Line(endL.X, startR.Y, endL.X, endL.Y, RectShape, *trace),
+		Circle(hole2.X, hole2.Y, padD),
 		// Upper connecting trace for left spiral
-		Circle(hole3.X, hole3.Y, 0, "copper", padD),
-		Line(startL.X, startL.Y, endR.X+padOffset, startL.Y, RectShape, 0, "copper", *trace),
-		Circle(hole4.X, hole4.Y, 0, "copper", padD),
+		Circle(hole3.X, hole3.Y, padD),
+		Line(startL.X, startL.Y, endR.X+padOffset, startL.Y, RectShape, *trace),
+		Circle(hole4.X, hole4.Y, padD),
 		// Lower connecting trace for right spiral
-		Circle(hole5.X, hole5.Y, 0, "copper", padD),
+		Circle(hole5.X, hole5.Y, padD),
 	)
 
 	bottomMask := g.BottomSolderMask()
 	bottomMask.Add(
 		// Lower connecting trace between two spirals
-		Circle(hole1.X, hole1.Y, 0, "copper", padD),
-		Circle(hole2.X, hole2.Y, 0, "copper", padD),
+		Circle(hole1.X, hole1.Y, padD),
+		Circle(hole2.X, hole2.Y, padD),
 		// Upper connecting trace for left spiral
-		Circle(hole3.X, hole3.Y, 0, "copper", padD),
-		Circle(hole4.X, hole4.Y, 0, "copper", padD),
+		Circle(hole3.X, hole3.Y, padD),
+		Circle(hole4.X, hole4.Y, padD),
 		// Lower connecting trace for right spiral
-		Circle(hole5.X, hole5.Y, 0, "copper", padD),
+		Circle(hole5.X, hole5.Y, padD),
 	)
 
 	drill := g.Drill()
 	drill.Add(
 		// Lower connecting trace between two spirals
-		Circle(hole1.X, hole1.Y, 0, "copper", drillD),
-		Circle(hole2.X, hole2.Y, 0, "copper", drillD),
+		Circle(hole1.X, hole1.Y, drillD),
+		Circle(hole2.X, hole2.Y, drillD),
 		// Upper connecting trace for left spiral
-		Circle(hole3.X, hole3.Y, 0, "copper", drillD),
-		Circle(hole4.X, hole4.Y, 0, "copper", drillD),
+		Circle(hole3.X, hole3.Y, drillD),
+		Circle(hole4.X, hole4.Y, drillD),
 		// Lower connecting trace for right spiral
-		Circle(hole5.X, hole5.Y, 0, "copper", drillD),
+		Circle(hole5.X, hole5.Y, drillD),
 	)
 
 	outline := g.Outline()
 	outline.Add(
-		Arc(0, 0, 0.5*s.size+padD, CircleShape, 1, 1, 0, 360, 0, "", 0.1),
+		Arc(0, 0, 0.5*s.size+padD, CircleShape, 1, 1, 0, 360, 0.1),
 	)
 
 	if err := g.WriteGerber(); err != nil {
@@ -157,8 +157,8 @@ func newSpiral() *spiral {
 func (s *spiral) genSpiral(offset float64) []Pt {
 	halfTW := *trace * 0.5
 	var pts []Pt
-	steps := math.Round(0.5 + (s.endAngle-s.startAngle) / *step)
-	for i := 0; i < int(steps); i++ {
+	steps := int(0.5 + (s.endAngle-s.startAngle) / *step)
+	for i := 0; i < steps; i++ {
 		angle := s.startAngle + *step*float64(i)
 		pts = append(pts, genPt(angle, halfTW, offset))
 	}
