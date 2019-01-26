@@ -1,15 +1,15 @@
 #!/bin/bash -ex
 go run main.go -font "aaarghnormal"
 mv bifilar-coil.zip bifilar-coil.aaarghnormal.zip
-gerbview bifilar-coil.gbl bifilar-coil.gbs bifilar-coil.gtl bifilar-coil.gts bifilar-coil.gbo bifilar-coil.gko bifilar-coil.gto bifilar-coil.xln
+# gerbview bifilar-coil.gbl bifilar-coil.gbs bifilar-coil.gtl bifilar-coil.gts bifilar-coil.gbo bifilar-coil.gko bifilar-coil.gto bifilar-coil.xln
 
 go run main.go -font "fascinate_inlineregular"
 mv bifilar-coil.zip bifilar-coil.fascinate_inlineregular.zip
-gerbview bifilar-coil.gbl bifilar-coil.gbs bifilar-coil.gtl bifilar-coil.gts bifilar-coil.gbo bifilar-coil.gko bifilar-coil.gto bifilar-coil.xln
+# gerbview bifilar-coil.gbl bifilar-coil.gbs bifilar-coil.gtl bifilar-coil.gts bifilar-coil.gbo bifilar-coil.gko bifilar-coil.gto bifilar-coil.xln
 
 go run main.go -font "gooddogregular"
 mv bifilar-coil.zip bifilar-coil.gooddogregular.zip
-gerbview bifilar-coil.gbl bifilar-coil.gbs bifilar-coil.gtl bifilar-coil.gts bifilar-coil.gbo bifilar-coil.gko bifilar-coil.gto bifilar-coil.xln
+# gerbview bifilar-coil.gbl bifilar-coil.gbs bifilar-coil.gtl bifilar-coil.gts bifilar-coil.gbo bifilar-coil.gko bifilar-coil.gto bifilar-coil.xln
 
 go run main.go -font "helsinkiregular"
 mv bifilar-coil.zip bifilar-coil.helsinkiregular.zip

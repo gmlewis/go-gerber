@@ -15,6 +15,7 @@ const (
 	fsf         = 600
 	resolution  = 1000
 	minSteps    = 4
+	maxSteps    = 100
 )
 
 // TextT represents text and satisfies the Primitive interface.
@@ -165,6 +166,9 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 				if steps < minSteps {
 					steps = minSteps
 				}
+				if steps > maxSteps {
+					steps = maxSteps
+				}
 				for j := 1; j <= steps; j++ {
 					t := float64(j) / float64(steps)
 					p := h.Point(t)
@@ -184,6 +188,9 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 				steps := int(0.5 + length/resolution)
 				if steps < minSteps {
 					steps = minSteps
+				}
+				if steps > maxSteps {
+					steps = maxSteps
 				}
 				for j := 1; j <= steps; j++ {
 					t := float64(j) / float64(steps)
@@ -208,6 +215,9 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 				if steps < minSteps {
 					steps = minSteps
 				}
+				if steps > maxSteps {
+					steps = maxSteps
+				}
 				for j := 1; j <= steps; j++ {
 					t := float64(j) / float64(steps)
 					p := h.Point(t)
@@ -228,6 +238,9 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 				steps := int(0.5 + length/resolution)
 				if steps < minSteps {
 					steps = minSteps
+				}
+				if steps > maxSteps {
+					steps = maxSteps
 				}
 				for j := 1; j <= steps; j++ {
 					t := float64(j) / float64(steps)
