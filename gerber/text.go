@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"strings"
 
 	"github.com/ungerik/go3d/float64/hermit2"
 	"github.com/ungerik/go3d/float64/vec2"
@@ -79,10 +80,19 @@ func (t *TextT) Aperture() *Aperture {
 
 // WriteGerber writes the primitive to the Gerber file.
 func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64) float64 {
-	oX, oY := x, y // origin for this glyph
-	var pts []Pt   // Current polygon
+	oX, oY := x, y         // origin for this glyph
+	var pts []Pt           // Current polygon
+	currentPolarity := "d" // d=dark, c=clear
+	var curveNum int
 
 	dumpPoly := func() {
+		if g.GerberLP != "" {
+			polarity := g.GerberLP[curveNum : curveNum+1]
+			if polarity != currentPolarity {
+				fmt.Fprintf(w, "%%LP%v*%%\n", strings.ToUpper(polarity))
+				currentPolarity = polarity
+			}
+		}
 		io.WriteString(w, "G54D11*\n")
 		io.WriteString(w, "G36*\n")
 		for i, pt := range pts {
@@ -233,6 +243,7 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 				pts = append(pts, pts[0]) // Close the path.
 				dumpPoly()
 			}
+			curveNum++
 		default:
 			log.Fatalf("Unsupported path command %q", ps.C)
 		}
@@ -240,5 +251,11 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 	if len(pts) > 0 {
 		dumpPoly()
 	}
+
+	// Restore dark polarity for the rest of the Gerber layer.
+	if currentPolarity != "d" {
+		io.WriteString(w, "%LPD%*\n")
+	}
+
 	return g.HorizAdvX
 }

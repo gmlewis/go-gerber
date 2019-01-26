@@ -108,7 +108,7 @@ type Font struct {
 type Glyph struct {
 	HorizAdvX float64
 	Unicode   string
-	// GerberLP  string
+	GerberLP  string
 	PathSteps []*PathStep
 }
 
@@ -141,7 +141,7 @@ var fonts = map[string]*Font{ {{ range . }}
 			{{ .Unicode | utf8 }}: {
 				HorizAdvX: {{ .HorizAdvX }},
 				Unicode: {{ .Unicode | utf8 }},
-				// GerberLP: {{ .GerberLP | orEmpty }},
+				GerberLP: {{ .GerberLP | orEmpty }},
 				PathSteps: []*PathStep{ {{ range .PathSteps }}
 					{ C: '{{ .Command }}'{{ if .Parameters }}, P: {{ .Parameters | floats }}{{ end }} },{{ end }}
 				},
