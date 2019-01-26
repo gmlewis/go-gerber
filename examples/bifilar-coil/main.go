@@ -128,15 +128,16 @@ func main() {
 		}
 		lines := strings.Split(string(buf), "\n")
 		half := len(lines) / 2
+		x, y := -40000.0, 100000.0
 
 		tss := g.TopSilkscreen()
 		tss.Add(
-			Text(0, 0, strings.Join(lines[:half], "\n"), *fontName),
+			Text(x, y, 1.0, strings.Join(lines[:half], "\n"), *fontName),
 		)
 
 		bss := g.BottomSilkscreen()
 		bss.Add(
-			Text(0, 0, strings.Join(lines[half:], "\n"), *fontName),
+			Text(-x, y, -1.0, strings.Join(lines[half:], "\n"), *fontName),
 		)
 	}
 

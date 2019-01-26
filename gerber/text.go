@@ -8,24 +8,26 @@ import (
 
 const (
 	defaultFont = "ubuntumonoregular"
-	fsf         = 400
+	fsf         = 600
 )
 
 // TextT represents text and satisfies the Primitive interface.
 type TextT struct {
-	x, y float64
-	s    string
-	font string
+	x, y, xScale float64
+	s            string
+	font         string
 }
 
 // Text returns a text primitive.
 // All dimensions are in millimeters.
-func Text(x, y float64, s, font string) *TextT {
+// xScale is 1.0 for top silkscreen and -1.0 for bottom silkscreen.
+func Text(x, y, xScale float64, s, font string) *TextT {
 	return &TextT{
-		x:    x,
-		y:    y,
-		s:    s,
-		font: font,
+		x:      x,
+		y:      y,
+		xScale: xScale,
+		s:      s,
+		font:   font,
 	}
 }
 
@@ -47,20 +49,20 @@ func (t *TextT) WriteGerber(w io.Writer, apertureIndex int) error {
 			continue
 		}
 		if c == rune('\t') {
-			x += 2.0 * float64(f.HorizAdvX)
+			x += 2.0 * t.xScale * float64(f.HorizAdvX)
 			continue
 		}
 		g, ok := f.Glyphs[string(c)]
 		if !ok {
 			log.Printf("Warning: missing glyph %+q: skipping", c)
-			x += float64(f.HorizAdvX)
+			x += t.xScale * float64(f.HorizAdvX)
 			continue
 		}
-		dx := g.WriteGerber(w, apertureIndex, x, y)
+		dx := g.WriteGerber(w, apertureIndex, x, y, t.xScale)
 		if dx == 0 {
 			dx = float64(f.HorizAdvX)
 		}
-		x += dx
+		x += dx * t.xScale
 	}
 	return nil
 }
@@ -71,7 +73,7 @@ func (t *TextT) Aperture() *Aperture {
 }
 
 // WriteGerber writes the primitive to the Gerber file.
-func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y float64) float64 {
+func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64) float64 {
 	oX, oY := x, y // origin for this glyph
 	var pts []Pt   // Current polygon
 
@@ -96,32 +98,32 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y float64) float6
 			if len(pts) > 0 {
 				dumpPoly()
 			}
-			x, y = oX+ps.P[0], oY+ps.P[1]
+			x, y = oX+xScale*ps.P[0], oY+ps.P[1]
 			pts = []Pt{{X: x, Y: y}}
 		case "m":
 			if len(pts) > 0 {
 				dumpPoly()
 			}
-			x, y = x+ps.P[0], y+ps.P[1]
+			x, y = x+xScale*ps.P[0], y+ps.P[1]
 			pts = []Pt{{X: x, Y: y}}
 		case "L":
 			for i := 0; i < len(ps.P); i += 2 {
-				x, y = oX+ps.P[i], oY+ps.P[i+1]
+				x, y = oX+xScale*ps.P[i], oY+ps.P[i+1]
 				pts = append(pts, Pt{X: x, Y: y})
 			}
 		case "l":
 			for i := 0; i < len(ps.P); i += 2 {
-				x, y = x+ps.P[i], y+ps.P[i+1]
+				x, y = x+xScale*ps.P[i], y+ps.P[i+1]
 				pts = append(pts, Pt{X: x, Y: y})
 			}
 		case "H":
 			for i := 0; i < len(ps.P); i++ {
-				x = oX + ps.P[i]
+				x = oX + xScale*ps.P[i]
 				pts = append(pts, Pt{X: x, Y: y})
 			}
 		case "h":
 			for i := 0; i < len(ps.P); i++ {
-				x += ps.P[i]
+				x += xScale * ps.P[i]
 				pts = append(pts, Pt{X: x, Y: y})
 			}
 		case "V":
@@ -144,7 +146,7 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y float64) float6
 		case "T":
 		case "t":
 			for i := 0; i < len(ps.P); i += 2 {
-				x, y = x+ps.P[i], y+ps.P[i+1]
+				x, y = x+xScale*ps.P[i], y+ps.P[i+1]
 				pts = append(pts, Pt{X: x, Y: y})
 			}
 		case "A":
