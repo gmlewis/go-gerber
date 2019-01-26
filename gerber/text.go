@@ -194,10 +194,11 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 		// case 'a':
 		case 'Z', 'z':
 			if len(pts) > 0 {
+				pts = append(pts, pts[0]) // Close the path.
 				dumpPoly()
 			}
 		default:
-			log.Fatalf("Unknown path command %q", ps.C)
+			log.Fatalf("Unsupported path command %q", ps.C)
 		}
 	}
 	if len(pts) > 0 {
