@@ -6,18 +6,21 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"math"
+	"strings"
 
 	. "github.com/gmlewis/go-gerber/gerber"
 )
 
 var (
-	step   = flag.Float64("step", 0.01, "Resolution (in radians) of the spiral")
-	n      = flag.Int("n", 100, "Number of full winds in each spiral")
-	gap    = flag.Float64("gap", 0.15, "Gap between traces in mm (6mil = 0.15mm)")
-	trace  = flag.Float64("trace", 0.15, "Width of traces in mm")
-	prefix = flag.String("prefix", "bifilar-coil", "Filename prefix for all Gerber files and zip")
+	step     = flag.Float64("step", 0.01, "Resolution (in radians) of the spiral")
+	n        = flag.Int("n", 100, "Number of full winds in each spiral")
+	gap      = flag.Float64("gap", 0.15, "Gap between traces in mm (6mil = 0.15mm)")
+	trace    = flag.Float64("trace", 0.15, "Width of traces in mm")
+	prefix   = flag.String("prefix", "bifilar-coil", "Filename prefix for all Gerber files and zip")
+	fontName = flag.String("font", "ubuntumonoregular", "Name of font to use for writing source on PCB (empty to not write)")
 )
 
 func main() {
@@ -117,6 +120,25 @@ func main() {
 	outline.Add(
 		Arc(0, 0, 0.5*s.size+padD, CircleShape, 1, 1, 0, 360, 0.1),
 	)
+
+	if *fontName != "" { // Write the code on the top and bottom silkscreens (split in half).
+		buf, err := ioutil.ReadFile("examples/bifilar-coil/main.go")
+		if err != nil {
+			log.Fatal(err)
+		}
+		lines := strings.Split(string(buf), "\n")
+		half := len(lines) / 2
+
+		tss := g.TopSilkscreen()
+		tss.Add(
+			Text(0, 0, strings.Join(lines[:half], "\n"), *fontName),
+		)
+
+		bss := g.BottomSilkscreen()
+		bss.Add(
+			Text(0, 0, strings.Join(lines[half:], "\n"), *fontName),
+		)
+	}
 
 	if err := g.WriteGerber(); err != nil {
 		log.Fatal(err)

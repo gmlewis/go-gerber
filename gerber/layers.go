@@ -78,6 +78,12 @@ func (g *Gerber) TopSolderMask() *Layer {
 	return g.makeLayer("gts")
 }
 
+// TopSilkscreen adds a top silkscreen layer to the design
+// and returns the layer.
+func (g *Gerber) TopSilkscreen() *Layer {
+	return g.makeLayer("gto")
+}
+
 // BottomCopper adds a bottom copper layer to the design
 // and returns the layer.
 func (g *Gerber) BottomCopper() *Layer {
@@ -88,6 +94,24 @@ func (g *Gerber) BottomCopper() *Layer {
 // and returns the layer.
 func (g *Gerber) BottomSolderMask() *Layer {
 	return g.makeLayer("gbs")
+}
+
+// BottomSilkscreen adds a bottom silkscreen layer to the design
+// and returns the layer.
+func (g *Gerber) BottomSilkscreen() *Layer {
+	return g.makeLayer("gbo")
+}
+
+// Layer2 adds a layer-2 copper layer to a four-layer design
+// and returns the layer.
+func (g *Gerber) Layer2() *Layer {
+	return g.makeLayer("g2l")
+}
+
+// Layer3 adds a layer-3 copper layer to a four-layer design
+// and returns the layer.
+func (g *Gerber) Layer3() *Layer {
+	return g.makeLayer("g3l")
 }
 
 // Drill adds a drill layer to the design
