@@ -122,7 +122,7 @@ func main() {
 	)
 
 	if *fontName != "" { // Write the code on the top and bottom silkscreens (split in half).
-		buf, err := ioutil.ReadFile("examples/bifilar-coil/main.go")
+		buf, err := ioutil.ReadFile("main.go")
 		if err != nil {
 			log.Fatal(err)
 		}
