@@ -13,6 +13,7 @@ const (
 	defaultFont = "ubuntumonoregular"
 	fsf         = 600
 	resolution  = 1000
+	minSteps    = 4
 )
 
 // TextT represents text and satisfies the Primitive interface.
@@ -96,6 +97,7 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 		pts = []Pt{}
 	}
 
+	var lastQ *hermit2.T
 	for _, ps := range g.PathSteps {
 		switch ps.C {
 		case 'M':
@@ -154,10 +156,11 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 					A: hermit2.PointTangent{Point: vec2.T{x, y}, Tangent: vec2.T{dx1, dy1}},
 					B: hermit2.PointTangent{Point: vec2.T{x + dx, y + dy}, Tangent: vec2.T{-dx1, -dy1}},
 				}
+				lastQ = h
 				length := h.Length(1)
 				steps := int(0.5 + length/resolution)
-				if steps < 3 {
-					steps = 3
+				if steps < minSteps {
+					steps = minSteps
 				}
 				for j := 1; j <= steps; j++ {
 					t := float64(j) / float64(steps)
@@ -168,10 +171,24 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 			}
 		// case 'T':
 		case 't':
-			log.Printf("t: %#v", ps.P)
+			if lastQ == nil {
+				log.Fatal("unexpected t with no lastQ")
+			}
 			for i := 0; i < len(ps.P); i += 2 {
-				x, y = x+xScale*ps.P[i], y+ps.P[i+1]
-				pts = append(pts, Pt{X: x, Y: y})
+				dx, dy := xScale*ps.P[i], ps.P[i+1]
+				lastQ.A.Point = vec2.T{x, y}
+				lastQ.B.Point = vec2.T{x + dx, y + dy}
+				length := lastQ.Length(1)
+				steps := int(0.5 + length/resolution)
+				if steps < minSteps {
+					steps = minSteps
+				}
+				for j := 1; j <= steps; j++ {
+					t := float64(j) / float64(steps)
+					p := lastQ.Point(t)
+					pts = append(pts, Pt{X: p[0], Y: p[1]})
+				}
+				x, y = x+dx, y+dy
 			}
 		// case 'A':
 		// case 'a':
