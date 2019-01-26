@@ -96,19 +96,19 @@ package gerber
 // Font represents a webfont.
 type Font struct {
 	ID           string
-	HorizAdvX    int
-	UnitsPerEm   int
-	Ascent       int
-	Descent      int
-	MissingHorizAdvX int
+	HorizAdvX    float64
+	UnitsPerEm   float64
+	Ascent       float64
+	Descent      float64
+	MissingHorizAdvX float64
 	Glyphs       map[string]*Glyph
 }
 
 // Glyph represents an individual character of the webfont data.
 type Glyph struct {
-	HorizAdvX int
+	HorizAdvX float64
 	Unicode   string
-	GerberLP  string
+	// GerberLP  string
 	PathSteps []*PathStep
 }
 
@@ -125,7 +125,7 @@ type Glyph struct {
 // Elliptical Arc Curve: A, a
 // ClosePath: Z, z
 type PathStep struct {
-	C    string // C is the command.
+	C byte // C is the command.
 	P []float64 // P are the parameters of the command.
 }
 
@@ -141,9 +141,9 @@ var fonts = map[string]*Font{ {{ range . }}
 			{{ .Unicode | utf8 }}: {
 				HorizAdvX: {{ .HorizAdvX }},
 				Unicode: {{ .Unicode | utf8 }},
-				GerberLP: {{ .GerberLP | orEmpty }},
+				// GerberLP: {{ .GerberLP | orEmpty }},
 				PathSteps: []*PathStep{ {{ range .PathSteps }}
-					{ C: "{{ .Command }}"{{ if .Parameters }}, P: {{ .Parameters | floats }}{{ end }} },{{ end }}
+					{ C: '{{ .Command }}'{{ if .Parameters }}, P: {{ .Parameters | floats }}{{ end }} },{{ end }}
 				},
 			},{{ end }}{{ end }}
 		},
