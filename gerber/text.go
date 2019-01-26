@@ -143,9 +143,45 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 				pts = append(pts, Pt{X: x, Y: y})
 			}
 		case 'C':
-			log.Printf("C: %#v", ps.P)
+			for i := 0; i < len(ps.P); i += 6 {
+				x1, y1, x2, y2, ex, ey := oX+xScale*ps.P[i], oY+ps.P[i+1], oX+xScale*ps.P[i+2], oY+ps.P[i+3], oX+xScale*ps.P[i+4], oY+ps.P[i+5]
+				h := &hermit2.T{
+					A: hermit2.PointTangent{Point: vec2.T{x, y}, Tangent: vec2.T{x1 - x, y1 - y}},
+					B: hermit2.PointTangent{Point: vec2.T{ex, ey}, Tangent: vec2.T{x2 - ex, y2 - ey}},
+				}
+				lastQ = h
+				length := h.Length(1)
+				steps := int(0.5 + length/resolution)
+				if steps < minSteps {
+					steps = minSteps
+				}
+				for j := 1; j <= steps; j++ {
+					t := float64(j) / float64(steps)
+					p := h.Point(t)
+					pts = append(pts, Pt{X: p[0], Y: p[1]})
+				}
+				x, y = ex, ey
+			}
 		case 'c':
-			log.Printf("c: %#v", ps.P)
+			for i := 0; i < len(ps.P); i += 6 {
+				dx1, dy1, dx2, dy2, dx, dy := xScale*ps.P[i], ps.P[i+1], xScale*ps.P[i+2], ps.P[i+3], xScale*ps.P[i+4], ps.P[i+5]
+				h := &hermit2.T{
+					A: hermit2.PointTangent{Point: vec2.T{x, y}, Tangent: vec2.T{dx1, dy1}},
+					B: hermit2.PointTangent{Point: vec2.T{x + dx, y + dy}, Tangent: vec2.T{dx2, dy2}},
+				}
+				lastQ = h
+				length := h.Length(1)
+				steps := int(0.5 + length/resolution)
+				if steps < minSteps {
+					steps = minSteps
+				}
+				for j := 1; j <= steps; j++ {
+					t := float64(j) / float64(steps)
+					p := h.Point(t)
+					pts = append(pts, Pt{X: p[0], Y: p[1]})
+				}
+				x, y = x+dx, y+dy
+			}
 		// case 'S':
 		// case 's':
 		// case 'Q':
