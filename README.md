@@ -15,6 +15,10 @@ generates:
 
 ![bifilar-coil](images/bifilar-coil.png)
 
+and this shows the font and top/bottom silkscreen support:
+
+![with silkscreen](images/go-gerber-with-silkscreen.png)
+
 ## Docs
 
 [![GoDoc](https://godoc.org/github.com/gmlewis/go-gerber/gerber?status.svg)](https://godoc.org/github.com/gmlewis/go-gerber/gerber)
