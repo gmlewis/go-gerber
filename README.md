@@ -7,7 +7,8 @@ manufacturers, all from Go code.
 ## Example
 
 ```bash
-go run examples/bifilar-coil/main.go
+pushd examples/bifilar-coil
+go run main.go
 gerbview bifilar-coil.g* bifilar-coil.xln
 ```
 
