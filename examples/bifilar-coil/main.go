@@ -21,6 +21,7 @@ var (
 	trace    = flag.Float64("trace", 0.15, "Width of traces in mm")
 	prefix   = flag.String("prefix", "bifilar-coil", "Filename prefix for all Gerber files and zip")
 	fontName = flag.String("font", "ubuntumonoregular", "Name of font to use for writing source on PCB (empty to not write)")
+	pts      = flag.Float64("pts", 1.75, "Font point size (72 pts = 1 inch = 25.4 mm)")
 )
 
 func main() {
@@ -132,12 +133,12 @@ func main() {
 
 		tss := g.TopSilkscreen()
 		tss.Add(
-			Text(x, y, 1.0, strings.Join(lines[:half], "\n"), *fontName),
+			Text(x, y, 1.0, strings.Join(lines[:half], "\n"), *fontName, *pts),
 		)
 
 		bss := g.BottomSilkscreen()
 		bss.Add(
-			Text(-x, y, -1.0, strings.Join(lines[half:], "\n"), *fontName),
+			Text(-x, y, -1.0, strings.Join(lines[half:], "\n"), *fontName, *pts),
 		)
 	}
 
