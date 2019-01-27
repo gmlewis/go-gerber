@@ -10,14 +10,15 @@ import (
 	"go/format"
 	"io/ioutil"
 	"log"
-	"sort"
 	"strings"
 	"text/template"
 )
 
-var (
-	filename = flag.String("out", "fonts.go", "Output filename for Go fonts file")
+const (
+	prefix = "font-"
+)
 
+var (
 	outTemp = template.Must(template.New("out").Funcs(funcMap).Parse(goTemplate))
 	funcMap = template.FuncMap{
 		"floats":  floats,
@@ -29,17 +30,16 @@ var (
 func main() {
 	flag.Parse()
 
-	var fonts []*Font
 	for _, arg := range flag.Args() {
 		log.Printf("Processing file %q ...", arg)
 
-		buf, err := ioutil.ReadFile(arg)
-		if err != nil {
-			log.Fatal(err)
-		}
 		fontData := &FontData{}
-		if err := xml.Unmarshal(buf, fontData); err != nil {
+		if buf, err := ioutil.ReadFile(arg); err != nil {
 			log.Fatal(err)
+		} else {
+			if err := xml.Unmarshal(buf, fontData); err != nil {
+				log.Fatal(err)
+			}
 		}
 
 		fontData.Font.ID = strings.ToLower(fontData.Font.ID)
@@ -48,24 +48,21 @@ func main() {
 			g.ParsePath()
 		}
 
-		fonts = append(fonts, fontData.Font)
-	}
+		var buf bytes.Buffer
+		if err := outTemp.Execute(&buf, fontData.Font); err != nil {
+			log.Fatal(err)
+		}
 
-	sort.Slice(fonts, func(a, b int) bool { return fonts[a].ID < fonts[b].ID })
+		filename := fmt.Sprintf("%v%v.go", prefix, fontData.Font.ID)
+		fmtBuf, err := format.Source(buf.Bytes())
+		if err != nil {
+			ioutil.WriteFile(filename, buf.Bytes(), 0644) // Dump the unformatted output.
+			log.Fatal(err)
+		}
 
-	var buf bytes.Buffer
-	if err := outTemp.Execute(&buf, fonts); err != nil {
-		log.Fatal(err)
-	}
-
-	fmtBuf, err := format.Source(buf.Bytes())
-	if err != nil {
-		ioutil.WriteFile(*filename, buf.Bytes(), 0644) // Dump the unformatted output.
-		log.Fatal(err)
-	}
-
-	if err := ioutil.WriteFile(*filename, fmtBuf, 0644); err != nil {
-		log.Fatal(err)
+		if err := ioutil.WriteFile(filename, fmtBuf, 0644); err != nil {
+			log.Fatal(err)
+		}
 	}
 
 	fmt.Println("Done.")
@@ -93,60 +90,26 @@ var goTemplate = `// Auto-generated - DO NOT EDIT!
 
 package gerber
 
-// Font represents a webfont.
-type Font struct {
-	ID           string
-	HorizAdvX    float64
-	UnitsPerEm   float64
-	Ascent       float64
-	Descent      float64
-	MissingHorizAdvX float64
-	Glyphs       map[string]*Glyph
+func init() {
+  Fonts["{{ .ID }}"] = {{ .ID }}Font
 }
 
-// Glyph represents an individual character of the webfont data.
-type Glyph struct {
-	HorizAdvX float64
-	Unicode   string
-	GerberLP  string
-	PathSteps []*PathStep
-}
-
-// PathStep represents a single path step.
-//
-// There are 20 possible commands, broken up into 6 types,
-// with each command having an "absolute" (upper case) and
-// a "relative" (lower case) version.
-//
-// MoveTo: M, m
-// LineTo: L, l, H, h, V, v
-// Cubic Bézier Curve: C, c, S, s
-// Quadratic Bézier Curve: Q, q, T, t
-// Elliptical Arc Curve: A, a
-// ClosePath: Z, z
-type PathStep struct {
-	C byte // C is the command.
-	P []float64 // P are the parameters of the command.
-}
-
-var Fonts = map[string]*Font{ {{ range . }}
-	"{{ .ID }}": {
-		// ID: "{{ .ID }}",
-		HorizAdvX:  {{ .HorizAdvX }},
-		UnitsPerEm: {{ .FontFace.UnitsPerEm }},
-		Ascent:     {{ .FontFace.Ascent }},
-		Descent:    {{ .FontFace.Descent }},
-		MissingHorizAdvX: {{ .MissingGlyph.HorizAdvX }},
-		Glyphs: map[string]*Glyph{ {{ range .Glyphs }}{{ if .Unicode }}
-			{{ .Unicode | utf8 }}: {
-				HorizAdvX: {{ .HorizAdvX }},
-				Unicode: {{ .Unicode | utf8 }},
-				GerberLP: {{ .GerberLP | orEmpty }},
-				PathSteps: []*PathStep{ {{ range .PathSteps }}
-					{ C: '{{ .Command }}'{{ if .Parameters }}, P: {{ .Parameters | floats }}{{ end }} },{{ end }}
-				},
-			},{{ end }}{{ end }}
-		},
-	},{{ end }}
+var {{ .ID }}Font = &Font{
+	// ID: "{{ .ID }}",
+	HorizAdvX:  {{ .HorizAdvX }},
+	UnitsPerEm: {{ .FontFace.UnitsPerEm }},
+	Ascent:     {{ .FontFace.Ascent }},
+	Descent:    {{ .FontFace.Descent }},
+	MissingHorizAdvX: {{ .MissingGlyph.HorizAdvX }},
+	Glyphs: map[string]*Glyph{ {{ range .Glyphs }}{{ if .Unicode }}
+		{{ .Unicode | utf8 }}: {
+			HorizAdvX: {{ .HorizAdvX }},
+			Unicode: {{ .Unicode | utf8 }},
+			GerberLP: {{ .GerberLP | orEmpty }},
+			PathSteps: []*PathStep{ {{ range .PathSteps }}
+				{ C: '{{ .Command }}'{{ if .Parameters }}, P: {{ .Parameters | floats }}{{ end }} },{{ end }}
+			},
+		},{{ end }}{{ end }}
+	},
 }
 `
