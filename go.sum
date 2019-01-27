@@ -1,2 +1,3 @@
-github.com/gmlewis/go3d v0.0.0-20190127013918-6cd93b29e57c h1:bMz+ALz7hAIAfWca/jbT3kGDU2F0do6lO/JVZ5hbETI=
-github.com/gmlewis/go3d v0.0.0-20190127013918-6cd93b29e57c/go.mod h1:P0Dvt8I1gvW/HdmhWin2FySnUQVfMovdXwr29Q/YjTg=
+github.com/barnex/fmath v0.0.0-20150108074215-ec9671f295c2/go.mod h1:G7XW+2O6Hk/x6OP8AuwZjI8ZTyXvKDTTKaRK92gapfk=
+github.com/gmlewis/go3d v0.0.0-20190127042539-d4534de02598 h1:/krp4E/wIeTK9PtkcHNEu0oP1MXpDN/6ZRior5dXlkg=
+github.com/gmlewis/go3d v0.0.0-20190127042539-d4534de02598/go.mod h1:+/uN50S5WWVVyL5tKuhhWfgd+xoVtqm2a/0UcPDudTY=
