@@ -30238,7 +30238,7 @@ var Fonts = map[string]*Font{
 			"\u00a2": {
 				HorizAdvX: 0,
 				Unicode:   "\u00a2",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{141, 518}},
 					{C: 'q', P: []float64{0, 114, 34, 209.5}},
@@ -30392,7 +30392,7 @@ var Fonts = map[string]*Font{
 			"\u00a9": {
 				HorizAdvX: 1634,
 				Unicode:   "\u00a9",
-				GerberLP:  "",
+				GerberLP:  "dcd",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{70, 733}},
 					{C: 'q', P: []float64{0, 103, 26.5, 199}},
@@ -30498,7 +30498,7 @@ var Fonts = map[string]*Font{
 			"\u00ae": {
 				HorizAdvX: 1634,
 				Unicode:   "\u00ae",
-				GerberLP:  "",
+				GerberLP:  "dcdc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{70, 733}},
 					{C: 'q', P: []float64{0, 103, 26.5, 199}},
