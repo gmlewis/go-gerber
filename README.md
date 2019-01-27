@@ -28,8 +28,48 @@ and this shows the font and top/bottom silkscreen support:
 
 ## Webfonts
 
-The SVG webfonts were copied from the excellent [github.com/boldport/pcbmode](https://github.com/boldport/pcbmode/tree/master/pcbmode/fonts)
+The SVG webfonts were copied from the excellent
+[github.com/boldport/pcbmode](https://github.com/boldport/pcbmode/tree/master/pcbmode/fonts)
 project and tweaked slightly.
+
+Please note that these fonts are a work-in-progress and still have rendering
+errors that need fixing.
+
+### AaarghNormal
+
+![aaarghnormal](images/aaarghnormal.png)
+
+### Fascinate_InlineRegular
+
+![fascinate_inlineregular](images/fascinate_inlineregular.png)
+
+### GoodDogRegular
+
+![gooddogregular](images/gooddogregular.png)
+
+### HelsinkiRegular
+
+![helsinkiregular](images/helsinkiregular.png)
+
+### LatoRegular
+
+![latoregular](images/latoregular.png)
+
+### OverlockRegular
+
+![overlockregular](images/overlockregular.png)
+
+### Pacifico
+
+![pacifico](images/pacifico.png)
+
+### Snickles
+
+![snickles](images/snickles.png)
+
+### UbuntuMonoRegular
+
+![ubuntumonoregular](images/ubuntumonoregular.png)
 
 ----------------------------------------------------------------------
 
