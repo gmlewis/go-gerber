@@ -37,6 +37,7 @@ type Glyph struct {
 	HorizAdvX int     `xml:"horiz-adv-x,attr"`
 	Unicode   *string `xml:"unicode,attr,omitempty"`
 	D         *string `xml:"d,attr,omitempty"`
+	DOrig     *string `xml:"d-orig,attr,omitempty"`
 	GerberLP  *string `xml:"gerber-lp,attr,omitempty"`
 
 	// D is parsed into a sequence of PathSteps:
@@ -72,6 +73,11 @@ func (g *Glyph) ParsePath() {
 		return
 	}
 	d := *g.D
+	if g.DOrig != nil && *g.DOrig != "" {
+		// log.Printf("Warning - ignoring DOrig for glyph %+q", *g.Unicode)
+		log.Printf("Warning - using DOrig for glyph %+q", *g.Unicode)
+		d = *g.DOrig
+	}
 	for len(d) > 0 {
 		m := closeRE.FindStringSubmatch(d)
 		if len(m) == 2 {

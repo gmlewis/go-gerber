@@ -6,68 +6,74 @@ import (
 	"log"
 	"strings"
 
-	"github.com/ungerik/go3d/float64/hermit2"
-	"github.com/ungerik/go3d/float64/vec2"
+	"github.com/gmlewis/go3d/float64/bezier2"
+	"github.com/gmlewis/go3d/float64/qbezier2"
+	"github.com/gmlewis/go3d/float64/vec2"
 )
 
 const (
-	defaultFont = "ubuntumonoregular"
-	fsf         = 600
-	resolution  = 1000
-	minSteps    = 4
-	maxSteps    = 100
+	mmPerPt    = 25.4 / 72.0
+	resolution = 0.1 // mm
+	minSteps   = 4
+	maxSteps   = 100
 )
 
 // TextT represents text and satisfies the Primitive interface.
 type TextT struct {
 	x, y, xScale float64
 	s            string
-	font         string
+	font         *Font
+	pts          float64
 }
 
 // Text returns a text primitive.
 // All dimensions are in millimeters.
 // xScale is 1.0 for top silkscreen and -1.0 for bottom silkscreen.
-func Text(x, y, xScale float64, s, font string) *TextT {
+func Text(x, y, xScale float64, s, fontName string, pts float64) *TextT {
+	if len(Fonts) == 0 {
+		log.Fatal("No fonts available")
+	}
+
+	font, ok := Fonts[fontName]
+	if !ok {
+		var name string
+		for name, font = range Fonts {
+			break
+		}
+		log.Printf("Could not find font %q: using %q instead", fontName, name)
+	}
+
 	return &TextT{
 		x:      x,
 		y:      y,
 		xScale: xScale,
 		s:      s,
 		font:   font,
+		pts:    pts,
 	}
 }
 
 // WriteGerber writes the primitive to the Gerber file.
 func (t *TextT) WriteGerber(w io.Writer, apertureIndex int) error {
-	f, ok := fonts[t.font]
-	if !ok {
-		log.Printf("Could not find font %q: using %q instead", t.font, defaultFont)
-		f, ok = fonts[defaultFont]
-		if !ok {
-			log.Fatalf("Could not find default font %q", defaultFont)
-		}
-	}
-
 	x, y := t.x, t.y
 	for _, c := range t.s {
 		if c == rune('\n') {
-			x, y = t.x, y-(f.Ascent-f.Descent)
+			x, y = t.x, y-(t.font.Ascent-t.font.Descent)
 			continue
 		}
 		if c == rune('\t') {
-			x += 2.0 * t.xScale * f.HorizAdvX
+			x += 2.0 * t.xScale * t.font.HorizAdvX
 			continue
 		}
-		g, ok := f.Glyphs[string(c)]
+		g, ok := t.font.Glyphs[string(c)]
 		if !ok {
 			log.Printf("Warning: missing glyph %+q: skipping", c)
-			x += t.xScale * f.HorizAdvX
+			x += t.xScale * t.font.HorizAdvX
 			continue
 		}
-		dx := g.WriteGerber(w, apertureIndex, x, y, t.xScale)
+		dx := g.WriteGerber(w, apertureIndex, t, x, y)
 		if dx == 0 {
-			dx = f.HorizAdvX
+			dx = t.font.HorizAdvX
 		}
 		x += dx * t.xScale
 	}
@@ -80,14 +86,17 @@ func (t *TextT) Aperture() *Aperture {
 }
 
 // WriteGerber writes the primitive to the Gerber file.
-func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64) float64 {
+func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, t *TextT, x, y float64) float64 {
+	xScale := t.xScale
 	oX, oY := x, y         // origin for this glyph
 	var pts []Pt           // Current polygon
 	currentPolarity := "d" // d=dark, c=clear
 	var curveNum int
 
+	fsf := sf * t.pts * mmPerPt / t.font.HorizAdvX
+
 	dumpPoly := func() {
-		if g.GerberLP != "" {
+		if g.GerberLP != "" && curveNum < len(g.GerberLP) {
 			polarity := g.GerberLP[curveNum : curveNum+1]
 			if polarity != currentPolarity {
 				fmt.Fprintf(w, "%%LP%v*%%\n", strings.ToUpper(polarity))
@@ -108,7 +117,8 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 		pts = []Pt{}
 	}
 
-	var lastQ *hermit2.T
+	var lastQ *qbezier2.T
+	var lastCommand byte
 	for _, ps := range g.PathSteps {
 		switch ps.C {
 		case 'M':
@@ -156,12 +166,14 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 		case 'C':
 			for i := 0; i < len(ps.P); i += 6 {
 				x1, y1, x2, y2, ex, ey := oX+xScale*ps.P[i], oY+ps.P[i+1], oX+xScale*ps.P[i+2], oY+ps.P[i+3], oX+xScale*ps.P[i+4], oY+ps.P[i+5]
-				h := &hermit2.T{
-					A: hermit2.PointTangent{Point: vec2.T{x, y}, Tangent: vec2.T{x1 - x, y1 - y}},
-					B: hermit2.PointTangent{Point: vec2.T{ex, ey}, Tangent: vec2.T{x2 - ex, y2 - ey}},
+				b := &bezier2.T{
+					P0: vec2.T{x, y},
+					P1: vec2.T{x1, y1},
+					P2: vec2.T{x2, y2},
+					P3: vec2.T{ex, ey},
 				}
-				lastQ = h
-				length := h.Length(1)
+				// lastQ = b
+				length := b.Length(1)
 				steps := int(0.5 + length/resolution)
 				if steps < minSteps {
 					steps = minSteps
@@ -171,7 +183,7 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 				}
 				for j := 1; j <= steps; j++ {
 					t := float64(j) / float64(steps)
-					p := h.Point(t)
+					p := b.Point(t)
 					pts = append(pts, Pt{X: p[0], Y: p[1]})
 				}
 				x, y = ex, ey
@@ -179,12 +191,14 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 		case 'c':
 			for i := 0; i < len(ps.P); i += 6 {
 				dx1, dy1, dx2, dy2, dx, dy := xScale*ps.P[i], ps.P[i+1], xScale*ps.P[i+2], ps.P[i+3], xScale*ps.P[i+4], ps.P[i+5]
-				h := &hermit2.T{
-					A: hermit2.PointTangent{Point: vec2.T{x, y}, Tangent: vec2.T{dx1, dy1}},
-					B: hermit2.PointTangent{Point: vec2.T{x + dx, y + dy}, Tangent: vec2.T{dx2, dy2}},
+				b := &bezier2.T{
+					P0: vec2.T{x, y},
+					P1: vec2.T{x + dx1, y + dy1},
+					P2: vec2.T{x + dx2, y + dy2},
+					P3: vec2.T{x + dx, y + dy},
 				}
-				lastQ = h
-				length := h.Length(1)
+				// lastQ = b
+				length := b.Length(1)
 				steps := int(0.5 + length/resolution)
 				if steps < minSteps {
 					steps = minSteps
@@ -194,7 +208,7 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 				}
 				for j := 1; j <= steps; j++ {
 					t := float64(j) / float64(steps)
-					p := h.Point(t)
+					p := b.Point(t)
 					pts = append(pts, Pt{X: p[0], Y: p[1]})
 				}
 				x, y = x+dx, y+dy
@@ -205,12 +219,13 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 		case 'q':
 			for i := 0; i < len(ps.P); i += 4 {
 				dx1, dy1, dx, dy := xScale*ps.P[i], ps.P[i+1], xScale*ps.P[i+2], ps.P[i+3]
-				h := &hermit2.T{
-					A: hermit2.PointTangent{Point: vec2.T{x, y}, Tangent: vec2.T{dx1, dy1}},
-					B: hermit2.PointTangent{Point: vec2.T{x + dx, y + dy}, Tangent: vec2.T{-dx1, -dy1}},
+				b := &qbezier2.T{
+					P0: vec2.T{x, y},
+					P1: vec2.T{x + dx1, y + dy1},
+					P2: vec2.T{x + dx, y + dy},
 				}
-				lastQ = h
-				length := h.Length(1)
+				lastQ = b
+				length := b.Length()
 				steps := int(0.5 + length/resolution)
 				if steps < minSteps {
 					steps = minSteps
@@ -220,21 +235,26 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 				}
 				for j := 1; j <= steps; j++ {
 					t := float64(j) / float64(steps)
-					p := h.Point(t)
+					p := b.Point(t)
 					pts = append(pts, Pt{X: p[0], Y: p[1]})
 				}
 				x, y = x+dx, y+dy
 			}
 		// case 'T':
 		case 't':
-			if lastQ == nil {
-				log.Fatal("unexpected t with no lastQ")
-			}
 			for i := 0; i < len(ps.P); i += 2 {
 				dx, dy := xScale*ps.P[i], ps.P[i+1]
-				lastQ.A.Point = vec2.T{x, y}
-				lastQ.B.Point = vec2.T{x + dx, y + dy}
-				length := lastQ.Length(1)
+				dx1, dy1 := 0.0, 0.0
+				if lastQ != nil && (lastCommand == 'q' || lastCommand == 't') {
+					dx1, dy1 = lastQ.P2[0]-lastQ.P1[0], lastQ.P2[1]-lastQ.P1[1]
+				}
+				lastQ = &qbezier2.T{
+					P0: vec2.T{x, y},
+					P1: vec2.T{x + dx1, y + dy1},
+					P2: vec2.T{x + dx, y + dy},
+				}
+				lastCommand = ps.C
+				length := lastQ.Length()
 				steps := int(0.5 + length/resolution)
 				if steps < minSteps {
 					steps = minSteps
@@ -260,6 +280,7 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, x, y, xScale float64
 		default:
 			log.Fatalf("Unsupported path command %q", ps.C)
 		}
+		lastCommand = ps.C
 	}
 	if len(pts) > 0 {
 		dumpPoly()

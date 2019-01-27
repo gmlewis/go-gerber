@@ -38,9 +38,9 @@ type PathStep struct {
 	P []float64 // P are the parameters of the command.
 }
 
-var fonts = map[string]*Font{
+var Fonts = map[string]*Font{
 	"aaarghnormal": {
-		ID:               "aaarghnormal",
+		// ID: "aaarghnormal",
 		HorizAdvX:        629,
 		UnitsPerEm:       1000,
 		Ascent:           800,
@@ -4233,7 +4233,7 @@ var fonts = map[string]*Font{
 		},
 	},
 	"fascinate_inlineregular": {
-		ID:               "fascinate_inlineregular",
+		// ID: "fascinate_inlineregular",
 		HorizAdvX:        500,
 		UnitsPerEm:       1000,
 		Ascent:           800,
@@ -4639,7 +4639,7 @@ var fonts = map[string]*Font{
 			"!": {
 				HorizAdvX: 445,
 				Unicode:   "!",
-				GerberLP:  "",
+				GerberLP:  "ddcc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{60, 554}},
 					{C: 'q', P: []float64{0, 68, 48, 115.5}},
@@ -7229,7 +7229,7 @@ var fonts = map[string]*Font{
 			"a": {
 				HorizAdvX: 630,
 				Unicode:   "a",
-				GerberLP:  "",
+				GerberLP:  "dcc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{31, 163}},
 					{C: 'q', P: []float64{0, 79, 55, 119.5}},
@@ -7278,7 +7278,7 @@ var fonts = map[string]*Font{
 			"b": {
 				HorizAdvX: 644,
 				Unicode:   "b",
-				GerberLP:  "",
+				GerberLP:  "dcc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{45, 247}},
 					{C: 'v', P: []float64{486}},
@@ -7315,7 +7315,7 @@ var fonts = map[string]*Font{
 			"c": {
 				HorizAdvX: 589,
 				Unicode:   "c",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{26, 247}},
 					{C: 'q', P: []float64{0, 72, 26, 125.5}},
@@ -7361,7 +7361,7 @@ var fonts = map[string]*Font{
 			"d": {
 				HorizAdvX: 644,
 				Unicode:   "d",
-				GerberLP:  "",
+				GerberLP:  "dcc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{26, 253}},
 					{C: 'q', P: []float64{0, 208, 213, 247}},
@@ -7400,7 +7400,7 @@ var fonts = map[string]*Font{
 			"e": {
 				HorizAdvX: 640,
 				Unicode:   "e",
-				GerberLP:  "",
+				GerberLP:  "dcc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{26, 250}},
 					{C: 'q', P: []float64{0, 72, 26, 125.5}},
@@ -7446,7 +7446,7 @@ var fonts = map[string]*Font{
 			"f": {
 				HorizAdvX: 547,
 				Unicode:   "f",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{15, 214}},
 					{C: 'v', P: []float64{39}},
@@ -7495,7 +7495,7 @@ var fonts = map[string]*Font{
 			"g": {
 				HorizAdvX: 670,
 				Unicode:   "g",
-				GerberLP:  "",
+				GerberLP:  "dccc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{26, 283}},
 					{C: 'q', P: []float64{0, 63, 26, 110}},
@@ -7573,7 +7573,7 @@ var fonts = map[string]*Font{
 			"h": {
 				HorizAdvX: 608,
 				Unicode:   "h",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{45, 68}},
 					{C: 'v', P: []float64{664}},
@@ -7613,7 +7613,7 @@ var fonts = map[string]*Font{
 			"i": {
 				HorizAdvX: 450,
 				Unicode:   "i",
-				GerberLP:  "",
+				GerberLP:  "ddcc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{45, 68}},
 					{C: 'v', P: []float64{364}},
@@ -7759,7 +7759,7 @@ var fonts = map[string]*Font{
 			"l": {
 				HorizAdvX: 450,
 				Unicode:   "l",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{45, 68}},
 					{C: 'v', P: []float64{664}},
@@ -7836,7 +7836,7 @@ var fonts = map[string]*Font{
 			"n": {
 				HorizAdvX: 608,
 				Unicode:   "n",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{45, 68}},
 					{C: 'v', P: []float64{364}},
@@ -7874,7 +7874,7 @@ var fonts = map[string]*Font{
 			"o": {
 				HorizAdvX: 654,
 				Unicode:   "o",
-				GerberLP:  "",
+				GerberLP:  "dcc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{26, 250}},
 					{C: 'q', P: []float64{0, 72, 26, 125.5}},
@@ -7917,7 +7917,7 @@ var fonts = map[string]*Font{
 			"p": {
 				HorizAdvX: 644,
 				Unicode:   "p",
-				GerberLP:  "",
+				GerberLP:  "dcc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{45, -133}},
 					{C: 'v', P: []float64{391}},
@@ -7993,7 +7993,7 @@ var fonts = map[string]*Font{
 			"r": {
 				HorizAdvX: 542,
 				Unicode:   "r",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{45, 68}},
 					{C: 'v', P: []float64{364}},
@@ -8030,7 +8030,7 @@ var fonts = map[string]*Font{
 			"s": {
 				HorizAdvX: 609,
 				Unicode:   "s",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{-2, 31}},
 					{C: 'q', P: []float64{0, 2, 2, 10}},
@@ -8072,7 +8072,7 @@ var fonts = map[string]*Font{
 			"t": {
 				HorizAdvX: 549,
 				Unicode:   "t",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{0, 351}},
 					{C: 'v', P: []float64{39}},
@@ -8121,7 +8121,7 @@ var fonts = map[string]*Font{
 			"u": {
 				HorizAdvX: 608,
 				Unicode:   "u",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{45, 157}},
 					{C: 'v', P: []float64{275}},
@@ -8163,7 +8163,7 @@ var fonts = map[string]*Font{
 			"v": {
 				HorizAdvX: 557,
 				Unicode:   "v",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{0, 476}},
 					{C: 'q', P: []float64{0, 12, 9, 18}},
@@ -8201,7 +8201,7 @@ var fonts = map[string]*Font{
 			"w": {
 				HorizAdvX: 861,
 				Unicode:   "w",
-				GerberLP:  "",
+				GerberLP:  "dcc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{5, 477}},
 					{C: 'q', P: []float64{0, 23, 26, 23}},
@@ -14534,7 +14534,7 @@ var fonts = map[string]*Font{
 		},
 	},
 	"gooddogregular": {
-		ID:               "gooddogregular",
+		// ID: "gooddogregular",
 		HorizAdvX:        359,
 		UnitsPerEm:       1000,
 		Ascent:           800,
@@ -15448,7 +15448,7 @@ var fonts = map[string]*Font{
 			"6": {
 				HorizAdvX: 384,
 				Unicode:   "6",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{21, 135}},
 					{C: 'q', P: []float64{-31, 119, 42, 230}},
@@ -15864,7 +15864,7 @@ var fonts = map[string]*Font{
 			"A": {
 				HorizAdvX: 402,
 				Unicode:   "A",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{18, 10}},
 					{C: 'q', P: []float64{-6, 28, -0.5, 58}},
@@ -17229,7 +17229,7 @@ var fonts = map[string]*Font{
 			"b": {
 				HorizAdvX: 401,
 				Unicode:   "b",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{13, 370}},
 					{C: 'q', P: []float64{3, 5, 11, 13}},
@@ -17352,7 +17352,7 @@ var fonts = map[string]*Font{
 			"e": {
 				HorizAdvX: 339,
 				Unicode:   "e",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{22, 282}},
 					{C: 'q', P: []float64{-2, 75, 47, 121}},
@@ -17773,7 +17773,7 @@ var fonts = map[string]*Font{
 			"o": {
 				HorizAdvX: 282,
 				Unicode:   "o",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{31, 331}},
 					{C: 'q', P: []float64{9, 33, 35, 69.5}},
@@ -22151,7 +22151,7 @@ var fonts = map[string]*Font{
 		},
 	},
 	"helsinkiregular": {
-		ID:               "helsinkiregular",
+		// ID: "helsinkiregular",
 		HorizAdvX:        1463,
 		UnitsPerEm:       2048,
 		Ascent:           1638,
@@ -23104,7 +23104,7 @@ var fonts = map[string]*Font{
 			"O": {
 				HorizAdvX: 0,
 				Unicode:   "O",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{1241, 1251}},
 					{C: 'q', P: []float64{162, -215, 132, -544.5}},
@@ -23131,7 +23131,7 @@ var fonts = map[string]*Font{
 			"P": {
 				HorizAdvX: 1350,
 				Unicode:   "P",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{182, 1374}},
 					{C: 'l', P: []float64{-127, -1368}},
@@ -23186,7 +23186,7 @@ var fonts = map[string]*Font{
 			"R": {
 				HorizAdvX: 1350,
 				Unicode:   "R",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{182, 1374}},
 					{C: 'l', P: []float64{-127, -1368}},
@@ -26772,7 +26772,7 @@ var fonts = map[string]*Font{
 		},
 	},
 	"latoregular": {
-		ID:               "latoregular",
+		// ID: "latoregular",
 		HorizAdvX:        1187,
 		UnitsPerEm:       2048,
 		Ascent:           1649,
@@ -31095,7 +31095,7 @@ var fonts = map[string]*Font{
 		},
 	},
 	"overlockregular": {
-		ID:               "overlockregular",
+		// ID: "overlockregular",
 		HorizAdvX:        1095,
 		UnitsPerEm:       2048,
 		Ascent:           1638,
@@ -31630,7 +31630,7 @@ var fonts = map[string]*Font{
 			"0": {
 				HorizAdvX: 0,
 				Unicode:   "0",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{61, 678}},
 					{C: 'q', P: []float64{0, 322, 131.5, 511}},
@@ -31763,7 +31763,7 @@ var fonts = map[string]*Font{
 			"4": {
 				HorizAdvX: 0,
 				Unicode:   "4",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{90, 524}},
 					{C: 'q', P: []float64{0, 29, 4, 58}},
@@ -31830,7 +31830,7 @@ var fonts = map[string]*Font{
 			"6": {
 				HorizAdvX: 0,
 				Unicode:   "6",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{121, 563}},
 					{C: 'q', P: []float64{0, 154, 44, 298.5}},
@@ -31890,7 +31890,7 @@ var fonts = map[string]*Font{
 			"8": {
 				HorizAdvX: 0,
 				Unicode:   "8",
-				GerberLP:  "",
+				GerberLP:  "dcc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{102, 348}},
 					{C: 'q', P: []float64{0, 154, 77, 245}},
@@ -31934,7 +31934,7 @@ var fonts = map[string]*Font{
 			"9": {
 				HorizAdvX: 0,
 				Unicode:   "9",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{90, 940}},
 					{C: 'q', P: []float64{0, 174, 117.5, 307}},
@@ -32146,7 +32146,7 @@ var fonts = map[string]*Font{
 			"@": {
 				HorizAdvX: 1763,
 				Unicode:   "@",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{182, 369}},
 					{C: 'q', P: []float64{0, 150, 57.5, 297}},
@@ -32199,7 +32199,7 @@ var fonts = map[string]*Font{
 			"A": {
 				HorizAdvX: 1128,
 				Unicode:   "A",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{10, 39}},
 					{C: 'q', P: []float64{0, 25, 87, 229.5}},
@@ -32232,7 +32232,7 @@ var fonts = map[string]*Font{
 			"B": {
 				HorizAdvX: 1120,
 				Unicode:   "B",
-				GerberLP:  "",
+				GerberLP:  "dcc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{141, 109}},
 					{C: 'q', P: []float64{33, 233, 33, 684}},
@@ -32296,7 +32296,7 @@ var fonts = map[string]*Font{
 			"D": {
 				HorizAdvX: 1300,
 				Unicode:   "D",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{135, 109}},
 					{C: 'q', P: []float64{29, 186, 33, 688}},
@@ -32667,7 +32667,7 @@ var fonts = map[string]*Font{
 			"O": {
 				HorizAdvX: 1458,
 				Unicode:   "O",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{100, 678}},
 					{C: 'q', P: []float64{0, 322, 170, 511}},
@@ -32698,7 +32698,7 @@ var fonts = map[string]*Font{
 			"P": {
 				HorizAdvX: 1032,
 				Unicode:   "P",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{135, 1354}},
 					{C: 'q', P: []float64{146, 24, 293, 24}},
@@ -32732,7 +32732,7 @@ var fonts = map[string]*Font{
 			"Q": {
 				HorizAdvX: 1458,
 				Unicode:   "Q",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{100, 678}},
 					{C: 'q', P: []float64{0, 322, 170, 511}},
@@ -33205,7 +33205,7 @@ var fonts = map[string]*Font{
 			"a": {
 				HorizAdvX: 950,
 				Unicode:   "a",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{92, 268}},
 					{C: 'q', P: []float64{0, 104, 49, 153.5}},
@@ -33249,7 +33249,7 @@ var fonts = map[string]*Font{
 			"b": {
 				HorizAdvX: 1040,
 				Unicode:   "b",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{123, 1516}},
 					{C: 'q', P: []float64{25, 6, 74, 6}},
@@ -33312,7 +33312,7 @@ var fonts = map[string]*Font{
 			"d": {
 				HorizAdvX: 1056,
 				Unicode:   "d",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{92, 475}},
 					{C: 'q', P: []float64{0, 223, 126, 360.5}},
@@ -33346,7 +33346,7 @@ var fonts = map[string]*Font{
 			"e": {
 				HorizAdvX: 962,
 				Unicode:   "e",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{92, 471}},
 					{C: 'q', P: []float64{0, 242, 136.5, 372}},
@@ -33420,7 +33420,7 @@ var fonts = map[string]*Font{
 			"g": {
 				HorizAdvX: 1060,
 				Unicode:   "g",
-				GerberLP:  "",
+				GerberLP:  "dcc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{72, -274}},
 					{C: 'q', P: []float64{0, 119, 135, 225}},
@@ -33727,7 +33727,7 @@ var fonts = map[string]*Font{
 			"o": {
 				HorizAdvX: 1075,
 				Unicode:   "o",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{92, 475}},
 					{C: 'q', P: []float64{0, 225, 123, 361.5}},
@@ -33754,7 +33754,7 @@ var fonts = map[string]*Font{
 			"p": {
 				HorizAdvX: 1058,
 				Unicode:   "p",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{123, 942}},
 					{C: 'q', P: []float64{37, 16, 80, 16}},
@@ -33793,7 +33793,7 @@ var fonts = map[string]*Font{
 			"q": {
 				HorizAdvX: 1060,
 				Unicode:   "q",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{92, 473}},
 					{C: 'q', P: []float64{0, 231, 127, 365.5}},
@@ -34983,7 +34983,7 @@ var fonts = map[string]*Font{
 		},
 	},
 	"ubuntumonoregular": {
-		ID:               "ubuntumonoregular",
+		// ID: "ubuntumonoregular",
 		HorizAdvX:        1024,
 		UnitsPerEm:       2048,
 		Ascent:           1638,
@@ -36392,17 +36392,30 @@ var fonts = map[string]*Font{
 				Unicode:   "M",
 				GerberLP:  "",
 				PathSteps: []*PathStep{
-					{C: 'm', P: []float64{66, 0}},
-					{C: 'c', P: []float64{4, 104, 8.666667, 210.5, 14, 319.5, 5.333333, 109, 11.833333, 217.5, 19.5, 325.5, 7.66667, 108, 16.5, 214.5, 26.5, 319.5, 10, 105, 21.33333, 206.1667, 34, 303.5}},
-					{C: 'l', P: []float64{155, 0, 199, -631, 197, 631, 157, 0}},
-					{C: 'C', P: []float64{895.33333, 1068.6667, 914.83333, 864.5, 926.5, 655.5, 938.16667, 446.5, 948.66667, 228, 958, 0}},
-					{C: 'l', P: []float64{-163, 0, -4.5, 240, -5.5, 266, -6, 278}},
-					{C: 'c', P: []float64{-2, 94, -4.33333, 185.66667, -7, 275}},
-					{C: 'L', P: []float64{588, 481, 440, 481, 252, 1059}},
-					{C: 'c', P: []float64{-1.33333, -88.66667, -3, -180, -5, -274}},
-					{C: 'L', P: []float64{241, 507, 234, 240}},
-					{C: 'C', P: []float64{232, 154, 230.33333, 74, 229, 0}},
-					{C: 'L', P: []float64{66, 0}},
+					{C: 'M', P: []float64{66, 0}},
+					{C: 'q', P: []float64{6, 156, 14, 319.5}},
+					{C: 't', P: []float64{19.5, 325.5}},
+					{C: 't', P: []float64{26.5, 319.5}},
+					{C: 't', P: []float64{34, 303.5}},
+					{C: 'h', P: []float64{155}},
+					{C: 'l', P: []float64{199, -631}},
+					{C: 'l', P: []float64{197, 631}},
+					{C: 'h', P: []float64{157}},
+					{C: 'q', P: []float64{41, -299, 58.5, -612.5}},
+					{C: 't', P: []float64{31.5, -655.5}},
+					{C: 'h', P: []float64{-163}},
+					{C: 'l', P: []float64{-4.5, 240}},
+					{C: 't', P: []float64{-5.5, 266}},
+					{C: 'l', P: []float64{-6, 278}},
+					{C: 'q', P: []float64{-3, 141, -7, 275}},
+					{C: 'l', P: []float64{-184, -578}},
+					{C: 'h', P: []float64{-148}},
+					{C: 'l', P: []float64{-188, 578}},
+					{C: 'q', P: []float64{-2, -133, -5, -274}},
+					{C: 'l', P: []float64{-6, -278}},
+					{C: 'l', P: []float64{-7, -267}},
+					{C: 'q', P: []float64{-3, -129, -5, -240}},
+					{C: 'h', P: []float64{-163}},
 				},
 			},
 			"N": {
@@ -42558,7 +42571,7 @@ var fonts = map[string]*Font{
 		},
 	},
 	"webfontb8enx5qc": {
-		ID:               "webfontb8enx5qc",
+		// ID: "webfontb8enx5qc",
 		HorizAdvX:        1013,
 		UnitsPerEm:       2048,
 		Ascent:           1638,
@@ -43421,7 +43434,7 @@ var fonts = map[string]*Font{
 			"A": {
 				HorizAdvX: 782,
 				Unicode:   "A",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{-190, 446}},
 					{C: 'h', P: []float64{10}},
@@ -43470,7 +43483,7 @@ var fonts = map[string]*Font{
 			"B": {
 				HorizAdvX: 733,
 				Unicode:   "B",
-				GerberLP:  "",
+				GerberLP:  "dcc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{-117, 156}},
 					{C: 'q', P: []float64{-1, -4, -1, -7}},
@@ -43608,7 +43621,7 @@ var fonts = map[string]*Font{
 			"D": {
 				HorizAdvX: 638,
 				Unicode:   "D",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{-134, 78}},
 					{C: 'q', P: []float64{0, -20, 36, -20}},
@@ -44105,7 +44118,7 @@ var fonts = map[string]*Font{
 			"O": {
 				HorizAdvX: 663,
 				Unicode:   "O",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{-63, 264}},
 					{C: 'q', P: []float64{6, -123, 59, -176}},
@@ -44207,7 +44220,7 @@ var fonts = map[string]*Font{
 			"Q": {
 				HorizAdvX: 751,
 				Unicode:   "Q",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{-76, 408}},
 					{C: 'q', P: []float64{-10, -66, -10, -118}},
@@ -44265,7 +44278,7 @@ var fonts = map[string]*Font{
 			"R": {
 				HorizAdvX: 772,
 				Unicode:   "R",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{-75, 131}},
 					{C: 'q', P: []float64{0, -18, 35, -18}},
@@ -44763,7 +44776,7 @@ var fonts = map[string]*Font{
 			"a": {
 				HorizAdvX: 692,
 				Unicode:   "a",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{-100, 362}},
 					{C: 'q', P: []float64{4, -147, 73, -192}},
@@ -44814,7 +44827,7 @@ var fonts = map[string]*Font{
 			"b": {
 				HorizAdvX: 667,
 				Unicode:   "b",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{-90, 143}},
 					{C: 'q', P: []float64{29, -35, 92, -41}},
@@ -44925,7 +44938,7 @@ var fonts = map[string]*Font{
 			"d": {
 				HorizAdvX: 710,
 				Unicode:   "d",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{-61, 295}},
 					{C: 'q', P: []float64{31, -125, 135, -176}},
@@ -44969,7 +44982,7 @@ var fonts = map[string]*Font{
 			"e": {
 				HorizAdvX: 624,
 				Unicode:   "e",
-				GerberLP:  "",
+				GerberLP:  "dccc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{-76, 307}},
 					{C: 'q', P: []float64{0, -168, 105, -192}},
@@ -46247,29 +46260,29 @@ var fonts = map[string]*Font{
 				Unicode:   "\u201c",
 				GerberLP:  "",
 				PathSteps: []*PathStep{
-					{C: 'm', P: []float64{1238, 1128}},
-					{C: 'q', P: []float64{23, -20, -4, -28}},
-					{C: 'q', P: []float64{-29, -8, -45, -6}},
-					{C: 'q', P: []float64{-92, 10, -143, 51}},
-					{C: 'q', P: []float64{-96, 80, -125, 180}},
-					{C: 'q', P: []float64{-34, 114, 18, 215}},
-					{C: 'q', P: []float64{20, 35, 125, 2}},
-					{C: 'q', P: []float64{45, -14, 68, -29}},
-					{C: 'q', P: []float64{29, -18, 23, -30}},
-					{C: 'q', P: []float64{-49, -92, -23, -193}},
-					{C: 'q', P: []float64{24, -94, 106, -162}},
+					{C: 'M', P: []float64{-20, 1128}},
+					{C: 'q', P: []float64{-23, -20, 4, -28}},
+					{C: 'q', P: []float64{29, -8, 45, -6}},
+					{C: 'q', P: []float64{92, 10, 143, 51}},
+					{C: 'q', P: []float64{96, 80, 125, 180}},
+					{C: 'q', P: []float64{34, 114, -18, 215}},
+					{C: 'q', P: []float64{-20, 35, -125, 2}},
+					{C: 'q', P: []float64{-45, -14, -68, -29}},
+					{C: 'q', P: []float64{-29, -18, -23, -30}},
+					{C: 'q', P: []float64{49, -92, 23, -193}},
+					{C: 'q', P: []float64{-24, -94, -106, -162}},
 					{C: 'z'},
-					{C: 'm', P: []float64{-329, 0}},
-					{C: 'q', P: []float64{23, -20, -4, -28}},
-					{C: 'q', P: []float64{-29, -8, -45, -6}},
-					{C: 'q', P: []float64{-92, 10, -144, 51}},
-					{C: 'q', P: []float64{-96, 80, -125, 180}},
-					{C: 'q', P: []float64{-34, 114, 19, 215}},
-					{C: 'q', P: []float64{20, 35, 125, 2}},
-					{C: 'q', P: []float64{41, -12, 65, -29}},
-					{C: 'q', P: []float64{31, -20, 25, -30}},
-					{C: 'q', P: []float64{-49, -92, -23, -193}},
-					{C: 'q', P: []float64{25, -94, 107, -162}},
+					{C: 'M', P: []float64{309, 1128}},
+					{C: 'q', P: []float64{-23, -20, 4, -28}},
+					{C: 'q', P: []float64{29, -8, 45, -6}},
+					{C: 'q', P: []float64{92, 10, 144, 51}},
+					{C: 'q', P: []float64{96, 80, 125, 180}},
+					{C: 'q', P: []float64{34, 114, -19, 215}},
+					{C: 'q', P: []float64{-20, 35, -125, 2}},
+					{C: 'q', P: []float64{-41, -12, -65, -29}},
+					{C: 'q', P: []float64{-31, -20, -25, -30}},
+					{C: 'q', P: []float64{49, -92, 23, -193}},
+					{C: 'q', P: []float64{-25, -94, -107, -162}},
 					{C: 'z'},
 				},
 			},
@@ -46650,7 +46663,7 @@ var fonts = map[string]*Font{
 		},
 	},
 	"webfontrtffmgjf": {
-		ID:               "webfontrtffmgjf",
+		// ID: "webfontrtffmgjf",
 		HorizAdvX:        970,
 		UnitsPerEm:       2048,
 		Ascent:           1638,
@@ -48769,7 +48782,7 @@ var fonts = map[string]*Font{
 			"A": {
 				HorizAdvX: 1616,
 				Unicode:   "A",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{1872, 224}},
 					{C: 'q', P: []float64{-21, -22, -53.5, -50}},
@@ -49765,7 +49778,7 @@ var fonts = map[string]*Font{
 			"L": {
 				HorizAdvX: 0,
 				Unicode:   "L",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{-156, 327}},
 					{C: 'l', P: []float64{44, 29}},
@@ -50105,7 +50118,7 @@ var fonts = map[string]*Font{
 			"O": {
 				HorizAdvX: 1616,
 				Unicode:   "O",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{742, -192}},
 					{C: 'q', P: []float64{-149, 0, -268.5, 61}},
@@ -50160,7 +50173,7 @@ var fonts = map[string]*Font{
 			"P": {
 				HorizAdvX: 1401,
 				Unicode:   "P",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{958, 1823}},
 					{C: 'q', P: []float64{168, 0, 294.5, -45.5}},
@@ -51413,7 +51426,7 @@ var fonts = map[string]*Font{
 			"b": {
 				HorizAdvX: 0,
 				Unicode:   "b",
-				GerberLP:  "",
+				GerberLP:  "dcc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{452, 805}},
 					{C: 'q', P: []float64{56, 70, 102.5, 112.5}},
@@ -51563,7 +51576,7 @@ var fonts = map[string]*Font{
 			"d": {
 				HorizAdvX: 1077,
 				Unicode:   "d",
-				GerberLP:  "",
+				GerberLP:  "cdc;2,1,3",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{568, 806}},
 					{C: 'q', P: []float64{-66, -32, -117.5, -84.5}},
@@ -51665,7 +51678,7 @@ var fonts = map[string]*Font{
 			"e": {
 				HorizAdvX: 754,
 				Unicode:   "e",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{466, 0}},
 					{C: 'q', P: []float64{-94, 0, -164.5, 34}},
@@ -51720,7 +51733,7 @@ var fonts = map[string]*Font{
 			"f": {
 				HorizAdvX: 754,
 				Unicode:   "f",
-				GerberLP:  "",
+				GerberLP:  "dcc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{68, -38}},
 					{C: 'q', P: []float64{0, 5, 2.5, 61}},
@@ -51816,7 +51829,7 @@ var fonts = map[string]*Font{
 			"g": {
 				HorizAdvX: 0,
 				Unicode:   "g",
-				GerberLP:  "",
+				GerberLP:  "dcc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{335, -928}},
 					{C: 'q', P: []float64{63, 0, 116, 20}},
@@ -51903,7 +51916,7 @@ var fonts = map[string]*Font{
 			"h": {
 				HorizAdvX: 1077,
 				Unicode:   "h",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{473, 622}},
 					{C: 'l', P: []float64{92, 116}},
@@ -52238,7 +52251,7 @@ var fonts = map[string]*Font{
 			"l": {
 				HorizAdvX: 538,
 				Unicode:   "l",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{351, 0}},
 					{C: 'q', P: []float64{-54, 0, -100.5, 47.5}},
@@ -52466,7 +52479,7 @@ var fonts = map[string]*Font{
 			"o": {
 				HorizAdvX: 862,
 				Unicode:   "o",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{742, 771}},
 					{C: 'q', P: []float64{29, -58, 43.5, -122.5}},
@@ -52518,7 +52531,7 @@ var fonts = map[string]*Font{
 			"p": {
 				HorizAdvX: 862,
 				Unicode:   "p",
-				GerberLP:  "",
+				GerberLP:  "dcc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{536, 178}},
 					{C: 'q', P: []float64{101, 0, 184, 20}},
@@ -52742,7 +52755,7 @@ var fonts = map[string]*Font{
 			"s": {
 				HorizAdvX: 862,
 				Unicode:   "s",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{96, 384}},
 					{C: 'l', P: []float64{91, 80}},
@@ -52815,7 +52828,7 @@ var fonts = map[string]*Font{
 			"t": {
 				HorizAdvX: 754,
 				Unicode:   "t",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{960, 224}},
 					{C: 'l', P: []float64{-171, -98}},
@@ -53187,7 +53200,7 @@ var fonts = map[string]*Font{
 			"y": {
 				HorizAdvX: 0,
 				Unicode:   "y",
-				GerberLP:  "",
+				GerberLP:  "dc",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{519, -16}},
 					{C: 'l', P: []float64{22, 121}},
@@ -53910,7 +53923,7 @@ var fonts = map[string]*Font{
 			"\u00a9": {
 				HorizAdvX: 1792,
 				Unicode:   "\u00a9",
-				GerberLP:  "",
+				GerberLP:  "dcd",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{834, 32}},
 					{C: 'q', P: []float64{-184, 0, -320.5, 52}},

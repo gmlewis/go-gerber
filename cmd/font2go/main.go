@@ -129,9 +129,9 @@ type PathStep struct {
 	P []float64 // P are the parameters of the command.
 }
 
-var fonts = map[string]*Font{ {{ range . }}
+var Fonts = map[string]*Font{ {{ range . }}
 	"{{ .ID }}": {
-		ID: "{{ .ID }}",
+		// ID: "{{ .ID }}",
 		HorizAdvX:  {{ .HorizAdvX }},
 		UnitsPerEm: {{ .FontFace.UnitsPerEm }},
 		Ascent:     {{ .FontFace.Ascent }},
