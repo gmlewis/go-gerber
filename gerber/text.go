@@ -102,7 +102,11 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, t *TextT, x, y float
 				fmt.Fprintf(w, "%%LP%v*%%\n", strings.ToUpper(polarity))
 				currentPolarity = polarity
 			}
+			// } else if g.GerberLP == "" && curveNum > 0 && currentPolarity == "d" {
+			// 	io.WriteString(w, "%LPC%*\n")
+			// 	currentPolarity = "c"
 		}
+
 		io.WriteString(w, "G54D11*\n")
 		io.WriteString(w, "G36*\n")
 		for i, pt := range pts {

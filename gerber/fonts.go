@@ -2010,7 +2010,7 @@ var Fonts = map[string]*Font{
 			"i": {
 				HorizAdvX: 244,
 				Unicode:   "i",
-				GerberLP:  "",
+				GerberLP:  "dd",
 				PathSteps: []*PathStep{
 					{C: 'M', P: []float64{98, 579}},
 					{C: 'v', P: []float64{-580}},

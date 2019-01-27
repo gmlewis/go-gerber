@@ -26,6 +26,13 @@ and this shows the font and top/bottom silkscreen support:
 
 ----------------------------------------------------------------------
 
+## Webfonts
+
+The SVG webfonts were copied from the excellent [github.com/boldport/pcbmode](https://github.com/boldport/pcbmode/tree/master/pcbmode/fonts)
+project and tweaked slightly.
+
+----------------------------------------------------------------------
+
 Enjoy!
 
 ----------------------------------------------------------------------

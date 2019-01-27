@@ -74,15 +74,18 @@ func (g *Glyph) ParsePath() {
 	}
 	d := *g.D
 	if g.DOrig != nil && *g.DOrig != "" {
-		// log.Printf("Warning - ignoring DOrig for glyph %+q", *g.Unicode)
-		log.Printf("Warning - using DOrig for glyph %+q", *g.Unicode)
+		// log.Printf("Warning: ignoring DOrig for glyph %+q", *g.Unicode)
+		log.Printf("Warning: using DOrig for glyph %+q", *g.Unicode)
 		d = *g.DOrig
 	}
+
+	var numZs int
 	for len(d) > 0 {
 		m := closeRE.FindStringSubmatch(d)
 		if len(m) == 2 {
 			g.PathSteps = append(g.PathSteps, &PathStep{Command: m[1]})
 			d = d[len(m[0]):]
+			numZs++
 			continue
 		}
 
@@ -98,6 +101,10 @@ func (g *Glyph) ParsePath() {
 
 		log.Fatalf("Unknown path command: %q", d)
 	}
+
+	// if numZs > 1 && (g.GerberLP == nil || len(*g.GerberLP) != numZs) {
+	// 	log.Printf("Warning: glyph=%+q, numZs=%v, g.GerberLP=%q", *g.Unicode, numZs, g.GerberLP)
+	// }
 }
 
 func atof(s string) float64 {
