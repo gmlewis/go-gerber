@@ -229,7 +229,7 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, t *TextT, x, y float
 					P2: vec2.T{x + dx, y + dy},
 				}
 				lastQ = b
-				length := b.Length()
+				length := b.Length(1)
 				steps := int(0.5 + length/resolution)
 				if steps < minSteps {
 					steps = minSteps
@@ -258,7 +258,7 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, t *TextT, x, y float
 					P2: vec2.T{x + dx, y + dy},
 				}
 				lastCommand = ps.C
-				length := lastQ.Length()
+				length := lastQ.Length(1)
 				steps := int(0.5 + length/resolution)
 				if steps < minSteps {
 					steps = minSteps
