@@ -12,7 +12,7 @@ import (
 // GenGerberLP renders a glyph to figure out the curve polarity
 // and populate the GerberLP field.
 func (g *Glyph) GenGerberLP(ff *FontFace) {
-	if g == nil || len(g.PathSteps) == 0 || (g.GerberLP != nil && len(*g.GerberLP) > 50) {
+	if g == nil || len(g.PathSteps) == 0 || (g.GerberLP != nil && len(*g.GerberLP) > 0) {
 		return
 	}
 
