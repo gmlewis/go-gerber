@@ -14,7 +14,7 @@ type FontData struct {
 // Font represents the <font> XML block of the webfont data.
 type Font struct {
 	ID           string        `xml:"id,attr"`
-	HorizAdvX    int           `xml:"horiz-adv-x,attr"`
+	HorizAdvX    float64       `xml:"horiz-adv-x,attr"`
 	FontFace     *FontFace     `xml:"font-face"`
 	MissingGlyph *MissingGlyph `xml:"missing-glyph"`
 	Glyphs       []*Glyph      `xml:"glyph"`
@@ -22,19 +22,19 @@ type Font struct {
 
 // FontFace represents the <font-face> XML block of the webfont data.
 type FontFace struct {
-	UnitsPerEm int `xml:"units-per-em,attr"`
-	Ascent     int `xml:"ascent,attr"`
-	Descent    int `xml:"descent,attr"`
+	UnitsPerEm float64 `xml:"units-per-em,attr"`
+	Ascent     float64 `xml:"ascent,attr"`
+	Descent    float64 `xml:"descent,attr"`
 }
 
 // MissingGlyph represents the <missing-glyph> XML block of the webfont data.
 type MissingGlyph struct {
-	HorizAdvX int `xml:"horiz-adv-x,attr"`
+	HorizAdvX float64 `xml:"horiz-adv-x,attr"`
 }
 
 // Glyph represents a <glyph> XML block of the webfont data.
 type Glyph struct {
-	HorizAdvX int     `xml:"horiz-adv-x,attr"`
+	HorizAdvX float64 `xml:"horiz-adv-x,attr"`
 	Unicode   *string `xml:"unicode,attr,omitempty"`
 	D         *string `xml:"d,attr,omitempty"`
 	DOrig     *string `xml:"d-orig,attr,omitempty"`
@@ -57,8 +57,8 @@ type Glyph struct {
 // Elliptical Arc Curve: A, a
 // ClosePath: Z, z
 type PathStep struct {
-	Command    string
-	Parameters []float64
+	C string
+	P []float64
 }
 
 var (
@@ -83,7 +83,7 @@ func (g *Glyph) ParsePath() {
 	for len(d) > 0 {
 		m := closeRE.FindStringSubmatch(d)
 		if len(m) == 2 {
-			g.PathSteps = append(g.PathSteps, &PathStep{Command: m[1]})
+			g.PathSteps = append(g.PathSteps, &PathStep{C: m[1]})
 			d = d[len(m[0]):]
 			numZs++
 			continue
@@ -92,8 +92,8 @@ func (g *Glyph) ParsePath() {
 		m = cmdRE.FindStringSubmatch(d)
 		if len(m) >= 3 {
 			g.PathSteps = append(g.PathSteps, &PathStep{
-				Command:    m[1],
-				Parameters: parseParams(m[0][1:]),
+				C: m[1],
+				P: parseParams(m[0][1:]),
 			})
 			d = d[len(m[0]):]
 			continue

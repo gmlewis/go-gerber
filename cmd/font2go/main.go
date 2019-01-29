@@ -46,6 +46,7 @@ func main() {
 
 		for _, g := range fontData.Font.Glyphs {
 			g.ParsePath()
+			g.GenGerberLP(fontData.Font.FontFace)
 		}
 
 		fonts = append(fonts, fontData.Font)
@@ -143,7 +144,7 @@ var Fonts = map[string]*Font{ {{ range . }}
 				Unicode: {{ .Unicode | utf8 }},
 				GerberLP: {{ .GerberLP | orEmpty }},
 				PathSteps: []*PathStep{ {{ range .PathSteps }}
-					{ C: '{{ .Command }}'{{ if .Parameters }}, P: {{ .Parameters | floats }}{{ end }} },{{ end }}
+					{ C: '{{ .C }}'{{ if .P }}, P: {{ .P | floats }}{{ end }} },{{ end }}
 				},
 			},{{ end }}{{ end }}
 		},
