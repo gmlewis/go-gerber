@@ -30,10 +30,7 @@ and this shows the font and top/bottom silkscreen support:
 
 The SVG webfonts were copied from the excellent
 [github.com/boldport/pcbmode](https://github.com/boldport/pcbmode/tree/master/pcbmode/fonts)
-project and tweaked slightly.
-
-Please note that these fonts are a work-in-progress and still have rendering
-errors that need fixing.
+project and tweaked.
 
 ### AaarghNormal
 
