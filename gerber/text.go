@@ -121,6 +121,7 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, t *TextT, x, y float
 		pts = []Pt{}
 	}
 
+	var lastC *bezier2.T
 	var lastQ *qbezier2.T
 	var lastCommand byte
 	for _, ps := range g.PathSteps {
@@ -176,7 +177,7 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, t *TextT, x, y float
 					P2: vec2.T{x2, y2},
 					P3: vec2.T{ex, ey},
 				}
-				// lastQ = b
+				lastC = b
 				length := b.Length(1)
 				steps := int(0.5 + length/resolution)
 				if steps < minSteps {
@@ -201,7 +202,7 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, t *TextT, x, y float
 					P2: vec2.T{x + dx2, y + dy2},
 					P3: vec2.T{x + dx, y + dy},
 				}
-				// lastQ = b
+				lastC = b
 				length := b.Length(1)
 				steps := int(0.5 + length/resolution)
 				if steps < minSteps {
@@ -219,30 +220,32 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, t *TextT, x, y float
 			}
 			// case 'S':
 		case 's':
-			log.Printf("TODO: implement s path command")
 			for i := 0; i < len(ps.P); i += 4 {
 				dx2, dy2, dx, dy := xScale*ps.P[i], ps.P[i+1], xScale*ps.P[i+2], ps.P[i+3]
-				// b := &qbezier2.T{
-				// 	P0: vec2.T{x, y},
-				// 	P1: vec2.T{x + dx1, y + dy1},
-				// 	P2: vec2.T{x + dx, y + dy},
-				// }
-				// lastQ = b
-				// length := b.Length(1)
-				// steps := int(0.5 + length/resolution)
-				// if steps < minSteps {
-				// 	steps = minSteps
-				// }
-				// if steps > maxSteps {
-				// 	steps = maxSteps
-				// }
-				// for j := 1; j <= steps; j++ {
-				// 	t := float64(j) / float64(steps)
-				// 	p := b.Point(t)
-				// 	pts = append(pts, Pt{X: p[0], Y: p[1]})
-				// }
-				pts = append(pts, Pt{X: x + dx2, Y: y + dy2})
-				pts = append(pts, Pt{X: x + dx, Y: y + dy})
+				dx1, dy1 := 0.0, 0.0
+				if lastC != nil && (lastCommand == 'c' || lastCommand == 's') {
+					dx1, dy1 = lastC.P3[0]-lastC.P2[0], lastC.P3[1]-lastC.P2[1]
+				}
+				b := &bezier2.T{
+					P0: vec2.T{x, y},
+					P1: vec2.T{x + dx1, y + dy1},
+					P2: vec2.T{x + dx2, y + dy2},
+					P3: vec2.T{x + dx, y + dy},
+				}
+				lastC = b
+				length := b.Length(1)
+				steps := int(0.5 + length/resolution)
+				if steps < minSteps {
+					steps = minSteps
+				}
+				if steps > maxSteps {
+					steps = maxSteps
+				}
+				for j := 1; j <= steps; j++ {
+					t := float64(j) / float64(steps)
+					p := b.Point(t)
+					pts = append(pts, Pt{X: p[0], Y: p[1]})
+				}
 				x, y = x+dx, y+dy
 			}
 		// case 'Q':

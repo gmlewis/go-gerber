@@ -15,8 +15,8 @@ import (
 )
 
 var (
-	width  = flag.Int("width", 4000, "Image width")
-	height = flag.Int("height", 4000, "Image height")
+	width  = flag.Int("width", 800, "Image width")
+	height = flag.Int("height", 800, "Image height")
 	out    = flag.String("out", "out.png", "Output image filename")
 
 	xyRE = regexp.MustCompile(`^X(-?\d+)Y(-?\d+)D(\d+)\*\s*$`)

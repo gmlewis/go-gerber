@@ -3873,7 +3873,7 @@ var znikomitno24Font = &gerber.Font{
 		"\u00a9": {
 			HorizAdvX: 1880,
 			Unicode:   "\u00a9",
-			GerberLP:  "ddd",
+			GerberLP:  "ddc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{925, 1213}},
 				{C: 'c', P: []float64{244, 0, 406, -101, 406, -252}},
@@ -7053,7 +7053,7 @@ var znikomitno24Font = &gerber.Font{
 		"\u00fd": {
 			HorizAdvX: 1160,
 			Unicode:   "\u00fd",
-			GerberLP:  "dc",
+			GerberLP:  "dd",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{457, 1240}},
 				{C: 'l', P: []float64{288, 271}},
@@ -14828,7 +14828,7 @@ var znikomitno24Font = &gerber.Font{
 		"\u020c": {
 			HorizAdvX: 1410,
 			Unicode:   "\u020c",
-			GerberLP:  "ddc",
+			GerberLP:  "ddd",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{588, 1640}},
 				{C: 'l', P: []float64{-14, -14}},
@@ -14863,7 +14863,7 @@ var znikomitno24Font = &gerber.Font{
 		"\u020d": {
 			HorizAdvX: 0,
 			Unicode:   "\u020d",
-			GerberLP:  "ddc",
+			GerberLP:  "ddd",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{433, 1240}},
 				{C: 'l', P: []float64{-14, -14}},
@@ -22001,7 +22001,7 @@ var znikomitno24Font = &gerber.Font{
 		"\u04ea": {
 			HorizAdvX: 1410,
 			Unicode:   "\u04ea",
-			GerberLP:  "dddcd",
+			GerberLP:  "dddcc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{425, 1740}},
 				{C: 'c', P: []float64{0, 21, 18, 40, 40, 40}},
@@ -33475,7 +33475,7 @@ var znikomitno24Font = &gerber.Font{
 		"\ue0e3": {
 			HorizAdvX: 0,
 			Unicode:   "\ue0e3",
-			GerberLP:  "ddc",
+			GerberLP:  "ddd",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{433, 1240}},
 				{C: 'l', P: []float64{-14, -14}},

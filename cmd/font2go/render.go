@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/fogleman/gg"
+	"github.com/gmlewis/go3d/float64/bezier2"
 	"github.com/gmlewis/go3d/float64/qbezier2"
 	"github.com/gmlewis/go3d/float64/vec2"
 )
@@ -19,6 +20,7 @@ func (g *Glyph) GenGerberLP(ff *FontFace) {
 	offY := -ff.Descent
 	x, y, oX, oY := 0.0, 0.0, 0.0, 0.0
 	xScale := 1.0
+	var lastC *bezier2.T
 	var lastQ *qbezier2.T
 	var lastCommand string
 
@@ -96,41 +98,45 @@ func (g *Glyph) GenGerberLP(ff *FontFace) {
 		case "C":
 			for i := 0; i < len(ps.P); i += 6 {
 				x1, y1, x2, y2, ex, ey := oX+xScale*ps.P[i], oY+ps.P[i+1], oX+xScale*ps.P[i+2], oY+ps.P[i+3], oX+xScale*ps.P[i+4], oY+ps.P[i+5]
-				// b := &bezier2.T{
-				// 	P0: vec2.T{x, y},
-				// 	P1: vec2.T{x1, y1},
-				// 	P2: vec2.T{x2, y2},
-				// 	P3: vec2.T{ex, ey},
-				// }
+				b := &bezier2.T{
+					P0: vec2.T{x, y},
+					P1: vec2.T{x1, y1},
+					P2: vec2.T{x2, y2},
+					P3: vec2.T{ex, ey},
+				}
+				lastC = b
 				dc.CubicTo(x1, y1+offY, x2, y2+offY, ex, ey+offY)
 				x, y = ex, ey
 			}
 		case "c":
 			for i := 0; i < len(ps.P); i += 6 {
 				dx1, dy1, dx2, dy2, dx, dy := xScale*ps.P[i], ps.P[i+1], xScale*ps.P[i+2], ps.P[i+3], xScale*ps.P[i+4], ps.P[i+5]
-				// b := &bezier2.T{
-				// 	P0: vec2.T{x, y},
-				// 	P1: vec2.T{x + dx1, y + dy1},
-				// 	P2: vec2.T{x + dx2, y + dy2},
-				// 	P3: vec2.T{x + dx, y + dy},
-				// }
+				b := &bezier2.T{
+					P0: vec2.T{x, y},
+					P1: vec2.T{x + dx1, y + dy1},
+					P2: vec2.T{x + dx2, y + dy2},
+					P3: vec2.T{x + dx, y + dy},
+				}
+				lastC = b
 				dc.CubicTo(x+dx1, y+dy1+offY, x+dx2, y+dy2+offY, x+dx, y+dy+offY)
 				x, y = x+dx, y+dy
 			}
 		// case "S":
 		case "s":
-			log.Printf("TODO: implement s path command")
 			for i := 0; i < len(ps.P); i += 4 {
 				dx2, dy2, dx, dy := xScale*ps.P[i], ps.P[i+1], xScale*ps.P[i+2], ps.P[i+3]
-				// b := &qbezier2.T{
-				// 	P0: vec2.T{x, y},
-				// 	P1: vec2.T{x + dx1, y + dy1},
-				// 	P2: vec2.T{x + dx, y + dy},
-				// }
-				// dc.QuadraticTo(x+dx1, y+dy1+offY, x+dx, y+dy+offY)
-				// lastQ = b
-				dc.LineTo(x+dx2, y+dy2)
-				dc.LineTo(x+dx, y+dy)
+				dx1, dy1 := 0.0, 0.0
+				if lastC != nil && (lastCommand == "c" || lastCommand == "s") {
+					dx1, dy1 = lastC.P3[0]-lastC.P2[0], lastC.P3[1]-lastC.P2[1]
+				}
+				b := &bezier2.T{
+					P0: vec2.T{x, y},
+					P1: vec2.T{x + dx1, y + dy1},
+					P2: vec2.T{x + dx2, y + dy2},
+					P3: vec2.T{x + dx, y + dy},
+				}
+				dc.CubicTo(x+dx1, y+dy1+offY, x+dx2, y+dy2+offY, x+dx, y+dy+offY)
+				lastC = b
 				x, y = x+dx, y+dy
 			}
 		// case "Q":
