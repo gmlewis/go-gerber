@@ -4540,7 +4540,7 @@ var sail_regularFont = &gerber.Font{
 		"Q": {
 			HorizAdvX: 779,
 			Unicode:   "Q",
-			GerberLP:  "dd",
+			GerberLP:  "dc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{231, -95}},
 				{C: 'c', P: []float64{74, 0, 143, -19, 206, -44}},

@@ -2845,7 +2845,7 @@ var scriptinaproFont = &gerber.Font{
 		"g": {
 			HorizAdvX: 391,
 			Unicode:   "g",
-			GerberLP:  "ddc",
+			GerberLP:  "dcc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{375, 287}},
 				{C: 'c', P: []float64{2, 0, 5, -1, 6, -2}},
@@ -2998,7 +2998,7 @@ var scriptinaproFont = &gerber.Font{
 		"j": {
 			HorizAdvX: 150,
 			Unicode:   "j",
-			GerberLP:  "ddd",
+			GerberLP:  "dcd",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{28, -10}},
 				{C: 'c', P: []float64{29, 66, 89, 273, 80, 282}},
@@ -3296,20 +3296,8 @@ var scriptinaproFont = &gerber.Font{
 		"p": {
 			HorizAdvX: 393,
 			Unicode:   "p",
-			GerberLP:  "dd",
+			GerberLP:  "dc",
 			PathSteps: []*gerber.PathStep{
-				{C: 'M', P: []float64{-74, -164}},
-				{C: 'c', P: []float64{9, 20, 19, 45, 32, 75}},
-				{C: 'c', P: []float64{-101, -1, -202, -18, -311, -50}},
-				{C: 'c', P: []float64{-156, -47, -288, -117, -397, -210}},
-				{C: 'c', P: []float64{-120, -104, -182, -210, -182, -323}},
-				{C: 'c', P: []float64{0, -72, 26, -130, 77, -181}},
-				{C: 'c', P: []float64{49, -49, 107, -72, 173, -72}},
-				{C: 'c', P: []float64{42, 0, 83, 10, 121, 31}},
-				{C: 'c', P: []float64{74, 40, 151, 117, 229, 231}},
-				{C: 'c', P: []float64{57, 82, 116, 182, 170, 303}},
-				{C: 'c', P: []float64{29, 63, 59, 131, 88, 196}},
-				{C: 'z'},
 				{C: 'M', P: []float64{49, -92}},
 				{C: 'c', P: []float64{-29, 5, -42, 3, -66, 3}},
 				{C: 'c', P: []float64{-11, -25, -21, -52, -32, -79}},
@@ -3354,6 +3342,18 @@ var scriptinaproFont = &gerber.Font{
 				{C: 'c', P: []float64{0, 4, 3, 8, 10, 13}},
 				{C: 'c', P: []float64{40, 37, 59, 70, 59, 99}},
 				{C: 'c', P: []float64{0, 24, -12, 39, -45, 42}},
+				{C: 'z'},
+				{C: 'M', P: []float64{-74, -164}},
+				{C: 'c', P: []float64{9, 20, 19, 45, 32, 75}},
+				{C: 'c', P: []float64{-101, -1, -202, -18, -311, -50}},
+				{C: 'c', P: []float64{-156, -47, -288, -117, -397, -210}},
+				{C: 'c', P: []float64{-120, -104, -182, -210, -182, -323}},
+				{C: 'c', P: []float64{0, -72, 26, -130, 77, -181}},
+				{C: 'c', P: []float64{49, -49, 107, -72, 173, -72}},
+				{C: 'c', P: []float64{42, 0, 83, 10, 121, 31}},
+				{C: 'c', P: []float64{74, 40, 151, 117, 229, 231}},
+				{C: 'c', P: []float64{57, 82, 116, 182, 170, 303}},
+				{C: 'c', P: []float64{29, 63, 59, 131, 88, 196}},
 				{C: 'z'},
 			},
 		},
@@ -3651,7 +3651,7 @@ var scriptinaproFont = &gerber.Font{
 		"y": {
 			HorizAdvX: 371,
 			Unicode:   "y",
-			GerberLP:  "dd",
+			GerberLP:  "dc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{266, 0}},
 				{C: 'c', P: []float64{11, 31, 22, 71, 34, 122}},
@@ -3709,7 +3709,7 @@ var scriptinaproFont = &gerber.Font{
 		"z": {
 			HorizAdvX: 239,
 			Unicode:   "z",
-			GerberLP:  "dd",
+			GerberLP:  "dc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{161, 118}},
 				{C: 'c', P: []float64{19, -12, 24, -15, 33, -27}},

@@ -265,7 +265,7 @@ var grandhotel_regularFont = &gerber.Font{
 		"G": {
 			HorizAdvX: 513,
 			Unicode:   "G",
-			GerberLP:  "dd",
+			GerberLP:  "dc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{383, 58}},
 				{C: 'c', P: []float64{-42, -62, -94, -98, -155, -98}},
@@ -363,7 +363,7 @@ var grandhotel_regularFont = &gerber.Font{
 		"J": {
 			HorizAdvX: 401,
 			Unicode:   "J",
-			GerberLP:  "dd",
+			GerberLP:  "dc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{261, -42}},
 				{C: 'v', P: []float64{664}},
@@ -820,7 +820,7 @@ var grandhotel_regularFont = &gerber.Font{
 		"Y": {
 			HorizAdvX: 621,
 			Unicode:   "Y",
-			GerberLP:  "dd",
+			GerberLP:  "dc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{559, 656}},
 				{C: 'v', P: []float64{-661}},
@@ -1069,7 +1069,7 @@ var grandhotel_regularFont = &gerber.Font{
 		"g": {
 			HorizAdvX: 352,
 			Unicode:   "g",
-			GerberLP:  "dd",
+			GerberLP:  "dc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{95, -297}},
 				{C: 'c', P: []float64{0, 101, 58, 152, 124, 210}},
@@ -1161,7 +1161,7 @@ var grandhotel_regularFont = &gerber.Font{
 		"j": {
 			HorizAdvX: 168,
 			Unicode:   "j",
-			GerberLP:  "ddd",
+			GerberLP:  "ddc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{199, 146}},
 				{C: 'c', P: []float64{6, 21, 14, 30, 24, 30}},
@@ -1224,14 +1224,8 @@ var grandhotel_regularFont = &gerber.Font{
 		"l": {
 			HorizAdvX: 220,
 			Unicode:   "l",
-			GerberLP:  "dd",
+			GerberLP:  "dc",
 			PathSteps: []*gerber.PathStep{
-				{C: 'M', P: []float64{111, 581}},
-				{C: 'v', P: []float64{-285}},
-				{C: 'c', P: []float64{21, 42, 42, 174, 42, 229}},
-				{C: 'c', P: []float64{0, 66, -11, 96, -27, 96}},
-				{C: 'c', P: []float64{-11, 0, -15, -24, -15, -40}},
-				{C: 'z'},
 				{C: 'M', P: []float64{253, 145}},
 				{C: 'c', P: []float64{12, 59, 66, 14, 58, -18}},
 				{C: 'c', P: []float64{-18, -54, -67, -155, -158, -155}},
@@ -1243,6 +1237,12 @@ var grandhotel_regularFont = &gerber.Font{
 				{C: 'v', P: []float64{-58}},
 				{C: 'c', P: []float64{0, -40, 16, -69, 53, -69}},
 				{C: 'c', P: []float64{46, 0, 80, 63, 89, 107}},
+				{C: 'z'},
+				{C: 'M', P: []float64{111, 581}},
+				{C: 'v', P: []float64{-285}},
+				{C: 'c', P: []float64{21, 42, 42, 174, 42, 229}},
+				{C: 'c', P: []float64{0, 66, -11, 96, -27, 96}},
+				{C: 'c', P: []float64{-11, 0, -15, -24, -15, -40}},
 				{C: 'z'},
 			},
 		},
@@ -1380,7 +1380,7 @@ var grandhotel_regularFont = &gerber.Font{
 		"q": {
 			HorizAdvX: 365,
 			Unicode:   "q",
-			GerberLP:  "dd",
+			GerberLP:  "dc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{137, -28}},
 				{C: 'c', P: []float64{-78, 0, -119, 66, -119, 151}},
@@ -1621,7 +1621,7 @@ var grandhotel_regularFont = &gerber.Font{
 		"y": {
 			HorizAdvX: 359,
 			Unicode:   "y",
-			GerberLP:  "dd",
+			GerberLP:  "dc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{390, 146}},
 				{C: 'c', P: []float64{6, 21, 14, 30, 24, 30}},

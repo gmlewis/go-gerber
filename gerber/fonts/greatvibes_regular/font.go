@@ -2224,7 +2224,7 @@ var greatvibes_regularFont = &gerber.Font{
 		"j": {
 			HorizAdvX: 177,
 			Unicode:   "j",
-			GerberLP:  "ddd",
+			GerberLP:  "dcd",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{59, 162}},
 				{C: 'c', P: []float64{-6, 0, -15, 3, -9, 16}},

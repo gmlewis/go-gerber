@@ -107,7 +107,7 @@ var leaguescriptthin_regularFont = &gerber.Font{
 		"f": {
 			HorizAdvX: 510,
 			Unicode:   "f",
-			GerberLP:  "ddc",
+			GerberLP:  "dcc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-435, -575}},
 				{C: 'c', P: []float64{-38, 0, -47, 26, -47, 48}},
@@ -151,7 +151,7 @@ var leaguescriptthin_regularFont = &gerber.Font{
 		"g": {
 			HorizAdvX: 763,
 			Unicode:   "g",
-			GerberLP:  "dcd",
+			GerberLP:  "dcc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{771, 215}},
 				{C: 'c', P: []float64{1, -2, 2, -3, 2, -5}},
@@ -272,7 +272,7 @@ var leaguescriptthin_regularFont = &gerber.Font{
 		"j": {
 			HorizAdvX: 318,
 			Unicode:   "j",
-			GerberLP:  "ddd",
+			GerberLP:  "dcd",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-604, -597}},
 				{C: 'c', P: []float64{-41, 0, -64, 26, -64, 67}},
@@ -511,7 +511,7 @@ var leaguescriptthin_regularFont = &gerber.Font{
 		"p": {
 			HorizAdvX: 891,
 			Unicode:   "p",
-			GerberLP:  "ddc",
+			GerberLP:  "dcc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{914, 254}},
 				{C: 'c', P: []float64{1, -2, 2, -4, 2, -6}},
@@ -557,7 +557,7 @@ var leaguescriptthin_regularFont = &gerber.Font{
 		"q": {
 			HorizAdvX: 798,
 			Unicode:   "q",
-			GerberLP:  "dcd",
+			GerberLP:  "dcc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{822, 388}},
 				{C: 'v', P: []float64{-2}},
@@ -1983,7 +1983,7 @@ var leaguescriptthin_regularFont = &gerber.Font{
 		"S": {
 			HorizAdvX: 942,
 			Unicode:   "S",
-			GerberLP:  "ddc",
+			GerberLP:  "dcc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-2, -19}},
 				{C: 'l', P: []float64{-15, 13}},
@@ -2120,7 +2120,7 @@ var leaguescriptthin_regularFont = &gerber.Font{
 		"V": {
 			HorizAdvX: 1149,
 			Unicode:   "V",
-			GerberLP:  "ddc",
+			GerberLP:  "dcc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-87, -144}},
 				{C: 'c', P: []float64{-40, 0, -78, 17, -80, 57}},
@@ -2170,7 +2170,7 @@ var leaguescriptthin_regularFont = &gerber.Font{
 		"W": {
 			HorizAdvX: 1560,
 			Unicode:   "W",
-			GerberLP:  "dcdcc",
+			GerberLP:  "dcccc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{593, -134}},
 				{C: 'c', P: []float64{0, 62, 83, 67, 121, 67}},
