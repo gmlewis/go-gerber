@@ -118,7 +118,21 @@ func (g *Glyph) GenGerberLP(ff *FontFace) {
 				x, y = x+dx, y+dy
 			}
 		// case "S":
-		// case "s":
+		case "s":
+			log.Printf("TODO: implement s path command")
+			for i := 0; i < len(ps.P); i += 4 {
+				dx2, dy2, dx, dy := xScale*ps.P[i], ps.P[i+1], xScale*ps.P[i+2], ps.P[i+3]
+				// b := &qbezier2.T{
+				// 	P0: vec2.T{x, y},
+				// 	P1: vec2.T{x + dx1, y + dy1},
+				// 	P2: vec2.T{x + dx, y + dy},
+				// }
+				// dc.QuadraticTo(x+dx1, y+dy1+offY, x+dx, y+dy+offY)
+				// lastQ = b
+				dc.LineTo(x+dx2, y+dy2)
+				dc.LineTo(x+dx, y+dy)
+				x, y = x+dx, y+dy
+			}
 		// case "Q":
 		case "q":
 			for i := 0; i < len(ps.P); i += 4 {
@@ -154,7 +168,7 @@ func (g *Glyph) GenGerberLP(ff *FontFace) {
 		case "Z", "z":
 			dc.Fill()
 		default:
-			log.Fatalf("Unsupported path command %q", ps.C)
+			log.Fatalf("Unsupported path command %q in glyph %+q: %v", ps.C, *g.Unicode, *g.D)
 		}
 	}
 	s := strings.Join(result, "")

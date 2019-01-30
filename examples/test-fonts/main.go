@@ -10,27 +10,24 @@ import (
 	"strings"
 
 	. "github.com/gmlewis/go-gerber/gerber" // To import any desired fonts, import them here:
-	_ "github.com/gmlewis/go-gerber/gerber/fonts/aaarghnormal"
-	_ "github.com/gmlewis/go-gerber/gerber/fonts/fascinate_inlineregular"
-	_ "github.com/gmlewis/go-gerber/gerber/fonts/gooddogregular"
-	_ "github.com/gmlewis/go-gerber/gerber/fonts/helsinkiregular"
-	_ "github.com/gmlewis/go-gerber/gerber/fonts/latoregular"
-	_ "github.com/gmlewis/go-gerber/gerber/fonts/overlockregular"
-	_ "github.com/gmlewis/go-gerber/gerber/fonts/pacifico"
-	_ "github.com/gmlewis/go-gerber/gerber/fonts/snickles"
-	_ "github.com/gmlewis/go-gerber/gerber/fonts/ubuntumonoregular"
+	// _ "github.com/gmlewis/go-gerber/gerber/fonts/aaarghnormal"
+	// _ "github.com/gmlewis/go-gerber/gerber/fonts/fascinate_inlineregular"
+	// _ "github.com/gmlewis/go-gerber/gerber/fonts/gooddogregular"
+	// _ "github.com/gmlewis/go-gerber/gerber/fonts/helsinkiregular"
+	// _ "github.com/gmlewis/go-gerber/gerber/fonts/latoregular"
+	// _ "github.com/gmlewis/go-gerber/gerber/fonts/overlockregular"
+	// _ "github.com/gmlewis/go-gerber/gerber/fonts/pacifico"
+	// _ "github.com/gmlewis/go-gerber/gerber/fonts/snickles"
+	// _ "github.com/gmlewis/go-gerber/gerber/fonts/ubuntumonoregular"
+	_ "github.com/gmlewis/go-gerber/gerber/fonts/znikomitno24"
 )
 
 var (
 	all = flag.Bool("all", false, "All renders all glyphs and overrides -msg")
 	msg = flag.String("msg", "M", "Message to write to Gerber file silkscreen")
-	pts = flag.Float64("pts", 72.0, "Point size to render font")
+	pts = flag.Float64("pts", 12.0, "Point size to render font")
 	x   = flag.Float64("x", 0, "X starting position of font")
 	y   = flag.Float64("y", 0, "Y starting position of font")
-)
-
-const (
-	allLineLength = 20
 )
 
 func main() {
@@ -46,9 +43,12 @@ func main() {
 				glyphs = append(glyphs, g)
 			}
 			sort.Strings(glyphs)
+
+			// lineLength := int(0.5 + math.Sqrt(float64(len(glyphs))))
+			lineLength := 80
 			var lines []string
 			for len(glyphs) > 0 {
-				end := allLineLength
+				end := lineLength
 				if end > len(glyphs) {
 					end = len(glyphs)
 				}

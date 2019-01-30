@@ -217,8 +217,34 @@ func (g *Glyph) WriteGerber(w io.Writer, apertureIndex int, t *TextT, x, y float
 				}
 				x, y = x+dx, y+dy
 			}
-		// case 'S':
-		// case 's':
+			// case 'S':
+		case 's':
+			log.Printf("TODO: implement s path command")
+			for i := 0; i < len(ps.P); i += 4 {
+				dx2, dy2, dx, dy := xScale*ps.P[i], ps.P[i+1], xScale*ps.P[i+2], ps.P[i+3]
+				// b := &qbezier2.T{
+				// 	P0: vec2.T{x, y},
+				// 	P1: vec2.T{x + dx1, y + dy1},
+				// 	P2: vec2.T{x + dx, y + dy},
+				// }
+				// lastQ = b
+				// length := b.Length(1)
+				// steps := int(0.5 + length/resolution)
+				// if steps < minSteps {
+				// 	steps = minSteps
+				// }
+				// if steps > maxSteps {
+				// 	steps = maxSteps
+				// }
+				// for j := 1; j <= steps; j++ {
+				// 	t := float64(j) / float64(steps)
+				// 	p := b.Point(t)
+				// 	pts = append(pts, Pt{X: p[0], Y: p[1]})
+				// }
+				pts = append(pts, Pt{X: x + dx2, Y: y + dy2})
+				pts = append(pts, Pt{X: x + dx, Y: y + dy})
+				x, y = x+dx, y+dy
+			}
 		// case 'Q':
 		case 'q':
 			for i := 0; i < len(ps.P); i += 4 {
