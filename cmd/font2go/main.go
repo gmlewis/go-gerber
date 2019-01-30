@@ -45,6 +45,7 @@ func main() {
 		}
 
 		fontData.Font.ID = strings.ToLower(fontData.Font.ID)
+		fontData.Font.ID = strings.Replace(fontData.Font.ID, "-", "_", -1)
 
 		for _, g := range fontData.Font.Glyphs {
 			g.ParsePath()
