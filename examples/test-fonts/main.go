@@ -24,7 +24,11 @@ import (
 
 var (
 	all = flag.Bool("all", false, "All renders all glyphs and overrides -msg")
-	msg = flag.String("msg", "M", "Message to write to Gerber file silkscreen")
+	msg = flag.String("msg", `0123456789
+ABCDEFGHIJKLM
+NOPQRSTUVWXYZ
+~!@#$%^&*()-_=/?
++[]{}\|;':",.<>`, "Message to write to Gerber file silkscreen")
 	pts = flag.Float64("pts", 12.0, "Point size to render font")
 	x   = flag.Float64("x", 0, "X starting position of font")
 	y   = flag.Float64("y", 0, "Y starting position of font")
