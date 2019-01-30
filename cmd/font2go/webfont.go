@@ -101,14 +101,6 @@ func (g *Glyph) ParsePath() {
 
 		log.Fatalf("Unknown path command: %q", d)
 	}
-
-	if numZs > 1 && (g.GerberLP == nil || len(*g.GerberLP) != numZs) {
-		if g.GerberLP == nil {
-			log.Printf("Warning: glyph=%+q, numZs=%v, g.GerberLP=<nil>", *g.Unicode, numZs)
-		} else {
-			log.Printf("Warning: glyph=%+q, numZs=%v, g.GerberLP=%q", *g.Unicode, numZs, *g.GerberLP)
-		}
-	}
 }
 
 func atof(s string) float64 {

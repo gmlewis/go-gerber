@@ -1,5 +1,5 @@
 // test-fonts creates Gerber files (and a bundled ZIP) with the
-// given message in all fonts in order to test out the font rendering.
+// given message in all imported fonts in order to test out the font rendering.
 package main
 
 import (
@@ -9,7 +9,16 @@ import (
 	"sort"
 	"strings"
 
-	. "github.com/gmlewis/go-gerber/gerber"
+	. "github.com/gmlewis/go-gerber/gerber" // To import any desired fonts, import them here:
+	_ "github.com/gmlewis/go-gerber/gerber/fonts/aaarghnormal"
+	_ "github.com/gmlewis/go-gerber/gerber/fonts/fascinate_inlineregular"
+	_ "github.com/gmlewis/go-gerber/gerber/fonts/gooddogregular"
+	_ "github.com/gmlewis/go-gerber/gerber/fonts/helsinkiregular"
+	_ "github.com/gmlewis/go-gerber/gerber/fonts/latoregular"
+	_ "github.com/gmlewis/go-gerber/gerber/fonts/overlockregular"
+	_ "github.com/gmlewis/go-gerber/gerber/fonts/pacifico"
+	_ "github.com/gmlewis/go-gerber/gerber/fonts/snickles"
+	_ "github.com/gmlewis/go-gerber/gerber/fonts/ubuntumonoregular"
 )
 
 var (
