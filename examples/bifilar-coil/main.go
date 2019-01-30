@@ -12,6 +12,7 @@ import (
 	"strings"
 
 	. "github.com/gmlewis/go-gerber/gerber"
+	_ "github.com/gmlewis/go-gerber/gerber/fonts/ubuntumonoregular"
 )
 
 var (
