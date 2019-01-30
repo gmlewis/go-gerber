@@ -1,30 +1,34 @@
 // Auto-generated - DO NOT EDIT!
 
-package gerber
+package ubuntumonoregular
+
+import (
+	"github.com/gmlewis/go-gerber/gerber"
+)
 
 func init() {
-	Fonts["ubuntumonoregular"] = ubuntumonoregularFont
+	gerber.Fonts["ubuntumonoregular"] = ubuntumonoregularFont
 }
 
-var ubuntumonoregularFont = &Font{
+var ubuntumonoregularFont = &gerber.Font{
 	// ID: "ubuntumonoregular",
 	HorizAdvX:        1024,
 	UnitsPerEm:       2048,
 	Ascent:           1638,
 	Descent:          -410,
 	MissingHorizAdvX: 500,
-	Glyphs: map[string]*Glyph{
+	Glyphs: map[string]*gerber.Glyph{
 		" ": {
 			HorizAdvX: 0,
 			Unicode:   " ",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"!": {
 			HorizAdvX: 0,
 			Unicode:   "!",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{371, 114.5}},
 				{C: 'q', P: []float64{0, 63.5, 41, 101.5}},
 				{C: 't', P: []float64{96, 38}},
@@ -54,8 +58,8 @@ var ubuntumonoregularFont = &Font{
 		"\"": {
 			HorizAdvX: 0,
 			Unicode:   "\"",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{264, 1300}},
 				{C: 'v', P: []float64{91}},
 				{C: 'h', P: []float64{158}},
@@ -82,7 +86,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "#",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, 334}},
 				{C: 'v', P: []float64{137}},
 				{C: 'h', P: []float64{158}},
@@ -123,8 +127,8 @@ var ubuntumonoregularFont = &Font{
 		"$": {
 			HorizAdvX: 0,
 			Unicode:   "$",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{111, 106}},
 				{C: 'l', P: []float64{45, 142}},
 				{C: 'q', P: []float64{55, -27, 130.5, -50.5}},
@@ -175,7 +179,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "%",
 			GerberLP:  "ddcdc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{37, 977}},
 				{C: 'q', P: []float64{0, 156, 59.5, 236.5}},
 				{C: 't', P: []float64{164, 80.5}},
@@ -228,7 +232,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "&",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{63, 309}},
 				{C: 'q', P: []float64{0, 96, 50.5, 194.5}},
 				{C: 't', P: []float64{158.5, 182.5}},
@@ -289,8 +293,8 @@ var ubuntumonoregularFont = &Font{
 		"'": {
 			HorizAdvX: 0,
 			Unicode:   "'",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{422, 1300}},
 				{C: 'v', P: []float64{91}},
 				{C: 'h', P: []float64{178}},
@@ -310,8 +314,8 @@ var ubuntumonoregularFont = &Font{
 		"(": {
 			HorizAdvX: 0,
 			Unicode:   "(",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{231, 549}},
 				{C: 'q', P: []float64{0, 254, 117, 485.5}},
 				{C: 't', P: []float64{350, 401.5}},
@@ -332,8 +336,8 @@ var ubuntumonoregularFont = &Font{
 		")": {
 			HorizAdvX: 0,
 			Unicode:   ")",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{231, 1313}},
 				{C: 'l', P: []float64{93, 123}},
 				{C: 'q', P: []float64{236, -174, 351.5, -404.5}},
@@ -356,8 +360,8 @@ var ubuntumonoregularFont = &Font{
 		"*": {
 			HorizAdvX: 0,
 			Unicode:   "*",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{117, 915}},
 				{C: 'l', P: []float64{55, 168}},
 				{C: 'l', P: []float64{14, -6}},
@@ -399,8 +403,8 @@ var ubuntumonoregularFont = &Font{
 		"+": {
 			HorizAdvX: 0,
 			Unicode:   "+",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{94, 467}},
 				{C: 'v', P: []float64{143}},
 				{C: 'h', P: []float64{344}},
@@ -420,8 +424,8 @@ var ubuntumonoregularFont = &Font{
 		",": {
 			HorizAdvX: 0,
 			Unicode:   ",",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{305, -162}},
 				{C: 'l', P: []float64{73, 17}},
 				{C: 'q', P: []float64{36, 8, 66.5, 23.5}},
@@ -443,8 +447,8 @@ var ubuntumonoregularFont = &Font{
 		"-": {
 			HorizAdvX: 0,
 			Unicode:   "-",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{287, 440}},
 				{C: 'v', P: []float64{160}},
 				{C: 'h', P: []float64{450}},
@@ -456,8 +460,8 @@ var ubuntumonoregularFont = &Font{
 		".": {
 			HorizAdvX: 0,
 			Unicode:   ".",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{362, 131}},
 				{C: 'q', P: []float64{0, 63, 41, 110.5}},
 				{C: 't', P: []float64{111, 47.5}},
@@ -473,8 +477,8 @@ var ubuntumonoregularFont = &Font{
 		"/": {
 			HorizAdvX: 0,
 			Unicode:   "/",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{141, -338}},
 				{C: 'l', P: []float64{572, 1770}},
 				{C: 'h', P: []float64{170}},
@@ -487,7 +491,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "0",
 			GerberLP:  "dcd",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{94, 634.5}},
 				{C: 'q', P: []float64{0, 319.5, 109.5, 490.5}},
 				{C: 't', P: []float64{308.5, 171}},
@@ -531,8 +535,8 @@ var ubuntumonoregularFont = &Font{
 		"1": {
 			HorizAdvX: 0,
 			Unicode:   "1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{154, 1006}},
 				{C: 'q', P: []float64{104, 41, 202.5, 103}},
 				{C: 't', P: []float64{182.5, 159}},
@@ -553,8 +557,8 @@ var ubuntumonoregularFont = &Font{
 		"2": {
 			HorizAdvX: 0,
 			Unicode:   "2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{117, 1145}},
 				{C: 'q', P: []float64{16, 18, 49, 45}},
 				{C: 't', P: []float64{79, 50.5}},
@@ -596,8 +600,8 @@ var ubuntumonoregularFont = &Font{
 		"3": {
 			HorizAdvX: 0,
 			Unicode:   "3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{121, 39}},
 				{C: 'l', P: []float64{33, 145}},
 				{C: 'q', P: []float64{33, -16, 104.5, -38.5}},
@@ -644,7 +648,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "4",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{74, 324}},
 				{C: 'v', P: []float64{114}},
 				{C: 'q', P: []float64{35, 82, 95, 188.5}},
@@ -673,8 +677,8 @@ var ubuntumonoregularFont = &Font{
 		"5": {
 			HorizAdvX: 0,
 			Unicode:   "5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{135, 39}},
 				{C: 'l', P: []float64{33, 145}},
 				{C: 'q', P: []float64{33, -16, 101.5, -38.5}},
@@ -714,7 +718,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "6",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{111, 508}},
 				{C: 'q', P: []float64{0, 184, 50, 326.5}},
 				{C: 't', P: []float64{143, 238.5}},
@@ -758,8 +762,8 @@ var ubuntumonoregularFont = &Font{
 		"7": {
 			HorizAdvX: 0,
 			Unicode:   "7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{129, 1120}},
 				{C: 'v', P: []float64{148}},
 				{C: 'h', P: []float64{803}},
@@ -780,7 +784,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "8",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{104, 319}},
 				{C: 'q', P: []float64{0, 109, 59.5, 193}},
 				{C: 't', P: []float64{141.5, 135}},
@@ -836,7 +840,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "9",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{104, 885}},
 				{C: 'q', P: []float64{0, 70, 23, 142.5}},
 				{C: 't', P: []float64{70, 132}},
@@ -876,8 +880,8 @@ var ubuntumonoregularFont = &Font{
 		":": {
 			HorizAdvX: 0,
 			Unicode:   ":",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{362, 131}},
 				{C: 'q', P: []float64{0, 63, 41, 110.5}},
 				{C: 't', P: []float64{111, 47.5}},
@@ -903,8 +907,8 @@ var ubuntumonoregularFont = &Font{
 		";": {
 			HorizAdvX: 0,
 			Unicode:   ";",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{256, -162}},
 				{C: 'l', P: []float64{73, 17}},
 				{C: 'q', P: []float64{36, 8, 66.5, 23.5}},
@@ -936,8 +940,8 @@ var ubuntumonoregularFont = &Font{
 		"<": {
 			HorizAdvX: 0,
 			Unicode:   "<",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{100, 449}},
 				{C: 'v', P: []float64{145}},
 				{C: 'l', P: []float64{791, 336}},
@@ -951,8 +955,8 @@ var ubuntumonoregularFont = &Font{
 		"=": {
 			HorizAdvX: 0,
 			Unicode:   "=",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{94, 270}},
 				{C: 'v', P: []float64{146}},
 				{C: 'h', P: []float64{838}},
@@ -970,8 +974,8 @@ var ubuntumonoregularFont = &Font{
 		">": {
 			HorizAdvX: 0,
 			Unicode:   ">",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{100, 254}},
 				{C: 'l', P: []float64{650, 268}},
 				{C: 'l', P: []float64{-650, 266}},
@@ -985,8 +989,8 @@ var ubuntumonoregularFont = &Font{
 		"?": {
 			HorizAdvX: 0,
 			Unicode:   "?",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{188, 1223}},
 				{C: 'q', P: []float64{61, 35, 139, 54}},
 				{C: 't', P: []float64{167, 19}},
@@ -1027,7 +1031,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "@",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{82, 498}},
 				{C: 'q', P: []float64{0, 211, 38, 362.5}},
 				{C: 't', P: []float64{104.5, 247.5}},
@@ -1083,7 +1087,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "A",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{18, 0}},
 				{C: 'l', P: []float64{78, 293}},
 				{C: 'q', P: []float64{43, 158, 93, 323}},
@@ -1112,7 +1116,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "B",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{111, 20}},
 				{C: 'v', P: []float64{1229}},
 				{C: 'q', P: []float64{31, 8, 70.5, 14.5}},
@@ -1168,8 +1172,8 @@ var ubuntumonoregularFont = &Font{
 		"C": {
 			HorizAdvX: 0,
 			Unicode:   "C",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{94, 635}},
 				{C: 'q', P: []float64{0, 162, 42, 284.5}},
 				{C: 't', P: []float64{114, 206.5}},
@@ -1202,7 +1206,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "D",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{111, 20}},
 				{C: 'v', P: []float64{1229}},
 				{C: 'q', P: []float64{129, 31, 256, 31}},
@@ -1232,8 +1236,8 @@ var ubuntumonoregularFont = &Font{
 		"E": {
 			HorizAdvX: 0,
 			Unicode:   "E",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{186, 0}},
 				{C: 'v', P: []float64{1268}},
 				{C: 'h', P: []float64{711}},
@@ -1253,8 +1257,8 @@ var ubuntumonoregularFont = &Font{
 		"F": {
 			HorizAdvX: 0,
 			Unicode:   "F",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{186, 0}},
 				{C: 'v', P: []float64{1268}},
 				{C: 'h', P: []float64{719}},
@@ -1271,8 +1275,8 @@ var ubuntumonoregularFont = &Font{
 		"G": {
 			HorizAdvX: 0,
 			Unicode:   "G",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{94, 635}},
 				{C: 'q', P: []float64{0, 160, 41, 282.5}},
 				{C: 't', P: []float64{111.5, 206.5}},
@@ -1309,8 +1313,8 @@ var ubuntumonoregularFont = &Font{
 		"H": {
 			HorizAdvX: 0,
 			Unicode:   "H",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{92, 0}},
 				{C: 'v', P: []float64{1268}},
 				{C: 'h', P: []float64{168}},
@@ -1329,8 +1333,8 @@ var ubuntumonoregularFont = &Font{
 		"I": {
 			HorizAdvX: 0,
 			Unicode:   "I",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{182, 0}},
 				{C: 'v', P: []float64{143}},
 				{C: 'h', P: []float64{246}},
@@ -1349,8 +1353,8 @@ var ubuntumonoregularFont = &Font{
 		"J": {
 			HorizAdvX: 0,
 			Unicode:   "J",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{111, 76}},
 				{C: 'l', P: []float64{67, 137}},
 				{C: 'q', P: []float64{39, -29, 103.5, -61.5}},
@@ -1373,8 +1377,8 @@ var ubuntumonoregularFont = &Font{
 		"K": {
 			HorizAdvX: 0,
 			Unicode:   "K",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{131, 0}},
 				{C: 'v', P: []float64{1268}},
 				{C: 'h', P: []float64{168}},
@@ -1400,8 +1404,8 @@ var ubuntumonoregularFont = &Font{
 		"L": {
 			HorizAdvX: 0,
 			Unicode:   "L",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{186, 0}},
 				{C: 'v', P: []float64{1268}},
 				{C: 'h', P: []float64{168}},
@@ -1414,8 +1418,8 @@ var ubuntumonoregularFont = &Font{
 		"M": {
 			HorizAdvX: 0,
 			Unicode:   "M",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{66, 0}},
 				{C: 'q', P: []float64{6, 156, 14, 319.5}},
 				{C: 't', P: []float64{19.5, 325.5}},
@@ -1445,8 +1449,8 @@ var ubuntumonoregularFont = &Font{
 		"N": {
 			HorizAdvX: 0,
 			Unicode:   "N",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{113, 0}},
 				{C: 'v', P: []float64{1268}},
 				{C: 'h', P: []float64{172}},
@@ -1470,7 +1474,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "O",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{59, 635}},
 				{C: 'q', P: []float64{0, 170, 33, 295}},
 				{C: 't', P: []float64{92.5, 206}},
@@ -1504,7 +1508,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "P",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{150, 0}},
 				{C: 'v', P: []float64{1249}},
 				{C: 'q', P: []float64{37, 8, 80.5, 14.5}},
@@ -1535,7 +1539,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "Q",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{59, 633}},
 				{C: 'q', P: []float64{0, 170, 33, 295}},
 				{C: 't', P: []float64{92.5, 205.5}},
@@ -1576,7 +1580,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "R",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{113, 0}},
 				{C: 'v', P: []float64{1249}},
 				{C: 'q', P: []float64{31, 8, 70.5, 14.5}},
@@ -1618,8 +1622,8 @@ var ubuntumonoregularFont = &Font{
 		"S": {
 			HorizAdvX: 0,
 			Unicode:   "S",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{113, 61}},
 				{C: 'l', P: []float64{51, 140}},
 				{C: 'q', P: []float64{41, -23, 121, -52.5}},
@@ -1664,8 +1668,8 @@ var ubuntumonoregularFont = &Font{
 		"T": {
 			HorizAdvX: 0,
 			Unicode:   "T",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{80, 1124}},
 				{C: 'v', P: []float64{144}},
 				{C: 'h', P: []float64{864}},
@@ -1680,8 +1684,8 @@ var ubuntumonoregularFont = &Font{
 		"U": {
 			HorizAdvX: 0,
 			Unicode:   "U",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{98, 436}},
 				{C: 'v', P: []float64{832}},
 				{C: 'h', P: []float64{168}},
@@ -1710,8 +1714,8 @@ var ubuntumonoregularFont = &Font{
 		"V": {
 			HorizAdvX: 0,
 			Unicode:   "V",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{27, 1268}},
 				{C: 'h', P: []float64{182}},
 				{C: 'q', P: []float64{25, -129, 62.5, -281.5}},
@@ -1737,8 +1741,8 @@ var ubuntumonoregularFont = &Font{
 		"W": {
 			HorizAdvX: 0,
 			Unicode:   "W",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{66, 1268}},
 				{C: 'h', P: []float64{163}},
 				{C: 'l', P: []float64{23, -1059}},
@@ -1764,8 +1768,8 @@ var ubuntumonoregularFont = &Font{
 		"X": {
 			HorizAdvX: 0,
 			Unicode:   "X",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{51, 0}},
 				{C: 'q', P: []float64{68, 152, 158, 329}},
 				{C: 't', P: []float64{192, 341}},
@@ -1790,8 +1794,8 @@ var ubuntumonoregularFont = &Font{
 		"Y": {
 			HorizAdvX: 0,
 			Unicode:   "Y",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{27, 1268}},
 				{C: 'h', P: []float64{188}},
 				{C: 'q', P: []float64{59, -172, 136, -329}},
@@ -1811,8 +1815,8 @@ var ubuntumonoregularFont = &Font{
 		"Z": {
 			HorizAdvX: 0,
 			Unicode:   "Z",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{111, 0}},
 				{C: 'v', P: []float64{111}},
 				{C: 'q', P: []float64{63, 129, 140, 265}},
@@ -1835,8 +1839,8 @@ var ubuntumonoregularFont = &Font{
 		"[": {
 			HorizAdvX: 0,
 			Unicode:   "[",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{293, -338}},
 				{C: 'v', P: []float64{1770}},
 				{C: 'h', P: []float64{489}},
@@ -1852,8 +1856,8 @@ var ubuntumonoregularFont = &Font{
 		"\\": {
 			HorizAdvX: 0,
 			Unicode:   "\\",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{143, 1432}},
 				{C: 'h', P: []float64{170}},
 				{C: 'l', P: []float64{568, -1770}},
@@ -1864,8 +1868,8 @@ var ubuntumonoregularFont = &Font{
 		"]": {
 			HorizAdvX: 0,
 			Unicode:   "]",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{242, -205}},
 				{C: 'h', P: []float64{329}},
 				{C: 'v', P: []float64{1503}},
@@ -1881,8 +1885,8 @@ var ubuntumonoregularFont = &Font{
 		"^": {
 			HorizAdvX: 0,
 			Unicode:   "^",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{82, 645}},
 				{C: 'l', P: []float64{354, 623}},
 				{C: 'h', P: []float64{152}},
@@ -1896,8 +1900,8 @@ var ubuntumonoregularFont = &Font{
 		"_": {
 			HorizAdvX: 0,
 			Unicode:   "_",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{16, -195}},
 				{C: 'h', P: []float64{992}},
 				{C: 'v', P: []float64{-143}},
@@ -1909,8 +1913,8 @@ var ubuntumonoregularFont = &Font{
 		"`": {
 			HorizAdvX: 0,
 			Unicode:   "`",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{334, 1311}},
 				{C: 'l', P: []float64{108, 108}},
 				{C: 'l', P: []float64{234, -282}},
@@ -1922,7 +1926,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "a",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{119, 283}},
 				{C: 'q', P: []float64{0, 82, 35.5, 138}},
 				{C: 't', P: []float64{92, 91}},
@@ -1970,7 +1974,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "b",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{145, 27}},
 				{C: 'v', P: []float64{1364}},
 				{C: 'l', P: []float64{170, 28}},
@@ -2006,8 +2010,8 @@ var ubuntumonoregularFont = &Font{
 		"c": {
 			HorizAdvX: 0,
 			Unicode:   "c",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{100, 473}},
 				{C: 'q', P: []float64{0, 129, 41, 223.5}},
 				{C: 't', P: []float64{113, 155.5}},
@@ -2042,7 +2046,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "d",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{82, 475}},
 				{C: 'q', P: []float64{0, 111, 27.5, 202}},
 				{C: 't', P: []float64{81, 156.5}},
@@ -2079,7 +2083,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "e",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{82, 473}},
 				{C: 'q', P: []float64{0, 127, 39, 221}},
 				{C: 't', P: []float64{102.5, 155.5}},
@@ -2114,8 +2118,8 @@ var ubuntumonoregularFont = &Font{
 		"f": {
 			HorizAdvX: 0,
 			Unicode:   "f",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{129, 809}},
 				{C: 'v', P: []float64{141}},
 				{C: 'h', P: []float64{201}},
@@ -2148,7 +2152,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "g",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{82, 496}},
 				{C: 'q', P: []float64{0, 104, 29.5, 191}},
 				{C: 't', P: []float64{86, 150.5}},
@@ -2192,8 +2196,8 @@ var ubuntumonoregularFont = &Font{
 		"h": {
 			HorizAdvX: 0,
 			Unicode:   "h",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{145, 1391}},
 				{C: 'l', P: []float64{170, 28}},
 				{C: 'v', P: []float64{-483}},
@@ -2219,8 +2223,8 @@ var ubuntumonoregularFont = &Font{
 		"i": {
 			HorizAdvX: 0,
 			Unicode:   "i",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{111, 809}},
 				{C: 'v', P: []float64{141}},
 				{C: 'h', P: []float64{442}},
@@ -2256,8 +2260,8 @@ var ubuntumonoregularFont = &Font{
 		"j": {
 			HorizAdvX: 0,
 			Unicode:   "j",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{145, -281}},
 				{C: 'l', P: []float64{52, 144}},
 				{C: 'q', P: []float64{51, -25, 113.5, -42.5}},
@@ -2291,8 +2295,8 @@ var ubuntumonoregularFont = &Font{
 		"k": {
 			HorizAdvX: 0,
 			Unicode:   "k",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{145, 0}},
 				{C: 'v', P: []float64{1391}},
 				{C: 'l', P: []float64{170, 28}},
@@ -2319,8 +2323,8 @@ var ubuntumonoregularFont = &Font{
 		"l": {
 			HorizAdvX: 0,
 			Unicode:   "l",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{111, 1266}},
 				{C: 'v', P: []float64{143}},
 				{C: 'h', P: []float64{442}},
@@ -2348,8 +2352,8 @@ var ubuntumonoregularFont = &Font{
 		"m": {
 			HorizAdvX: 0,
 			Unicode:   "m",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{84, 0}},
 				{C: 'v', P: []float64{924}},
 				{C: 'q', P: []float64{123, 47, 231, 47}},
@@ -2382,8 +2386,8 @@ var ubuntumonoregularFont = &Font{
 		"n": {
 			HorizAdvX: 0,
 			Unicode:   "n",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{145, 0}},
 				{C: 'v', P: []float64{924}},
 				{C: 'q', P: []float64{92, 23, 183.5, 35}},
@@ -2408,7 +2412,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "o",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{82, 475}},
 				{C: 'q', P: []float64{0, 113, 31.5, 205}},
 				{C: 't', P: []float64{89, 156.5}},
@@ -2443,7 +2447,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "p",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{145, -338}},
 				{C: 'v', P: []float64{1260}},
 				{C: 'q', P: []float64{55, 16, 142.5, 32.5}},
@@ -2480,7 +2484,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "q",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{82, 473}},
 				{C: 'q', P: []float64{0, 115, 32.5, 207}},
 				{C: 't', P: []float64{92, 156.5}},
@@ -2516,8 +2520,8 @@ var ubuntumonoregularFont = &Font{
 		"r": {
 			HorizAdvX: 0,
 			Unicode:   "r",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{219, 0}},
 				{C: 'v', P: []float64{899}},
 				{C: 'q', P: []float64{209, 72, 422, 72}},
@@ -2535,8 +2539,8 @@ var ubuntumonoregularFont = &Font{
 		"s": {
 			HorizAdvX: 0,
 			Unicode:   "s",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{135, 43}},
 				{C: 'l', P: []float64{33, 154}},
 				{C: 'q', P: []float64{72, -33, 150.5, -54.5}},
@@ -2574,8 +2578,8 @@ var ubuntumonoregularFont = &Font{
 		"t": {
 			HorizAdvX: 0,
 			Unicode:   "t",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{129, 809}},
 				{C: 'v', P: []float64{141}},
 				{C: 'h', P: []float64{201}},
@@ -2607,8 +2611,8 @@ var ubuntumonoregularFont = &Font{
 		"u": {
 			HorizAdvX: 0,
 			Unicode:   "u",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{139, 416}},
 				{C: 'v', P: []float64{534}},
 				{C: 'h', P: []float64{168}},
@@ -2634,8 +2638,8 @@ var ubuntumonoregularFont = &Font{
 		"v": {
 			HorizAdvX: 0,
 			Unicode:   "v",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{61, 950}},
 				{C: 'h', P: []float64{185}},
 				{C: 'q', P: []float64{25, -90, 56, -190}},
@@ -2660,8 +2664,8 @@ var ubuntumonoregularFont = &Font{
 		"w": {
 			HorizAdvX: 0,
 			Unicode:   "w",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{39, 950}},
 				{C: 'h', P: []float64{160}},
 				{C: 'q', P: []float64{6, -80, 13, -156.5}},
@@ -2704,8 +2708,8 @@ var ubuntumonoregularFont = &Font{
 		"x": {
 			HorizAdvX: 0,
 			Unicode:   "x",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{59, 0}},
 				{C: 'q', P: []float64{68, 123, 165, 253}},
 				{C: 'l', P: []float64{192, 247}},
@@ -2733,8 +2737,8 @@ var ubuntumonoregularFont = &Font{
 		"y": {
 			HorizAdvX: 0,
 			Unicode:   "y",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{74, -315}},
 				{C: 'l', P: []float64{30, 137}},
 				{C: 'q', P: []float64{18, -10, 52, -16.5}},
@@ -2767,8 +2771,8 @@ var ubuntumonoregularFont = &Font{
 		"z": {
 			HorizAdvX: 0,
 			Unicode:   "z",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{150, 0}},
 				{C: 'v', P: []float64{113}},
 				{C: 'q', P: []float64{43, 82, 107.5, 179}},
@@ -2792,8 +2796,8 @@ var ubuntumonoregularFont = &Font{
 		"{": {
 			HorizAdvX: 0,
 			Unicode:   "{",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{162, 481}},
 				{C: 'v', P: []float64{131}},
 				{C: 'h', P: []float64{82}},
@@ -2838,8 +2842,8 @@ var ubuntumonoregularFont = &Font{
 		"|": {
 			HorizAdvX: 0,
 			Unicode:   "|",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{434, -338}},
 				{C: 'v', P: []float64{1770}},
 				{C: 'h', P: []float64{158}},
@@ -2851,8 +2855,8 @@ var ubuntumonoregularFont = &Font{
 		"}": {
 			HorizAdvX: 0,
 			Unicode:   "}",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{150, -205}},
 				{C: 'h', P: []float64{174}},
 				{C: 'q', P: []float64{86, 0, 121.5, 39}},
@@ -2897,8 +2901,8 @@ var ubuntumonoregularFont = &Font{
 		"~": {
 			HorizAdvX: 0,
 			Unicode:   "~",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{76, 434}},
 				{C: 'q', P: []float64{6, 35, 22.5, 80}},
 				{C: 't', P: []float64{45, 84}},
@@ -2932,13 +2936,13 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "\u00a0",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00a1": {
 			HorizAdvX: 0,
 			Unicode:   "\u00a1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{373, 813.5}},
 				{C: 'q', P: []float64{0, 63.5, 41, 101}},
 				{C: 't', P: []float64{96, 37.5}},
@@ -2968,8 +2972,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00a2": {
 			HorizAdvX: 0,
 			Unicode:   "\u00a2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{100, 532}},
 				{C: 'q', P: []float64{0, 109, 31, 192}},
 				{C: 't', P: []float64{86, 142.5}},
@@ -3005,8 +3009,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00a3": {
 			HorizAdvX: 0,
 			Unicode:   "\u00a3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{92, 545}},
 				{C: 'v', P: []float64{137}},
 				{C: 'h', P: []float64{170}},
@@ -3043,8 +3047,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00a4": {
 			HorizAdvX: 0,
 			Unicode:   "\u00a4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{78, 965}},
 				{C: 'l', P: []float64{104, 104}},
 				{C: 'l', P: []float64{135, -137}},
@@ -3082,8 +3086,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00a5": {
 			HorizAdvX: 0,
 			Unicode:   "\u00a5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{27, 1268}},
 				{C: 'h', P: []float64{186}},
 				{C: 'q', P: []float64{66, -143, 143.5, -285.5}},
@@ -3117,8 +3121,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00a6": {
 			HorizAdvX: 0,
 			Unicode:   "\u00a6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{434, -338}},
 				{C: 'v', P: []float64{700}},
 				{C: 'h', P: []float64{158}},
@@ -3136,8 +3140,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00a7": {
 			HorizAdvX: 0,
 			Unicode:   "\u00a7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{139, 565}},
 				{C: 'q', P: []float64{0, 47, 15.5, 88}},
 				{C: 't', P: []float64{39, 75}},
@@ -3202,8 +3206,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00a8": {
 			HorizAdvX: 0,
 			Unicode:   "\u00a8",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{231, 1235}},
 				{C: 'q', P: []float64{0, 47, 33, 76.5}},
 				{C: 't', P: []float64{74, 29.5}},
@@ -3230,7 +3234,7 @@ var ubuntumonoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "\u00a9",
 			GerberLP:  "dcd",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{70, 473}},
 				{C: 'q', P: []float64{0, 125, 38.5, 219}},
 				{C: 't', P: []float64{101, 156.5}},
@@ -3296,8 +3300,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00aa": {
 			HorizAdvX: 0,
 			Unicode:   "\u00aa",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{242, 815}},
 				{C: 'q', P: []float64{0, 57, 23.5, 97}},
 				{C: 't', P: []float64{64.5, 64.5}},
@@ -3341,8 +3345,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00ab": {
 			HorizAdvX: 0,
 			Unicode:   "\u00ab",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{129, 520}},
 				{C: 'l', P: []float64{244, 361}},
 				{C: 'l', P: []float64{106, -56}},
@@ -3362,8 +3366,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00ac": {
 			HorizAdvX: 0,
 			Unicode:   "\u00ac",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{84, 567}},
 				{C: 'v', P: []float64{144}},
 				{C: 'h', P: []float64{838}},
@@ -3377,8 +3381,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00ad": {
 			HorizAdvX: 0,
 			Unicode:   "\u00ad",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{287, 440}},
 				{C: 'v', P: []float64{160}},
 				{C: 'h', P: []float64{450}},
@@ -3390,8 +3394,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00ae": {
 			HorizAdvX: 0,
 			Unicode:   "\u00ae",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{70, 473}},
 				{C: 'q', P: []float64{0, 125, 38.5, 219}},
 				{C: 't', P: []float64{101, 156.5}},
@@ -3459,8 +3463,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00af": {
 			HorizAdvX: 0,
 			Unicode:   "\u00af",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{252, 1169}},
 				{C: 'v', P: []float64{131}},
 				{C: 'h', P: []float64{520}},
@@ -3472,8 +3476,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00b0": {
 			HorizAdvX: 0,
 			Unicode:   "\u00b0",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{256, 1165.5}},
 				{C: 'q', P: []float64{0, 59.5, 20.5, 106.5}},
 				{C: 't', P: []float64{56.5, 79.5}},
@@ -3507,8 +3511,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00b1": {
 			HorizAdvX: 0,
 			Unicode:   "\u00b1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{94, 0}},
 				{C: 'v', P: []float64{145}},
 				{C: 'h', P: []float64{838}},
@@ -3534,8 +3538,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00b2": {
 			HorizAdvX: 0,
 			Unicode:   "\u00b2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{254, 1200}},
 				{C: 'q', P: []float64{33, 33, 95.5, 64.5}},
 				{C: 't', P: []float64{144.5, 31.5}},
@@ -3568,8 +3572,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00b3": {
 			HorizAdvX: 0,
 			Unicode:   "\u00b3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{258, 604}},
 				{C: 'l', P: []float64{27, 109}},
 				{C: 'q', P: []float64{41, -16, 86, -26.5}},
@@ -3609,8 +3613,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00b4": {
 			HorizAdvX: 0,
 			Unicode:   "\u00b4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{348, 1137}},
 				{C: 'l', P: []float64{234, 282}},
 				{C: 'l', P: []float64{110, -108}},
@@ -3621,8 +3625,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00b5": {
 			HorizAdvX: 0,
 			Unicode:   "\u00b5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{145, -338}},
 				{C: 'v', P: []float64{1288}},
 				{C: 'h', P: []float64{170}},
@@ -3652,8 +3656,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00b6": {
 			HorizAdvX: 0,
 			Unicode:   "\u00b6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{57, 877}},
 				{C: 'q', P: []float64{0, 100, 38, 174.5}},
 				{C: 't', P: []float64{109.5, 126}},
@@ -3677,8 +3681,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00b7": {
 			HorizAdvX: 0,
 			Unicode:   "\u00b7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{362, 532}},
 				{C: 'q', P: []float64{0, 63, 41, 110.5}},
 				{C: 't', P: []float64{111, 47.5}},
@@ -3694,8 +3698,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00b8": {
 			HorizAdvX: 0,
 			Unicode:   "\u00b8",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{319, -322}},
 				{C: 'l', P: []float64{21, 105}},
 				{C: 'q', P: []float64{23, -8, 47.5, -13.5}},
@@ -3724,8 +3728,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00b9": {
 			HorizAdvX: 0,
 			Unicode:   "\u00b9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{258, 1137}},
 				{C: 'q', P: []float64{70, 23, 137.5, 60.5}},
 				{C: 't', P: []float64{116.5, 84.5}},
@@ -3745,8 +3749,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00ba": {
 			HorizAdvX: 0,
 			Unicode:   "\u00ba",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{182, 948}},
 				{C: 'q', P: []float64{0, 80, 24.5, 143.5}},
 				{C: 't', P: []float64{68.5, 108.5}},
@@ -3780,8 +3784,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00bb": {
 			HorizAdvX: 0,
 			Unicode:   "\u00bb",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{174, 217}},
 				{C: 'l', P: []float64{172, 305}},
 				{C: 'l', P: []float64{-166, 295}},
@@ -3801,8 +3805,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00bc": {
 			HorizAdvX: 0,
 			Unicode:   "\u00bc",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{37, 1149}},
 				{C: 'q', P: []float64{70, 29, 119, 57.5}},
 				{C: 't', P: []float64{98, 75.5}},
@@ -3843,8 +3847,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00bd": {
 			HorizAdvX: 0,
 			Unicode:   "\u00bd",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{35, 0}},
 				{C: 'l', P: []float64{776, 1268}},
 				{C: 'h', P: []float64{143}},
@@ -3890,8 +3894,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00be": {
 			HorizAdvX: 0,
 			Unicode:   "\u00be",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{43, 780}},
 				{C: 'l', P: []float64{31, 101}},
 				{C: 'q', P: []float64{23, -10, 56.5, -18.5}},
@@ -3955,8 +3959,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00bf": {
 			HorizAdvX: 0,
 			Unicode:   "\u00bf",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{188, -47}},
 				{C: 'q', P: []float64{0, 61, 24, 108.5}},
 				{C: 't', P: []float64{58.5, 87}},
@@ -3998,8 +4002,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00c0": {
 			HorizAdvX: 0,
 			Unicode:   "\u00c0",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{18, 0}},
 				{C: 'l', P: []float64{78, 293}},
 				{C: 'q', P: []float64{43, 158, 93, 323}},
@@ -4033,8 +4037,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00c1": {
 			HorizAdvX: 0,
 			Unicode:   "\u00c1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{18, 0}},
 				{C: 'l', P: []float64{78, 293}},
 				{C: 'q', P: []float64{43, 158, 93, 323}},
@@ -4068,8 +4072,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00c2": {
 			HorizAdvX: 0,
 			Unicode:   "\u00c2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{18, 0}},
 				{C: 'l', P: []float64{78, 293}},
 				{C: 'q', P: []float64{43, 158, 93, 323}},
@@ -4105,8 +4109,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00c3": {
 			HorizAdvX: 0,
 			Unicode:   "\u00c3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{18, 0}},
 				{C: 'l', P: []float64{78, 293}},
 				{C: 'q', P: []float64{43, 158, 93, 323}},
@@ -4156,8 +4160,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00c4": {
 			HorizAdvX: 0,
 			Unicode:   "\u00c4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{18, 0}},
 				{C: 'l', P: []float64{78, 293}},
 				{C: 'q', P: []float64{43, 158, 93, 323}},
@@ -4206,8 +4210,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00c5": {
 			HorizAdvX: 0,
 			Unicode:   "\u00c5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{18, 0}},
 				{C: 'l', P: []float64{77, 288}},
 				{C: 'l', P: []float64{93, 321}},
@@ -4253,8 +4257,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00c6": {
 			HorizAdvX: 0,
 			Unicode:   "\u00c6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, 0}},
 				{C: 'q', P: []float64{92, 356, 186.5, 668.5}},
 				{C: 't', P: []float64{207.5, 599.5}},
@@ -4284,8 +4288,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00c7": {
 			HorizAdvX: 0,
 			Unicode:   "\u00c7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{94, 635}},
 				{C: 'q', P: []float64{0, 162, 42, 284.5}},
 				{C: 't', P: []float64{114, 206.5}},
@@ -4334,8 +4338,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00c8": {
 			HorizAdvX: 0,
 			Unicode:   "\u00c8",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{186, 0}},
 				{C: 'v', P: []float64{1268}},
 				{C: 'h', P: []float64{711}},
@@ -4360,8 +4364,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00c9": {
 			HorizAdvX: 0,
 			Unicode:   "\u00c9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{186, 0}},
 				{C: 'v', P: []float64{1268}},
 				{C: 'h', P: []float64{711}},
@@ -4386,8 +4390,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00ca": {
 			HorizAdvX: 0,
 			Unicode:   "\u00ca",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{186, 0}},
 				{C: 'v', P: []float64{1268}},
 				{C: 'h', P: []float64{711}},
@@ -4414,8 +4418,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00cb": {
 			HorizAdvX: 0,
 			Unicode:   "\u00cb",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{186, 0}},
 				{C: 'v', P: []float64{1268}},
 				{C: 'h', P: []float64{711}},
@@ -4455,8 +4459,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00cc": {
 			HorizAdvX: 0,
 			Unicode:   "\u00cc",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{182, 0}},
 				{C: 'v', P: []float64{143}},
 				{C: 'h', P: []float64{246}},
@@ -4481,8 +4485,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00cd": {
 			HorizAdvX: 0,
 			Unicode:   "\u00cd",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{182, 0}},
 				{C: 'v', P: []float64{143}},
 				{C: 'h', P: []float64{246}},
@@ -4507,8 +4511,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00ce": {
 			HorizAdvX: 0,
 			Unicode:   "\u00ce",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{182, 0}},
 				{C: 'v', P: []float64{143}},
 				{C: 'h', P: []float64{246}},
@@ -4535,8 +4539,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00cf": {
 			HorizAdvX: 0,
 			Unicode:   "\u00cf",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{182, 0}},
 				{C: 'v', P: []float64{143}},
 				{C: 'h', P: []float64{246}},
@@ -4576,8 +4580,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00d0": {
 			HorizAdvX: 0,
 			Unicode:   "\u00d0",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{37, 596}},
 				{C: 'v', P: []float64{131}},
 				{C: 'h', P: []float64{108}},
@@ -4616,8 +4620,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00d1": {
 			HorizAdvX: 0,
 			Unicode:   "\u00d1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{113, 0}},
 				{C: 'v', P: []float64{1268}},
 				{C: 'h', P: []float64{172}},
@@ -4662,8 +4666,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00d2": {
 			HorizAdvX: 0,
 			Unicode:   "\u00d2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{59, 635}},
 				{C: 'q', P: []float64{0, 170, 33, 295}},
 				{C: 't', P: []float64{92.5, 206}},
@@ -4702,8 +4706,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00d3": {
 			HorizAdvX: 0,
 			Unicode:   "\u00d3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{59, 635}},
 				{C: 'q', P: []float64{0, 170, 33, 295}},
 				{C: 't', P: []float64{92.5, 206}},
@@ -4742,8 +4746,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00d4": {
 			HorizAdvX: 0,
 			Unicode:   "\u00d4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{59, 635}},
 				{C: 'q', P: []float64{0, 170, 33, 295}},
 				{C: 't', P: []float64{92.5, 206}},
@@ -4784,8 +4788,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00d5": {
 			HorizAdvX: 0,
 			Unicode:   "\u00d5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{59, 635}},
 				{C: 'q', P: []float64{0, 170, 33, 295}},
 				{C: 't', P: []float64{92.5, 206}},
@@ -4840,8 +4844,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00d6": {
 			HorizAdvX: 0,
 			Unicode:   "\u00d6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{59, 635}},
 				{C: 'q', P: []float64{0, 170, 33, 295}},
 				{C: 't', P: []float64{92.5, 206}},
@@ -4895,8 +4899,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00d7": {
 			HorizAdvX: 0,
 			Unicode:   "\u00d7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{143, 270}},
 				{C: 'l', P: []float64{267, 269}},
 				{C: 'l', P: []float64{-267, 266}},
@@ -4915,8 +4919,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00d8": {
 			HorizAdvX: 0,
 			Unicode:   "\u00d8",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{59, 635}},
 				{C: 'q', P: []float64{0, 170, 33, 295}},
 				{C: 't', P: []float64{92.5, 206}},
@@ -4961,8 +4965,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00d9": {
 			HorizAdvX: 0,
 			Unicode:   "\u00d9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{98, 436}},
 				{C: 'v', P: []float64{832}},
 				{C: 'h', P: []float64{168}},
@@ -4997,8 +5001,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00da": {
 			HorizAdvX: 0,
 			Unicode:   "\u00da",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{98, 436}},
 				{C: 'v', P: []float64{832}},
 				{C: 'h', P: []float64{168}},
@@ -5033,8 +5037,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00db": {
 			HorizAdvX: 0,
 			Unicode:   "\u00db",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{98, 436}},
 				{C: 'v', P: []float64{832}},
 				{C: 'h', P: []float64{168}},
@@ -5071,8 +5075,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00dc": {
 			HorizAdvX: 0,
 			Unicode:   "\u00dc",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{98, 436}},
 				{C: 'v', P: []float64{832}},
 				{C: 'h', P: []float64{168}},
@@ -5122,8 +5126,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00dd": {
 			HorizAdvX: 0,
 			Unicode:   "\u00dd",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{27, 1268}},
 				{C: 'h', P: []float64{188}},
 				{C: 'q', P: []float64{59, -172, 136, -329}},
@@ -5149,8 +5153,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00de": {
 			HorizAdvX: 0,
 			Unicode:   "\u00de",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{150, 0}},
 				{C: 'v', P: []float64{1268}},
 				{C: 'h', P: []float64{167}},
@@ -5185,8 +5189,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00df": {
 			HorizAdvX: 0,
 			Unicode:   "\u00df",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{145, 0}},
 				{C: 'v', P: []float64{1014}},
 				{C: 'q', P: []float64{0, 90, 24, 164.5}},
@@ -5244,8 +5248,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00e0": {
 			HorizAdvX: 0,
 			Unicode:   "\u00e0",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{119, 283}},
 				{C: 'q', P: []float64{0, 82, 35.5, 138}},
 				{C: 't', P: []float64{92, 91}},
@@ -5297,8 +5301,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00e1": {
 			HorizAdvX: 0,
 			Unicode:   "\u00e1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{119, 283}},
 				{C: 'q', P: []float64{0, 82, 35.5, 138}},
 				{C: 't', P: []float64{92, 91}},
@@ -5350,8 +5354,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00e2": {
 			HorizAdvX: 0,
 			Unicode:   "\u00e2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{119, 283}},
 				{C: 'q', P: []float64{0, 82, 35.5, 138}},
 				{C: 't', P: []float64{92, 91}},
@@ -5405,8 +5409,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00e3": {
 			HorizAdvX: 0,
 			Unicode:   "\u00e3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{119, 283}},
 				{C: 'q', P: []float64{0, 82, 35.5, 138}},
 				{C: 't', P: []float64{92, 91}},
@@ -5474,8 +5478,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00e4": {
 			HorizAdvX: 0,
 			Unicode:   "\u00e4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{119, 283}},
 				{C: 'q', P: []float64{0, 82, 35.5, 138}},
 				{C: 't', P: []float64{92, 91}},
@@ -5542,8 +5546,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00e5": {
 			HorizAdvX: 0,
 			Unicode:   "\u00e5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{119, 283}},
 				{C: 'q', P: []float64{0, 82, 35.5, 138}},
 				{C: 't', P: []float64{92, 91}},
@@ -5610,8 +5614,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00e6": {
 			HorizAdvX: 0,
 			Unicode:   "\u00e6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{63, 270}},
 				{C: 'q', P: []float64{0, 63, 17.5, 119.5}},
 				{C: 't', P: []float64{52.5, 98.5}},
@@ -5677,8 +5681,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00e7": {
 			HorizAdvX: 0,
 			Unicode:   "\u00e7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{100, 473}},
 				{C: 'q', P: []float64{0, 129, 41, 223.5}},
 				{C: 't', P: []float64{113, 155.5}},
@@ -5727,8 +5731,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00e8": {
 			HorizAdvX: 0,
 			Unicode:   "\u00e8",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{82, 473}},
 				{C: 'q', P: []float64{0, 127, 39, 221}},
 				{C: 't', P: []float64{102.5, 155.5}},
@@ -5769,8 +5773,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00e9": {
 			HorizAdvX: 0,
 			Unicode:   "\u00e9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{82, 473}},
 				{C: 'q', P: []float64{0, 127, 39, 221}},
 				{C: 't', P: []float64{102.5, 155.5}},
@@ -5811,8 +5815,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00ea": {
 			HorizAdvX: 0,
 			Unicode:   "\u00ea",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{82, 473}},
 				{C: 'q', P: []float64{0, 127, 39, 221}},
 				{C: 't', P: []float64{102.5, 155.5}},
@@ -5855,8 +5859,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00eb": {
 			HorizAdvX: 0,
 			Unicode:   "\u00eb",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{82, 473}},
 				{C: 'q', P: []float64{0, 127, 39, 221}},
 				{C: 't', P: []float64{102.5, 155.5}},
@@ -5912,8 +5916,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00ec": {
 			HorizAdvX: 0,
 			Unicode:   "\u00ec",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{111, 809}},
 				{C: 'v', P: []float64{141}},
 				{C: 'h', P: []float64{442}},
@@ -5944,8 +5948,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00ed": {
 			HorizAdvX: 0,
 			Unicode:   "\u00ed",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{111, 809}},
 				{C: 'v', P: []float64{141}},
 				{C: 'h', P: []float64{442}},
@@ -5976,8 +5980,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00ee": {
 			HorizAdvX: 0,
 			Unicode:   "\u00ee",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{111, 809}},
 				{C: 'v', P: []float64{141}},
 				{C: 'h', P: []float64{442}},
@@ -6010,8 +6014,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00ef": {
 			HorizAdvX: 0,
 			Unicode:   "\u00ef",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{111, 809}},
 				{C: 'v', P: []float64{141}},
 				{C: 'h', P: []float64{442}},
@@ -6057,8 +6061,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00f0": {
 			HorizAdvX: 0,
 			Unicode:   "\u00f0",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{113, 418}},
 				{C: 'q', P: []float64{0, 233, 98, 356}},
 				{C: 't', P: []float64{268, 123}},
@@ -6109,8 +6113,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00f1": {
 			HorizAdvX: 0,
 			Unicode:   "\u00f1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{145, 0}},
 				{C: 'v', P: []float64{924}},
 				{C: 'q', P: []float64{92, 23, 183.5, 35}},
@@ -6155,8 +6159,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00f2": {
 			HorizAdvX: 0,
 			Unicode:   "\u00f2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{82, 475}},
 				{C: 'q', P: []float64{0, 113, 31.5, 205}},
 				{C: 't', P: []float64{89, 156.5}},
@@ -6195,8 +6199,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00f3": {
 			HorizAdvX: 0,
 			Unicode:   "\u00f3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{82, 475}},
 				{C: 'q', P: []float64{0, 113, 31.5, 205}},
 				{C: 't', P: []float64{89, 156.5}},
@@ -6235,8 +6239,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00f4": {
 			HorizAdvX: 0,
 			Unicode:   "\u00f4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{82, 475}},
 				{C: 'q', P: []float64{0, 113, 31.5, 205}},
 				{C: 't', P: []float64{89, 156.5}},
@@ -6277,8 +6281,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00f5": {
 			HorizAdvX: 0,
 			Unicode:   "\u00f5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{82, 475}},
 				{C: 'q', P: []float64{0, 113, 31.5, 205}},
 				{C: 't', P: []float64{89, 156.5}},
@@ -6333,8 +6337,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00f6": {
 			HorizAdvX: 0,
 			Unicode:   "\u00f6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{82, 475}},
 				{C: 'q', P: []float64{0, 113, 31.5, 205}},
 				{C: 't', P: []float64{89, 156.5}},
@@ -6388,8 +6392,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00f7": {
 			HorizAdvX: 0,
 			Unicode:   "\u00f7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{94, 467}},
 				{C: 'v', P: []float64{143}},
 				{C: 'h', P: []float64{838}},
@@ -6421,8 +6425,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00f8": {
 			HorizAdvX: 0,
 			Unicode:   "\u00f8",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{82, 475}},
 				{C: 'q', P: []float64{0, 113, 31.5, 205}},
 				{C: 't', P: []float64{89, 156.5}},
@@ -6468,8 +6472,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00f9": {
 			HorizAdvX: 0,
 			Unicode:   "\u00f9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{139, 416}},
 				{C: 'v', P: []float64{534}},
 				{C: 'h', P: []float64{168}},
@@ -6500,8 +6504,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00fa": {
 			HorizAdvX: 0,
 			Unicode:   "\u00fa",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{139, 416}},
 				{C: 'v', P: []float64{534}},
 				{C: 'h', P: []float64{168}},
@@ -6532,8 +6536,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00fb": {
 			HorizAdvX: 0,
 			Unicode:   "\u00fb",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{139, 416}},
 				{C: 'v', P: []float64{534}},
 				{C: 'h', P: []float64{168}},
@@ -6566,8 +6570,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00fc": {
 			HorizAdvX: 0,
 			Unicode:   "\u00fc",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{139, 416}},
 				{C: 'v', P: []float64{534}},
 				{C: 'h', P: []float64{168}},
@@ -6613,8 +6617,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00fd": {
 			HorizAdvX: 0,
 			Unicode:   "\u00fd",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{74, -315}},
 				{C: 'l', P: []float64{30, 137}},
 				{C: 'q', P: []float64{18, -10, 52, -16.5}},
@@ -6652,8 +6656,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00fe": {
 			HorizAdvX: 0,
 			Unicode:   "\u00fe",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{145, -338}},
 				{C: 'v', P: []float64{1729}},
 				{C: 'l', P: []float64{170, 28}},
@@ -6693,8 +6697,8 @@ var ubuntumonoregularFont = &Font{
 		"\u00ff": {
 			HorizAdvX: 0,
 			Unicode:   "\u00ff",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{74, -315}},
 				{C: 'l', P: []float64{30, 137}},
 				{C: 'q', P: []float64{18, -10, 52, -16.5}},
@@ -6747,8 +6751,8 @@ var ubuntumonoregularFont = &Font{
 		"\u0152": {
 			HorizAdvX: 0,
 			Unicode:   "\u0152",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, 616.5}},
 				{C: 'q', P: []float64{0, 327.5, 106.5, 495.5}},
 				{C: 't', P: []float64{291.5, 168}},
@@ -6787,8 +6791,8 @@ var ubuntumonoregularFont = &Font{
 		"\u0153": {
 			HorizAdvX: 0,
 			Unicode:   "\u0153",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{63, 479}},
 				{C: 'q', P: []float64{0, 92, 15.5, 181.5}},
 				{C: 't', P: []float64{46.5, 159}},
@@ -6850,8 +6854,8 @@ var ubuntumonoregularFont = &Font{
 		"\u0178": {
 			HorizAdvX: 0,
 			Unicode:   "\u0178",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{27, 1268}},
 				{C: 'h', P: []float64{188}},
 				{C: 'q', P: []float64{59, -172, 136, -329}},
@@ -6892,8 +6896,8 @@ var ubuntumonoregularFont = &Font{
 		"\u02c6": {
 			HorizAdvX: 0,
 			Unicode:   "\u02c6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{264, 1145}},
 				{C: 'l', P: []float64{248, 262}},
 				{C: 'l', P: []float64{248, -262}},
@@ -6906,8 +6910,8 @@ var ubuntumonoregularFont = &Font{
 		"\u02dc": {
 			HorizAdvX: 0,
 			Unicode:   "\u02dc",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{229, 1169}},
 				{C: 'q', P: []float64{6, 23, 21.5, 51.5}},
 				{C: 't', P: []float64{38, 53}},
@@ -6934,8 +6938,8 @@ var ubuntumonoregularFont = &Font{
 		"\u2013": {
 			HorizAdvX: 0,
 			Unicode:   "\u2013",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{141, 483}},
 				{C: 'v', P: []float64{144}},
 				{C: 'h', P: []float64{742}},
@@ -6947,8 +6951,8 @@ var ubuntumonoregularFont = &Font{
 		"\u2014": {
 			HorizAdvX: 0,
 			Unicode:   "\u2014",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 483}},
 				{C: 'v', P: []float64{144}},
 				{C: 'h', P: []float64{1024}},
@@ -6960,8 +6964,8 @@ var ubuntumonoregularFont = &Font{
 		"\u2018": {
 			HorizAdvX: 0,
 			Unicode:   "\u2018",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{305, 1061}},
 				{C: 'q', P: []float64{0, 59, 23.5, 123.5}},
 				{C: 't', P: []float64{70.5, 121}},
@@ -6984,8 +6988,8 @@ var ubuntumonoregularFont = &Font{
 		"\u2019": {
 			HorizAdvX: 0,
 			Unicode:   "\u2019",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{303, 1001}},
 				{C: 'l', P: []float64{73, 17}},
 				{C: 'q', P: []float64{36, 8, 66.5, 23.5}},
@@ -7007,8 +7011,8 @@ var ubuntumonoregularFont = &Font{
 		"\u201a": {
 			HorizAdvX: 0,
 			Unicode:   "\u201a",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{303, -162}},
 				{C: 'l', P: []float64{73, 17}},
 				{C: 'q', P: []float64{36, 8, 66.5, 23.5}},
@@ -7030,8 +7034,8 @@ var ubuntumonoregularFont = &Font{
 		"\u201c": {
 			HorizAdvX: 0,
 			Unicode:   "\u201c",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{88, 1071}},
 				{C: 'q', P: []float64{0, 57, 17.5, 114.5}},
 				{C: 't', P: []float64{57.5, 104.5}},
@@ -7071,8 +7075,8 @@ var ubuntumonoregularFont = &Font{
 		"\u201d": {
 			HorizAdvX: 0,
 			Unicode:   "\u201d",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{86, 1018}},
 				{C: 'l', P: []float64{68, 15}},
 				{C: 'q', P: []float64{33, 7, 60.5, 21.5}},
@@ -7110,8 +7114,8 @@ var ubuntumonoregularFont = &Font{
 		"\u201e": {
 			HorizAdvX: 0,
 			Unicode:   "\u201e",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{86, -152}},
 				{C: 'q', P: []float64{70, 14, 128, 37}},
 				{C: 't', P: []float64{85, 95}},
@@ -7147,8 +7151,8 @@ var ubuntumonoregularFont = &Font{
 		"\u2022": {
 			HorizAdvX: 0,
 			Unicode:   "\u2022",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{233, 647}},
 				{C: 'q', P: []float64{0, 57, 19.5, 110.5}},
 				{C: 't', P: []float64{55.5, 94.5}},
@@ -7172,8 +7176,8 @@ var ubuntumonoregularFont = &Font{
 		"\u2026": {
 			HorizAdvX: 0,
 			Unicode:   "\u2026",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{63, 86}},
 				{C: 'q', P: []float64{0, 45, 30, 78}},
 				{C: 't', P: []float64{79, 33}},
@@ -7209,8 +7213,8 @@ var ubuntumonoregularFont = &Font{
 		"\u2039": {
 			HorizAdvX: 0,
 			Unicode:   "\u2039",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{295, 520}},
 				{C: 'l', P: []float64{285, 404}},
 				{C: 'l', P: []float64{118, -64}},
@@ -7223,8 +7227,8 @@ var ubuntumonoregularFont = &Font{
 		"\u203a": {
 			HorizAdvX: 0,
 			Unicode:   "\u203a",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{326, 180}},
 				{C: 'l', P: []float64{202, 340}},
 				{C: 'l', P: []float64{-202, 340}},
@@ -7237,8 +7241,8 @@ var ubuntumonoregularFont = &Font{
 		"\u20ac": {
 			HorizAdvX: 0,
 			Unicode:   "\u20ac",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{74, 416}},
 				{C: 'v', P: []float64{131}},
 				{C: 'h', P: []float64{125}},
@@ -7284,8 +7288,8 @@ var ubuntumonoregularFont = &Font{
 		"\u2122": {
 			HorizAdvX: 0,
 			Unicode:   "\u2122",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{37, 1165}},
 				{C: 'v', P: []float64{103}},
 				{C: 'h', P: []float64{381}},
@@ -7328,8 +7332,8 @@ var ubuntumonoregularFont = &Font{
 		"\ue000": {
 			HorizAdvX: 950,
 			Unicode:   "\ue000",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 950}},
 				{C: 'h', P: []float64{950}},
 				{C: 'v', P: []float64{-950}},
@@ -7341,8 +7345,8 @@ var ubuntumonoregularFont = &Font{
 		"\ufb01": {
 			HorizAdvX: 0,
 			Unicode:   "\ufb01",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{57, 809}},
 				{C: 'v', P: []float64{141}},
 				{C: 'h', P: []float64{109}},
@@ -7385,8 +7389,8 @@ var ubuntumonoregularFont = &Font{
 		"\ufb02": {
 			HorizAdvX: 0,
 			Unicode:   "\ufb02",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{57, 809}},
 				{C: 'v', P: []float64{141}},
 				{C: 'h', P: []float64{109}},
@@ -7425,8 +7429,8 @@ var ubuntumonoregularFont = &Font{
 		"\ufb03": {
 			HorizAdvX: 3072,
 			Unicode:   "\ufb03",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{129, 809}},
 				{C: 'v', P: []float64{141}},
 				{C: 'h', P: []float64{201}},
@@ -7514,8 +7518,8 @@ var ubuntumonoregularFont = &Font{
 		"\ufb04": {
 			HorizAdvX: 3072,
 			Unicode:   "\ufb04",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{129, 809}},
 				{C: 'v', P: []float64{141}},
 				{C: 'h', P: []float64{201}},

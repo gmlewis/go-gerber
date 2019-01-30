@@ -1,24 +1,28 @@
 // Auto-generated - DO NOT EDIT!
 
-package gerber
+package fascinate_inlineregular
+
+import (
+	"github.com/gmlewis/go-gerber/gerber"
+)
 
 func init() {
-	Fonts["fascinate_inlineregular"] = fascinate_inlineregularFont
+	gerber.Fonts["fascinate_inlineregular"] = fascinate_inlineregularFont
 }
 
-var fascinate_inlineregularFont = &Font{
+var fascinate_inlineregularFont = &gerber.Font{
 	// ID: "fascinate_inlineregular",
 	HorizAdvX:        500,
 	UnitsPerEm:       1000,
 	Ascent:           800,
 	Descent:          -200,
 	MissingHorizAdvX: 300,
-	Glyphs: map[string]*Glyph{
+	Glyphs: map[string]*gerber.Glyph{
 		"\ufb01": {
 			HorizAdvX: 948,
 			Unicode:   "\ufb01",
 			GerberLP:  "dcddcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{15, 214}},
 				{C: 'v', P: []float64{39}},
 				{C: 'q', P: []float64{0, 10, 10, 10}},
@@ -107,7 +111,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 948,
 			Unicode:   "\ufb02",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{15, 214}},
 				{C: 'v', P: []float64{39}},
 				{C: 'q', P: []float64{0, 10, 10, 10}},
@@ -172,7 +176,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 1430,
 			Unicode:   "\ufb03",
 			GerberLP:  "dccddcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{15, 214}},
 				{C: 'v', P: []float64{39}},
 				{C: 'q', P: []float64{0, 10, 10, 10}},
@@ -293,7 +297,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 1430,
 			Unicode:   "\ufb04",
 			GerberLP:  "dccc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{15, 214}},
 				{C: 'v', P: []float64{39}},
 				{C: 'q', P: []float64{0, 10, 10, 10}},
@@ -390,31 +394,31 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 1000,
 			Unicode:   "\r",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		" ": {
 			HorizAdvX: 300,
 			Unicode:   " ",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\t": {
 			HorizAdvX: 300,
 			Unicode:   "\t",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00a0": {
 			HorizAdvX: 300,
 			Unicode:   "\u00a0",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"!": {
 			HorizAdvX: 445,
 			Unicode:   "!",
 			GerberLP:  "ddcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{60, 554}},
 				{C: 'q', P: []float64{0, 68, 48, 115.5}},
 				{C: 't', P: []float64{115, 47.5}},
@@ -468,7 +472,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 346,
 			Unicode:   "\"",
 			GerberLP:  "dd",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{60, 443}},
 				{C: 'v', P: []float64{235}},
 				{C: 'q', P: []float64{0, 23, 24, 23}},
@@ -495,7 +499,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 465,
 			Unicode:   "#",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{40, 247}},
 				{C: 'v', P: []float64{69}},
 				{C: 'q', P: []float64{0, 10, 11, 10}},
@@ -557,7 +561,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 461,
 			Unicode:   "$",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 68}},
 				{C: 'v', P: []float64{41}},
 				{C: 'q', P: []float64{0, 5, 5, 5}},
@@ -617,7 +621,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 754,
 			Unicode:   "%",
 			GerberLP:  "ddccdcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 534}},
 				{C: 'q', P: []float64{0, 70, 48.5, 118.5}},
 				{C: 't', P: []float64{117.5, 48.5}},
@@ -698,7 +702,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 723,
 			Unicode:   "&",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{29, 483}},
 				{C: 'q', P: []float64{0, 94, 83.5, 158}},
 				{C: 't', P: []float64{229.5, 64}},
@@ -747,8 +751,8 @@ var fascinate_inlineregularFont = &Font{
 		"'": {
 			HorizAdvX: 205,
 			Unicode:   "'",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{60, 443}},
 				{C: 'v', P: []float64{235}},
 				{C: 'q', P: []float64{0, 23, 24, 23}},
@@ -765,7 +769,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 421,
 			Unicode:   "(",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{50, 300}},
 				{C: 'q', P: []float64{0, 100, 24, 185.5}},
 				{C: 't', P: []float64{65, 144.5}},
@@ -795,7 +799,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 421,
 			Unicode:   ")",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{80, -183}},
 				{C: 'v', P: []float64{965}},
 				{C: 'q', P: []float64{0, 18, 14, 18}},
@@ -822,8 +826,8 @@ var fascinate_inlineregularFont = &Font{
 		"*": {
 			HorizAdvX: 374,
 			Unicode:   "*",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{20, 579}},
 				{C: 'q', P: []float64{0, 4, 1, 7}},
 				{C: 'l', P: []float64{21, 45}},
@@ -864,8 +868,8 @@ var fascinate_inlineregularFont = &Font{
 		"+": {
 			HorizAdvX: 0,
 			Unicode:   "+",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{63, 214}},
 				{C: 'v', P: []float64{83}},
 				{C: 'q', P: []float64{0, 11, 11, 11}},
@@ -894,7 +898,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 326,
 			Unicode:   ",",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{50, 103}},
 				{C: 'q', P: []float64{0, 47, 33, 80}},
 				{C: 't', P: []float64{80, 33}},
@@ -927,8 +931,8 @@ var fascinate_inlineregularFont = &Font{
 		"-": {
 			HorizAdvX: 391,
 			Unicode:   "-",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{49, 175}},
 				{C: 'v', P: []float64{117}},
 				{C: 'q', P: []float64{0, 10, 10, 10}},
@@ -945,7 +949,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 326,
 			Unicode:   ".",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{50, 103}},
 				{C: 'q', P: []float64{0, 47, 33, 80}},
 				{C: 't', P: []float64{80, 33}},
@@ -969,8 +973,8 @@ var fascinate_inlineregularFont = &Font{
 		"/": {
 			HorizAdvX: 314,
 			Unicode:   "/",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{24, 6}},
 				{C: 'q', P: []float64{0, 3, 2, 11}},
 				{C: 'l', P: []float64{188, 689}},
@@ -991,7 +995,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 596,
 			Unicode:   "0",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 249}},
 				{C: 'q', P: []float64{0, 111, 78.5, 189.5}},
 				{C: 't', P: []float64{189.5, 78.5}},
@@ -1028,7 +1032,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 493,
 			Unicode:   "1",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 445}},
 				{C: 'q', P: []float64{0, 9, 3.5, 13.5}},
 				{C: 't', P: []float64{17.5, 6.5}},
@@ -1070,7 +1074,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 510,
 			Unicode:   "2",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{7, 445}},
 				{C: 'q', P: []float64{0, 5, 4, 7}},
 				{C: 'q', P: []float64{38, 30, 100, 47.5}},
@@ -1108,7 +1112,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 479,
 			Unicode:   "3",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{12, -153}},
 				{C: 'q', P: []float64{0, 2, 1, 4}},
 				{C: 'l', P: []float64{12, 38}},
@@ -1157,7 +1161,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 561,
 			Unicode:   "4",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{15, 42}},
 				{C: 'q', P: []float64{0, 8, 4, 26}},
 				{C: 'l', P: []float64{90, 364}},
@@ -1199,7 +1203,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 494,
 			Unicode:   "5",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{3, -149}},
 				{C: 'l', P: []float64{13, 43}},
 				{C: 'q', P: []float64{3, 10, 10, 10}},
@@ -1249,7 +1253,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 586,
 			Unicode:   "6",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 244}},
 				{C: 'q', P: []float64{0, 141, 97.5, 264}},
 				{C: 't', P: []float64{244.5, 199}},
@@ -1294,7 +1298,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 503,
 			Unicode:   "7",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 444}},
 				{C: 'v', P: []float64{32}},
 				{C: 'q', P: []float64{0, 24, 27, 24}},
@@ -1327,7 +1331,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 577,
 			Unicode:   "8",
 			GerberLP:  "dccc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 172}},
 				{C: 'q', P: []float64{0, 118, 123, 177}},
 				{C: 'q', P: []float64{-96, 81, -96, 167}},
@@ -1386,7 +1390,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 586,
 			Unicode:   "9",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 264}},
 				{C: 'q', P: []float64{0, 105, 77, 179}},
 				{C: 't', P: []float64{186, 74}},
@@ -1431,7 +1435,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 356,
 			Unicode:   ":",
 			GerberLP:  "ddcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{65, 103}},
 				{C: 'q', P: []float64{0, 47, 33.5, 80}},
 				{C: 't', P: []float64{79.5, 33}},
@@ -1474,7 +1478,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 356,
 			Unicode:   ";",
 			GerberLP:  "ddcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{64, 103}},
 				{C: 'q', P: []float64{0, 46, 33.5, 79.5}},
 				{C: 't', P: []float64{80.5, 33.5}},
@@ -1525,8 +1529,8 @@ var fascinate_inlineregularFont = &Font{
 		"<": {
 			HorizAdvX: 0,
 			Unicode:   "<",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{65, 235}},
 				{C: 'v', P: []float64{40}},
 				{C: 'q', P: []float64{0, 12, 8, 17}},
@@ -1551,8 +1555,8 @@ var fascinate_inlineregularFont = &Font{
 		"=": {
 			HorizAdvX: 0,
 			Unicode:   "=",
-			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{73, 116}},
 				{C: 'v', P: []float64{84}},
 				{C: 'q', P: []float64{0, 10, 10, 10}},
@@ -1578,8 +1582,8 @@ var fascinate_inlineregularFont = &Font{
 		">": {
 			HorizAdvX: 0,
 			Unicode:   ">",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{71, 118}},
 				{C: 'q', P: []float64{0, 5, 5, 8}},
 				{C: 'l', P: []float64{211, 129}},
@@ -1605,7 +1609,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 526,
 			Unicode:   "?",
 			GerberLP:  "ddcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{33, 664}},
 				{C: 'q', P: []float64{0, 4, 6, 7}},
 				{C: 'q', P: []float64{73, 51, 207, 51}},
@@ -1663,7 +1667,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 848,
 			Unicode:   "@",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{49, 341}},
 				{C: 'q', P: []float64{0, 163, 115.5, 272.5}},
 				{C: 't', P: []float64{276.5, 109.5}},
@@ -1729,7 +1733,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 710,
 			Unicode:   "A",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{5, 12}},
 				{C: 'q', P: []float64{0, 8, 6, 25}},
 				{C: 'l', P: []float64{204, 618}},
@@ -1771,7 +1775,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 642,
 			Unicode:   "B",
 			GerberLP:  "dccc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{565}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -1815,7 +1819,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 609,
 			Unicode:   "C",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 353}},
 				{C: 'q', P: []float64{0, 105, 29.5, 181}},
 				{C: 't', P: []float64{79, 115.5}},
@@ -1873,7 +1877,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 680,
 			Unicode:   "D",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{565}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -1911,7 +1915,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 639,
 			Unicode:   "E",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{548}},
 				{C: 'q', P: []float64{0, 52, 22, 68.5}},
@@ -1950,7 +1954,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 621,
 			Unicode:   "F",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{548}},
 				{C: 'q', P: []float64{0, 52, 22, 68.5}},
@@ -1988,7 +1992,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 662,
 			Unicode:   "G",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 373}},
 				{C: 'q', P: []float64{0, 99, 29.5, 171}},
 				{C: 't', P: []float64{79, 109.5}},
@@ -2046,7 +2050,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 662,
 			Unicode:   "H",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{565}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -2101,7 +2105,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 455,
 			Unicode:   "I",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{565}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -2135,7 +2139,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 540,
 			Unicode:   "J",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{10, 29}},
 				{C: 'v', P: []float64{38}},
 				{C: 'q', P: []float64{0, 10, 7, 10}},
@@ -2169,7 +2173,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 617,
 			Unicode:   "K",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{565}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -2218,7 +2222,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 579,
 			Unicode:   "L",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{565}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -2252,7 +2256,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 874,
 			Unicode:   "M",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 28}},
 				{C: 'v', P: []float64{621}},
 				{C: 'q', P: []float64{0, 22, 13.5, 37}},
@@ -2303,7 +2307,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 674,
 			Unicode:   "N",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 28}},
 				{C: 'v', P: []float64{637}},
 				{C: 'q', P: []float64{0, 36, 40, 36}},
@@ -2337,7 +2341,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 710,
 			Unicode:   "O",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 353}},
 				{C: 'q', P: []float64{0, 107, 28, 183}},
 				{C: 't', P: []float64{76.5, 115}},
@@ -2382,7 +2386,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 632,
 			Unicode:   "P",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{565}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -2423,7 +2427,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 710,
 			Unicode:   "Q",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 353}},
 				{C: 'q', P: []float64{0, 107, 28, 183}},
 				{C: 't', P: []float64{76.5, 115}},
@@ -2478,7 +2482,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 646,
 			Unicode:   "R",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{565}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -2522,7 +2526,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 631,
 			Unicode:   "S",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{3, 18}},
 				{C: 'q', P: []float64{0, 3, 1, 5}},
 				{C: 'l', P: []float64{8, 37}},
@@ -2563,7 +2567,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 690,
 			Unicode:   "T",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{10, 622}},
 				{C: 'v', P: []float64{55}},
 				{C: 'q', P: []float64{0, 10, 8.5, 17}},
@@ -2599,7 +2603,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 632,
 			Unicode:   "U",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 252}},
 				{C: 'v', P: []float64{381}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -2636,7 +2640,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 600,
 			Unicode:   "V",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 667}},
 				{C: 'q', P: []float64{0, 16, 10, 25}},
 				{C: 't', P: []float64{23, 9}},
@@ -2673,7 +2677,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 920,
 			Unicode:   "W",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 668}},
 				{C: 'q', P: []float64{0, 33, 34, 33}},
 				{C: 'h', P: []float64{206}},
@@ -2734,7 +2738,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 668,
 			Unicode:   "X",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{10, 15}},
 				{C: 'q', P: []float64{0, 8, 8, 22}},
 				{C: 'l', P: []float64{152, 273}},
@@ -2782,7 +2786,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 600,
 			Unicode:   "Y",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 667}},
 				{C: 'q', P: []float64{0, 16, 10, 25}},
 				{C: 't', P: []float64{23, 9}},
@@ -2829,7 +2833,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 646,
 			Unicode:   "Z",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{27, 30}},
 				{C: 'q', P: []float64{0, 18, 18, 64}},
 				{C: 'l', P: []float64{205, 532}},
@@ -2861,7 +2865,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 445,
 			Unicode:   "[",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{70, -158}},
 				{C: 'v', P: []float64{915}},
 				{C: 'q', P: []float64{0, 23, 24, 23}},
@@ -2889,8 +2893,8 @@ var fascinate_inlineregularFont = &Font{
 		"\\": {
 			HorizAdvX: 314,
 			Unicode:   "\\",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{24, 698}},
 				{C: 'q', P: []float64{0, 10, 17, 16}},
 				{C: 'l', P: []float64{30, 8}},
@@ -2911,7 +2915,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 445,
 			Unicode:   "]",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{21, -122}},
 				{C: 'q', P: []float64{0, 11, 10, 11}},
 				{C: 'h', P: []float64{80}},
@@ -2939,8 +2943,8 @@ var fascinate_inlineregularFont = &Font{
 		"^": {
 			HorizAdvX: 0,
 			Unicode:   "^",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{38, 491}},
 				{C: 'q', P: []float64{0, 2, 2, 6}},
 				{C: 'l', P: []float64{159, 196}},
@@ -2965,8 +2969,8 @@ var fascinate_inlineregularFont = &Font{
 		"_": {
 			HorizAdvX: 402,
 			Unicode:   "_",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, -151}},
 				{C: 'q', P: []float64{0, 10, 10, 10}},
 				{C: 'h', P: []float64{382}},
@@ -2982,8 +2986,8 @@ var fascinate_inlineregularFont = &Font{
 		"`": {
 			HorizAdvX: 400,
 			Unicode:   "`",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{56, 691}},
 				{C: 'q', P: []float64{0, 4, 4, 8}},
 				{C: 'l', P: []float64{44, 63}},
@@ -3004,7 +3008,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 630,
 			Unicode:   "a",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{31, 163}},
 				{C: 'q', P: []float64{0, 79, 55, 119.5}},
 				{C: 't', P: []float64{139, 48.5}},
@@ -3053,7 +3057,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 644,
 			Unicode:   "b",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 247}},
 				{C: 'v', P: []float64{486}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -3090,7 +3094,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 589,
 			Unicode:   "c",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 247}},
 				{C: 'q', P: []float64{0, 72, 26, 125.5}},
 				{C: 't', P: []float64{70, 83.5}},
@@ -3136,7 +3140,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 644,
 			Unicode:   "d",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 253}},
 				{C: 'q', P: []float64{0, 208, 213, 247}},
 				{C: 'v', P: []float64{231}},
@@ -3175,7 +3179,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 640,
 			Unicode:   "e",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 250}},
 				{C: 'q', P: []float64{0, 72, 26, 125.5}},
 				{C: 't', P: []float64{70, 83.5}},
@@ -3221,7 +3225,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 547,
 			Unicode:   "f",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{15, 214}},
 				{C: 'v', P: []float64{39}},
 				{C: 'q', P: []float64{0, 10, 10, 10}},
@@ -3270,7 +3274,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 670,
 			Unicode:   "g",
 			GerberLP:  "dccc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 283}},
 				{C: 'q', P: []float64{0, 63, 26, 110}},
 				{C: 't', P: []float64{70, 73}},
@@ -3348,7 +3352,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 608,
 			Unicode:   "h",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{664}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -3388,7 +3392,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 450,
 			Unicode:   "i",
 			GerberLP:  "ddcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{364}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -3435,7 +3439,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 450,
 			Unicode:   "j",
 			GerberLP:  "ddcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-66, -128}},
 				{C: 'q', P: []float64{0, 10, 7, 10}},
 				{C: 'q', P: []float64{1, 0, 14, -3}},
@@ -3488,7 +3492,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 594,
 			Unicode:   "k",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{664}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -3534,7 +3538,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 450,
 			Unicode:   "l",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{664}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -3563,7 +3567,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 766,
 			Unicode:   "m",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{364}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -3611,7 +3615,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 608,
 			Unicode:   "n",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{364}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -3649,7 +3653,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 654,
 			Unicode:   "o",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 250}},
 				{C: 'q', P: []float64{0, 72, 26, 125.5}},
 				{C: 't', P: []float64{70, 83.5}},
@@ -3692,7 +3696,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 644,
 			Unicode:   "p",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, -133}},
 				{C: 'v', P: []float64{391}},
 				{C: 'q', P: []float64{0, 121, 73, 187}},
@@ -3729,7 +3733,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 644,
 			Unicode:   "q",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 248}},
 				{C: 'q', P: []float64{0, 69, 24.5, 120}},
 				{C: 't', P: []float64{66.5, 78.5}},
@@ -3768,7 +3772,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 542,
 			Unicode:   "r",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{364}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -3805,7 +3809,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 609,
 			Unicode:   "s",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-2, 31}},
 				{C: 'q', P: []float64{0, 2, 2, 10}},
 				{C: 'l', P: []float64{5, 27}},
@@ -3847,7 +3851,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 549,
 			Unicode:   "t",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 351}},
 				{C: 'v', P: []float64{39}},
 				{C: 'q', P: []float64{0, 10, 10, 10}},
@@ -3896,7 +3900,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 608,
 			Unicode:   "u",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 157}},
 				{C: 'v', P: []float64{275}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -3938,7 +3942,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 557,
 			Unicode:   "v",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 476}},
 				{C: 'q', P: []float64{0, 12, 9, 18}},
 				{C: 't', P: []float64{20, 6}},
@@ -3976,7 +3980,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 861,
 			Unicode:   "w",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{5, 477}},
 				{C: 'q', P: []float64{0, 23, 26, 23}},
 				{C: 'h', P: []float64{193}},
@@ -4030,7 +4034,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 636,
 			Unicode:   "x",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{7, 15}},
 				{C: 'q', P: []float64{0, 10, 8, 22}},
 				{C: 'l', P: []float64{126, 206}},
@@ -4084,7 +4088,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 561,
 			Unicode:   "y",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 478}},
 				{C: 'q', P: []float64{0, 22, 29, 22}},
 				{C: 'h', P: []float64{247}},
@@ -4128,7 +4132,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 562,
 			Unicode:   "z",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{10, 20}},
 				{C: 'q', P: []float64{0, 15, 15, 44}},
 				{C: 'l', P: []float64{190, 368}},
@@ -4161,7 +4165,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 466,
 			Unicode:   "{",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{20, 274}},
 				{C: 'v', P: []float64{50}},
 				{C: 'q', P: []float64{0, 11, 10, 11}},
@@ -4224,8 +4228,8 @@ var fascinate_inlineregularFont = &Font{
 		"|": {
 			HorizAdvX: 250,
 			Unicode:   "|",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{84, -227}},
 				{C: 'v', P: []float64{954}},
 				{C: 'q', P: []float64{0, 15, 6, 19}},
@@ -4243,7 +4247,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 466,
 			Unicode:   "}",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{20, -122}},
 				{C: 'q', P: []float64{0, 11, 10, 11}},
 				{C: 'h', P: []float64{20}},
@@ -4300,8 +4304,8 @@ var fascinate_inlineregularFont = &Font{
 		"~": {
 			HorizAdvX: 0,
 			Unicode:   "~",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{47, 226}},
 				{C: 'q', P: []float64{17, 59, 51.5, 89}},
 				{C: 't', P: []float64{77.5, 30}},
@@ -4328,7 +4332,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 445,
 			Unicode:   "\u00a1",
 			GerberLP:  "ddcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{60, 148}},
 				{C: 'q', P: []float64{0, 47, 56, 122.5}},
 				{C: 't', P: []float64{61, 109.5}},
@@ -4382,7 +4386,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 503,
 			Unicode:   "\u00a2",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{35, 250}},
 				{C: 'q', P: []float64{0, 109, 57, 169.5}},
 				{C: 't', P: []float64{142, 75.5}},
@@ -4433,7 +4437,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 610,
 			Unicode:   "\u00a3",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{10, 20}},
 				{C: 'v', P: []float64{28}},
 				{C: 'q', P: []float64{0, 16, 19, 16}},
@@ -4489,7 +4493,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 476,
 			Unicode:   "\u00a4",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{34, 138}},
 				{C: 'q', P: []float64{0, 6, 9, 17}},
 				{C: 'l', P: []float64{61, 60}},
@@ -4544,7 +4548,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 610,
 			Unicode:   "\u00a5",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{9, 667}},
 				{C: 'q', P: []float64{0, 16, 10.5, 25}},
 				{C: 't', P: []float64{23.5, 9}},
@@ -4613,7 +4617,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 250,
 			Unicode:   "\u00a6",
 			GerberLP:  "dd",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{84, 106}},
 				{C: 'q', P: []float64{0, 15, 6, 19}},
 				{C: 't', P: []float64{17, 4}},
@@ -4642,7 +4646,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 445,
 			Unicode:   "\u00a7",
 			GerberLP:  "dccc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{42, 341}},
 				{C: 'q', P: []float64{0, 76, 61, 119}},
 				{C: 'q', P: []float64{-42, 51, -42, 108}},
@@ -4732,7 +4736,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 400,
 			Unicode:   "\u00a8",
 			GerberLP:  "dd",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{41, 649}},
 				{C: 'q', P: []float64{0, 27, 18.5, 45.5}},
 				{C: 't', P: []float64{44.5, 18.5}},
@@ -4759,7 +4763,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 842,
 			Unicode:   "\u00a9",
 			GerberLP:  "dcdc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{50, 354}},
 				{C: 'q', P: []float64{0, 154, 108.5, 262.5}},
 				{C: 't', P: []float64{262.5, 108.5}},
@@ -4818,7 +4822,7 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 480,
 			Unicode:   "\u00aa",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{25, 458}},
 				{C: 'q', P: []float64{0, 59, 41, 90}},
 				{C: 't', P: []float64{104, 36}},
@@ -4862,8 +4866,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00ab": {
 			HorizAdvX: 514,
 			Unicode:   "\u00ab",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{29, 254}},
 				{C: 'q', P: []float64{0, 4, 10, 16}},
 				{C: 'l', P: []float64{173, 208}},
@@ -4901,8 +4905,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00ac": {
 			HorizAdvX: 0,
 			Unicode:   "\u00ac",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{63, 287}},
 				{C: 'v', P: []float64{84}},
 				{C: 'q', P: []float64{0, 10, 11, 10}},
@@ -4921,8 +4925,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00ad": {
 			HorizAdvX: 391,
 			Unicode:   "\u00ad",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{49, 175}},
 				{C: 'v', P: []float64{117}},
 				{C: 'q', P: []float64{0, 10, 10, 10}},
@@ -4938,8 +4942,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00ae": {
 			HorizAdvX: 622,
 			Unicode:   "\u00ae",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{50, 464}},
 				{C: 'q', P: []float64{0, 108, 76.5, 184.5}},
 				{C: 't', P: []float64{184.5, 76.5}},
@@ -4998,8 +5002,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00af": {
 			HorizAdvX: 400,
 			Unicode:   "\u00af",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{60, 610}},
 				{C: 'v', P: []float64{78}},
 				{C: 'q', P: []float64{0, 10, 10, 10}},
@@ -5015,8 +5019,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00b0": {
 			HorizAdvX: 288,
 			Unicode:   "\u00b0",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{24, 595}},
 				{C: 'q', P: []float64{0, 49, 35, 84.5}},
 				{C: 't', P: []float64{85, 35.5}},
@@ -5042,8 +5046,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00b1": {
 			HorizAdvX: 0,
 			Unicode:   "\u00b1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{63, 11}},
 				{C: 'v', P: []float64{83}},
 				{C: 'q', P: []float64{0, 10, 11, 10}},
@@ -5081,8 +5085,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00b2": {
 			HorizAdvX: 381,
 			Unicode:   "\u00b2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{7, 651}},
 				{C: 'q', P: []float64{0, 2, 3, 5}},
 				{C: 'q', P: []float64{27, 25, 72, 40}},
@@ -5118,8 +5122,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00b3": {
 			HorizAdvX: 341,
 			Unicode:   "\u00b3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{10, 297}},
 				{C: 'l', P: []float64{12, 36}},
 				{C: 'q', P: []float64{1, 3, 5, 3}},
@@ -5159,8 +5163,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00b4": {
 			HorizAdvX: 400,
 			Unicode:   "\u00b4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{104, 625}},
 				{C: 'q', P: []float64{0, 3, 5, 8}},
 				{C: 'l', P: []float64{173, 131}},
@@ -5180,8 +5184,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00b5": {
 			HorizAdvX: 645,
 			Unicode:   "\u00b5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{63, -191}},
 				{C: 'v', P: []float64{637}},
 				{C: 'q', P: []float64{0, 51, 49, 51}},
@@ -5235,8 +5239,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00b6": {
 			HorizAdvX: 573,
 			Unicode:   "\u00b6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 493}},
 				{C: 'q', P: []float64{0, 46, 16, 82.5}},
 				{C: 't', P: []float64{42, 59.5}},
@@ -5277,8 +5281,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00b7": {
 			HorizAdvX: 326,
 			Unicode:   "\u00b7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{50, 272}},
 				{C: 'q', P: []float64{0, 46, 33, 79.5}},
 				{C: 't', P: []float64{80, 33.5}},
@@ -5302,8 +5306,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00b8": {
 			HorizAdvX: 400,
 			Unicode:   "\u00b8",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{68, -207}},
 				{C: 'q', P: []float64{0, 8, 7, 8}},
 				{C: 'q', P: []float64{3, 0, 31, -7.5}},
@@ -5326,8 +5330,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00b9": {
 			HorizAdvX: 355,
 			Unicode:   "\u00b9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 657}},
 				{C: 'v', P: []float64{6}},
 				{C: 'q', P: []float64{0, 10, 14, 12}},
@@ -5363,8 +5367,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00ba": {
 			HorizAdvX: 0,
 			Unicode:   "\u00ba",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{24, 515}},
 				{C: 'q', P: []float64{0, 54, 19.5, 94}},
 				{C: 't', P: []float64{52.5, 62.5}},
@@ -5401,8 +5405,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00bb": {
 			HorizAdvX: 514,
 			Unicode:   "\u00bb",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{49, 30}},
 				{C: 'v', P: []float64{107}},
 				{C: 'q', P: []float64{0, 34, 14, 49}},
@@ -5440,8 +5444,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00bc": {
 			HorizAdvX: 804,
 			Unicode:   "\u00bc",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 657}},
 				{C: 'v', P: []float64{6}},
 				{C: 'q', P: []float64{0, 10, 14, 12}},
@@ -5531,8 +5535,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00bd": {
 			HorizAdvX: 835,
 			Unicode:   "\u00bd",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 657}},
 				{C: 'v', P: []float64{6}},
 				{C: 'q', P: []float64{0, 10, 14, 12}},
@@ -5617,8 +5621,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00be": {
 			HorizAdvX: 809,
 			Unicode:   "\u00be",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{15, 349}},
 				{C: 'l', P: []float64{12, 36}},
 				{C: 'q', P: []float64{1, 3, 5, 3}},
@@ -5708,8 +5712,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00bf": {
 			HorizAdvX: 526,
 			Unicode:   "\u00bf",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{40, 165}},
 				{C: 'q', P: []float64{0, 22, 3, 40.5}},
 				{C: 't', P: []float64{11.5, 41.5}},
@@ -5771,8 +5775,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00c0": {
 			HorizAdvX: 610,
 			Unicode:   "\u00c0",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{5, 12}},
 				{C: 'q', P: []float64{0, 8, 6, 25}},
 				{C: 'l', P: []float64{204, 618}},
@@ -5828,8 +5832,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00c1": {
 			HorizAdvX: 610,
 			Unicode:   "\u00c1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{5, 12}},
 				{C: 'q', P: []float64{0, 8, 6, 25}},
 				{C: 'l', P: []float64{204, 618}},
@@ -5885,8 +5889,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00c2": {
 			HorizAdvX: 610,
 			Unicode:   "\u00c2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{5, 12}},
 				{C: 'q', P: []float64{0, 8, 6, 25}},
 				{C: 'l', P: []float64{204, 618}},
@@ -5946,8 +5950,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00c3": {
 			HorizAdvX: 610,
 			Unicode:   "\u00c3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{5, 12}},
 				{C: 'q', P: []float64{0, 8, 6, 25}},
 				{C: 'l', P: []float64{204, 618}},
@@ -6009,8 +6013,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00c4": {
 			HorizAdvX: 610,
 			Unicode:   "\u00c4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{5, 12}},
 				{C: 'q', P: []float64{0, 8, 6, 25}},
 				{C: 'l', P: []float64{204, 618}},
@@ -6072,8 +6076,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00c5": {
 			HorizAdvX: 610,
 			Unicode:   "\u00c5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dccc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{5, 12}},
 				{C: 'q', P: []float64{0, 8, 6, 25}},
 				{C: 'l', P: []float64{204, 618}},
@@ -6129,8 +6133,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00c6": {
 			HorizAdvX: 831,
 			Unicode:   "\u00c6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-35, 9}},
 				{C: 'q', P: []float64{0, 5, 7, 22}},
 				{C: 'l', P: []float64{272, 624}},
@@ -6182,8 +6186,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00c7": {
 			HorizAdvX: 626,
 			Unicode:   "\u00c7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 353}},
 				{C: 'q', P: []float64{0, 105, 29.5, 181}},
 				{C: 't', P: []float64{79, 115.5}},
@@ -6253,8 +6257,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00c8": {
 			HorizAdvX: 639,
 			Unicode:   "\u00c8",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{548}},
 				{C: 'q', P: []float64{0, 52, 22, 68.5}},
@@ -6306,8 +6310,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00c9": {
 			HorizAdvX: 639,
 			Unicode:   "\u00c9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{548}},
 				{C: 'q', P: []float64{0, 52, 22, 68.5}},
@@ -6359,8 +6363,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00ca": {
 			HorizAdvX: 639,
 			Unicode:   "\u00ca",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{548}},
 				{C: 'q', P: []float64{0, 52, 22, 68.5}},
@@ -6416,8 +6420,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00cb": {
 			HorizAdvX: 639,
 			Unicode:   "\u00cb",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{548}},
 				{C: 'q', P: []float64{0, 52, 22, 68.5}},
@@ -6475,8 +6479,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00cc": {
 			HorizAdvX: 455,
 			Unicode:   "\u00cc",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{565}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -6523,8 +6527,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00cd": {
 			HorizAdvX: 455,
 			Unicode:   "\u00cd",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{565}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -6571,8 +6575,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00ce": {
 			HorizAdvX: 455,
 			Unicode:   "\u00ce",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{565}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -6623,8 +6627,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00cf": {
 			HorizAdvX: 455,
 			Unicode:   "\u00cf",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{565}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -6677,8 +6681,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00d0": {
 			HorizAdvX: 695,
 			Unicode:   "\u00d0",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 267}},
 				{C: 'v', P: []float64{49}},
 				{C: 'q', P: []float64{0, 10, 10, 10}},
@@ -6727,8 +6731,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00d1": {
 			HorizAdvX: 674,
 			Unicode:   "\u00d1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 28}},
 				{C: 'v', P: []float64{637}},
 				{C: 'q', P: []float64{0, 36, 40, 36}},
@@ -6781,8 +6785,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00d2": {
 			HorizAdvX: 710,
 			Unicode:   "\u00d2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 353}},
 				{C: 'q', P: []float64{0, 107, 28, 183}},
 				{C: 't', P: []float64{76.5, 115}},
@@ -6840,8 +6844,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00d3": {
 			HorizAdvX: 710,
 			Unicode:   "\u00d3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 353}},
 				{C: 'q', P: []float64{0, 107, 28, 183}},
 				{C: 't', P: []float64{76.5, 115}},
@@ -6899,8 +6903,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00d4": {
 			HorizAdvX: 710,
 			Unicode:   "\u00d4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 353}},
 				{C: 'q', P: []float64{0, 107, 28, 183}},
 				{C: 't', P: []float64{76.5, 115}},
@@ -6962,8 +6966,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00d5": {
 			HorizAdvX: 710,
 			Unicode:   "\u00d5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 353}},
 				{C: 'q', P: []float64{0, 107, 28, 183}},
 				{C: 't', P: []float64{76.5, 115}},
@@ -7027,8 +7031,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00d6": {
 			HorizAdvX: 710,
 			Unicode:   "\u00d6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 353}},
 				{C: 'q', P: []float64{0, 107, 28, 183}},
 				{C: 't', P: []float64{76.5, 115}},
@@ -7092,8 +7096,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00d7": {
 			HorizAdvX: 0,
 			Unicode:   "\u00d7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{71, 146}},
 				{C: 'q', P: []float64{0, 4, 4, 8}},
 				{C: 'l', P: []float64{101, 101}},
@@ -7129,8 +7133,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00d8": {
 			HorizAdvX: 720,
 			Unicode:   "\u00d8",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dccc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 353}},
 				{C: 'q', P: []float64{0, 107, 28, 183}},
 				{C: 't', P: []float64{76.5, 115}},
@@ -7187,8 +7191,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00d9": {
 			HorizAdvX: 632,
 			Unicode:   "\u00d9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 252}},
 				{C: 'v', P: []float64{381}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -7239,8 +7243,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00da": {
 			HorizAdvX: 632,
 			Unicode:   "\u00da",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 252}},
 				{C: 'v', P: []float64{381}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -7291,8 +7295,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00db": {
 			HorizAdvX: 632,
 			Unicode:   "\u00db",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 252}},
 				{C: 'v', P: []float64{381}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -7347,8 +7351,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00dc": {
 			HorizAdvX: 632,
 			Unicode:   "\u00dc",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 252}},
 				{C: 'v', P: []float64{381}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -7405,8 +7409,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00dd": {
 			HorizAdvX: 600,
 			Unicode:   "\u00dd",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 667}},
 				{C: 'q', P: []float64{0, 16, 10, 25}},
 				{C: 't', P: []float64{23, 9}},
@@ -7466,8 +7470,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00de": {
 			HorizAdvX: 632,
 			Unicode:   "\u00de",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{565}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -7504,8 +7508,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00df": {
 			HorizAdvX: 689,
 			Unicode:   "\u00df",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{51, 68}},
 				{C: 'v', P: []float64{517}},
 				{C: 'q', P: []float64{0, 65, 31, 112}},
@@ -7563,8 +7567,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00e0": {
 			HorizAdvX: 630,
 			Unicode:   "\u00e0",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{31, 163}},
 				{C: 'q', P: []float64{0, 79, 55, 119.5}},
 				{C: 't', P: []float64{139, 48.5}},
@@ -7626,8 +7630,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00e1": {
 			HorizAdvX: 630,
 			Unicode:   "\u00e1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{31, 163}},
 				{C: 'q', P: []float64{0, 79, 55, 119.5}},
 				{C: 't', P: []float64{139, 48.5}},
@@ -7689,8 +7693,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00e2": {
 			HorizAdvX: 630,
 			Unicode:   "\u00e2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{31, 163}},
 				{C: 'q', P: []float64{0, 79, 55, 119.5}},
 				{C: 't', P: []float64{139, 48.5}},
@@ -7756,8 +7760,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00e3": {
 			HorizAdvX: 630,
 			Unicode:   "\u00e3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{31, 163}},
 				{C: 'q', P: []float64{0, 79, 55, 119.5}},
 				{C: 't', P: []float64{139, 48.5}},
@@ -7825,8 +7829,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00e4": {
 			HorizAdvX: 630,
 			Unicode:   "\u00e4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{31, 163}},
 				{C: 'q', P: []float64{0, 79, 55, 119.5}},
 				{C: 't', P: []float64{139, 48.5}},
@@ -7894,8 +7898,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00e5": {
 			HorizAdvX: 630,
 			Unicode:   "\u00e5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{31, 163}},
 				{C: 'q', P: []float64{0, 79, 55, 119.5}},
 				{C: 't', P: []float64{139, 48.5}},
@@ -7963,8 +7967,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00e6": {
 			HorizAdvX: 826,
 			Unicode:   "\u00e6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dccc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 167}},
 				{C: 'q', P: []float64{0, 83, 55, 123.5}},
 				{C: 't', P: []float64{140, 47.5}},
@@ -8033,8 +8037,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00e7": {
 			HorizAdvX: 589,
 			Unicode:   "\u00e7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 247}},
 				{C: 'q', P: []float64{0, 72, 26, 125.5}},
 				{C: 't', P: []float64{70, 83.5}},
@@ -8094,8 +8098,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00e8": {
 			HorizAdvX: 640,
 			Unicode:   "\u00e8",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 250}},
 				{C: 'q', P: []float64{0, 72, 26, 125.5}},
 				{C: 't', P: []float64{70, 83.5}},
@@ -8155,8 +8159,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00e9": {
 			HorizAdvX: 640,
 			Unicode:   "\u00e9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 250}},
 				{C: 'q', P: []float64{0, 72, 26, 125.5}},
 				{C: 't', P: []float64{70, 83.5}},
@@ -8216,8 +8220,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00ea": {
 			HorizAdvX: 640,
 			Unicode:   "\u00ea",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 250}},
 				{C: 'q', P: []float64{0, 72, 26, 125.5}},
 				{C: 't', P: []float64{70, 83.5}},
@@ -8281,8 +8285,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00eb": {
 			HorizAdvX: 640,
 			Unicode:   "\u00eb",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 250}},
 				{C: 'q', P: []float64{0, 72, 26, 125.5}},
 				{C: 't', P: []float64{70, 83.5}},
@@ -8348,8 +8352,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00ec": {
 			HorizAdvX: 450,
 			Unicode:   "\u00ec",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{364}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -8391,8 +8395,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00ed": {
 			HorizAdvX: 450,
 			Unicode:   "\u00ed",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{364}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -8434,8 +8438,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00ee": {
 			HorizAdvX: 450,
 			Unicode:   "\u00ee",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{364}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -8481,8 +8485,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00ef": {
 			HorizAdvX: 450,
 			Unicode:   "\u00ef",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{364}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -8530,8 +8534,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00f0": {
 			HorizAdvX: 654,
 			Unicode:   "\u00f0",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 241}},
 				{C: 'q', P: []float64{0, 70, 26, 122}},
 				{C: 't', P: []float64{70, 81}},
@@ -8595,8 +8599,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00f1": {
 			HorizAdvX: 608,
 			Unicode:   "\u00f1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 68}},
 				{C: 'v', P: []float64{364}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -8653,8 +8657,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00f2": {
 			HorizAdvX: 654,
 			Unicode:   "\u00f2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 250}},
 				{C: 'q', P: []float64{0, 72, 26, 125.5}},
 				{C: 't', P: []float64{70, 83.5}},
@@ -8710,8 +8714,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00f3": {
 			HorizAdvX: 654,
 			Unicode:   "\u00f3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 250}},
 				{C: 'q', P: []float64{0, 72, 26, 125.5}},
 				{C: 't', P: []float64{70, 83.5}},
@@ -8767,8 +8771,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00f4": {
 			HorizAdvX: 654,
 			Unicode:   "\u00f4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 250}},
 				{C: 'q', P: []float64{0, 72, 26, 125.5}},
 				{C: 't', P: []float64{70, 83.5}},
@@ -8828,8 +8832,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00f5": {
 			HorizAdvX: 654,
 			Unicode:   "\u00f5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 250}},
 				{C: 'q', P: []float64{0, 72, 26, 125.5}},
 				{C: 't', P: []float64{70, 83.5}},
@@ -8891,8 +8895,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00f6": {
 			HorizAdvX: 654,
 			Unicode:   "\u00f6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 250}},
 				{C: 'q', P: []float64{0, 72, 26, 125.5}},
 				{C: 't', P: []float64{70, 83.5}},
@@ -8954,8 +8958,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00f7": {
 			HorizAdvX: 0,
 			Unicode:   "\u00f7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{63, 214}},
 				{C: 'v', P: []float64{83}},
 				{C: 'q', P: []float64{0, 11, 11, 11}},
@@ -8991,8 +8995,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00f8": {
 			HorizAdvX: 654,
 			Unicode:   "\u00f8",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dccc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 250}},
 				{C: 'q', P: []float64{0, 72, 26, 125.5}},
 				{C: 't', P: []float64{70, 83.5}},
@@ -9043,8 +9047,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00f9": {
 			HorizAdvX: 608,
 			Unicode:   "\u00f9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 157}},
 				{C: 'v', P: []float64{275}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -9099,8 +9103,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00fa": {
 			HorizAdvX: 608,
 			Unicode:   "\u00fa",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 157}},
 				{C: 'v', P: []float64{275}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -9155,8 +9159,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00fb": {
 			HorizAdvX: 608,
 			Unicode:   "\u00fb",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 157}},
 				{C: 'v', P: []float64{275}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -9215,8 +9219,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00fc": {
 			HorizAdvX: 608,
 			Unicode:   "\u00fc",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 157}},
 				{C: 'v', P: []float64{275}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -9277,8 +9281,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00fd": {
 			HorizAdvX: 561,
 			Unicode:   "\u00fd",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 478}},
 				{C: 'q', P: []float64{0, 22, 29, 22}},
 				{C: 'h', P: []float64{247}},
@@ -9335,8 +9339,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00fe": {
 			HorizAdvX: 644,
 			Unicode:   "\u00fe",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, -133}},
 				{C: 'v', P: []float64{865}},
 				{C: 'q', P: []float64{0, 36, 15.5, 52}},
@@ -9376,8 +9380,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u00ff": {
 			HorizAdvX: 561,
 			Unicode:   "\u00ff",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 478}},
 				{C: 'q', P: []float64{0, 22, 29, 22}},
 				{C: 'h', P: []float64{247}},
@@ -9440,8 +9444,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u0152": {
 			HorizAdvX: 1083,
 			Unicode:   "\u0152",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dccc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 353}},
 				{C: 'q', P: []float64{0, 107, 28, 183}},
 				{C: 't', P: []float64{76.5, 115}},
@@ -9508,8 +9512,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u0153": {
 			HorizAdvX: 912,
 			Unicode:   "\u0153",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dccc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 250}},
 				{C: 'q', P: []float64{0, 72, 26, 125.5}},
 				{C: 't', P: []float64{70, 83.5}},
@@ -9568,8 +9572,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u0178": {
 			HorizAdvX: 600,
 			Unicode:   "\u0178",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 667}},
 				{C: 'q', P: []float64{0, 16, 10, 25}},
 				{C: 't', P: []float64{23, 9}},
@@ -9635,8 +9639,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u02c6": {
 			HorizAdvX: 400,
 			Unicode:   "\u02c6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{41, 621}},
 				{C: 'q', P: []float64{0, 3, 4, 7}},
 				{C: 'l', P: []float64{148, 126}},
@@ -9660,8 +9664,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u02dc": {
 			HorizAdvX: 400,
 			Unicode:   "\u02dc",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{39, 602}},
 				{C: 'q', P: []float64{6, 51, 32.5, 86}},
 				{C: 't', P: []float64{65.5, 35}},
@@ -9688,73 +9692,73 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 484,
 			Unicode:   "\u2000",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2001": {
 			HorizAdvX: 968,
 			Unicode:   "\u2001",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2002": {
 			HorizAdvX: 484,
 			Unicode:   "\u2002",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2003": {
 			HorizAdvX: 968,
 			Unicode:   "\u2003",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2004": {
 			HorizAdvX: 322,
 			Unicode:   "\u2004",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2005": {
 			HorizAdvX: 242,
 			Unicode:   "\u2005",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2006": {
 			HorizAdvX: 161,
 			Unicode:   "\u2006",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2007": {
 			HorizAdvX: 161,
 			Unicode:   "\u2007",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2008": {
 			HorizAdvX: 121,
 			Unicode:   "\u2008",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2009": {
 			HorizAdvX: 193,
 			Unicode:   "\u2009",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u200a": {
 			HorizAdvX: 53,
 			Unicode:   "\u200a",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2010": {
 			HorizAdvX: 391,
 			Unicode:   "\u2010",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{49, 175}},
 				{C: 'v', P: []float64{117}},
 				{C: 'q', P: []float64{0, 10, 10, 10}},
@@ -9770,8 +9774,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u2011": {
 			HorizAdvX: 391,
 			Unicode:   "\u2011",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{49, 175}},
 				{C: 'v', P: []float64{117}},
 				{C: 'q', P: []float64{0, 10, 10, 10}},
@@ -9787,8 +9791,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u2012": {
 			HorizAdvX: 391,
 			Unicode:   "\u2012",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{49, 175}},
 				{C: 'v', P: []float64{117}},
 				{C: 'q', P: []float64{0, 10, 10, 10}},
@@ -9804,8 +9808,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u2013": {
 			HorizAdvX: 0,
 			Unicode:   "\u2013",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{49, 189}},
 				{C: 'v', P: []float64{88}},
 				{C: 'q', P: []float64{0, 11, 10, 11}},
@@ -9821,8 +9825,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u2014": {
 			HorizAdvX: 1000,
 			Unicode:   "\u2014",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 189}},
 				{C: 'v', P: []float64{88}},
 				{C: 'q', P: []float64{0, 11, 10, 11}},
@@ -9838,8 +9842,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u2018": {
 			HorizAdvX: 299,
 			Unicode:   "\u2018",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{31, 650}},
 				{C: 'q', P: []float64{0, 11, 13, 18}},
 				{C: 'l', P: []float64{70, 46}},
@@ -9859,8 +9863,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u2019": {
 			HorizAdvX: 299,
 			Unicode:   "\u2019",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 488}},
 				{C: 'q', P: []float64{0, 5, 6, 15}},
 				{C: 'l', P: []float64{119, 203}},
@@ -9880,8 +9884,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u201a": {
 			HorizAdvX: 299,
 			Unicode:   "\u201a",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{31, -33}},
 				{C: 'q', P: []float64{0, 8, 6, 16}},
 				{C: 'l', P: []float64{140, 189}},
@@ -9901,8 +9905,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u201c": {
 			HorizAdvX: 449,
 			Unicode:   "\u201c",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{31, 636}},
 				{C: 'q', P: []float64{0, 8, 13, 17}},
 				{C: 'l', P: []float64{70, 46}},
@@ -9936,8 +9940,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u201d": {
 			HorizAdvX: 449,
 			Unicode:   "\u201d",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{31, 570}},
 				{C: 'q', P: []float64{0, 5, 6, 15}},
 				{C: 'l', P: []float64{119, 203}},
@@ -9971,8 +9975,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u201e": {
 			HorizAdvX: 449,
 			Unicode:   "\u201e",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{31, 64}},
 				{C: 'q', P: []float64{0, 8, 6, 16}},
 				{C: 'l', P: []float64{140, 189}},
@@ -10006,8 +10010,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u2022": {
 			HorizAdvX: 339,
 			Unicode:   "\u2022",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{37, 349}},
 				{C: 'q', P: []float64{0, 55, 39, 94}},
 				{C: 't', P: []float64{94, 39}},
@@ -10031,8 +10035,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u2026": {
 			HorizAdvX: 978,
 			Unicode:   "\u2026",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{50, 103}},
 				{C: 'q', P: []float64{0, 47, 33, 80}},
 				{C: 't', P: []float64{80, 33}},
@@ -10093,13 +10097,13 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 193,
 			Unicode:   "\u202f",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2039": {
 			HorizAdvX: 293,
 			Unicode:   "\u2039",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{29, 254}},
 				{C: 'q', P: []float64{0, 4, 10, 16}},
 				{C: 'l', P: []float64{173, 208}},
@@ -10121,8 +10125,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u203a": {
 			HorizAdvX: 293,
 			Unicode:   "\u203a",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{49, 30}},
 				{C: 'v', P: []float64{107}},
 				{C: 'q', P: []float64{0, 34, 14, 49}},
@@ -10145,13 +10149,13 @@ var fascinate_inlineregularFont = &Font{
 			HorizAdvX: 242,
 			Unicode:   "\u205f",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u20ac": {
 			HorizAdvX: 635,
 			Unicode:   "\u20ac",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{17, 237}},
 				{C: 'l', P: []float64{10, 36}},
 				{C: 'q', P: []float64{3, 11, 13, 11}},
@@ -10222,8 +10226,8 @@ var fascinate_inlineregularFont = &Font{
 		"\u2122": {
 			HorizAdvX: 765,
 			Unicode:   "\u2122",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{10, 639}},
 				{C: 'v', P: []float64{50}},
 				{C: 'q', P: []float64{0, 12, 15, 12}},
@@ -10295,8 +10299,8 @@ var fascinate_inlineregularFont = &Font{
 		"\ue000": {
 			HorizAdvX: 0,
 			Unicode:   "\ue000",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 0}},
 				{C: 'v', P: []float64{500}},
 				{C: 'h', P: []float64{500}},

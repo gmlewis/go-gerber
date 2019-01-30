@@ -1,42 +1,46 @@
 // Auto-generated - DO NOT EDIT!
 
-package gerber
+package snickles
+
+import (
+	"github.com/gmlewis/go-gerber/gerber"
+)
 
 func init() {
-	Fonts["snickles"] = snicklesFont
+	gerber.Fonts["snickles"] = snicklesFont
 }
 
-var snicklesFont = &Font{
+var snicklesFont = &gerber.Font{
 	// ID: "snickles",
 	HorizAdvX:        1013,
 	UnitsPerEm:       2048,
 	Ascent:           1638,
 	Descent:          -410,
 	MissingHorizAdvX: 440,
-	Glyphs: map[string]*Glyph{
+	Glyphs: map[string]*gerber.Glyph{
 		" ": {
 			HorizAdvX: 440,
 			Unicode:   " ",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\t": {
 			HorizAdvX: 440,
 			Unicode:   "\t",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00a0": {
 			HorizAdvX: 440,
 			Unicode:   "\u00a0",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"!": {
 			HorizAdvX: 446,
 			Unicode:   "!",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-104, 221}},
 				{C: 'l', P: []float64{73, -147}},
 				{C: 'q', P: []float64{16, -31, 115, -4}},
@@ -69,8 +73,8 @@ var snicklesFont = &Font{
 		"\"": {
 			HorizAdvX: 1218,
 			Unicode:   "\"",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-51, 1229}},
 				{C: 'q', P: []float64{-25, -20, 4, -31}},
 				{C: 'q', P: []float64{25, -6, 47, -4}},
@@ -101,25 +105,25 @@ var snicklesFont = &Font{
 			HorizAdvX: 1335,
 			Unicode:   "#",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"$": {
 			HorizAdvX: 0,
 			Unicode:   "$",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"%": {
 			HorizAdvX: 1609,
 			Unicode:   "%",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"&": {
 			HorizAdvX: 798,
 			Unicode:   "&",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-283, 340}},
 				{C: 'q', P: []float64{10, -117, 103, -170}},
 				{C: 'q', P: []float64{78, -45, 203, -23}},
@@ -180,8 +184,8 @@ var snicklesFont = &Font{
 		"'": {
 			HorizAdvX: 1218,
 			Unicode:   "'",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-10, 1229}},
 				{C: 'q', P: []float64{-25, -20, 4, -31}},
 				{C: 'q', P: []float64{25, -6, 45, -4}},
@@ -200,31 +204,31 @@ var snicklesFont = &Font{
 			HorizAdvX: 757,
 			Unicode:   "(",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		")": {
 			HorizAdvX: 757,
 			Unicode:   ")",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"*": {
 			HorizAdvX: 1024,
 			Unicode:   "*",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"+": {
 			HorizAdvX: 0,
 			Unicode:   "+",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		",": {
 			HorizAdvX: 405,
 			Unicode:   ",",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-14, -141}},
 				{C: 'q', P: []float64{-25, -20, 4, -31}},
 				{C: 'q', P: []float64{25, -6, 47, -4}},
@@ -243,13 +247,13 @@ var snicklesFont = &Font{
 			HorizAdvX: 669,
 			Unicode:   "-",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		".": {
 			HorizAdvX: 405,
 			Unicode:   ".",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{14, 221}},
 				{C: 'l', P: []float64{74, -147}},
 				{C: 'q', P: []float64{16, -31, 117, -4}},
@@ -266,13 +270,13 @@ var snicklesFont = &Font{
 			HorizAdvX: 567,
 			Unicode:   "/",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"0": {
 			HorizAdvX: 638,
 			Unicode:   "0",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-84, 264}},
 				{C: 'q', P: []float64{6, -123, 59, -176}},
 				{C: 'q', P: []float64{29, -29, 91, -31}},
@@ -304,8 +308,8 @@ var snicklesFont = &Font{
 		"1": {
 			HorizAdvX: 555,
 			Unicode:   "1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-8, 111}},
 				{C: 'q', P: []float64{-4, -12, 4, -18.5}},
 				{C: 't', P: []float64{28.5, -7.5}},
@@ -332,8 +336,8 @@ var snicklesFont = &Font{
 		"2": {
 			HorizAdvX: 698,
 			Unicode:   "2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-190, 111}},
 				{C: 'q', P: []float64{-13, -15, 17, -21}},
 				{C: 'q', P: []float64{7, -1, 15, -2}},
@@ -381,8 +385,8 @@ var snicklesFont = &Font{
 		"3": {
 			HorizAdvX: 679,
 			Unicode:   "3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-104, 190}},
 				{C: 'q', P: []float64{6, -84, 75, -131}},
 				{C: 'q', P: []float64{61, -41, 187, -18}},
@@ -426,8 +430,8 @@ var snicklesFont = &Font{
 		"4": {
 			HorizAdvX: 587,
 			Unicode:   "4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-76, 492}},
 				{C: 'q', P: []float64{23, -39, 119, -35}},
 				{C: 'q', P: []float64{84, 4, 197, 24}},
@@ -471,8 +475,8 @@ var snicklesFont = &Font{
 		"5": {
 			HorizAdvX: 741,
 			Unicode:   "5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-31, 209}},
 				{C: 'q', P: []float64{8, -117, 99, -168}},
 				{C: 'q', P: []float64{101, -58, 282, 25}},
@@ -523,7 +527,7 @@ var snicklesFont = &Font{
 			HorizAdvX: 686,
 			Unicode:   "6",
 			GerberLP:  "dccc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-51, 389}},
 				{C: 'q', P: []float64{0, -150, 59, -239}},
 				{C: 'q', P: []float64{72, -109, 240, -60}},
@@ -575,8 +579,8 @@ var snicklesFont = &Font{
 		"7": {
 			HorizAdvX: 552,
 			Unicode:   "7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-147, -178}},
 				{C: 'q', P: []float64{-8, -24, 30, -25}},
 				{C: 'q', P: []float64{20, 0, 54, 6}},
@@ -612,7 +616,7 @@ var snicklesFont = &Font{
 			HorizAdvX: 745,
 			Unicode:   "8",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-94, 420}},
 				{C: 'q', P: []float64{-2, -129, 84, -230}},
 				{C: 'q', P: []float64{84, -96, 215, -108}},
@@ -657,7 +661,7 @@ var snicklesFont = &Font{
 			HorizAdvX: 716,
 			Unicode:   "9",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-33, 86}},
 				{C: 'q', P: []float64{27, -23, 84, -16}},
 				{C: 'q', P: []float64{72, 6, 148, 41}},
@@ -704,8 +708,8 @@ var snicklesFont = &Font{
 		":": {
 			HorizAdvX: 387,
 			Unicode:   ":",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-104, 221}},
 				{C: 'l', P: []float64{73, -147}},
 				{C: 'q', P: []float64{16, -31, 115, -4}},
@@ -729,8 +733,8 @@ var snicklesFont = &Font{
 		";": {
 			HorizAdvX: 399,
 			Unicode:   ";",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-104, -141}},
 				{C: 'q', P: []float64{-25, -20, 4, -31}},
 				{C: 'q', P: []float64{25, -6, 47, -4}},
@@ -760,8 +764,8 @@ var snicklesFont = &Font{
 		"\u037e": {
 			HorizAdvX: 399,
 			Unicode:   "\u037e",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-104, -141}},
 				{C: 'q', P: []float64{-25, -20, 4, -31}},
 				{C: 'q', P: []float64{25, -6, 47, -4}},
@@ -792,25 +796,25 @@ var snicklesFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "<",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"=": {
 			HorizAdvX: 0,
 			Unicode:   "=",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		">": {
 			HorizAdvX: 0,
 			Unicode:   ">",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"?": {
 			HorizAdvX: 804,
 			Unicode:   "?",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-35, 207}},
 				{C: 'q', P: []float64{59, -160, 66, -170}},
 				{C: 'q', P: []float64{16, -31, 114, -4}},
@@ -865,13 +869,13 @@ var snicklesFont = &Font{
 			HorizAdvX: 2017,
 			Unicode:   "@",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"A": {
 			HorizAdvX: 782,
 			Unicode:   "A",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-190, 446}},
 				{C: 'h', P: []float64{10}},
 				{C: 'q', P: []float64{72, 0, 135, 37}},
@@ -920,7 +924,7 @@ var snicklesFont = &Font{
 			HorizAdvX: 733,
 			Unicode:   "B",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-117, 156}},
 				{C: 'q', P: []float64{-1, -4, -1, -7}},
 				{C: 'q', P: []float64{0, -20, 44, -18}},
@@ -1010,8 +1014,8 @@ var snicklesFont = &Font{
 		"C": {
 			HorizAdvX: 729,
 			Unicode:   "C",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-27, 449}},
 				{C: 'v', P: []float64{-46}},
 				{C: 'q', P: []float64{0, -156, 19, -219}},
@@ -1057,8 +1061,8 @@ var snicklesFont = &Font{
 		"D": {
 			HorizAdvX: 638,
 			Unicode:   "D",
-			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-134, 78}},
 				{C: 'q', P: []float64{0, -20, 36, -20}},
 				{C: 'q', P: []float64{19, 0, 49, 5}},
@@ -1116,8 +1120,8 @@ var snicklesFont = &Font{
 		"E": {
 			HorizAdvX: 587,
 			Unicode:   "E",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-143, 252}},
 				{C: 'q', P: []float64{8, -100, 80, -162}},
 				{C: 'q', P: []float64{54, -45, 165, -45}},
@@ -1175,8 +1179,8 @@ var snicklesFont = &Font{
 		"F": {
 			HorizAdvX: 577,
 			Unicode:   "F",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-109, 109}},
 				{C: 'q', P: []float64{0, -14, 35, -14}},
 				{C: 'q', P: []float64{10, 0, 21, 1}},
@@ -1222,8 +1226,8 @@ var snicklesFont = &Font{
 		"G": {
 			HorizAdvX: 626,
 			Unicode:   "G",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-102, 283}},
 				{C: 'q', P: []float64{0, -7, -1, -14}},
 				{C: 'q', P: []float64{0, -128, 60, -171}},
@@ -1276,8 +1280,8 @@ var snicklesFont = &Font{
 		"H": {
 			HorizAdvX: 778,
 			Unicode:   "H",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-92, 559}},
 				{C: 'q', P: []float64{13, -8, 35, -8}},
 				{C: 'q', P: []float64{16, 0, 39, 4}},
@@ -1334,8 +1338,8 @@ var snicklesFont = &Font{
 		"I": {
 			HorizAdvX: 362,
 			Unicode:   "I",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-86, 121}},
 				{C: 'q', P: []float64{0, -14, 33, -15}},
 				{C: 'q', P: []float64{8, -1, 16, 0}},
@@ -1360,8 +1364,8 @@ var snicklesFont = &Font{
 		"J": {
 			HorizAdvX: 409,
 			Unicode:   "J",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-426, -78}},
 				{C: 'q', P: []float64{-15, -43, -15, -91.5}},
 				{C: 't', P: []float64{15, -100.5}},
@@ -1393,8 +1397,8 @@ var snicklesFont = &Font{
 		"K": {
 			HorizAdvX: 751,
 			Unicode:   "K",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-98, 129}},
 				{C: 'q', P: []float64{0, -10, 32, -12}},
 				{C: 'q', P: []float64{37, 0, 72, 8}},
@@ -1439,8 +1443,8 @@ var snicklesFont = &Font{
 		"L": {
 			HorizAdvX: 428,
 			Unicode:   "L",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-123, -8}},
 				{C: 'q', P: []float64{0, -13, 31, -13}},
 				{C: 'q', P: []float64{22, 0, 61, 7}},
@@ -1470,8 +1474,8 @@ var snicklesFont = &Font{
 		"M": {
 			HorizAdvX: 1087,
 			Unicode:   "M",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-152, 84}},
 				{C: 'q', P: []float64{0, -12, 30, -12}},
 				{C: 'q', P: []float64{10, 0, 24, 2}},
@@ -1513,8 +1517,8 @@ var snicklesFont = &Font{
 		"N": {
 			HorizAdvX: 800,
 			Unicode:   "N",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-88, 121}},
 				{C: 'q', P: []float64{0, -16, 53, -10}},
 				{C: 'q', P: []float64{31, 2, 62, 10}},
@@ -1555,7 +1559,7 @@ var snicklesFont = &Font{
 			HorizAdvX: 663,
 			Unicode:   "O",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-63, 264}},
 				{C: 'q', P: []float64{6, -123, 59, -176}},
 				{C: 'q', P: []float64{29, -29, 90, -31}},
@@ -1592,8 +1596,8 @@ var snicklesFont = &Font{
 		"P": {
 			HorizAdvX: 794,
 			Unicode:   "P",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-102, 117}},
 				{C: 'q', P: []float64{0, -12, 32.5, -12.5}},
 				{C: 't', P: []float64{71.5, 6.5}},
@@ -1657,7 +1661,7 @@ var snicklesFont = &Font{
 			HorizAdvX: 751,
 			Unicode:   "Q",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-76, 408}},
 				{C: 'q', P: []float64{-10, -66, -10, -118}},
 				{C: 'q', P: []float64{0, -57, 12, -93}},
@@ -1714,8 +1718,8 @@ var snicklesFont = &Font{
 		"R": {
 			HorizAdvX: 772,
 			Unicode:   "R",
-			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-75, 131}},
 				{C: 'q', P: []float64{0, -18, 35, -18}},
 				{C: 'q', P: []float64{20, 0, 50, 6}},
@@ -1773,8 +1777,8 @@ var snicklesFont = &Font{
 		"S": {
 			HorizAdvX: 782,
 			Unicode:   "S",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-76, 274}},
 				{C: 'q', P: []float64{-4, -15, -3, -31}},
 				{C: 'q', P: []float64{0, -35, 16, -81}},
@@ -1856,8 +1860,8 @@ var snicklesFont = &Font{
 		"T": {
 			HorizAdvX: 520,
 			Unicode:   "T",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-141, 1294}},
 				{C: 'q', P: []float64{3, -15, 36, -15}},
 				{C: 'q', P: []float64{28, 0, 76, 11}},
@@ -1891,8 +1895,8 @@ var snicklesFont = &Font{
 		"U": {
 			HorizAdvX: 702,
 			Unicode:   "U",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-31, 201}},
 				{C: 'q', P: []float64{16, -49, 43, -70}},
 				{C: 'q', P: []float64{23, -19, 70, -19}},
@@ -1930,8 +1934,8 @@ var snicklesFont = &Font{
 		"V": {
 			HorizAdvX: 702,
 			Unicode:   "V",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{78, 143}},
 				{C: 'q', P: []float64{0, -16, 36, -15}},
 				{C: 'q', P: []float64{21, 0, 52, 5}},
@@ -1966,8 +1970,8 @@ var snicklesFont = &Font{
 		"W": {
 			HorizAdvX: 1220,
 			Unicode:   "W",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{84, 842}},
 				{C: 'q', P: []float64{-4, -96, -4, -181}},
 				{C: 'q', P: []float64{0, -356, 74, -526}},
@@ -2022,8 +2026,8 @@ var snicklesFont = &Font{
 		"X": {
 			HorizAdvX: 649,
 			Unicode:   "X",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-193, 150}},
 				{C: 'q', P: []float64{15, -9, 41, -10}},
 				{C: 'q', P: []float64{41, 0, 109, 24}},
@@ -2074,8 +2078,8 @@ var snicklesFont = &Font{
 		"Y": {
 			HorizAdvX: 776,
 			Unicode:   "Y",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{2, 856}},
 				{C: 'q', P: []float64{-2, -29, -2, -55}},
 				{C: 'q', P: []float64{0, -137, 63, -203}},
@@ -2123,8 +2127,8 @@ var snicklesFont = &Font{
 		"Z": {
 			HorizAdvX: 632,
 			Unicode:   "Z",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-242, 154}},
 				{C: 'q', P: []float64{-2, -4, -2, -8}},
 				{C: 'q', P: []float64{0, -17, 39, -17}},
@@ -2177,43 +2181,43 @@ var snicklesFont = &Font{
 			HorizAdvX: 757,
 			Unicode:   "[",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\\": {
 			HorizAdvX: 567,
 			Unicode:   "\\",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"]": {
 			HorizAdvX: 757,
 			Unicode:   "]",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"^": {
 			HorizAdvX: 0,
 			Unicode:   "^",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"_": {
 			HorizAdvX: 1024,
 			Unicode:   "_",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"`": {
 			HorizAdvX: 1024,
 			Unicode:   "`",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"a": {
 			HorizAdvX: 692,
 			Unicode:   "a",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-100, 362}},
 				{C: 'q', P: []float64{4, -147, 73, -192}},
 				{C: 'q', P: []float64{20, -13, 61, -13}},
@@ -2264,7 +2268,7 @@ var snicklesFont = &Font{
 			HorizAdvX: 667,
 			Unicode:   "b",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-90, 143}},
 				{C: 'q', P: []float64{29, -35, 92, -41}},
 				{C: 'q', P: []float64{14, -1, 27, -1}},
@@ -2330,8 +2334,8 @@ var snicklesFont = &Font{
 		"c": {
 			HorizAdvX: 677,
 			Unicode:   "c",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-66, 645}},
 				{C: 'q', P: []float64{-17, -108, -17, -196}},
 				{C: 'q', P: []float64{0, -152, 50, -246}},
@@ -2375,7 +2379,7 @@ var snicklesFont = &Font{
 			HorizAdvX: 710,
 			Unicode:   "d",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-61, 295}},
 				{C: 'q', P: []float64{31, -125, 135, -176}},
 				{C: 'q', P: []float64{53, -28, 118, -28}},
@@ -2419,7 +2423,7 @@ var snicklesFont = &Font{
 			HorizAdvX: 624,
 			Unicode:   "e",
 			GerberLP:  "dccc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-76, 307}},
 				{C: 'q', P: []float64{0, -168, 105, -192}},
 				{C: 'q', P: []float64{19, -5, 42, -5}},
@@ -2476,8 +2480,8 @@ var snicklesFont = &Font{
 		"f": {
 			HorizAdvX: 428,
 			Unicode:   "f",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-125, 1085}},
 				{C: 'q', P: []float64{-2, -4, -1, -6}},
 				{C: 'q', P: []float64{0, -16, 36, -16}},
@@ -2523,7 +2527,7 @@ var snicklesFont = &Font{
 			HorizAdvX: 757,
 			Unicode:   "g",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-127, -283}},
 				{C: 'q', P: []float64{18, -57, 84, -88}},
 				{C: 'q', P: []float64{59, -27, 123, -26}},
@@ -2587,8 +2591,8 @@ var snicklesFont = &Font{
 		"h": {
 			HorizAdvX: 757,
 			Unicode:   "h",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-66, 127}},
 				{C: 'q', P: []float64{0, -13, 27, -12}},
 				{C: 'q', P: []float64{24, 0, 72, 10}},
@@ -2630,8 +2634,8 @@ var snicklesFont = &Font{
 		"i": {
 			HorizAdvX: 378,
 			Unicode:   "i",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-84, 147}},
 				{C: 'q', P: []float64{3, -19, 37, -18}},
 				{C: 'q', P: []float64{27, 0, 76, 12}},
@@ -2672,8 +2676,8 @@ var snicklesFont = &Font{
 		"j": {
 			HorizAdvX: 362,
 			Unicode:   "j",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-559, -111}},
 				{C: 'q', P: []float64{-13, -56, -14, -98}},
 				{C: 'q', P: []float64{0, -58, 26, -98}},
@@ -2743,7 +2747,7 @@ var snicklesFont = &Font{
 			HorizAdvX: 677,
 			Unicode:   "k",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-139, 147}},
 				{C: 'q', P: []float64{0, -10, 33, -12}},
 				{C: 'q', P: []float64{47, 0, 73, 6}},
@@ -2819,8 +2823,8 @@ var snicklesFont = &Font{
 		"l": {
 			HorizAdvX: 366,
 			Unicode:   "l",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-103, 121}},
 				{C: 'q', P: []float64{0, -19, 35, -19}},
 				{C: 'q', P: []float64{20, 0, 52, 7}},
@@ -2841,8 +2845,8 @@ var snicklesFont = &Font{
 		"m": {
 			HorizAdvX: 1044,
 			Unicode:   "m",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-125, 119}},
 				{C: 'q', P: []float64{0, -14, 33, -14}},
 				{C: 'q', P: []float64{21, 0, 53, 6}},
@@ -2909,8 +2913,8 @@ var snicklesFont = &Font{
 		"n": {
 			HorizAdvX: 788,
 			Unicode:   "n",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-78, 125}},
 				{C: 'q', P: []float64{0, -13, 26, -12}},
 				{C: 'q', P: []float64{24, 0, 72, 10}},
@@ -2948,7 +2952,7 @@ var snicklesFont = &Font{
 			HorizAdvX: 649,
 			Unicode:   "o",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-96, 254}},
 				{C: 'q', P: []float64{12, -135, 106, -148}},
 				{C: 'q', P: []float64{22, -3, 45, -3}},
@@ -2985,7 +2989,7 @@ var snicklesFont = &Font{
 			HorizAdvX: 722,
 			Unicode:   "p",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-234, -324}},
 				{C: 'q', P: []float64{0, -20, 35, -20}},
 				{C: 'q', P: []float64{19, 0, 49, 6}},
@@ -3041,8 +3045,8 @@ var snicklesFont = &Font{
 		"q": {
 			HorizAdvX: 667,
 			Unicode:   "q",
-			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-135, 358}},
 				{C: 'q', P: []float64{-7, -42, -7, -77}},
 				{C: 'q', P: []float64{0, -103, 62, -148}},
@@ -3091,8 +3095,8 @@ var snicklesFont = &Font{
 		"r": {
 			HorizAdvX: 571,
 			Unicode:   "r",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-117, 147}},
 				{C: 'q', P: []float64{-2, -15, 33, -14}},
 				{C: 'q', P: []float64{26, 0, 68, 8}},
@@ -3132,8 +3136,8 @@ var snicklesFont = &Font{
 		"s": {
 			HorizAdvX: 636,
 			Unicode:   "s",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-82, 391}},
 				{C: 'q', P: []float64{-29, -48, -29, -94}},
 				{C: 'q', P: []float64{0, -53, 39, -102}},
@@ -3190,8 +3194,8 @@ var snicklesFont = &Font{
 		"t": {
 			HorizAdvX: 579,
 			Unicode:   "t",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-45, 1032}},
 				{C: 'q', P: []float64{86, 0, 166, 2}},
 				{C: 'q', P: []float64{-51, -180, -76, -307}},
@@ -3237,8 +3241,8 @@ var snicklesFont = &Font{
 		"u": {
 			HorizAdvX: 735,
 			Unicode:   "u",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-90, 143}},
 				{C: 'q', P: []float64{8, -14, 18, -14}},
 				{C: 'q', P: []float64{21, -3, 42, -2}},
@@ -3272,8 +3276,8 @@ var snicklesFont = &Font{
 		"v": {
 			HorizAdvX: 632,
 			Unicode:   "v",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{43, 584}},
 				{C: 'q', P: []float64{8, -313, 8, -453}},
 				{C: 'q', P: []float64{0, -14, 30, -14}},
@@ -3301,8 +3305,8 @@ var snicklesFont = &Font{
 		"w": {
 			HorizAdvX: 1005,
 			Unicode:   "w",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{8, 582}},
 				{C: 'q', P: []float64{-13, -139, -12, -251}},
 				{C: 'q', P: []float64{0, -128, 16, -218}},
@@ -3352,8 +3356,8 @@ var snicklesFont = &Font{
 		"x": {
 			HorizAdvX: 643,
 			Unicode:   "x",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-156, 117}},
 				{C: 'q', P: []float64{-4, -5, -3, -10}},
 				{C: 'q', P: []float64{0, -11, 34, -13}},
@@ -3388,8 +3392,8 @@ var snicklesFont = &Font{
 		"y": {
 			HorizAdvX: 716,
 			Unicode:   "y",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-178, -145}},
 				{C: 'q', P: []float64{-6, -40, -6, -74}},
 				{C: 'q', P: []float64{0, -74, 28, -115}},
@@ -3436,8 +3440,8 @@ var snicklesFont = &Font{
 		"z": {
 			HorizAdvX: 677,
 			Unicode:   "z",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-88, 170}},
 				{C: 'q', P: []float64{27, -48, 120, -48}},
 				{C: 'q', P: []float64{29, 0, 66, 5}},
@@ -3480,8 +3484,8 @@ var snicklesFont = &Font{
 		"|": {
 			HorizAdvX: 0,
 			Unicode:   "|",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{426, -418}},
 				{C: 'v', P: []float64{1995}},
 				{C: 'h', P: []float64{162}},
@@ -3493,8 +3497,8 @@ var snicklesFont = &Font{
 		"~": {
 			HorizAdvX: 0,
 			Unicode:   "~",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{94, 555}},
 				{C: 'v', P: []float64{158}},
 				{C: 'q', P: []float64{65, 74, 123, 98}},
@@ -3517,19 +3521,19 @@ var snicklesFont = &Font{
 			HorizAdvX: 1138,
 			Unicode:   "\u00a2",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00ad": {
 			HorizAdvX: 669,
 			Unicode:   "\u00ad",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00b4": {
 			HorizAdvX: 1024,
 			Unicode:   "\u00b4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{315, 1077}},
 				{C: 'l', P: []float64{291, 297}},
 				{C: 'q', P: []float64{37, 37, 56, 47}},
@@ -3547,91 +3551,91 @@ var snicklesFont = &Font{
 			HorizAdvX: 831,
 			Unicode:   "\u2000",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2001": {
 			HorizAdvX: 1665,
 			Unicode:   "\u2001",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2002": {
 			HorizAdvX: 831,
 			Unicode:   "\u2002",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2003": {
 			HorizAdvX: 1665,
 			Unicode:   "\u2003",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2004": {
 			HorizAdvX: 552,
 			Unicode:   "\u2004",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2005": {
 			HorizAdvX: 415,
 			Unicode:   "\u2005",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2006": {
 			HorizAdvX: 276,
 			Unicode:   "\u2006",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2007": {
 			HorizAdvX: 276,
 			Unicode:   "\u2007",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2008": {
 			HorizAdvX: 206,
 			Unicode:   "\u2008",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2009": {
 			HorizAdvX: 331,
 			Unicode:   "\u2009",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u200a": {
 			HorizAdvX: 90,
 			Unicode:   "\u200a",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2010": {
 			HorizAdvX: 669,
 			Unicode:   "\u2010",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2011": {
 			HorizAdvX: 669,
 			Unicode:   "\u2011",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2012": {
 			HorizAdvX: 669,
 			Unicode:   "\u2012",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2013": {
 			HorizAdvX: 1107,
 			Unicode:   "\u2013",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, 420}},
 				{C: 'v', P: []float64{119}},
 				{C: 'h', P: []float64{998}},
@@ -3643,8 +3647,8 @@ var snicklesFont = &Font{
 		"\u2014": {
 			HorizAdvX: 2048,
 			Unicode:   "\u2014",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 420}},
 				{C: 'v', P: []float64{119}},
 				{C: 'h', P: []float64{2048}},
@@ -3656,8 +3660,8 @@ var snicklesFont = &Font{
 		"\u2018": {
 			HorizAdvX: 1218,
 			Unicode:   "\u2018",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-6, 1325}},
 				{C: 'q', P: []float64{-35, -117, 16, -215}},
 				{C: 'q', P: []float64{16, -35, 123, 0}},
@@ -3675,8 +3679,8 @@ var snicklesFont = &Font{
 		"\u2019": {
 			HorizAdvX: 1218,
 			Unicode:   "\u2019",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-20, 1128}},
 				{C: 'q', P: []float64{-23, -20, 4, -28}},
 				{C: 'q', P: []float64{29, -8, 45, -6}},
@@ -3694,8 +3698,8 @@ var snicklesFont = &Font{
 		"\u201c": {
 			HorizAdvX: 1318,
 			Unicode:   "\u201c",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-20, 1128}},
 				{C: 'q', P: []float64{-23, -20, 4, -28}},
 				{C: 'q', P: []float64{29, -8, 45, -6}},
@@ -3725,8 +3729,8 @@ var snicklesFont = &Font{
 		"\u201d": {
 			HorizAdvX: 1218,
 			Unicode:   "\u201d",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-10, 1128}},
 				{C: 'q', P: []float64{-23, -20, 4, -28}},
 				{C: 'q', P: []float64{29, -8, 45, -6}},
@@ -3756,8 +3760,8 @@ var snicklesFont = &Font{
 		"\u2022": {
 			HorizAdvX: 1024,
 			Unicode:   "\u2022",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{215, 719}},
 				{C: 'q', P: []float64{0, 121, 88, 209}},
 				{C: 'q', P: []float64{86, 86, 209, 86}},
@@ -3773,8 +3777,8 @@ var snicklesFont = &Font{
 		"\u2026": {
 			HorizAdvX: 2048,
 			Unicode:   "\u2026",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{129, 135}},
 				{C: 'q', P: []float64{0, 16, 16, 33}},
 				{C: 'l', P: []float64{82, 84}},
@@ -3823,25 +3827,25 @@ var snicklesFont = &Font{
 			HorizAdvX: 331,
 			Unicode:   "\u202f",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u205f": {
 			HorizAdvX: 415,
 			Unicode:   "\u205f",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2122": {
 			HorizAdvX: 1495,
 			Unicode:   "\u2122",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\ue000": {
 			HorizAdvX: 1150,
 			Unicode:   "\ue000",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 1150}},
 				{C: 'h', P: []float64{1150}},
 				{C: 'v', P: []float64{-1150}},
@@ -3854,31 +3858,31 @@ var snicklesFont = &Font{
 			HorizAdvX: 1071,
 			Unicode:   "\uf001",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\ufb01": {
 			HorizAdvX: 1071,
 			Unicode:   "\ufb01",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\uf002": {
 			HorizAdvX: 1079,
 			Unicode:   "\uf002",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\ufb02": {
 			HorizAdvX: 1079,
 			Unicode:   "\ufb02",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\ufb03": {
 			HorizAdvX: 1236,
 			Unicode:   "\ufb03",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{774, 147}},
 				{C: 'q', P: []float64{3, -19, 37, -18}},
 				{C: 'q', P: []float64{27, 0, 76, 12}},
@@ -3997,8 +4001,8 @@ var snicklesFont = &Font{
 		"\ufb04": {
 			HorizAdvX: 1224,
 			Unicode:   "\ufb04",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{755, 121}},
 				{C: 'q', P: []float64{0, -19, 35, -19}},
 				{C: 'q', P: []float64{20, 0, 52, 7}},

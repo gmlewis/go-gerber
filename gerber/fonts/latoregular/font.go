@@ -1,42 +1,46 @@
 // Auto-generated - DO NOT EDIT!
 
-package gerber
+package latoregular
+
+import (
+	"github.com/gmlewis/go-gerber/gerber"
+)
 
 func init() {
-	Fonts["latoregular"] = latoregularFont
+	gerber.Fonts["latoregular"] = latoregularFont
 }
 
-var latoregularFont = &Font{
+var latoregularFont = &gerber.Font{
 	// ID: "latoregular",
 	HorizAdvX:        1187,
 	UnitsPerEm:       2048,
 	Ascent:           1649,
 	Descent:          -399,
 	MissingHorizAdvX: 395,
-	Glyphs: map[string]*Glyph{
+	Glyphs: map[string]*gerber.Glyph{
 		" ": {
 			HorizAdvX: 395,
 			Unicode:   " ",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\t": {
 			HorizAdvX: 395,
 			Unicode:   "\t",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00a0": {
 			HorizAdvX: 395,
 			Unicode:   "\u00a0",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"!": {
 			HorizAdvX: 702,
 			Unicode:   "!",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{223, 113}},
 				{C: 'q', P: []float64{0, 27, 10, 50}},
 				{C: 't', P: []float64{26.5, 40.5}},
@@ -74,8 +78,8 @@ var latoregularFont = &Font{
 		"\"": {
 			HorizAdvX: 813,
 			Unicode:   "\"",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{156, 1170}},
 				{C: 'v', P: []float64{297}},
 				{C: 'h', P: []float64{158}},
@@ -102,7 +106,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "#",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, 485}},
 				{C: 'q', P: []float64{0, 5, 0.5, 11.5}},
 				{C: 't', P: []float64{1.5, 12.5}},
@@ -167,7 +171,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "$",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{109, 175}},
 				{C: 'l', P: []float64{54, 84}},
 				{C: 'q', P: []float64{7, 11, 20.5, 18.5}},
@@ -242,7 +246,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 1609,
 			Unicode:   "%",
 			GerberLP:  "ddcdc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{74, 1113}},
 				{C: 'q', P: []float64{0, 88, 24.5, 156.5}},
 				{C: 't', P: []float64{68.5, 116}},
@@ -331,7 +335,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 1439,
 			Unicode:   "&",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{84, 391}},
 				{C: 'q', P: []float64{0, 72, 24, 136}},
 				{C: 't', P: []float64{66.5, 118}},
@@ -399,8 +403,8 @@ var latoregularFont = &Font{
 		"'": {
 			HorizAdvX: 471,
 			Unicode:   "'",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{156, 1170}},
 				{C: 'v', P: []float64{297}},
 				{C: 'h', P: []float64{158}},
@@ -416,8 +420,8 @@ var latoregularFont = &Font{
 		"(": {
 			HorizAdvX: 614,
 			Unicode:   "(",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{137, 644}},
 				{C: 'q', P: []float64{0, 124, 15.5, 243}},
 				{C: 't', P: []float64{48.5, 235}},
@@ -446,8 +450,8 @@ var latoregularFont = &Font{
 		")": {
 			HorizAdvX: 614,
 			Unicode:   ")",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{76, -211}},
 				{C: 'q', P: []float64{0, 8, 2, 16.5}},
 				{C: 't', P: []float64{8, 19.5}},
@@ -476,8 +480,8 @@ var latoregularFont = &Font{
 		"*": {
 			HorizAdvX: 819,
 			Unicode:   "*",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{98, 1341}},
 				{C: 'l', P: []float64{45, 77}},
 				{C: 'l', P: []float64{178, -102}},
@@ -521,8 +525,8 @@ var latoregularFont = &Font{
 		"+": {
 			HorizAdvX: 0,
 			Unicode:   "+",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{102, 618}},
 				{C: 'v', P: []float64{139}},
 				{C: 'h', P: []float64{415}},
@@ -542,8 +546,8 @@ var latoregularFont = &Font{
 		",": {
 			HorizAdvX: 434,
 			Unicode:   ",",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{96, 126}},
 				{C: 'q', P: []float64{0, 24, 9, 44.5}},
 				{C: 't', P: []float64{24.5, 36.5}},
@@ -575,8 +579,8 @@ var latoregularFont = &Font{
 		"-": {
 			HorizAdvX: 710,
 			Unicode:   "-",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{102, 537}},
 				{C: 'v', P: []float64{154}},
 				{C: 'h', P: []float64{506}},
@@ -588,8 +592,8 @@ var latoregularFont = &Font{
 		".": {
 			HorizAdvX: 434,
 			Unicode:   ".",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{90, 113}},
 				{C: 'q', P: []float64{0, 27, 10, 50}},
 				{C: 't', P: []float64{26.5, 40.5}},
@@ -613,8 +617,8 @@ var latoregularFont = &Font{
 		"/": {
 			HorizAdvX: 763,
 			Unicode:   "/",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-12, -92}},
 				{C: 'l', P: []float64{615, 1533}},
 				{C: 'q', P: []float64{13, 33, 38, 50}},
@@ -631,7 +635,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "0",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{61, 733}},
 				{C: 'q', P: []float64{0, 193, 41, 334}},
 				{C: 't', P: []float64{113, 234}},
@@ -673,8 +677,8 @@ var latoregularFont = &Font{
 		"1": {
 			HorizAdvX: 0,
 			Unicode:   "1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{207, 1093}},
 				{C: 'l', P: []float64{436, 377}},
 				{C: 'h', P: []float64{149}},
@@ -697,8 +701,8 @@ var latoregularFont = &Font{
 		"2": {
 			HorizAdvX: 0,
 			Unicode:   "2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{106, 0}},
 				{C: 'v', P: []float64{62}},
 				{C: 'q', P: []float64{0, 19, 8, 40}},
@@ -747,8 +751,8 @@ var latoregularFont = &Font{
 		"3": {
 			HorizAdvX: 0,
 			Unicode:   "3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{111, 367}},
 				{C: 'l', P: []float64{77, 32}},
 				{C: 'q', P: []float64{22, 9, 43, 10}},
@@ -815,7 +819,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "4",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{41, 520}},
 				{C: 'l', P: []float64{714, 947}},
 				{C: 'h', P: []float64{170}},
@@ -843,8 +847,8 @@ var latoregularFont = &Font{
 		"5": {
 			HorizAdvX: 0,
 			Unicode:   "5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{111, 138}},
 				{C: 'l', P: []float64{55, 78}},
 				{C: 'q', P: []float64{18, 27, 49, 27}},
@@ -890,7 +894,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "6",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{111, 484}},
 				{C: 'q', P: []float64{0, 96, 43, 205}},
 				{C: 't', P: []float64{136, 234}},
@@ -937,8 +941,8 @@ var latoregularFont = &Font{
 		"7": {
 			HorizAdvX: 0,
 			Unicode:   "7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{113, 1343}},
 				{C: 'v', P: []float64{124}},
 				{C: 'h', P: []float64{997}},
@@ -962,7 +966,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "8",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{98, 401}},
 				{C: 'q', P: []float64{0, 141, 74, 233}},
 				{C: 't', P: []float64{211, 131}},
@@ -1031,7 +1035,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "9",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{152, 1023}},
 				{C: 'q', P: []float64{0, 96, 35.5, 180}},
 				{C: 't', P: []float64{100, 146.5}},
@@ -1082,8 +1086,8 @@ var latoregularFont = &Font{
 		":": {
 			HorizAdvX: 516,
 			Unicode:   ":",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{131, 113}},
 				{C: 'q', P: []float64{0, 27, 10, 50}},
 				{C: 't', P: []float64{26.5, 40.5}},
@@ -1125,8 +1129,8 @@ var latoregularFont = &Font{
 		";": {
 			HorizAdvX: 516,
 			Unicode:   ";",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{131, 881}},
 				{C: 'q', P: []float64{0, 27, 10, 50}},
 				{C: 't', P: []float64{26.5, 40.5}},
@@ -1176,8 +1180,8 @@ var latoregularFont = &Font{
 		"<": {
 			HorizAdvX: 0,
 			Unicode:   "<",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{152, 651}},
 				{C: 'v', P: []float64{76}},
 				{C: 'l', P: []float64{792, 411}},
@@ -1199,8 +1203,8 @@ var latoregularFont = &Font{
 		"=": {
 			HorizAdvX: 0,
 			Unicode:   "=",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{154, 450}},
 				{C: 'v', P: []float64{138}},
 				{C: 'h', P: []float64{879}},
@@ -1218,8 +1222,8 @@ var latoregularFont = &Font{
 		">": {
 			HorizAdvX: 0,
 			Unicode:   ">",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{244, 240}},
 				{C: 'v', P: []float64{131}},
 				{C: 'q', P: []float64{0, 16, 8, 29.5}},
@@ -1241,8 +1245,8 @@ var latoregularFont = &Font{
 		"?": {
 			HorizAdvX: 815,
 			Unicode:   "?",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{35, 1336}},
 				{C: 'q', P: []float64{32, 30, 70, 56.5}},
 				{C: 't', P: []float64{83.5, 47}},
@@ -1302,7 +1306,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 1683,
 			Unicode:   "@",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{88, 582}},
 				{C: 'q', P: []float64{0, 112, 28, 215}},
 				{C: 't', P: []float64{79.5, 192.5}},
@@ -1388,7 +1392,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 1392,
 			Unicode:   "A",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{10, 0}},
 				{C: 'l', P: []float64{587, 1467}},
 				{C: 'h', P: []float64{202}},
@@ -1416,7 +1420,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 1325,
 			Unicode:   "B",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{178, 0}},
 				{C: 'v', P: []float64{1467}},
 				{C: 'h', P: []float64{468}},
@@ -1463,8 +1467,8 @@ var latoregularFont = &Font{
 		"C": {
 			HorizAdvX: 1402,
 			Unicode:   "C",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{92, 733}},
 				{C: 'q', P: []float64{0, 166, 54, 304.5}},
 				{C: 't', P: []float64{151, 237.5}},
@@ -1509,7 +1513,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 1542,
 			Unicode:   "D",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{178, 0}},
 				{C: 'v', P: []float64{1467}},
 				{C: 'h', P: []float64{549}},
@@ -1541,8 +1545,8 @@ var latoregularFont = &Font{
 		"E": {
 			HorizAdvX: 1189,
 			Unicode:   "E",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{178, 0}},
 				{C: 'v', P: []float64{1467}},
 				{C: 'h', P: []float64{904}},
@@ -1562,8 +1566,8 @@ var latoregularFont = &Font{
 		"F": {
 			HorizAdvX: 1159,
 			Unicode:   "F",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{178, 0}},
 				{C: 'v', P: []float64{1467}},
 				{C: 'h', P: []float64{904}},
@@ -1581,8 +1585,8 @@ var latoregularFont = &Font{
 		"G": {
 			HorizAdvX: 1503,
 			Unicode:   "G",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{92, 733}},
 				{C: 'q', P: []float64{0, 168, 53, 306.5}},
 				{C: 't', P: []float64{150.5, 237}},
@@ -1632,8 +1636,8 @@ var latoregularFont = &Font{
 		"H": {
 			HorizAdvX: 1548,
 			Unicode:   "H",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{178, 0}},
 				{C: 'v', P: []float64{1467}},
 				{C: 'h', P: []float64{200}},
@@ -1653,8 +1657,8 @@ var latoregularFont = &Font{
 		"I": {
 			HorizAdvX: 628,
 			Unicode:   "I",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{215, 0}},
 				{C: 'v', P: []float64{1467}},
 				{C: 'h', P: []float64{199}},
@@ -1666,8 +1670,8 @@ var latoregularFont = &Font{
 		"J": {
 			HorizAdvX: 909,
 			Unicode:   "J",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{61, 12}},
 				{C: 'q', P: []float64{2, 30, 5.5, 59}},
 				{C: 't', P: []float64{6.5, 58}},
@@ -1693,8 +1697,8 @@ var latoregularFont = &Font{
 		"K": {
 			HorizAdvX: 1394,
 			Unicode:   "K",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{199, 0}},
 				{C: 'v', P: []float64{1467}},
 				{C: 'h', P: []float64{197}},
@@ -1731,8 +1735,8 @@ var latoregularFont = &Font{
 		"L": {
 			HorizAdvX: 1052,
 			Unicode:   "L",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{178, 0}},
 				{C: 'v', P: []float64{1467}},
 				{C: 'h', P: []float64{199}},
@@ -1746,8 +1750,8 @@ var latoregularFont = &Font{
 		"M": {
 			HorizAdvX: 1884,
 			Unicode:   "M",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{178, 0}},
 				{C: 'v', P: []float64{1467}},
 				{C: 'h', P: []float64{147}},
@@ -1782,8 +1786,8 @@ var latoregularFont = &Font{
 		"N": {
 			HorizAdvX: 1548,
 			Unicode:   "N",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{178, 0}},
 				{C: 'v', P: []float64{1467}},
 				{C: 'h', P: []float64{103}},
@@ -1810,7 +1814,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 1634,
 			Unicode:   "O",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{94, 733}},
 				{C: 'q', P: []float64{0, 165, 52.5, 303}},
 				{C: 't', P: []float64{147.5, 237.5}},
@@ -1853,7 +1857,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 1251,
 			Unicode:   "P",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{199, 0}},
 				{C: 'v', P: []float64{1467}},
 				{C: 'h', P: []float64{433}},
@@ -1886,7 +1890,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 1634,
 			Unicode:   "Q",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{94, 733}},
 				{C: 'q', P: []float64{0, 165, 52.5, 303}},
 				{C: 't', P: []float64{147.5, 237.5}},
@@ -1936,7 +1940,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 1518,
 			Unicode:   "R",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{199, 0}},
 				{C: 'v', P: []float64{1467}},
 				{C: 'h', P: []float64{414}},
@@ -1975,8 +1979,8 @@ var latoregularFont = &Font{
 		"S": {
 			HorizAdvX: 1085,
 			Unicode:   "S",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{59, 175}},
 				{C: 'l', P: []float64{58, 94}},
 				{C: 'q', P: []float64{8, 11, 19.5, 19}},
@@ -2034,8 +2038,8 @@ var latoregularFont = &Font{
 		"T": {
 			HorizAdvX: 1208,
 			Unicode:   "T",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{29, 1300}},
 				{C: 'v', P: []float64{167}},
 				{C: 'h', P: []float64{1149}},
@@ -2051,8 +2055,8 @@ var latoregularFont = &Font{
 		"U": {
 			HorizAdvX: 1495,
 			Unicode:   "U",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{164, 575}},
 				{C: 'v', P: []float64{892}},
 				{C: 'h', P: []float64{197}},
@@ -2082,8 +2086,8 @@ var latoregularFont = &Font{
 		"V": {
 			HorizAdvX: 1392,
 			Unicode:   "V",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{8, 1467}},
 				{C: 'h', P: []float64{159}},
 				{C: 'q', P: []float64{27, 0, 43, -13}},
@@ -2105,8 +2109,8 @@ var latoregularFont = &Font{
 		"W": {
 			HorizAdvX: 2086,
 			Unicode:   "W",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{14, 1467}},
 				{C: 'h', P: []float64{165}},
 				{C: 'q', P: []float64{27, 0, 44.5, -13}},
@@ -2144,8 +2148,8 @@ var latoregularFont = &Font{
 		"X": {
 			HorizAdvX: 1316,
 			Unicode:   "X",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{14, 0}},
 				{C: 'l', P: []float64{505, 754}},
 				{C: 'l', P: []float64{-484, 713}},
@@ -2175,8 +2179,8 @@ var latoregularFont = &Font{
 		"Y": {
 			HorizAdvX: 1288,
 			Unicode:   "Y",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{8, 1467}},
 				{C: 'h', P: []float64{174}},
 				{C: 'q', P: []float64{27, 0, 42.5, -13}},
@@ -2200,8 +2204,8 @@ var latoregularFont = &Font{
 		"Z": {
 			HorizAdvX: 1277,
 			Unicode:   "Z",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{88, 0}},
 				{C: 'v', P: []float64{78}},
 				{C: 'q', P: []float64{0, 31, 20, 58}},
@@ -2221,8 +2225,8 @@ var latoregularFont = &Font{
 		"[": {
 			HorizAdvX: 614,
 			Unicode:   "[",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{145, -296}},
 				{C: 'v', P: []float64{1866}},
 				{C: 'h', P: []float64{377}},
@@ -2242,8 +2246,8 @@ var latoregularFont = &Font{
 		"\\": {
 			HorizAdvX: 768,
 			Unicode:   "\\",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-20, 1508}},
 				{C: 'h', P: []float64{77}},
 				{C: 'q', P: []float64{34, 0, 58.5, -17}},
@@ -2258,8 +2262,8 @@ var latoregularFont = &Font{
 		"]": {
 			HorizAdvX: 614,
 			Unicode:   "]",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{92, -224}},
 				{C: 'q', P: []float64{0, 20, 14, 34.5}},
 				{C: 't', P: []float64{36, 14.5}},
@@ -2279,8 +2283,8 @@ var latoregularFont = &Font{
 		"^": {
 			HorizAdvX: 0,
 			Unicode:   "^",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{162, 806}},
 				{C: 'l', P: []float64{366, 661}},
 				{C: 'h', P: []float64{118}},
@@ -2302,8 +2306,8 @@ var latoregularFont = &Font{
 		"_": {
 			HorizAdvX: 806,
 			Unicode:   "_",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, -169}},
 				{C: 'h', P: []float64{807}},
 				{C: 'v', P: []float64{-123}},
@@ -2315,8 +2319,8 @@ var latoregularFont = &Font{
 		"`": {
 			HorizAdvX: 628,
 			Unicode:   "`",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{39, 1484}},
 				{C: 'h', P: []float64{173}},
 				{C: 'q', P: []float64{34, 0, 50.5, -11}},
@@ -2332,7 +2336,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 1038,
 			Unicode:   "a",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{94, 259}},
 				{C: 'q', P: []float64{0, 61, 34, 118}},
 				{C: 't', P: []float64{109, 101}},
@@ -2389,7 +2393,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 1144,
 			Unicode:   "b",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{156, 0}},
 				{C: 'v', P: []float64{1508}},
 				{C: 'h', P: []float64{183}},
@@ -2428,8 +2432,8 @@ var latoregularFont = &Font{
 		"c": {
 			HorizAdvX: 956,
 			Unicode:   "c",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{76, 519}},
 				{C: 'q', P: []float64{0, 116, 32, 214}},
 				{C: 't', P: []float64{94, 169.5}},
@@ -2471,7 +2475,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 1144,
 			Unicode:   "d",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{74, 515}},
 				{C: 'q', P: []float64{0, 115, 30.5, 213.5}},
 				{C: 't', P: []float64{88.5, 171.5}},
@@ -2511,7 +2515,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 1073,
 			Unicode:   "e",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{76, 540}},
 				{C: 'q', P: []float64{0, 109, 33, 203}},
 				{C: 't', P: []float64{95.5, 163}},
@@ -2557,8 +2561,8 @@ var latoregularFont = &Font{
 		"f": {
 			HorizAdvX: 690,
 			Unicode:   "f",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{27, 942}},
 				{C: 'v', P: []float64{75}},
 				{C: 'h', P: []float64{163}},
@@ -2593,7 +2597,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 1046,
 			Unicode:   "g",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{51, -99}},
 				{C: 'q', P: []float64{0, 77, 48.5, 130.5}},
 				{C: 't', P: []float64{133.5, 85.5}},
@@ -2677,8 +2681,8 @@ var latoregularFont = &Font{
 		"h": {
 			HorizAdvX: 1138,
 			Unicode:   "h",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{150, 0}},
 				{C: 'v', P: []float64{1508}},
 				{C: 'h', P: []float64{182}},
@@ -2704,8 +2708,8 @@ var latoregularFont = &Font{
 		"i": {
 			HorizAdvX: 524,
 			Unicode:   "i",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{133, 1363}},
 				{C: 'q', P: []float64{0, 27, 10.5, 51}},
 				{C: 't', P: []float64{28, 42}},
@@ -2735,8 +2739,8 @@ var latoregularFont = &Font{
 		"j": {
 			HorizAdvX: 520,
 			Unicode:   "j",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-57, -352}},
 				{C: 'l', P: []float64{8, 98}},
 				{C: 'q', P: []float64{2, 13, 9, 17}},
@@ -2778,8 +2782,8 @@ var latoregularFont = &Font{
 		"k": {
 			HorizAdvX: 1073,
 			Unicode:   "k",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{156, 0}},
 				{C: 'v', P: []float64{1508}},
 				{C: 'h', P: []float64{183}},
@@ -2812,8 +2816,8 @@ var latoregularFont = &Font{
 		"l": {
 			HorizAdvX: 524,
 			Unicode:   "l",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{170, 0}},
 				{C: 'v', P: []float64{1508}},
 				{C: 'h', P: []float64{182}},
@@ -2825,8 +2829,8 @@ var latoregularFont = &Font{
 		"m": {
 			HorizAdvX: 1681,
 			Unicode:   "m",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{150, 0}},
 				{C: 'v', P: []float64{1037}},
 				{C: 'h', P: []float64{108}},
@@ -2868,8 +2872,8 @@ var latoregularFont = &Font{
 		"n": {
 			HorizAdvX: 1138,
 			Unicode:   "n",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{150, 0}},
 				{C: 'v', P: []float64{1037}},
 				{C: 'h', P: []float64{108}},
@@ -2897,7 +2901,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 1138,
 			Unicode:   "o",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{74, 519}},
 				{C: 'q', P: []float64{0, 122, 34.5, 221}},
 				{C: 't', P: []float64{99, 168.5}},
@@ -2936,7 +2940,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 1130,
 			Unicode:   "p",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{150, -351}},
 				{C: 'v', P: []float64{1388}},
 				{C: 'h', P: []float64{108}},
@@ -2976,7 +2980,7 @@ var latoregularFont = &Font{
 			HorizAdvX: 1144,
 			Unicode:   "q",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{74, 515}},
 				{C: 'q', P: []float64{0, 115, 30.5, 213.5}},
 				{C: 't', P: []float64{88.5, 171.5}},
@@ -3015,8 +3019,8 @@ var latoregularFont = &Font{
 		"r": {
 			HorizAdvX: 825,
 			Unicode:   "r",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{150, 0}},
 				{C: 'v', P: []float64{1037}},
 				{C: 'h', P: []float64{104}},
@@ -3041,8 +3045,8 @@ var latoregularFont = &Font{
 		"s": {
 			HorizAdvX: 888,
 			Unicode:   "s",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{63, 110}},
 				{C: 'l', P: []float64{43, 69}},
 				{C: 'q', P: []float64{8, 13, 19.5, 20.5}},
@@ -3099,8 +3103,8 @@ var latoregularFont = &Font{
 		"t": {
 			HorizAdvX: 763,
 			Unicode:   "t",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 925}},
 				{C: 'v', P: []float64{72}},
 				{C: 'l', P: []float64{170, 22}},
@@ -3135,8 +3139,8 @@ var latoregularFont = &Font{
 		"u": {
 			HorizAdvX: 1138,
 			Unicode:   "u",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{125, 376}},
 				{C: 'v', P: []float64{661}},
 				{C: 'h', P: []float64{182}},
@@ -3163,8 +3167,8 @@ var latoregularFont = &Font{
 		"v": {
 			HorizAdvX: 1048,
 			Unicode:   "v",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{18, 1037}},
 				{C: 'h', P: []float64{150}},
 				{C: 'q', P: []float64{22, 0, 36, -11}},
@@ -3186,8 +3190,8 @@ var latoregularFont = &Font{
 		"w": {
 			HorizAdvX: 1568,
 			Unicode:   "w",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{14, 1037}},
 				{C: 'h', P: []float64{144}},
 				{C: 'q', P: []float64{23, 0, 37, -11}},
@@ -3229,8 +3233,8 @@ var latoregularFont = &Font{
 		"x": {
 			HorizAdvX: 1032,
 			Unicode:   "x",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{29, 0}},
 				{C: 'l', P: []float64{363, 531}},
 				{C: 'l', P: []float64{-349, 506}},
@@ -3260,8 +3264,8 @@ var latoregularFont = &Font{
 		"y": {
 			HorizAdvX: 1048,
 			Unicode:   "y",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{14, 1037}},
 				{C: 'h', P: []float64{158}},
 				{C: 'q', P: []float64{24, 0, 37, -11.5}},
@@ -3286,8 +3290,8 @@ var latoregularFont = &Font{
 		"z": {
 			HorizAdvX: 946,
 			Unicode:   "z",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{72, 0}},
 				{C: 'v', P: []float64{76}},
 				{C: 'q', P: []float64{0, 13, 6.5, 31}},
@@ -3309,8 +3313,8 @@ var latoregularFont = &Font{
 		"{": {
 			HorizAdvX: 614,
 			Unicode:   "{",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 583}},
 				{C: 'v', P: []float64{109}},
 				{C: 'q', P: []float64{69, 0, 104.5, 41}},
@@ -3369,8 +3373,8 @@ var latoregularFont = &Font{
 		"|": {
 			HorizAdvX: 614,
 			Unicode:   "|",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{236, -351}},
 				{C: 'v', P: []float64{1921}},
 				{C: 'h', P: []float64{141}},
@@ -3382,8 +3386,8 @@ var latoregularFont = &Font{
 		"}": {
 			HorizAdvX: 614,
 			Unicode:   "}",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{90, -214}},
 				{C: 'q', P: []float64{0, 20, 14.5, 29.5}},
 				{C: 't', P: []float64{26.5, 9.5}},
@@ -3442,8 +3446,8 @@ var latoregularFont = &Font{
 		"~": {
 			HorizAdvX: 0,
 			Unicode:   "~",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{119, 424}},
 				{C: 'q', P: []float64{0, 69, 19, 126}},
 				{C: 't', P: []float64{54, 98}},
@@ -3473,8 +3477,8 @@ var latoregularFont = &Font{
 		"\u00a2": {
 			HorizAdvX: 0,
 			Unicode:   "\u00a2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{141, 518}},
 				{C: 'q', P: []float64{0, 114, 34, 209.5}},
 				{C: 't', P: []float64{98.5, 166.5}},
@@ -3528,8 +3532,8 @@ var latoregularFont = &Font{
 		"\u00a3": {
 			HorizAdvX: 0,
 			Unicode:   "\u00a3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{53, 629}},
 				{C: 'v', P: []float64{59}},
 				{C: 'q', P: []float64{0, 27, 16.5, 45.5}},
@@ -3588,8 +3592,8 @@ var latoregularFont = &Font{
 		"\u00a5": {
 			HorizAdvX: 0,
 			Unicode:   "\u00a5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{45, 1467}},
 				{C: 'h', P: []float64{153}},
 				{C: 'q', P: []float64{27, 0, 42.5, -12.5}},
@@ -3627,8 +3631,8 @@ var latoregularFont = &Font{
 		"\u00a9": {
 			HorizAdvX: 1634,
 			Unicode:   "\u00a9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{70, 733}},
 				{C: 'q', P: []float64{0, 103, 26.5, 199}},
 				{C: 't', P: []float64{75, 179.5}},
@@ -3720,8 +3724,8 @@ var latoregularFont = &Font{
 		"\u00ad": {
 			HorizAdvX: 710,
 			Unicode:   "\u00ad",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{102, 537}},
 				{C: 'v', P: []float64{154}},
 				{C: 'h', P: []float64{506}},
@@ -3733,8 +3737,8 @@ var latoregularFont = &Font{
 		"\u00ae": {
 			HorizAdvX: 1634,
 			Unicode:   "\u00ae",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{70, 733}},
 				{C: 'q', P: []float64{0, 103, 26.5, 199}},
 				{C: 't', P: []float64{75, 179.5}},
@@ -3820,8 +3824,8 @@ var latoregularFont = &Font{
 		"\u00b4": {
 			HorizAdvX: 628,
 			Unicode:   "\u00b4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{201, 1191}},
 				{C: 'l', P: []float64{151, 248}},
 				{C: 'q', P: []float64{14, 24, 31, 34.5}},
@@ -3838,73 +3842,73 @@ var latoregularFont = &Font{
 			HorizAdvX: 838,
 			Unicode:   "\u2000",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2001": {
 			HorizAdvX: 1678,
 			Unicode:   "\u2001",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2002": {
 			HorizAdvX: 838,
 			Unicode:   "\u2002",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2003": {
 			HorizAdvX: 1678,
 			Unicode:   "\u2003",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2004": {
 			HorizAdvX: 559,
 			Unicode:   "\u2004",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2005": {
 			HorizAdvX: 418,
 			Unicode:   "\u2005",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2006": {
 			HorizAdvX: 279,
 			Unicode:   "\u2006",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2007": {
 			HorizAdvX: 279,
 			Unicode:   "\u2007",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2008": {
 			HorizAdvX: 208,
 			Unicode:   "\u2008",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2009": {
 			HorizAdvX: 334,
 			Unicode:   "\u2009",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u200a": {
 			HorizAdvX: 93,
 			Unicode:   "\u200a",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2010": {
 			HorizAdvX: 710,
 			Unicode:   "\u2010",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{102, 537}},
 				{C: 'v', P: []float64{154}},
 				{C: 'h', P: []float64{506}},
@@ -3916,8 +3920,8 @@ var latoregularFont = &Font{
 		"\u2011": {
 			HorizAdvX: 710,
 			Unicode:   "\u2011",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{102, 537}},
 				{C: 'v', P: []float64{154}},
 				{C: 'h', P: []float64{506}},
@@ -3929,8 +3933,8 @@ var latoregularFont = &Font{
 		"\u2012": {
 			HorizAdvX: 710,
 			Unicode:   "\u2012",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{102, 537}},
 				{C: 'v', P: []float64{154}},
 				{C: 'h', P: []float64{506}},
@@ -3942,8 +3946,8 @@ var latoregularFont = &Font{
 		"\u2013": {
 			HorizAdvX: 1138,
 			Unicode:   "\u2013",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{160, 538}},
 				{C: 'v', P: []float64{133}},
 				{C: 'h', P: []float64{819}},
@@ -3955,8 +3959,8 @@ var latoregularFont = &Font{
 		"\u2014": {
 			HorizAdvX: 1681,
 			Unicode:   "\u2014",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{160, 538}},
 				{C: 'v', P: []float64{133}},
 				{C: 'h', P: []float64{1362}},
@@ -3968,8 +3972,8 @@ var latoregularFont = &Font{
 		"\u2018": {
 			HorizAdvX: 434,
 			Unicode:   "\u2018",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{59, 1234}},
 				{C: 'q', P: []float64{0, 92, 46, 176.5}},
 				{C: 't', P: []float64{127, 155.5}},
@@ -3994,8 +3998,8 @@ var latoregularFont = &Font{
 		"\u2019": {
 			HorizAdvX: 434,
 			Unicode:   "\u2019",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{92, 1073}},
 				{C: 'q', P: []float64{0, 14, 10, 25}},
 				{C: 'q', P: []float64{16, 19, 32, 42}},
@@ -4020,8 +4024,8 @@ var latoregularFont = &Font{
 		"\u201c": {
 			HorizAdvX: 745,
 			Unicode:   "\u201c",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{59, 1234}},
 				{C: 'q', P: []float64{0, 92, 46, 176.5}},
 				{C: 't', P: []float64{127, 155.5}},
@@ -4065,8 +4069,8 @@ var latoregularFont = &Font{
 		"\u201d": {
 			HorizAdvX: 745,
 			Unicode:   "\u201d",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{92, 1073}},
 				{C: 'q', P: []float64{0, 14, 10, 25}},
 				{C: 'q', P: []float64{16, 19, 32, 42}},
@@ -4110,8 +4114,8 @@ var latoregularFont = &Font{
 		"\u2022": {
 			HorizAdvX: 0,
 			Unicode:   "\u2022",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{213, 609}},
 				{C: 'q', P: []float64{0, 79, 30, 148.5}},
 				{C: 't', P: []float64{81.5, 121.5}},
@@ -4135,8 +4139,8 @@ var latoregularFont = &Font{
 		"\u2026": {
 			HorizAdvX: 1488,
 			Unicode:   "\u2026",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{90, 113}},
 				{C: 'q', P: []float64{0, 27, 10, 50}},
 				{C: 't', P: []float64{26.5, 40.5}},
@@ -4197,19 +4201,19 @@ var latoregularFont = &Font{
 			HorizAdvX: 334,
 			Unicode:   "\u202f",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u205f": {
 			HorizAdvX: 418,
 			Unicode:   "\u205f",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u20ac": {
 			HorizAdvX: 0,
 			Unicode:   "\u20ac",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{35, 566}},
 				{C: 'v', P: []float64{105}},
 				{C: 'h', P: []float64{137}},
@@ -4273,8 +4277,8 @@ var latoregularFont = &Font{
 		"\u2122": {
 			HorizAdvX: 1474,
 			Unicode:   "\u2122",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{66, 1360}},
 				{C: 'v', P: []float64{107}},
 				{C: 'h', P: []float64{497}},
@@ -4317,8 +4321,8 @@ var latoregularFont = &Font{
 		"\ue000": {
 			HorizAdvX: 1035,
 			Unicode:   "\ue000",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 1035}},
 				{C: 'h', P: []float64{1035}},
 				{C: 'v', P: []float64{-1035}},

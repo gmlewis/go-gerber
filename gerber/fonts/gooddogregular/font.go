@@ -1,48 +1,52 @@
 // Auto-generated - DO NOT EDIT!
 
-package gerber
+package gooddogregular
+
+import (
+	"github.com/gmlewis/go-gerber/gerber"
+)
 
 func init() {
-	Fonts["gooddogregular"] = gooddogregularFont
+	gerber.Fonts["gooddogregular"] = gooddogregularFont
 }
 
-var gooddogregularFont = &Font{
+var gooddogregularFont = &gerber.Font{
 	// ID: "gooddogregular",
 	HorizAdvX:        359,
 	UnitsPerEm:       1000,
 	Ascent:           800,
 	Descent:          -200,
 	MissingHorizAdvX: 185,
-	Glyphs: map[string]*Glyph{
+	Glyphs: map[string]*gerber.Glyph{
 		"\r": {
 			HorizAdvX: 1000,
 			Unicode:   "\r",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		" ": {
 			HorizAdvX: 185,
 			Unicode:   " ",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\t": {
 			HorizAdvX: 185,
 			Unicode:   "\t",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00a0": {
 			HorizAdvX: 185,
 			Unicode:   "\u00a0",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"!": {
 			HorizAdvX: 231,
 			Unicode:   "!",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{17, 80}},
 				{C: 'q', P: []float64{0, 30, 29.5, 44}},
 				{C: 't', P: []float64{56.5, -4}},
@@ -72,8 +76,8 @@ var gooddogregularFont = &Font{
 		"\"": {
 			HorizAdvX: 293,
 			Unicode:   "\"",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{29, 469}},
 				{C: 'q', P: []float64{0, 1, -2, 65}},
 				{C: 't', P: []float64{2, 65}},
@@ -108,7 +112,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 491,
 			Unicode:   "#",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{21, 163}},
 				{C: 'q', P: []float64{-8, 19, -8, 29.5}},
 				{C: 't', P: []float64{13.5, 19.5}},
@@ -194,7 +198,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 305,
 			Unicode:   "$",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 440}},
 				{C: 'q', P: []float64{0, 18, 12, 24}},
 				{C: 'q', P: []float64{43, 55, 133, 74}},
@@ -267,7 +271,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 620,
 			Unicode:   "%",
 			GerberLP:  "dcddc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{29, 410}},
 				{C: 'q', P: []float64{-25, 30, -19, 63.5}},
 				{C: 't', P: []float64{33, 52.5}},
@@ -348,8 +352,8 @@ var gooddogregularFont = &Font{
 		"&": {
 			HorizAdvX: 277,
 			Unicode:   "&",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{19, 219}},
 				{C: 'q', P: []float64{-10, 26, 18, 54}},
 				{C: 't', P: []float64{27, 47}},
@@ -412,8 +416,8 @@ var gooddogregularFont = &Font{
 		"'": {
 			HorizAdvX: 121,
 			Unicode:   "'",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{46, 610}},
 				{C: 'q', P: []float64{1, 11, 9, 18.5}},
 				{C: 't', P: []float64{18.5, 9.5}},
@@ -439,8 +443,8 @@ var gooddogregularFont = &Font{
 		"(": {
 			HorizAdvX: 331,
 			Unicode:   "(",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{16, 373}},
 				{C: 'q', P: []float64{0, 6, 2.5, 14.5}},
 				{C: 't', P: []float64{6, 20}},
@@ -477,8 +481,8 @@ var gooddogregularFont = &Font{
 		")": {
 			HorizAdvX: 312,
 			Unicode:   ")",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{17, 9}},
 				{C: 'q', P: []float64{-7, 6, -6, 18.5}},
 				{C: 't', P: []float64{6, 21.5}},
@@ -501,8 +505,8 @@ var gooddogregularFont = &Font{
 		"*": {
 			HorizAdvX: 416,
 			Unicode:   "*",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{15, 392}},
 				{C: 'q', P: []float64{16, 24, 64.5, 37.5}},
 				{C: 't', P: []float64{64.5, 26.5}},
@@ -554,8 +558,8 @@ var gooddogregularFont = &Font{
 		"+": {
 			HorizAdvX: 323,
 			Unicode:   "+",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 280}},
 				{C: 'q', P: []float64{-19, 6, -17, 20}},
 				{C: 't', P: []float64{17, 19}},
@@ -595,8 +599,8 @@ var gooddogregularFont = &Font{
 		",": {
 			HorizAdvX: 146,
 			Unicode:   ",",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{29, 81}},
 				{C: 'q', P: []float64{-4, 35, 16.5, 55.5}},
 				{C: 't', P: []float64{46.5, 19}},
@@ -614,8 +618,8 @@ var gooddogregularFont = &Font{
 		"-": {
 			HorizAdvX: 0,
 			Unicode:   "-",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{23, 265}},
 				{C: 'q', P: []float64{-4, 24, 13.5, 42.5}},
 				{C: 't', P: []float64{42.5, 18.5}},
@@ -640,8 +644,8 @@ var gooddogregularFont = &Font{
 		".": {
 			HorizAdvX: 159,
 			Unicode:   ".",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 81}},
 				{C: 'q', P: []float64{-3, 27, 8, 45}},
 				{C: 't', P: []float64{29, 24.5}},
@@ -657,8 +661,8 @@ var gooddogregularFont = &Font{
 		"/": {
 			HorizAdvX: 383,
 			Unicode:   "/",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1, 42}},
 				{C: 'q', P: []float64{11, 51, 33, 106.5}},
 				{C: 't', P: []float64{42, 93.5}},
@@ -685,7 +689,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 435,
 			Unicode:   "0",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{21, 231}},
 				{C: 'q', P: []float64{-11, 95, 59, 174.5}},
 				{C: 't', P: []float64{166, 95.5}},
@@ -712,8 +716,8 @@ var gooddogregularFont = &Font{
 		"1": {
 			HorizAdvX: 164,
 			Unicode:   "1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{50, 32}},
 				{C: 'q', P: []float64{-22, 56, -22, 120}},
 				{C: 't', P: []float64{11, 143.5}},
@@ -738,8 +742,8 @@ var gooddogregularFont = &Font{
 		"2": {
 			HorizAdvX: 419,
 			Unicode:   "2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{20, 435}},
 				{C: 'q', P: []float64{6, 18, 20.5, 26.5}},
 				{C: 't', P: []float64{27.5, 8.5}},
@@ -790,8 +794,8 @@ var gooddogregularFont = &Font{
 		"3": {
 			HorizAdvX: 338,
 			Unicode:   "3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{34, 76}},
 				{C: 'q', P: []float64{-24, 16, -14.5, 42}},
 				{C: 't', P: []float64{34.5, 33}},
@@ -833,8 +837,8 @@ var gooddogregularFont = &Font{
 		"4": {
 			HorizAdvX: 368,
 			Unicode:   "4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{32, 225}},
 				{C: 'q', P: []float64{-26, 57, -3, 133}},
 				{C: 't', P: []float64{79, 114}},
@@ -878,8 +882,8 @@ var gooddogregularFont = &Font{
 		"5": {
 			HorizAdvX: 396,
 			Unicode:   "5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{15, 264}},
 				{C: 'q', P: []float64{8, 8, 22, 20}},
 				{C: 't', P: []float64{20, 18}},
@@ -922,7 +926,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 384,
 			Unicode:   "6",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{21, 135}},
 				{C: 'q', P: []float64{-31, 119, 42, 230}},
 				{C: 't', P: []float64{197, 141}},
@@ -956,8 +960,8 @@ var gooddogregularFont = &Font{
 		"7": {
 			HorizAdvX: 401,
 			Unicode:   "7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{9, 414}},
 				{C: 'q', P: []float64{5, 14, 17.5, 30}},
 				{C: 't', P: []float64{23.5, 16}},
@@ -993,7 +997,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 433,
 			Unicode:   "8",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{10, 23}},
 				{C: 'q', P: []float64{4, 44, 28, 77.5}},
 				{C: 't', P: []float64{76.5, 77.5}},
@@ -1044,7 +1048,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 304,
 			Unicode:   "9",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{21, 300}},
 				{C: 'q', P: []float64{-15, 53, 10, 99.5}},
 				{C: 't', P: []float64{76, 72.5}},
@@ -1078,8 +1082,8 @@ var gooddogregularFont = &Font{
 		":": {
 			HorizAdvX: 159,
 			Unicode:   ":",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{29, 81}},
 				{C: 'q', P: []float64{-4, 35, 16.5, 55.5}},
 				{C: 't', P: []float64{46.5, 19}},
@@ -1103,8 +1107,8 @@ var gooddogregularFont = &Font{
 		";": {
 			HorizAdvX: 157,
 			Unicode:   ";",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{28, 81}},
 				{C: 'q', P: []float64{-4, 35, 16.5, 55.5}},
 				{C: 't', P: []float64{46.5, 19}},
@@ -1131,8 +1135,8 @@ var gooddogregularFont = &Font{
 		"<": {
 			HorizAdvX: 457,
 			Unicode:   "<",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 293}},
 				{C: 'q', P: []float64{0, 44, 38, 80}},
 				{C: 'q', P: []float64{46, 37, 151, 84}},
@@ -1163,8 +1167,8 @@ var gooddogregularFont = &Font{
 		"=": {
 			HorizAdvX: 274,
 			Unicode:   "=",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{28, 420}},
 				{C: 'q', P: []float64{16, 31, 49, 36}},
 				{C: 't', P: []float64{82.5, -1.5}},
@@ -1196,8 +1200,8 @@ var gooddogregularFont = &Font{
 		">": {
 			HorizAdvX: 387,
 			Unicode:   ">",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{5, 497}},
 				{C: 'q', P: []float64{-7, 10, 8, 29}},
 				{C: 't', P: []float64{31, 19}},
@@ -1230,8 +1234,8 @@ var gooddogregularFont = &Font{
 		"?": {
 			HorizAdvX: 330,
 			Unicode:   "?",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{23, 571}},
 				{C: 'q', P: []float64{-17, 8, -13, 30}},
 				{C: 't', P: []float64{23, 33}},
@@ -1272,7 +1276,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 502,
 			Unicode:   "@",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{17, 162}},
 				{C: 'q', P: []float64{-12, 52, 0, 96}},
 				{C: 'q', P: []float64{63, 220, 170, 327}},
@@ -1338,7 +1342,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 402,
 			Unicode:   "A",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{18, 10}},
 				{C: 'q', P: []float64{-6, 28, -0.5, 58}},
 				{C: 't', P: []float64{19, 68.5}},
@@ -1390,7 +1394,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 397,
 			Unicode:   "B",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{22, 571}},
 				{C: 'q', P: []float64{-14, 23, 2, 45.5}},
 				{C: 't', P: []float64{32, 22.5}},
@@ -1465,8 +1469,8 @@ var gooddogregularFont = &Font{
 		"C": {
 			HorizAdvX: 450,
 			Unicode:   "C",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{12, 257}},
 				{C: 'q', P: []float64{12, 83, 56.5, 143.5}},
 				{C: 't', P: []float64{122.5, 78.5}},
@@ -1498,7 +1502,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 380,
 			Unicode:   "D",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{22, 538}},
 				{C: 'q', P: []float64{-2, 2, -2, 6}},
 				{C: 't', P: []float64{1, 9}},
@@ -1538,8 +1542,8 @@ var gooddogregularFont = &Font{
 		"E": {
 			HorizAdvX: 0,
 			Unicode:   "E",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{19, 307}},
 				{C: 'q', P: []float64{0, 2, 2.5, 4.5}},
 				{C: 't', P: []float64{6, 5}},
@@ -1595,8 +1599,8 @@ var gooddogregularFont = &Font{
 		"F": {
 			HorizAdvX: 348,
 			Unicode:   "F",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{19, 256}},
 				{C: 'q', P: []float64{6, 8, 29, 21.5}},
 				{C: 't', P: []float64{26, 23.5}},
@@ -1645,8 +1649,8 @@ var gooddogregularFont = &Font{
 		"G": {
 			HorizAdvX: 394,
 			Unicode:   "G",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{28, 132}},
 				{C: 'q', P: []float64{-22, 115, 3, 214}},
 				{C: 't', P: []float64{112, 160}},
@@ -1687,8 +1691,8 @@ var gooddogregularFont = &Font{
 		"H": {
 			HorizAdvX: 392,
 			Unicode:   "H",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{24, 306}},
 				{C: 'q', P: []float64{1, 7, 6, 25.5}},
 				{C: 't', P: []float64{7, 28.5}},
@@ -1741,8 +1745,8 @@ var gooddogregularFont = &Font{
 		"I": {
 			HorizAdvX: 161,
 			Unicode:   "I",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{29, 173}},
 				{C: 'q', P: []float64{0, 26, -1, 84.5}},
 				{C: 't', P: []float64{-1, 92.5}},
@@ -1771,8 +1775,8 @@ var gooddogregularFont = &Font{
 		"J": {
 			HorizAdvX: 383,
 			Unicode:   "J",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{16, 207}},
 				{C: 'q', P: []float64{0, 63, 14, 87}},
 				{C: 'q', P: []float64{31, 32, 73, 24}},
@@ -1810,8 +1814,8 @@ var gooddogregularFont = &Font{
 		"K": {
 			HorizAdvX: 349,
 			Unicode:   "K",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{15, 594}},
 				{C: 'q', P: []float64{0, 17, 19.5, 31}},
 				{C: 't', P: []float64{41.5, 15}},
@@ -1852,8 +1856,8 @@ var gooddogregularFont = &Font{
 		"L": {
 			HorizAdvX: 430,
 			Unicode:   "L",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{20, 182}},
 				{C: 'q', P: []float64{0, 206, 39, 420}},
 				{C: 'q', P: []float64{6, 30, 49, 35}},
@@ -1881,8 +1885,8 @@ var gooddogregularFont = &Font{
 		"M": {
 			HorizAdvX: 602,
 			Unicode:   "M",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{36, 88}},
 				{C: 'q', P: []float64{-19, 20, -21.5, 50}},
 				{C: 't', P: []float64{4.5, 56}},
@@ -1934,8 +1938,8 @@ var gooddogregularFont = &Font{
 		"N": {
 			HorizAdvX: 339,
 			Unicode:   "N",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{23, 85}},
 				{C: 'q', P: []float64{6, 47, 11.5, 186}},
 				{C: 't', P: []float64{21.5, 216}},
@@ -1973,7 +1977,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 404,
 			Unicode:   "O",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{27, 284}},
 				{C: 'q', P: []float64{20, 70, 77.5, 125}},
 				{C: 't', P: []float64{126, 62}},
@@ -2001,7 +2005,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 475,
 			Unicode:   "P",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{20, 540}},
 				{C: 'q', P: []float64{-15, 17, -9.5, 41.5}},
 				{C: 't', P: []float64{20.5, 30.5}},
@@ -2049,7 +2053,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 423,
 			Unicode:   "Q",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{19, 341}},
 				{C: 'q', P: []float64{-17, 66, 34, 152}},
 				{C: 'q', P: []float64{13, 17, 31, 31.5}},
@@ -2102,7 +2106,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 410,
 			Unicode:   "R",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{23, 325}},
 				{C: 'q', P: []float64{0, 25, 19, 100.5}},
 				{C: 't', P: []float64{5, 111.5}},
@@ -2153,8 +2157,8 @@ var gooddogregularFont = &Font{
 		"S": {
 			HorizAdvX: 441,
 			Unicode:   "S",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{13, 497}},
 				{C: 'q', P: []float64{25, 31, 57.5, 53}},
 				{C: 't', P: []float64{72, 35}},
@@ -2202,8 +2206,8 @@ var gooddogregularFont = &Font{
 		"T": {
 			HorizAdvX: 432,
 			Unicode:   "T",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 504}},
 				{C: 'q', P: []float64{-25, 11, -23, 38}},
 				{C: 't', P: []float64{28, 40}},
@@ -2237,8 +2241,8 @@ var gooddogregularFont = &Font{
 		"U": {
 			HorizAdvX: 480,
 			Unicode:   "U",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{48, 510}},
 				{C: 'q', P: []float64{9, 28, 39, 42}},
 				{C: 't', P: []float64{60, 0}},
@@ -2273,8 +2277,8 @@ var gooddogregularFont = &Font{
 		"V": {
 			HorizAdvX: 407,
 			Unicode:   "V",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{13, 471}},
 				{C: 'q', P: []float64{3, 13, 21.5, 28}},
 				{C: 't', P: []float64{37.5, 17.5}},
@@ -2302,8 +2306,8 @@ var gooddogregularFont = &Font{
 		"W": {
 			HorizAdvX: 609,
 			Unicode:   "W",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{27, 467}},
 				{C: 'q', P: []float64{9, 30, 42, 44}},
 				{C: 't', P: []float64{52, -12}},
@@ -2353,8 +2357,8 @@ var gooddogregularFont = &Font{
 		"X": {
 			HorizAdvX: 497,
 			Unicode:   "X",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{8, 160}},
 				{C: 'q', P: []float64{23, 24, 66.5, 52.5}},
 				{C: 't', P: []float64{78.5, 57}},
@@ -2397,8 +2401,8 @@ var gooddogregularFont = &Font{
 		"Y": {
 			HorizAdvX: 361,
 			Unicode:   "Y",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{11, 597}},
 				{C: 'q', P: []float64{-3, 23, 28.5, 37.5}},
 				{C: 't', P: []float64{47.5, -0.5}},
@@ -2430,8 +2434,8 @@ var gooddogregularFont = &Font{
 		"Z": {
 			HorizAdvX: 538,
 			Unicode:   "Z",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{14, 39}},
 				{C: 'q', P: []float64{0, 30, 34, 52}},
 				{C: 'q', P: []float64{10, 9, 40.5, 34.5}},
@@ -2477,8 +2481,8 @@ var gooddogregularFont = &Font{
 		"[": {
 			HorizAdvX: 521,
 			Unicode:   "[",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{4, 77}},
 				{C: 'q', P: []float64{22, 24, 22, 40}},
 				{C: 'q', P: []float64{36, 117, 62, 271}},
@@ -2516,8 +2520,8 @@ var gooddogregularFont = &Font{
 		"\\": {
 			HorizAdvX: 413,
 			Unicode:   "\\",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{18, 535}},
 				{C: 'q', P: []float64{-21, 31, -17.5, 59.5}},
 				{C: 't', P: []float64{36.5, 38.5}},
@@ -2547,8 +2551,8 @@ var gooddogregularFont = &Font{
 		"]": {
 			HorizAdvX: 443,
 			Unicode:   "]",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{11, 594}},
 				{C: 'q', P: []float64{3, 23, 24, 33.5}},
 				{C: 't', P: []float64{43, 11.5}},
@@ -2588,8 +2592,8 @@ var gooddogregularFont = &Font{
 		"^": {
 			HorizAdvX: 311,
 			Unicode:   "^",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 433}},
 				{C: 'q', P: []float64{15, 21, 39.5, 54.5}},
 				{C: 't', P: []float64{38, 52}},
@@ -2620,13 +2624,13 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 185,
 			Unicode:   "_",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"`": {
 			HorizAdvX: 165,
 			Unicode:   "`",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{31, 576}},
 				{C: 'q', P: []float64{-16, 25, 8.5, 46}},
 				{C: 't', P: []float64{51.5, 18}},
@@ -2650,7 +2654,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 354,
 			Unicode:   "a",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{35, 91}},
 				{C: 'q', P: []float64{-19, 29, -15, 71.5}},
 				{C: 't', P: []float64{24, 68.5}},
@@ -2703,7 +2707,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 401,
 			Unicode:   "b",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{13, 370}},
 				{C: 'q', P: []float64{3, 5, 11, 13}},
 				{C: 't', P: []float64{10, 13}},
@@ -2742,8 +2746,8 @@ var gooddogregularFont = &Font{
 		"c": {
 			HorizAdvX: 378,
 			Unicode:   "c",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{14, 260}},
 				{C: 'q', P: []float64{16, 95, 83, 154}},
 				{C: 'q', P: []float64{2, 2, 16.5, 15}},
@@ -2783,7 +2787,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 370,
 			Unicode:   "d",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{14, 224}},
 				{C: 'q', P: []float64{0, 56, 38, 91}},
 				{C: 't', P: []float64{104, 65.5}},
@@ -2826,7 +2830,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 339,
 			Unicode:   "e",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{22, 282}},
 				{C: 'q', P: []float64{-2, 75, 47, 121}},
 				{C: 't', P: []float64{122, 36}},
@@ -2863,8 +2867,8 @@ var gooddogregularFont = &Font{
 		"f": {
 			HorizAdvX: 0,
 			Unicode:   "f",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{13, 186}},
 				{C: 'q', P: []float64{4, 7, 24.5, 19}},
 				{C: 't', P: []float64{19.5, 27}},
@@ -2908,7 +2912,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 327,
 			Unicode:   "g",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{34, 265}},
 				{C: 'q', P: []float64{-19, 42, -10.5, 86}},
 				{C: 't', P: []float64{44.5, 74}},
@@ -2957,8 +2961,8 @@ var gooddogregularFont = &Font{
 		"h": {
 			HorizAdvX: 338,
 			Unicode:   "h",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{24, 75}},
 				{C: 'q', P: []float64{0, 109, 12, 221}},
 				{C: 'q', P: []float64{3, 23, -1.5, 61}},
@@ -2996,8 +3000,8 @@ var gooddogregularFont = &Font{
 		"i": {
 			HorizAdvX: 185,
 			Unicode:   "i",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{42, 253}},
 				{C: 'q', P: []float64{0, 79, 18, 114}},
 				{C: 'q', P: []float64{10, 19, 33, 25.5}},
@@ -3030,8 +3034,8 @@ var gooddogregularFont = &Font{
 		"j": {
 			HorizAdvX: 194,
 			Unicode:   "j",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-105, -76}},
 				{C: 'q', P: []float64{-7, 20, 4.5, 35}},
 				{C: 't', P: []float64{31.5, 21}},
@@ -3072,8 +3076,8 @@ var gooddogregularFont = &Font{
 		"k": {
 			HorizAdvX: 378,
 			Unicode:   "k",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{21, 394}},
 				{C: 'q', P: []float64{2, 27, -3.5, 74}},
 				{C: 't', P: []float64{-7, 74}},
@@ -3118,8 +3122,8 @@ var gooddogregularFont = &Font{
 		"l": {
 			HorizAdvX: 198,
 			Unicode:   "l",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{32, 65}},
 				{C: 'q', P: []float64{13, 45, 18, 91.5}},
 				{C: 't', P: []float64{5.5, 117}},
@@ -3149,8 +3153,8 @@ var gooddogregularFont = &Font{
 		"m": {
 			HorizAdvX: 606,
 			Unicode:   "m",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{19, 296}},
 				{C: 'q', P: []float64{-7, 58, 14.5, 96.5}},
 				{C: 't', P: []float64{75.5, 22.5}},
@@ -3202,8 +3206,8 @@ var gooddogregularFont = &Font{
 		"n": {
 			HorizAdvX: 360,
 			Unicode:   "n",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{44, 217}},
 				{C: 'q', P: []float64{0, 16, -3, 53.5}},
 				{C: 't', P: []float64{-2, 64}},
@@ -3247,7 +3251,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 282,
 			Unicode:   "o",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{31, 331}},
 				{C: 'q', P: []float64{9, 33, 35, 69.5}},
 				{C: 't', P: []float64{29, 43.5}},
@@ -3274,7 +3278,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 344,
 			Unicode:   "p",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{19, -41}},
 				{C: 'q', P: []float64{-5, 38, -6, 77.5}},
 				{C: 't', P: []float64{2.5, 80}},
@@ -3331,7 +3335,7 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 384,
 			Unicode:   "q",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{18, 325}},
 				{C: 'q', P: []float64{10, 43, 39, 76}},
 				{C: 't', P: []float64{73, 50}},
@@ -3396,8 +3400,8 @@ var gooddogregularFont = &Font{
 		"r": {
 			HorizAdvX: 323,
 			Unicode:   "r",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{35, 456}},
 				{C: 'q', P: []float64{37, 32, 72.5, 1}},
 				{C: 't', P: []float64{27.5, -81}},
@@ -3432,8 +3436,8 @@ var gooddogregularFont = &Font{
 		"s": {
 			HorizAdvX: 345,
 			Unicode:   "s",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{25, 68}},
 				{C: 'q', P: []float64{-10, 20, 7, 39.5}},
 				{C: 't', P: []float64{40, 21.5}},
@@ -3473,8 +3477,8 @@ var gooddogregularFont = &Font{
 		"t": {
 			HorizAdvX: 397,
 			Unicode:   "t",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{7, 258}},
 				{C: 'q', P: []float64{-4, 10, 4.5, 23}},
 				{C: 't', P: []float64{20.5, 21}},
@@ -3516,8 +3520,8 @@ var gooddogregularFont = &Font{
 		"u": {
 			HorizAdvX: 367,
 			Unicode:   "u",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 358}},
 				{C: 'q', P: []float64{0, 5, 0.5, 25.5}},
 				{C: 't', P: []float64{1.5, 29}},
@@ -3555,8 +3559,8 @@ var gooddogregularFont = &Font{
 		"v": {
 			HorizAdvX: 430,
 			Unicode:   "v",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{12, 394}},
 				{C: 'q', P: []float64{-9, 26, 11, 42}},
 				{C: 't', P: []float64{48, 15}},
@@ -3592,8 +3596,8 @@ var gooddogregularFont = &Font{
 		"w": {
 			HorizAdvX: 609,
 			Unicode:   "w",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{25, 416}},
 				{C: 'q', P: []float64{4, 33, 37, 40.5}},
 				{C: 't', P: []float64{50, -15.5}},
@@ -3636,8 +3640,8 @@ var gooddogregularFont = &Font{
 		"x": {
 			HorizAdvX: 471,
 			Unicode:   "x",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{15, 31}},
 				{C: 'q', P: []float64{-10, 27, 3.5, 54}},
 				{C: 't', P: []float64{36, 46}},
@@ -3683,8 +3687,8 @@ var gooddogregularFont = &Font{
 		"y": {
 			HorizAdvX: 346,
 			Unicode:   "y",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-47, -122}},
 				{C: 'q', P: []float64{-35, 70, 5, 94}},
 				{C: 'q', P: []float64{18, 11, 39, -2.5}},
@@ -3732,8 +3736,8 @@ var gooddogregularFont = &Font{
 		"z": {
 			HorizAdvX: 473,
 			Unicode:   "z",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{20, 386}},
 				{C: 'q', P: []float64{-8, 31, 13, 53}},
 				{C: 't', P: []float64{47, 18}},
@@ -3771,8 +3775,8 @@ var gooddogregularFont = &Font{
 		"{": {
 			HorizAdvX: 445,
 			Unicode:   "{",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{7, 369}},
 				{C: 'q', P: []float64{3, 4, 20.5, 15.5}},
 				{C: 't', P: []float64{17.5, 27.5}},
@@ -3831,8 +3835,8 @@ var gooddogregularFont = &Font{
 		"|": {
 			HorizAdvX: 183,
 			Unicode:   "|",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{27, 346}},
 				{C: 'q', P: []float64{0, 68, 21, 223}},
 				{C: 'q', P: []float64{0, 23, 17, 42.5}},
@@ -3854,8 +3858,8 @@ var gooddogregularFont = &Font{
 		"}": {
 			HorizAdvX: 314,
 			Unicode:   "}",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{19, 358}},
 				{C: 'q', P: []float64{-9, 16, 1.5, 32.5}},
 				{C: 't', P: []float64{27.5, 25.5}},
@@ -3921,8 +3925,8 @@ var gooddogregularFont = &Font{
 		"~": {
 			HorizAdvX: 385,
 			Unicode:   "~",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{25, 505}},
 				{C: 'q', P: []float64{7, 10, 14.5, 22.5}},
 				{C: 't', P: []float64{11, 17}},
@@ -3959,8 +3963,8 @@ var gooddogregularFont = &Font{
 		"\u00a1": {
 			HorizAdvX: 231,
 			Unicode:   "\u00a1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{17, 32}},
 				{C: 'q', P: []float64{6, 77, 43, 222.5}},
 				{C: 't', P: []float64{46, 210.5}},
@@ -3990,8 +3994,8 @@ var gooddogregularFont = &Font{
 		"\u00a5": {
 			HorizAdvX: 361,
 			Unicode:   "\u00a5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{11, 597}},
 				{C: 'q', P: []float64{-3, 23, 28.5, 37.5}},
 				{C: 't', P: []float64{47.5, -0.5}},
@@ -4054,8 +4058,8 @@ var gooddogregularFont = &Font{
 		"\u00a7": {
 			HorizAdvX: 575,
 			Unicode:   "\u00a7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{27, 320}},
 				{C: 'q', P: []float64{30, 38, 123, 34}},
 				{C: 'q', P: []float64{48, 100, 150, 125}},
@@ -4110,8 +4114,8 @@ var gooddogregularFont = &Font{
 		"\u00a8": {
 			HorizAdvX: 324,
 			Unicode:   "\u00a8",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{27, 580}},
 				{C: 'q', P: []float64{0, 24, 18, 41}},
 				{C: 'q', P: []float64{29, 26, 65.5, 16.5}},
@@ -4137,8 +4141,8 @@ var gooddogregularFont = &Font{
 		"\u00ad": {
 			HorizAdvX: 0,
 			Unicode:   "\u00ad",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{23, 265}},
 				{C: 'q', P: []float64{-4, 24, 13.5, 42.5}},
 				{C: 't', P: []float64{42.5, 18.5}},
@@ -4163,8 +4167,8 @@ var gooddogregularFont = &Font{
 		"\u00b4": {
 			HorizAdvX: 158,
 			Unicode:   "\u00b4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{29, 487}},
 				{C: 'q', P: []float64{-6, 14, -4, 26.5}},
 				{C: 't', P: []float64{4, 16.5}},
@@ -4186,8 +4190,8 @@ var gooddogregularFont = &Font{
 		"\u00bf": {
 			HorizAdvX: 330,
 			Unicode:   "\u00bf",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{10, 132}},
 				{C: 'q', P: []float64{10, 40, 44.5, 71}},
 				{C: 't', P: []float64{77.5, 60.5}},
@@ -4227,8 +4231,8 @@ var gooddogregularFont = &Font{
 		"\u00c0": {
 			HorizAdvX: 402,
 			Unicode:   "\u00c0",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{18, 10}},
 				{C: 'q', P: []float64{-6, 28, -0.5, 58}},
 				{C: 't', P: []float64{19, 68.5}},
@@ -4299,8 +4303,8 @@ var gooddogregularFont = &Font{
 		"\u00c1": {
 			HorizAdvX: 402,
 			Unicode:   "\u00c1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{18, 10}},
 				{C: 'q', P: []float64{-6, 28, -0.5, 58}},
 				{C: 't', P: []float64{19, 68.5}},
@@ -4367,8 +4371,8 @@ var gooddogregularFont = &Font{
 		"\u00c2": {
 			HorizAdvX: 402,
 			Unicode:   "\u00c2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{18, 10}},
 				{C: 'q', P: []float64{-6, 28, -0.5, 58}},
 				{C: 't', P: []float64{19, 68.5}},
@@ -4443,8 +4447,8 @@ var gooddogregularFont = &Font{
 		"\u00c3": {
 			HorizAdvX: 402,
 			Unicode:   "\u00c3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{18, 10}},
 				{C: 'q', P: []float64{-6, 28, -0.5, 58}},
 				{C: 't', P: []float64{19, 68.5}},
@@ -4526,8 +4530,8 @@ var gooddogregularFont = &Font{
 		"\u00c4": {
 			HorizAdvX: 402,
 			Unicode:   "\u00c4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{18, 10}},
 				{C: 'q', P: []float64{-6, 28, -0.5, 58}},
 				{C: 't', P: []float64{19, 68.5}},
@@ -4598,8 +4602,8 @@ var gooddogregularFont = &Font{
 		"\u00c5": {
 			HorizAdvX: 402,
 			Unicode:   "\u00c5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{18, 10}},
 				{C: 'q', P: []float64{-6, 28, -0.5, 58}},
 				{C: 't', P: []float64{19, 68.5}},
@@ -4665,8 +4669,8 @@ var gooddogregularFont = &Font{
 		"\u00c7": {
 			HorizAdvX: 450,
 			Unicode:   "\u00c7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{12, 257}},
 				{C: 'q', P: []float64{12, 83, 56.5, 143.5}},
 				{C: 't', P: []float64{122.5, 78.5}},
@@ -4707,8 +4711,8 @@ var gooddogregularFont = &Font{
 		"\u00c8": {
 			HorizAdvX: 0,
 			Unicode:   "\u00c8",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{19, 307}},
 				{C: 'q', P: []float64{0, 2, 2.5, 4.5}},
 				{C: 't', P: []float64{6, 5}},
@@ -4784,8 +4788,8 @@ var gooddogregularFont = &Font{
 		"\u00c9": {
 			HorizAdvX: 0,
 			Unicode:   "\u00c9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{19, 307}},
 				{C: 'q', P: []float64{0, 2, 2.5, 4.5}},
 				{C: 't', P: []float64{6, 5}},
@@ -4857,8 +4861,8 @@ var gooddogregularFont = &Font{
 		"\u00ca": {
 			HorizAdvX: 0,
 			Unicode:   "\u00ca",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{14, 586}},
 				{C: 'q', P: []float64{15, 21, 39.5, 54.5}},
 				{C: 't', P: []float64{38, 52}},
@@ -4941,8 +4945,8 @@ var gooddogregularFont = &Font{
 		"\u00cb": {
 			HorizAdvX: 0,
 			Unicode:   "\u00cb",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{19, 307}},
 				{C: 'q', P: []float64{0, 2, 2.5, 4.5}},
 				{C: 't', P: []float64{6, 5}},
@@ -5018,8 +5022,8 @@ var gooddogregularFont = &Font{
 		"\u00cc": {
 			HorizAdvX: 161,
 			Unicode:   "\u00cc",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{14, 732}},
 				{C: 'q', P: []float64{-16, 25, 8.5, 46}},
 				{C: 't', P: []float64{51.5, 18}},
@@ -5065,8 +5069,8 @@ var gooddogregularFont = &Font{
 		"\u00cd": {
 			HorizAdvX: 161,
 			Unicode:   "\u00cd",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{29, 173}},
 				{C: 'q', P: []float64{0, 26, -1, 84.5}},
 				{C: 't', P: []float64{-1, 92.5}},
@@ -5111,8 +5115,8 @@ var gooddogregularFont = &Font{
 		"\u00ce": {
 			HorizAdvX: 161,
 			Unicode:   "\u00ce",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-52, 586}},
 				{C: 'q', P: []float64{15, 21, 39.5, 54.5}},
 				{C: 't', P: []float64{38, 52}},
@@ -5165,8 +5169,8 @@ var gooddogregularFont = &Font{
 		"\u00cf": {
 			HorizAdvX: 161,
 			Unicode:   "\u00cf",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-59, 730}},
 				{C: 'q', P: []float64{0, 24, 18, 41}},
 				{C: 'q', P: []float64{29, 26, 65.5, 16.5}},
@@ -5215,8 +5219,8 @@ var gooddogregularFont = &Font{
 		"\u00d1": {
 			HorizAdvX: 339,
 			Unicode:   "\u00d1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-7, 666}},
 				{C: 'q', P: []float64{7, 10, 14.5, 22.5}},
 				{C: 't', P: []float64{11, 17}},
@@ -5284,8 +5288,8 @@ var gooddogregularFont = &Font{
 		"\u00d2": {
 			HorizAdvX: 404,
 			Unicode:   "\u00d2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{27, 284}},
 				{C: 'q', P: []float64{20, 70, 77.5, 125}},
 				{C: 't', P: []float64{126, 62}},
@@ -5329,8 +5333,8 @@ var gooddogregularFont = &Font{
 		"\u00d3": {
 			HorizAdvX: 404,
 			Unicode:   "\u00d3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{27, 284}},
 				{C: 'q', P: []float64{20, 70, 77.5, 125}},
 				{C: 't', P: []float64{126, 62}},
@@ -5373,8 +5377,8 @@ var gooddogregularFont = &Font{
 		"\u00d4": {
 			HorizAdvX: 404,
 			Unicode:   "\u00d4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{27, 284}},
 				{C: 'q', P: []float64{17, 57, 61, 107}},
 				{C: 't', P: []float64{99.5, 70.5}},
@@ -5425,8 +5429,8 @@ var gooddogregularFont = &Font{
 		"\u00d5": {
 			HorizAdvX: 404,
 			Unicode:   "\u00d5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{27, 284}},
 				{C: 'q', P: []float64{20, 70, 77.5, 125}},
 				{C: 't', P: []float64{126, 62}},
@@ -5484,8 +5488,8 @@ var gooddogregularFont = &Font{
 		"\u00d6": {
 			HorizAdvX: 404,
 			Unicode:   "\u00d6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{27, 284}},
 				{C: 'q', P: []float64{20, 70, 77.5, 125}},
 				{C: 't', P: []float64{126, 62}},
@@ -5532,8 +5536,8 @@ var gooddogregularFont = &Font{
 		"\u00d9": {
 			HorizAdvX: 480,
 			Unicode:   "\u00d9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{48, 510}},
 				{C: 'q', P: []float64{9, 28, 39, 42}},
 				{C: 't', P: []float64{60, 0}},
@@ -5585,8 +5589,8 @@ var gooddogregularFont = &Font{
 		"\u00da": {
 			HorizAdvX: 480,
 			Unicode:   "\u00da",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{48, 510}},
 				{C: 'q', P: []float64{9, 28, 39, 42}},
 				{C: 't', P: []float64{60, 0}},
@@ -5637,8 +5641,8 @@ var gooddogregularFont = &Font{
 		"\u00db": {
 			HorizAdvX: 480,
 			Unicode:   "\u00db",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{48, 510}},
 				{C: 'q', P: []float64{10, 34, 47, 46}},
 				{C: 'q', P: []float64{-7, 9, 6, 27}},
@@ -5694,8 +5698,8 @@ var gooddogregularFont = &Font{
 		"\u00dc": {
 			HorizAdvX: 480,
 			Unicode:   "\u00dc",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{48, 510}},
 				{C: 'q', P: []float64{9, 28, 39, 42}},
 				{C: 't', P: []float64{60, 0}},
@@ -5750,8 +5754,8 @@ var gooddogregularFont = &Font{
 		"\u00e0": {
 			HorizAdvX: 354,
 			Unicode:   "\u00e0",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{35, 91}},
 				{C: 'q', P: []float64{-19, 29, -15, 71.5}},
 				{C: 't', P: []float64{24, 68.5}},
@@ -5820,8 +5824,8 @@ var gooddogregularFont = &Font{
 		"\u00e1": {
 			HorizAdvX: 354,
 			Unicode:   "\u00e1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{35, 91}},
 				{C: 'q', P: []float64{-19, 29, -15, 71.5}},
 				{C: 't', P: []float64{24, 68.5}},
@@ -5889,8 +5893,8 @@ var gooddogregularFont = &Font{
 		"\u00e2": {
 			HorizAdvX: 354,
 			Unicode:   "\u00e2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{35, 91}},
 				{C: 'q', P: []float64{-19, 29, -15, 71.5}},
 				{C: 't', P: []float64{24, 68.5}},
@@ -5965,8 +5969,8 @@ var gooddogregularFont = &Font{
 		"\u00e3": {
 			HorizAdvX: 354,
 			Unicode:   "\u00e3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{13, 580}},
 				{C: 'q', P: []float64{7, 10, 14.5, 22.5}},
 				{C: 't', P: []float64{11, 17}},
@@ -6049,8 +6053,8 @@ var gooddogregularFont = &Font{
 		"\u00e4": {
 			HorizAdvX: 354,
 			Unicode:   "\u00e4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{30, 586}},
 				{C: 'q', P: []float64{0, 24, 18, 41}},
 				{C: 'q', P: []float64{29, 26, 65.5, 16.5}},
@@ -6122,8 +6126,8 @@ var gooddogregularFont = &Font{
 		"\u00e5": {
 			HorizAdvX: 354,
 			Unicode:   "\u00e5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{35, 91}},
 				{C: 'q', P: []float64{-19, 29, -15, 71.5}},
 				{C: 't', P: []float64{24, 68.5}},
@@ -6195,8 +6199,8 @@ var gooddogregularFont = &Font{
 		"\u00e7": {
 			HorizAdvX: 378,
 			Unicode:   "\u00e7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{14, 260}},
 				{C: 'q', P: []float64{16, 95, 83, 154}},
 				{C: 'q', P: []float64{2, 2, 16.5, 15}},
@@ -6246,8 +6250,8 @@ var gooddogregularFont = &Font{
 		"\u00e8": {
 			HorizAdvX: 339,
 			Unicode:   "\u00e8",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{22, 282}},
 				{C: 'q', P: []float64{-2, 75, 47, 121}},
 				{C: 't', P: []float64{122, 36}},
@@ -6301,8 +6305,8 @@ var gooddogregularFont = &Font{
 		"\u00e9": {
 			HorizAdvX: 339,
 			Unicode:   "\u00e9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{22, 282}},
 				{C: 'q', P: []float64{-2, 75, 47, 121}},
 				{C: 't', P: []float64{122, 36}},
@@ -6355,8 +6359,8 @@ var gooddogregularFont = &Font{
 		"\u00ea": {
 			HorizAdvX: 339,
 			Unicode:   "\u00ea",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{14, 456}},
 				{C: 'q', P: []float64{15, 21, 39.5, 54.5}},
 				{C: 't', P: []float64{38, 52}},
@@ -6422,8 +6426,8 @@ var gooddogregularFont = &Font{
 		"\u00eb": {
 			HorizAdvX: 339,
 			Unicode:   "\u00eb",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{22, 282}},
 				{C: 'q', P: []float64{-2, 75, 47, 121}},
 				{C: 't', P: []float64{122, 36}},
@@ -6480,8 +6484,8 @@ var gooddogregularFont = &Font{
 		"\u00ec": {
 			HorizAdvX: 185,
 			Unicode:   "\u00ec",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{8, 556}},
 				{C: 'q', P: []float64{-16, 25, 8.5, 46}},
 				{C: 't', P: []float64{51.5, 18}},
@@ -6521,8 +6525,8 @@ var gooddogregularFont = &Font{
 		"\u00ed": {
 			HorizAdvX: 185,
 			Unicode:   "\u00ed",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{42, 253}},
 				{C: 'q', P: []float64{0, 79, 18, 114}},
 				{C: 'q', P: []float64{10, 19, 33, 25.5}},
@@ -6561,8 +6565,8 @@ var gooddogregularFont = &Font{
 		"\u00ee": {
 			HorizAdvX: 185,
 			Unicode:   "\u00ee",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-46, 439}},
 				{C: 'q', P: []float64{15, 21, 39.5, 54.5}},
 				{C: 't', P: []float64{38, 52}},
@@ -6609,8 +6613,8 @@ var gooddogregularFont = &Font{
 		"\u00ef": {
 			HorizAdvX: 185,
 			Unicode:   "\u00ef",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-34, 551}},
 				{C: 'q', P: []float64{0, 24, 18, 41}},
 				{C: 'q', P: []float64{29, 26, 65.5, 16.5}},
@@ -6653,8 +6657,8 @@ var gooddogregularFont = &Font{
 		"\u00f1": {
 			HorizAdvX: 360,
 			Unicode:   "\u00f1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{25, 505}},
 				{C: 'q', P: []float64{7, 10, 14.5, 22.5}},
 				{C: 't', P: []float64{11, 17}},
@@ -6728,8 +6732,8 @@ var gooddogregularFont = &Font{
 		"\u00f2": {
 			HorizAdvX: 282,
 			Unicode:   "\u00f2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{31, 331}},
 				{C: 'q', P: []float64{9, 33, 35, 69.5}},
 				{C: 't', P: []float64{29, 43.5}},
@@ -6775,8 +6779,8 @@ var gooddogregularFont = &Font{
 		"\u00f3": {
 			HorizAdvX: 282,
 			Unicode:   "\u00f3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{31, 331}},
 				{C: 'q', P: []float64{9, 33, 35, 69.5}},
 				{C: 't', P: []float64{29, 43.5}},
@@ -6818,8 +6822,8 @@ var gooddogregularFont = &Font{
 		"\u00f4": {
 			HorizAdvX: 282,
 			Unicode:   "\u00f4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-10, 495}},
 				{C: 'q', P: []float64{15, 21, 39.5, 54.5}},
 				{C: 't', P: []float64{38, 52}},
@@ -6869,8 +6873,8 @@ var gooddogregularFont = &Font{
 		"\u00f5": {
 			HorizAdvX: 282,
 			Unicode:   "\u00f5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-11, 576}},
 				{C: 'q', P: []float64{7, 10, 14.5, 22.5}},
 				{C: 't', P: []float64{11, 17}},
@@ -6927,8 +6931,8 @@ var gooddogregularFont = &Font{
 		"\u00f6": {
 			HorizAdvX: 282,
 			Unicode:   "\u00f6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{6, 613}},
 				{C: 'q', P: []float64{0, 24, 18, 41}},
 				{C: 'q', P: []float64{29, 26, 65.5, 16.5}},
@@ -6974,8 +6978,8 @@ var gooddogregularFont = &Font{
 		"\u00f9": {
 			HorizAdvX: 367,
 			Unicode:   "\u00f9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 358}},
 				{C: 'q', P: []float64{0, 5, 0.5, 25.5}},
 				{C: 't', P: []float64{1.5, 29}},
@@ -7033,8 +7037,8 @@ var gooddogregularFont = &Font{
 		"\u00fa": {
 			HorizAdvX: 367,
 			Unicode:   "\u00fa",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 358}},
 				{C: 'q', P: []float64{0, 5, 0.5, 25.5}},
 				{C: 't', P: []float64{1.5, 29}},
@@ -7088,8 +7092,8 @@ var gooddogregularFont = &Font{
 		"\u00fb": {
 			HorizAdvX: 367,
 			Unicode:   "\u00fb",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 358}},
 				{C: 'q', P: []float64{0, 5, 0.5, 25.5}},
 				{C: 't', P: []float64{1.5, 29}},
@@ -7156,8 +7160,8 @@ var gooddogregularFont = &Font{
 		"\u00fc": {
 			HorizAdvX: 367,
 			Unicode:   "\u00fc",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 358}},
 				{C: 'q', P: []float64{0, 5, 0.5, 25.5}},
 				{C: 't', P: []float64{1.5, 29}},
@@ -7216,73 +7220,73 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 419,
 			Unicode:   "\u2000",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2001": {
 			HorizAdvX: 838,
 			Unicode:   "\u2001",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2002": {
 			HorizAdvX: 419,
 			Unicode:   "\u2002",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2003": {
 			HorizAdvX: 838,
 			Unicode:   "\u2003",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2004": {
 			HorizAdvX: 279,
 			Unicode:   "\u2004",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2005": {
 			HorizAdvX: 209,
 			Unicode:   "\u2005",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2006": {
 			HorizAdvX: 139,
 			Unicode:   "\u2006",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2007": {
 			HorizAdvX: 139,
 			Unicode:   "\u2007",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2008": {
 			HorizAdvX: 104,
 			Unicode:   "\u2008",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2009": {
 			HorizAdvX: 167,
 			Unicode:   "\u2009",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u200a": {
 			HorizAdvX: 46,
 			Unicode:   "\u200a",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2010": {
 			HorizAdvX: 0,
 			Unicode:   "\u2010",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{23, 265}},
 				{C: 'q', P: []float64{-4, 24, 13.5, 42.5}},
 				{C: 't', P: []float64{42.5, 18.5}},
@@ -7307,8 +7311,8 @@ var gooddogregularFont = &Font{
 		"\u2011": {
 			HorizAdvX: 0,
 			Unicode:   "\u2011",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{23, 265}},
 				{C: 'q', P: []float64{-4, 24, 13.5, 42.5}},
 				{C: 't', P: []float64{42.5, 18.5}},
@@ -7333,8 +7337,8 @@ var gooddogregularFont = &Font{
 		"\u2012": {
 			HorizAdvX: 0,
 			Unicode:   "\u2012",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{23, 265}},
 				{C: 'q', P: []float64{-4, 24, 13.5, 42.5}},
 				{C: 't', P: []float64{42.5, 18.5}},
@@ -7359,8 +7363,8 @@ var gooddogregularFont = &Font{
 		"\u2013": {
 			HorizAdvX: 521,
 			Unicode:   "\u2013",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{23, 265}},
 				{C: 'q', P: []float64{-6, 24, 20, 42.5}},
 				{C: 't', P: []float64{63, 18.5}},
@@ -7385,8 +7389,8 @@ var gooddogregularFont = &Font{
 		"\u2014": {
 			HorizAdvX: 1022,
 			Unicode:   "\u2014",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{24, 265}},
 				{C: 'q', P: []float64{-12, 24, 40, 42.5}},
 				{C: 't', P: []float64{126, 18.5}},
@@ -7411,8 +7415,8 @@ var gooddogregularFont = &Font{
 		"\u2018": {
 			HorizAdvX: 214,
 			Unicode:   "\u2018",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{26, 576}},
 				{C: 'q', P: []float64{-16, 25, 8.5, 46}},
 				{C: 't', P: []float64{50.5, 18}},
@@ -7434,8 +7438,8 @@ var gooddogregularFont = &Font{
 		"\u2019": {
 			HorizAdvX: 178,
 			Unicode:   "\u2019",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{25, 441}},
 				{C: 'q', P: []float64{-6, 21, 0.5, 41}},
 				{C: 't', P: []float64{25, 49.5}},
@@ -7454,8 +7458,8 @@ var gooddogregularFont = &Font{
 		"\u201c": {
 			HorizAdvX: 382,
 			Unicode:   "\u201c",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{22, 530}},
 				{C: 'q', P: []float64{-18, 18, 2, 44.5}},
 				{C: 't', P: []float64{41, 14.5}},
@@ -7492,8 +7496,8 @@ var gooddogregularFont = &Font{
 		"\u201d": {
 			HorizAdvX: 373,
 			Unicode:   "\u201d",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{16, 485}},
 				{C: 'q', P: []float64{-13, 41, 30, 76}},
 				{C: 'q', P: []float64{9, 8, 25, 23}},
@@ -7527,8 +7531,8 @@ var gooddogregularFont = &Font{
 		"\u2022": {
 			HorizAdvX: 286,
 			Unicode:   "\u2022",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{34, 261}},
 				{C: 'q', P: []float64{-52, 105, 12, 159}},
 				{C: 'q', P: []float64{43, 41, 104, 40.5}},
@@ -7544,19 +7548,19 @@ var gooddogregularFont = &Font{
 			HorizAdvX: 167,
 			Unicode:   "\u202f",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u205f": {
 			HorizAdvX: 209,
 			Unicode:   "\u205f",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u20ac": {
 			HorizAdvX: 575,
 			Unicode:   "\u20ac",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{27, 320}},
 				{C: 'q', P: []float64{30, 38, 123, 34}},
 				{C: 'q', P: []float64{48, 100, 150, 125}},
@@ -7611,8 +7615,8 @@ var gooddogregularFont = &Font{
 		"\ue000": {
 			HorizAdvX: 470,
 			Unicode:   "\ue000",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 0}},
 				{C: 'v', P: []float64{470}},
 				{C: 'h', P: []float64{470}},

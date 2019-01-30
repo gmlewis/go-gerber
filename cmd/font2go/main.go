@@ -10,12 +10,14 @@ import (
 	"go/format"
 	"io/ioutil"
 	"log"
+	"os"
+	"path/filepath"
 	"strings"
 	"text/template"
 )
 
 const (
-	prefix = "font-"
+	prefix = "gerber/fonts"
 )
 
 var (
@@ -46,6 +48,7 @@ func main() {
 
 		for _, g := range fontData.Font.Glyphs {
 			g.ParsePath()
+			g.GenGerberLP(fontData.Font.FontFace)
 		}
 
 		var buf bytes.Buffer
@@ -53,7 +56,11 @@ func main() {
 			log.Fatal(err)
 		}
 
-		filename := fmt.Sprintf("%v%v.go", prefix, fontData.Font.ID)
+		fontDir := filepath.Join(prefix, fontData.Font.ID)
+		if err := os.MkdirAll(fontDir, 0755); err != nil {
+			log.Fatal(err)
+		}
+		filename := filepath.Join(fontDir, "font.go")
 		fmtBuf, err := format.Source(buf.Bytes())
 		if err != nil {
 			ioutil.WriteFile(filename, buf.Bytes(), 0644) // Dump the unformatted output.
@@ -88,26 +95,30 @@ func floats(f []float64) string {
 
 var goTemplate = `// Auto-generated - DO NOT EDIT!
 
-package gerber
+package {{ .ID }}
+
+import (
+	"github.com/gmlewis/go-gerber/gerber"
+)
 
 func init() {
-  Fonts["{{ .ID }}"] = {{ .ID }}Font
+  gerber.Fonts["{{ .ID }}"] = {{ .ID }}Font
 }
 
-var {{ .ID }}Font = &Font{
+var {{ .ID }}Font = &gerber.Font{
 	// ID: "{{ .ID }}",
 	HorizAdvX:  {{ .HorizAdvX }},
 	UnitsPerEm: {{ .FontFace.UnitsPerEm }},
 	Ascent:     {{ .FontFace.Ascent }},
 	Descent:    {{ .FontFace.Descent }},
 	MissingHorizAdvX: {{ .MissingGlyph.HorizAdvX }},
-	Glyphs: map[string]*Glyph{ {{ range .Glyphs }}{{ if .Unicode }}
+	Glyphs: map[string]*gerber.Glyph{ {{ range .Glyphs }}{{ if .Unicode }}
 		{{ .Unicode | utf8 }}: {
 			HorizAdvX: {{ .HorizAdvX }},
 			Unicode: {{ .Unicode | utf8 }},
 			GerberLP: {{ .GerberLP | orEmpty }},
-			PathSteps: []*PathStep{ {{ range .PathSteps }}
-				{ C: '{{ .Command }}'{{ if .Parameters }}, P: {{ .Parameters | floats }}{{ end }} },{{ end }}
+			PathSteps: []*gerber.PathStep{ {{ range .PathSteps }}
+				{ C: '{{ .C }}'{{ if .P }}, P: {{ .P | floats }}{{ end }} },{{ end }}
 			},
 		},{{ end }}{{ end }}
 	},

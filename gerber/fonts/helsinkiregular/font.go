@@ -1,48 +1,52 @@
 // Auto-generated - DO NOT EDIT!
 
-package gerber
+package helsinkiregular
+
+import (
+	"github.com/gmlewis/go-gerber/gerber"
+)
 
 func init() {
-	Fonts["helsinkiregular"] = helsinkiregularFont
+	gerber.Fonts["helsinkiregular"] = helsinkiregularFont
 }
 
-var helsinkiregularFont = &Font{
+var helsinkiregularFont = &gerber.Font{
 	// ID: "helsinkiregular",
 	HorizAdvX:        1463,
 	UnitsPerEm:       2048,
 	Ascent:           1638,
 	Descent:          -410,
 	MissingHorizAdvX: 569,
-	Glyphs: map[string]*Glyph{
+	Glyphs: map[string]*gerber.Glyph{
 		"\r": {
 			HorizAdvX: 569,
 			Unicode:   "\r",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		" ": {
 			HorizAdvX: 569,
 			Unicode:   " ",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\t": {
 			HorizAdvX: 569,
 			Unicode:   "\t",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00a0": {
 			HorizAdvX: 569,
 			Unicode:   "\u00a0",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"!": {
 			HorizAdvX: 626,
 			Unicode:   "!",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{206, 1474}},
 				{C: 'l', P: []float64{-52, -1047}},
 				{C: 'q', P: []float64{85, -56, 214, -13}},
@@ -68,8 +72,8 @@ var helsinkiregularFont = &Font{
 		"\"": {
 			HorizAdvX: 720,
 			Unicode:   "\"",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{359, 1518}},
 				{C: 'l', P: []float64{-44, -564}},
 				{C: 'q', P: []float64{-128, -76, -260, -3}},
@@ -88,13 +92,13 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1139,
 			Unicode:   "#",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"$": {
 			HorizAdvX: 1227,
 			Unicode:   "$",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{120, 121}},
 				{C: 'q', P: []float64{-65, 227, 76, 352}},
 				{C: 'q', P: []float64{257, -151, 373, -186}},
@@ -128,13 +132,13 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1821,
 			Unicode:   "%",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"&": {
 			HorizAdvX: 1415,
 			Unicode:   "&",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1017, 214}},
 				{C: 'q', P: []float64{-4, -12, -10, -24}},
 				{C: 'q', P: []float64{-79, -86, -143, -124}},
@@ -165,8 +169,8 @@ var helsinkiregularFont = &Font{
 		"'": {
 			HorizAdvX: 419,
 			Unicode:   "'",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{359, 1518}},
 				{C: 'l', P: []float64{-44, -564}},
 				{C: 'q', P: []float64{-128, -76, -260, -3}},
@@ -179,19 +183,19 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 682,
 			Unicode:   "(",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		")": {
 			HorizAdvX: 682,
 			Unicode:   ")",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"*": {
 			HorizAdvX: 912,
 			Unicode:   "*",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{586, 819}},
 				{C: 'l', P: []float64{-156, 219}},
 				{C: 'l', P: []float64{-211, -199}},
@@ -212,13 +216,13 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1196,
 			Unicode:   "+",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		",": {
 			HorizAdvX: 497,
 			Unicode:   ",",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{237, 316}},
 				{C: 'q', P: []float64{46, 0, 89.5, -26}},
 				{C: 't', P: []float64{68, -74}},
@@ -237,8 +241,8 @@ var helsinkiregularFont = &Font{
 		"-": {
 			HorizAdvX: 871,
 			Unicode:   "-",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{78, 631}},
 				{C: 'q', P: []float64{-23, 162, 35, 331}},
 				{C: 'h', P: []float64{685}},
@@ -250,8 +254,8 @@ var helsinkiregularFont = &Font{
 		".": {
 			HorizAdvX: 441,
 			Unicode:   ".",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{218, 316}},
 				{C: 'q', P: []float64{41, 0, 80, -21}},
 				{C: 't', P: []float64{61, -60}},
@@ -271,8 +275,8 @@ var helsinkiregularFont = &Font{
 		"/": {
 			HorizAdvX: 602,
 			Unicode:   "/",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{15, -296}},
 				{C: 'q', P: []float64{58, -117, 181, -52}},
 				{C: 'l', P: []float64{418, 2102}},
@@ -284,7 +288,7 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1296,
 			Unicode:   "0",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1094, 1251}},
 				{C: 'q', P: []float64{142, -215, 115.5, -544.5}},
 				{C: 't', P: []float64{-192.5, -543.5}},
@@ -310,8 +314,8 @@ var helsinkiregularFont = &Font{
 		"1": {
 			HorizAdvX: 631,
 			Unicode:   "1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{489, -18}},
 				{C: 'l', P: []float64{82, 1423}},
 				{C: 'q', P: []float64{-10, 55, -52, 63}},
@@ -326,8 +330,8 @@ var helsinkiregularFont = &Font{
 		"2": {
 			HorizAdvX: 1305,
 			Unicode:   "2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{629, 275}},
 				{C: 'l', P: []float64{516, 27}},
 				{C: 'q', P: []float64{100, -134, 2, -333}},
@@ -349,8 +353,8 @@ var helsinkiregularFont = &Font{
 		"3": {
 			HorizAdvX: 1304,
 			Unicode:   "3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{245, 1384}},
 				{C: 'l', P: []float64{940, 60}},
 				{C: 'q', P: []float64{54, -126, -19, -287}},
@@ -380,7 +384,7 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1277,
 			Unicode:   "4",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{752, 1405}},
 				{C: 'l', P: []float64{-631, -887}},
 				{C: 'q', P: []float64{-66, -159, 28, -283}},
@@ -403,8 +407,8 @@ var helsinkiregularFont = &Font{
 		"5": {
 			HorizAdvX: 1256,
 			Unicode:   "5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{120, 121}},
 				{C: 'q', P: []float64{-65, 227, 76, 352}},
 				{C: 'q', P: []float64{257, -151, 373, -186}},
@@ -431,7 +435,7 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1356,
 			Unicode:   "6",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{336, 1042.5}},
 				{C: 'q', P: []float64{-161, -254.5, -218, -487.5}},
 				{C: 'q', P: []float64{-63, -412, 231, -584}},
@@ -455,8 +459,8 @@ var helsinkiregularFont = &Font{
 		"7": {
 			HorizAdvX: 1189,
 			Unicode:   "7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{598, -24}},
 				{C: 'l', P: []float64{488, 1278}},
 				{C: 'q', P: []float64{43, 201, -89, 209}},
@@ -472,7 +476,7 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1260,
 			Unicode:   "8",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1141, 586}},
 				{C: 'q', P: []float64{37, -79, 33, -180}},
 				{C: 'q', P: []float64{-11, -236, -198, -361}},
@@ -509,7 +513,7 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1262,
 			Unicode:   "9",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{893, 388.5}},
 				{C: 'q', P: []float64{170, 255.5, 234, 490.5}},
 				{C: 'q', P: []float64{75, 419, -217, 603}},
@@ -533,8 +537,8 @@ var helsinkiregularFont = &Font{
 		":": {
 			HorizAdvX: 443,
 			Unicode:   ":",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{218, 1111}},
 				{C: 'q', P: []float64{41, 0, 80, -21}},
 				{C: 't', P: []float64{61, -60}},
@@ -568,8 +572,8 @@ var helsinkiregularFont = &Font{
 		";": {
 			HorizAdvX: 505,
 			Unicode:   ";",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{240, 316}},
 				{C: 'q', P: []float64{47, 0, 91.5, -26}},
 				{C: 't', P: []float64{69.5, -74}},
@@ -603,25 +607,25 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1196,
 			Unicode:   "<",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"=": {
 			HorizAdvX: 1196,
 			Unicode:   "=",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		">": {
 			HorizAdvX: 1196,
 			Unicode:   ">",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"?": {
 			HorizAdvX: 1029,
 			Unicode:   "?",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, 1177}},
 				{C: 'q', P: []float64{28, -189, 236, -150}},
 				{C: 'q', P: []float64{65, 227, 231, 224}},
@@ -656,13 +660,13 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 2079,
 			Unicode:   "@",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"A": {
 			HorizAdvX: 1338,
 			Unicode:   "A",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{579, 1461}},
 				{C: 'l', P: []float64{-524, -1461}},
 				{C: 'q', P: []float64{109, -93, 332, -63}},
@@ -683,7 +687,7 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1343,
 			Unicode:   "B",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{182, 1374}},
 				{C: 'l', P: []float64{-127, -1398}},
 				{C: 'l', P: []float64{10, -36}},
@@ -715,8 +719,8 @@ var helsinkiregularFont = &Font{
 		"C": {
 			HorizAdvX: 1275,
 			Unicode:   "C",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1180, 1319}},
 				{C: 'q', P: []float64{35, -180, -94, -288}},
 				{C: 'q', P: []float64{-87, 56, -273, 89}},
@@ -739,7 +743,7 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1234,
 			Unicode:   "D",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{102, 1324}},
 				{C: 'l', P: []float64{16, 120}},
 				{C: 'l', P: []float64{100, 23}},
@@ -762,8 +766,8 @@ var helsinkiregularFont = &Font{
 		"E": {
 			HorizAdvX: 1242,
 			Unicode:   "E",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{192, 1437}},
 				{C: 'q', P: []float64{-36, -17, -47, -56}},
 				{C: 'l', P: []float64{-90, -1371}},
@@ -784,8 +788,8 @@ var helsinkiregularFont = &Font{
 		"F": {
 			HorizAdvX: 1240,
 			Unicode:   "F",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{190, 1437}},
 				{C: 'q', P: []float64{-36, -17, -47, -56}},
 				{C: 'l', P: []float64{-88, -1414}},
@@ -803,8 +807,8 @@ var helsinkiregularFont = &Font{
 		"G": {
 			HorizAdvX: 1309,
 			Unicode:   "G",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1148, 788}},
 				{C: 'q', P: []float64{58, -33, 84, -92}},
 				{C: 'l', P: []float64{-40, -474}},
@@ -833,8 +837,8 @@ var helsinkiregularFont = &Font{
 		"H": {
 			HorizAdvX: 1307,
 			Unicode:   "H",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{141, 1398}},
 				{C: 'l', P: []float64{-86, -1405}},
 				{C: 'q', P: []float64{110, -79, 325, -24}},
@@ -854,8 +858,8 @@ var helsinkiregularFont = &Font{
 		"I": {
 			HorizAdvX: 578,
 			Unicode:   "I",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, -18}},
 				{C: 'q', P: []float64{141, -73, 345, -15}},
 				{C: 'l', P: []float64{118, 1471}},
@@ -866,8 +870,8 @@ var helsinkiregularFont = &Font{
 		"J": {
 			HorizAdvX: 1011,
 			Unicode:   "J",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{631, 1430}},
 				{C: 'q', P: []float64{118, -1575, -472, -1003}},
 				{C: 'q', P: []float64{-104, -71, -67, -287}},
@@ -882,8 +886,8 @@ var helsinkiregularFont = &Font{
 		"K": {
 			HorizAdvX: 1214,
 			Unicode:   "K",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{129, 1454}},
 				{C: 'l', P: []float64{-74, -1456}},
 				{C: 'q', P: []float64{186, -86, 329, -4}},
@@ -903,8 +907,8 @@ var helsinkiregularFont = &Font{
 		"L": {
 			HorizAdvX: 1145,
 			Unicode:   "L",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{137, 1433}},
 				{C: 'l', P: []float64{-82, -1423}},
 				{C: 'q', P: []float64{10, -55, 53, -63}},
@@ -919,8 +923,8 @@ var helsinkiregularFont = &Font{
 		"M": {
 			HorizAdvX: 1471,
 			Unicode:   "M",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{156, 1444}},
 				{C: 'l', P: []float64{-101, -1484}},
 				{C: 'l', P: []float64{323, -3}},
@@ -941,8 +945,8 @@ var helsinkiregularFont = &Font{
 		"N": {
 			HorizAdvX: 1307,
 			Unicode:   "N",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{141, 1398}},
 				{C: 'l', P: []float64{-86, -1405}},
 				{C: 'q', P: []float64{110, -79, 325, -24}},
@@ -961,7 +965,7 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "O",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1241, 1251}},
 				{C: 'q', P: []float64{162, -215, 132, -544.5}},
 				{C: 't', P: []float64{-220, -543.5}},
@@ -988,7 +992,7 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1350,
 			Unicode:   "P",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{182, 1374}},
 				{C: 'l', P: []float64{-127, -1368}},
 				{C: 'q', P: []float64{122, -104, 327, -32}},
@@ -1012,7 +1016,7 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "Q",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1241, 1251}},
 				{C: 'q', P: []float64{162, -215, 132, -544.5}},
 				{C: 't', P: []float64{-279, -629.5}},
@@ -1043,7 +1047,7 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1350,
 			Unicode:   "R",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{182, 1374}},
 				{C: 'l', P: []float64{-127, -1368}},
 				{C: 'q', P: []float64{122, -104, 327, -32}},
@@ -1068,8 +1072,8 @@ var helsinkiregularFont = &Font{
 		"S": {
 			HorizAdvX: 1227,
 			Unicode:   "S",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{120, 121}},
 				{C: 'q', P: []float64{-65, 227, 76, 352}},
 				{C: 'q', P: []float64{257, -151, 373, -186}},
@@ -1096,8 +1100,8 @@ var helsinkiregularFont = &Font{
 		"T": {
 			HorizAdvX: 1357,
 			Unicode:   "T",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{157, 1434}},
 				{C: 'q', P: []float64{-102, -131, 9, -318}},
 				{C: 'l', P: []float64{363, 8}},
@@ -1112,8 +1116,8 @@ var helsinkiregularFont = &Font{
 		"U": {
 			HorizAdvX: 1295,
 			Unicode:   "U",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{135, 1439}},
 				{C: 'q', P: []float64{180, 35, 343, -5}},
 				{C: 'q', P: []float64{-61, -794, -56.5, -922.5}},
@@ -1135,8 +1139,8 @@ var helsinkiregularFont = &Font{
 		"V": {
 			HorizAdvX: 1389,
 			Unicode:   "V",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1329, 1453}},
 				{C: 'l', P: []float64{-570, -1469}},
 				{C: 'q', P: []float64{-179, -81, -341, -3}},
@@ -1151,8 +1155,8 @@ var helsinkiregularFont = &Font{
 		"W": {
 			HorizAdvX: 1553,
 			Unicode:   "W",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1244, -26}},
 				{C: 'l', P: []float64{249, 1470}},
 				{C: 'q', P: []float64{-155, 69, -307, 17}},
@@ -1173,8 +1177,8 @@ var helsinkiregularFont = &Font{
 		"X": {
 			HorizAdvX: 1313,
 			Unicode:   "X",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{178, 1318}},
 				{C: 'l', P: []float64{298, -546}},
 				{C: 'l', P: []float64{-421, -627}},
@@ -1194,8 +1198,8 @@ var helsinkiregularFont = &Font{
 		"Y": {
 			HorizAdvX: 1278,
 			Unicode:   "Y",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, 1359}},
 				{C: 'l', P: []float64{367, -685}},
 				{C: 'l', P: []float64{-27, -711}},
@@ -1212,8 +1216,8 @@ var helsinkiregularFont = &Font{
 		"Z": {
 			HorizAdvX: 1350,
 			Unicode:   "Z",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{178, 1125}},
 				{C: 'l', P: []float64{604, 6}},
 				{C: 'l', P: []float64{-668, -896}},
@@ -1232,13 +1236,13 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 569,
 			Unicode:   "[",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\\": {
 			HorizAdvX: 602,
 			Unicode:   "\\",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{187, 1805}},
 				{C: 'q', P: []float64{-90, 38, -172, -51}},
 				{C: 'l', P: []float64{419, -2102}},
@@ -1250,31 +1254,31 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 569,
 			Unicode:   "]",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"^": {
 			HorizAdvX: 961,
 			Unicode:   "^",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"_": {
 			HorizAdvX: 1139,
 			Unicode:   "_",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"`": {
 			HorizAdvX: 682,
 			Unicode:   "`",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"a": {
 			HorizAdvX: 1338,
 			Unicode:   "a",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{579, 1461}},
 				{C: 'l', P: []float64{-524, -1461}},
 				{C: 'q', P: []float64{109, -93, 332, -63}},
@@ -1295,7 +1299,7 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1343,
 			Unicode:   "b",
 			GerberLP:  "dcc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{182, 1374}},
 				{C: 'l', P: []float64{-127, -1398}},
 				{C: 'l', P: []float64{10, -36}},
@@ -1327,8 +1331,8 @@ var helsinkiregularFont = &Font{
 		"c": {
 			HorizAdvX: 1275,
 			Unicode:   "c",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1180, 1319}},
 				{C: 'q', P: []float64{35, -180, -94, -288}},
 				{C: 'q', P: []float64{-87, 56, -273, 89}},
@@ -1351,7 +1355,7 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1234,
 			Unicode:   "d",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{102, 1324}},
 				{C: 'l', P: []float64{16, 120}},
 				{C: 'l', P: []float64{100, 23}},
@@ -1374,8 +1378,8 @@ var helsinkiregularFont = &Font{
 		"e": {
 			HorizAdvX: 1242,
 			Unicode:   "e",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{192, 1437}},
 				{C: 'q', P: []float64{-36, -17, -47, -56}},
 				{C: 'l', P: []float64{-90, -1371}},
@@ -1396,8 +1400,8 @@ var helsinkiregularFont = &Font{
 		"f": {
 			HorizAdvX: 1240,
 			Unicode:   "f",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{190, 1437}},
 				{C: 'q', P: []float64{-36, -17, -47, -56}},
 				{C: 'l', P: []float64{-88, -1414}},
@@ -1415,8 +1419,8 @@ var helsinkiregularFont = &Font{
 		"g": {
 			HorizAdvX: 1309,
 			Unicode:   "g",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1148, 788}},
 				{C: 'q', P: []float64{58, -33, 84, -92}},
 				{C: 'l', P: []float64{-40, -474}},
@@ -1445,8 +1449,8 @@ var helsinkiregularFont = &Font{
 		"h": {
 			HorizAdvX: 1307,
 			Unicode:   "h",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{141, 1398}},
 				{C: 'l', P: []float64{-86, -1405}},
 				{C: 'q', P: []float64{110, -79, 325, -24}},
@@ -1466,8 +1470,8 @@ var helsinkiregularFont = &Font{
 		"i": {
 			HorizAdvX: 578,
 			Unicode:   "i",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, -18}},
 				{C: 'q', P: []float64{141, -73, 345, -15}},
 				{C: 'l', P: []float64{118, 1471}},
@@ -1478,8 +1482,8 @@ var helsinkiregularFont = &Font{
 		"j": {
 			HorizAdvX: 1011,
 			Unicode:   "j",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{631, 1430}},
 				{C: 'q', P: []float64{118, -1575, -472, -1003}},
 				{C: 'q', P: []float64{-104, -71, -67, -287}},
@@ -1494,8 +1498,8 @@ var helsinkiregularFont = &Font{
 		"k": {
 			HorizAdvX: 1214,
 			Unicode:   "k",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{129, 1454}},
 				{C: 'l', P: []float64{-74, -1456}},
 				{C: 'q', P: []float64{186, -86, 329, -4}},
@@ -1515,8 +1519,8 @@ var helsinkiregularFont = &Font{
 		"l": {
 			HorizAdvX: 1145,
 			Unicode:   "l",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{137, 1433}},
 				{C: 'l', P: []float64{-82, -1423}},
 				{C: 'q', P: []float64{10, -55, 53, -63}},
@@ -1531,8 +1535,8 @@ var helsinkiregularFont = &Font{
 		"m": {
 			HorizAdvX: 1471,
 			Unicode:   "m",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{156, 1444}},
 				{C: 'l', P: []float64{-101, -1484}},
 				{C: 'l', P: []float64{323, -3}},
@@ -1553,8 +1557,8 @@ var helsinkiregularFont = &Font{
 		"n": {
 			HorizAdvX: 1307,
 			Unicode:   "n",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{141, 1398}},
 				{C: 'l', P: []float64{-86, -1405}},
 				{C: 'q', P: []float64{110, -79, 325, -24}},
@@ -1573,7 +1577,7 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "o",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1241, 1251}},
 				{C: 'q', P: []float64{162, -215, 132, -544.5}},
 				{C: 't', P: []float64{-220, -543.5}},
@@ -1600,7 +1604,7 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1350,
 			Unicode:   "p",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{182, 1374}},
 				{C: 'l', P: []float64{-127, -1368}},
 				{C: 'q', P: []float64{122, -104, 327, -32}},
@@ -1624,7 +1628,7 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 0,
 			Unicode:   "q",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1241, 1251}},
 				{C: 'q', P: []float64{162, -215, 132, -544.5}},
 				{C: 't', P: []float64{-279, -629.5}},
@@ -1655,7 +1659,7 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1350,
 			Unicode:   "r",
 			GerberLP:  "dc",
-			PathSteps: []*PathStep{
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{182, 1374}},
 				{C: 'l', P: []float64{-127, -1368}},
 				{C: 'q', P: []float64{122, -104, 327, -32}},
@@ -1680,8 +1684,8 @@ var helsinkiregularFont = &Font{
 		"s": {
 			HorizAdvX: 1227,
 			Unicode:   "s",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{120, 121}},
 				{C: 'q', P: []float64{-65, 227, 76, 352}},
 				{C: 'q', P: []float64{257, -151, 373, -186}},
@@ -1708,8 +1712,8 @@ var helsinkiregularFont = &Font{
 		"t": {
 			HorizAdvX: 1357,
 			Unicode:   "t",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{157, 1434}},
 				{C: 'q', P: []float64{-102, -131, 9, -318}},
 				{C: 'l', P: []float64{363, 8}},
@@ -1724,8 +1728,8 @@ var helsinkiregularFont = &Font{
 		"u": {
 			HorizAdvX: 1295,
 			Unicode:   "u",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{135, 1439}},
 				{C: 'q', P: []float64{180, 35, 343, -5}},
 				{C: 'q', P: []float64{-61, -794, -56.5, -922.5}},
@@ -1747,8 +1751,8 @@ var helsinkiregularFont = &Font{
 		"v": {
 			HorizAdvX: 1389,
 			Unicode:   "v",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1329, 1453}},
 				{C: 'l', P: []float64{-570, -1469}},
 				{C: 'q', P: []float64{-179, -81, -341, -3}},
@@ -1763,8 +1767,8 @@ var helsinkiregularFont = &Font{
 		"w": {
 			HorizAdvX: 1553,
 			Unicode:   "w",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1244, -26}},
 				{C: 'l', P: []float64{249, 1470}},
 				{C: 'q', P: []float64{-155, 69, -307, 17}},
@@ -1785,8 +1789,8 @@ var helsinkiregularFont = &Font{
 		"x": {
 			HorizAdvX: 1313,
 			Unicode:   "x",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{178, 1318}},
 				{C: 'l', P: []float64{298, -546}},
 				{C: 'l', P: []float64{-421, -627}},
@@ -1806,8 +1810,8 @@ var helsinkiregularFont = &Font{
 		"y": {
 			HorizAdvX: 1278,
 			Unicode:   "y",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, 1359}},
 				{C: 'l', P: []float64{367, -685}},
 				{C: 'l', P: []float64{-27, -711}},
@@ -1824,8 +1828,8 @@ var helsinkiregularFont = &Font{
 		"z": {
 			HorizAdvX: 1350,
 			Unicode:   "z",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{178, 1125}},
 				{C: 'l', P: []float64{604, 6}},
 				{C: 'l', P: []float64{-668, -896}},
@@ -1844,13 +1848,13 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 684,
 			Unicode:   "{",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"|": {
 			HorizAdvX: 611,
 			Unicode:   "|",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{304, 1156}},
 				{C: 'q', P: []float64{63, 0, 122.5, -32}},
 				{C: 't', P: []float64{93, -91.5}},
@@ -1871,19 +1875,19 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 684,
 			Unicode:   "}",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"~": {
 			HorizAdvX: 1196,
 			Unicode:   "~",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00a1": {
 			HorizAdvX: 626,
 			Unicode:   "\u00a1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{415, 22}},
 				{C: 'l', P: []float64{52, 1047}},
 				{C: 'q', P: []float64{-85, 56, -214, 13}},
@@ -1910,13 +1914,13 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1139,
 			Unicode:   "\u00a2",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00a3": {
 			HorizAdvX: 1222,
 			Unicode:   "\u00a3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1027, 965}},
 				{C: 'q', P: []float64{108, 71, 82, 287}},
 				{C: 'q', P: []float64{-107, 253, -386, 210}},
@@ -1944,13 +1948,13 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1139,
 			Unicode:   "\u00a4",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00a5": {
 			HorizAdvX: 1278,
 			Unicode:   "\u00a5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{257, 598}},
 				{C: 'q', P: []float64{-58, -69, -35, -136}},
 				{C: 'h', P: []float64{192}},
@@ -1984,37 +1988,37 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 532,
 			Unicode:   "\u00a6",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00a7": {
 			HorizAdvX: 1139,
 			Unicode:   "\u00a7",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00a8": {
 			HorizAdvX: 682,
 			Unicode:   "\u00a8",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00a9": {
 			HorizAdvX: 1509,
 			Unicode:   "\u00a9",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00aa": {
 			HorizAdvX: 758,
 			Unicode:   "\u00aa",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00ab": {
 			HorizAdvX: 735,
 			Unicode:   "\u00ab",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{224, -60}},
 				{C: 'q', P: []float64{123, -39, 180, 31}},
 				{C: 'l', P: []float64{-202, 594}},
@@ -2039,13 +2043,13 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1196,
 			Unicode:   "\u00ac",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00ad": {
 			HorizAdvX: 871,
 			Unicode:   "\u00ad",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{78, 631}},
 				{C: 'q', P: []float64{-23, 162, 35, 331}},
 				{C: 'h', P: []float64{685}},
@@ -2058,85 +2062,85 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1509,
 			Unicode:   "\u00ae",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00af": {
 			HorizAdvX: 1131,
 			Unicode:   "\u00af",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00b0": {
 			HorizAdvX: 819,
 			Unicode:   "\u00b0",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00b1": {
 			HorizAdvX: 1124,
 			Unicode:   "\u00b1",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00b2": {
 			HorizAdvX: 682,
 			Unicode:   "\u00b2",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00b3": {
 			HorizAdvX: 682,
 			Unicode:   "\u00b3",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00b4": {
 			HorizAdvX: 682,
 			Unicode:   "\u00b4",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00b5": {
 			HorizAdvX: 1180,
 			Unicode:   "\u00b5",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00b6": {
 			HorizAdvX: 1100,
 			Unicode:   "\u00b6",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00b7": {
 			HorizAdvX: 569,
 			Unicode:   "\u00b7",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00b8": {
 			HorizAdvX: 682,
 			Unicode:   "\u00b8",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00b9": {
 			HorizAdvX: 682,
 			Unicode:   "\u00b9",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00ba": {
 			HorizAdvX: 748,
 			Unicode:   "\u00ba",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00bb": {
 			HorizAdvX: 735,
 			Unicode:   "\u00bb",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{469, 1221}},
 				{C: 'q', P: []float64{-123, 39, -180, -31}},
 				{C: 'l', P: []float64{202, -594}},
@@ -2161,25 +2165,25 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1708,
 			Unicode:   "\u00bc",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00bd": {
 			HorizAdvX: 1708,
 			Unicode:   "\u00bd",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00be": {
 			HorizAdvX: 1708,
 			Unicode:   "\u00be",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00bf": {
 			HorizAdvX: 1029,
 			Unicode:   "\u00bf",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{969, 369}},
 				{C: 'q', P: []float64{-28, 189, -236, 150}},
 				{C: 'q', P: []float64{-65, -227, -231, -224}},
@@ -2213,8 +2217,8 @@ var helsinkiregularFont = &Font{
 		"\u00c0": {
 			HorizAdvX: 1338,
 			Unicode:   "\u00c0",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{579, 1461}},
 				{C: 'l', P: []float64{-524, -1461}},
 				{C: 'q', P: []float64{109, -93, 332, -63}},
@@ -2240,8 +2244,8 @@ var helsinkiregularFont = &Font{
 		"\u00c1": {
 			HorizAdvX: 1338,
 			Unicode:   "\u00c1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{579, 1461}},
 				{C: 'l', P: []float64{-524, -1461}},
 				{C: 'q', P: []float64{109, -93, 332, -63}},
@@ -2267,8 +2271,8 @@ var helsinkiregularFont = &Font{
 		"\u00c2": {
 			HorizAdvX: 1338,
 			Unicode:   "\u00c2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{579, 1461}},
 				{C: 'l', P: []float64{-524, -1461}},
 				{C: 'q', P: []float64{109, -93, 332, -63}},
@@ -2298,8 +2302,8 @@ var helsinkiregularFont = &Font{
 		"\u00c3": {
 			HorizAdvX: 1338,
 			Unicode:   "\u00c3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{579, 1461}},
 				{C: 'l', P: []float64{-524, -1461}},
 				{C: 'q', P: []float64{109, -93, 332, -63}},
@@ -2333,8 +2337,8 @@ var helsinkiregularFont = &Font{
 		"\u00c4": {
 			HorizAdvX: 1338,
 			Unicode:   "\u00c4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{587, 1461}},
 				{C: 'l', P: []float64{-524, -1461}},
 				{C: 'q', P: []float64{109, -93, 332, -63}},
@@ -2382,8 +2386,8 @@ var helsinkiregularFont = &Font{
 		"\u00c5": {
 			HorizAdvX: 1338,
 			Unicode:   "\u00c5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{579, 1461}},
 				{C: 'l', P: []float64{-524, -1461}},
 				{C: 'q', P: []float64{109, -93, 332, -63}},
@@ -2431,8 +2435,8 @@ var helsinkiregularFont = &Font{
 		"\u00c6": {
 			HorizAdvX: 1667,
 			Unicode:   "\u00c6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{751, 48}},
 				{C: 'q', P: []float64{10, -53, 53, -61}},
 				{C: 'l', P: []float64{753, 35}},
@@ -2462,8 +2466,8 @@ var helsinkiregularFont = &Font{
 		"\u00c7": {
 			HorizAdvX: 1275,
 			Unicode:   "\u00c7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{562, -47}},
 				{C: 'q', P: []float64{-217, 51, -327, 195}},
 				{C: 'q', P: []float64{-180, 237, -122, 669}},
@@ -2496,8 +2500,8 @@ var helsinkiregularFont = &Font{
 		"\u00c8": {
 			HorizAdvX: 1242,
 			Unicode:   "\u00c8",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{207, 1437}},
 				{C: 'q', P: []float64{-36, -17, -47, -56}},
 				{C: 'l', P: []float64{-90, -1371}},
@@ -2524,8 +2528,8 @@ var helsinkiregularFont = &Font{
 		"\u00c9": {
 			HorizAdvX: 1242,
 			Unicode:   "\u00c9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{207, 1437}},
 				{C: 'q', P: []float64{-36, -17, -47, -56}},
 				{C: 'l', P: []float64{-90, -1371}},
@@ -2552,8 +2556,8 @@ var helsinkiregularFont = &Font{
 		"\u00ca": {
 			HorizAdvX: 1242,
 			Unicode:   "\u00ca",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{192, 1437}},
 				{C: 'q', P: []float64{-36, -17, -47, -56}},
 				{C: 'l', P: []float64{-90, -1371}},
@@ -2584,8 +2588,8 @@ var helsinkiregularFont = &Font{
 		"\u00cb": {
 			HorizAdvX: 1242,
 			Unicode:   "\u00cb",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{192, 1437}},
 				{C: 'q', P: []float64{-36, -17, -47, -56}},
 				{C: 'l', P: []float64{-90, -1371}},
@@ -2634,8 +2638,8 @@ var helsinkiregularFont = &Font{
 		"\u00cc": {
 			HorizAdvX: 578,
 			Unicode:   "\u00cc",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, -18}},
 				{C: 'q', P: []float64{141, -73, 345, -15}},
 				{C: 'l', P: []float64{118, 1471}},
@@ -2652,8 +2656,8 @@ var helsinkiregularFont = &Font{
 		"\u00cd": {
 			HorizAdvX: 578,
 			Unicode:   "\u00cd",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, -18}},
 				{C: 'q', P: []float64{141, -73, 345, -15}},
 				{C: 'l', P: []float64{118, 1471}},
@@ -2670,8 +2674,8 @@ var helsinkiregularFont = &Font{
 		"\u00ce": {
 			HorizAdvX: 578,
 			Unicode:   "\u00ce",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, -18}},
 				{C: 'q', P: []float64{141, -73, 345, -15}},
 				{C: 'l', P: []float64{118, 1471}},
@@ -2692,8 +2696,8 @@ var helsinkiregularFont = &Font{
 		"\u00cf": {
 			HorizAdvX: 578,
 			Unicode:   "\u00cf",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, -18}},
 				{C: 'q', P: []float64{141, -73, 345, -15}},
 				{C: 'l', P: []float64{118, 1471}},
@@ -2733,13 +2737,13 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1479,
 			Unicode:   "\u00d0",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00d1": {
 			HorizAdvX: 1307,
 			Unicode:   "\u00d1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{141, 1398}},
 				{C: 'l', P: []float64{-86, -1405}},
 				{C: 'q', P: []float64{110, -79, 325, -24}},
@@ -2771,8 +2775,8 @@ var helsinkiregularFont = &Font{
 		"\u00d2": {
 			HorizAdvX: 0,
 			Unicode:   "\u00d2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1241, 1251}},
 				{C: 'q', P: []float64{162, -215, 132, -544.5}},
 				{C: 't', P: []float64{-220, -543.5}},
@@ -2804,8 +2808,8 @@ var helsinkiregularFont = &Font{
 		"\u00d3": {
 			HorizAdvX: 0,
 			Unicode:   "\u00d3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1241, 1251}},
 				{C: 'q', P: []float64{162, -215, 132, -544.5}},
 				{C: 't', P: []float64{-220, -543.5}},
@@ -2837,8 +2841,8 @@ var helsinkiregularFont = &Font{
 		"\u00d4": {
 			HorizAdvX: 0,
 			Unicode:   "\u00d4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1241, 1251}},
 				{C: 'q', P: []float64{162, -215, 132, -544.5}},
 				{C: 't', P: []float64{-220, -543.5}},
@@ -2874,8 +2878,8 @@ var helsinkiregularFont = &Font{
 		"\u00d5": {
 			HorizAdvX: 0,
 			Unicode:   "\u00d5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1241, 1251}},
 				{C: 'q', P: []float64{162, -215, 132, -544.5}},
 				{C: 't', P: []float64{-220, -543.5}},
@@ -2915,8 +2919,8 @@ var helsinkiregularFont = &Font{
 		"\u00d6": {
 			HorizAdvX: 0,
 			Unicode:   "\u00d6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1241, 1251}},
 				{C: 'q', P: []float64{162, -215, 132, -544.5}},
 				{C: 't', P: []float64{-220, -543.5}},
@@ -2971,25 +2975,13 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1196,
 			Unicode:   "\u00d7",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00d8": {
 			HorizAdvX: 0,
 			Unicode:   "\u00d8",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
-				{C: 'M', P: []float64{870, 1071}},
-				{C: 'q', P: []float64{-43, 18, -94, 19}},
-				{C: 'q', P: []float64{-132, 1, -237.5, -106.5}},
-				{C: 't', P: []float64{-127.5, -285.5}},
-				{C: 'q', P: []float64{-19, -151, 47, -258}},
-				{C: 'z'},
-				{C: 'M', P: []float64{595, 314}},
-				{C: 'q', P: []float64{57, -26, 122, -22}},
-				{C: 'q', P: []float64{136, 6, 228, 117.5}},
-				{C: 't', P: []float64{108, 279.5}},
-				{C: 'q', P: []float64{13, 149, -49, 257}},
-				{C: 'z'},
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1219, 1278}},
 				{C: 'q', P: []float64{11, -13, 22, -27}},
 				{C: 'q', P: []float64{162, -215, 132, -544.5}},
@@ -3007,13 +2999,25 @@ var helsinkiregularFont = &Font{
 				{C: 'l', P: []float64{175, 268}},
 				{C: 'q', P: []float64{98, 3, 141, -110}},
 				{C: 'z'},
+				{C: 'M', P: []float64{870, 1071}},
+				{C: 'q', P: []float64{-43, 18, -94, 19}},
+				{C: 'q', P: []float64{-132, 1, -237.5, -106.5}},
+				{C: 't', P: []float64{-127.5, -285.5}},
+				{C: 'q', P: []float64{-19, -151, 47, -258}},
+				{C: 'z'},
+				{C: 'M', P: []float64{595, 314}},
+				{C: 'q', P: []float64{57, -26, 122, -22}},
+				{C: 'q', P: []float64{136, 6, 228, 117.5}},
+				{C: 't', P: []float64{108, 279.5}},
+				{C: 'q', P: []float64{13, 149, -49, 257}},
+				{C: 'z'},
 			},
 		},
 		"\u00d9": {
 			HorizAdvX: 1295,
 			Unicode:   "\u00d9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{135, 1439}},
 				{C: 'q', P: []float64{180, 35, 343, -5}},
 				{C: 'q', P: []float64{-61, -794, -56.5, -922.5}},
@@ -3041,8 +3045,8 @@ var helsinkiregularFont = &Font{
 		"\u00da": {
 			HorizAdvX: 1295,
 			Unicode:   "\u00da",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{135, 1439}},
 				{C: 'q', P: []float64{180, 35, 343, -5}},
 				{C: 'q', P: []float64{-61, -794, -56.5, -922.5}},
@@ -3070,8 +3074,8 @@ var helsinkiregularFont = &Font{
 		"\u00db": {
 			HorizAdvX: 1295,
 			Unicode:   "\u00db",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{135, 1439}},
 				{C: 'q', P: []float64{180, 35, 343, -5}},
 				{C: 'q', P: []float64{-61, -794, -56.5, -922.5}},
@@ -3103,8 +3107,8 @@ var helsinkiregularFont = &Font{
 		"\u00dc": {
 			HorizAdvX: 1295,
 			Unicode:   "\u00dc",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{135, 1439}},
 				{C: 'q', P: []float64{180, 35, 343, -5}},
 				{C: 'q', P: []float64{-61, -794, -56.5, -922.5}},
@@ -3155,19 +3159,19 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1366,
 			Unicode:   "\u00dd",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00de": {
 			HorizAdvX: 1366,
 			Unicode:   "\u00de",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00df": {
 			HorizAdvX: 1247,
 			Unicode:   "\u00df",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{727, 1156}},
 				{C: 'q', P: []float64{106, -161, -120, -211}},
 				{C: 'q', P: []float64{-92, -161, 21, -288}},
@@ -3194,8 +3198,8 @@ var helsinkiregularFont = &Font{
 		"\u00e0": {
 			HorizAdvX: 1338,
 			Unicode:   "\u00e0",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{579, 1461}},
 				{C: 'l', P: []float64{-524, -1461}},
 				{C: 'q', P: []float64{109, -93, 332, -63}},
@@ -3221,8 +3225,8 @@ var helsinkiregularFont = &Font{
 		"\u00e1": {
 			HorizAdvX: 1338,
 			Unicode:   "\u00e1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{579, 1461}},
 				{C: 'l', P: []float64{-524, -1461}},
 				{C: 'q', P: []float64{109, -93, 332, -63}},
@@ -3248,8 +3252,8 @@ var helsinkiregularFont = &Font{
 		"\u00e2": {
 			HorizAdvX: 1338,
 			Unicode:   "\u00e2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{579, 1461}},
 				{C: 'l', P: []float64{-524, -1461}},
 				{C: 'q', P: []float64{109, -93, 332, -63}},
@@ -3279,8 +3283,8 @@ var helsinkiregularFont = &Font{
 		"\u00e3": {
 			HorizAdvX: 1338,
 			Unicode:   "\u00e3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{579, 1461}},
 				{C: 'l', P: []float64{-524, -1461}},
 				{C: 'q', P: []float64{109, -93, 332, -63}},
@@ -3314,8 +3318,8 @@ var helsinkiregularFont = &Font{
 		"\u00e4": {
 			HorizAdvX: 1338,
 			Unicode:   "\u00e4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{587, 1461}},
 				{C: 'l', P: []float64{-524, -1461}},
 				{C: 'q', P: []float64{109, -93, 332, -63}},
@@ -3363,8 +3367,8 @@ var helsinkiregularFont = &Font{
 		"\u00e5": {
 			HorizAdvX: 1338,
 			Unicode:   "\u00e5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{579, 1461}},
 				{C: 'l', P: []float64{-524, -1461}},
 				{C: 'q', P: []float64{109, -93, 332, -63}},
@@ -3412,8 +3416,8 @@ var helsinkiregularFont = &Font{
 		"\u00e6": {
 			HorizAdvX: 1667,
 			Unicode:   "\u00e6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{751, 48}},
 				{C: 'q', P: []float64{10, -53, 53, -61}},
 				{C: 'l', P: []float64{753, 35}},
@@ -3443,8 +3447,8 @@ var helsinkiregularFont = &Font{
 		"\u00e7": {
 			HorizAdvX: 1275,
 			Unicode:   "\u00e7",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{562, -47}},
 				{C: 'q', P: []float64{-217, 51, -327, 195}},
 				{C: 'q', P: []float64{-180, 237, -122, 669}},
@@ -3477,8 +3481,8 @@ var helsinkiregularFont = &Font{
 		"\u00e8": {
 			HorizAdvX: 1242,
 			Unicode:   "\u00e8",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{207, 1437}},
 				{C: 'q', P: []float64{-36, -17, -47, -56}},
 				{C: 'l', P: []float64{-90, -1371}},
@@ -3505,8 +3509,8 @@ var helsinkiregularFont = &Font{
 		"\u00e9": {
 			HorizAdvX: 1242,
 			Unicode:   "\u00e9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{207, 1437}},
 				{C: 'q', P: []float64{-36, -17, -47, -56}},
 				{C: 'l', P: []float64{-90, -1371}},
@@ -3533,8 +3537,8 @@ var helsinkiregularFont = &Font{
 		"\u00ea": {
 			HorizAdvX: 1242,
 			Unicode:   "\u00ea",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{192, 1437}},
 				{C: 'q', P: []float64{-36, -17, -47, -56}},
 				{C: 'l', P: []float64{-90, -1371}},
@@ -3565,8 +3569,8 @@ var helsinkiregularFont = &Font{
 		"\u00eb": {
 			HorizAdvX: 1242,
 			Unicode:   "\u00eb",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{192, 1437}},
 				{C: 'q', P: []float64{-36, -17, -47, -56}},
 				{C: 'l', P: []float64{-90, -1371}},
@@ -3615,8 +3619,8 @@ var helsinkiregularFont = &Font{
 		"\u00ec": {
 			HorizAdvX: 578,
 			Unicode:   "\u00ec",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, -18}},
 				{C: 'q', P: []float64{141, -73, 345, -15}},
 				{C: 'l', P: []float64{118, 1471}},
@@ -3633,8 +3637,8 @@ var helsinkiregularFont = &Font{
 		"\u00ed": {
 			HorizAdvX: 578,
 			Unicode:   "\u00ed",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, -18}},
 				{C: 'q', P: []float64{141, -73, 345, -15}},
 				{C: 'l', P: []float64{118, 1471}},
@@ -3651,8 +3655,8 @@ var helsinkiregularFont = &Font{
 		"\u00ee": {
 			HorizAdvX: 578,
 			Unicode:   "\u00ee",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, -18}},
 				{C: 'q', P: []float64{141, -73, 345, -15}},
 				{C: 'l', P: []float64{118, 1471}},
@@ -3673,8 +3677,8 @@ var helsinkiregularFont = &Font{
 		"\u00ef": {
 			HorizAdvX: 578,
 			Unicode:   "\u00ef",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, -18}},
 				{C: 'q', P: []float64{141, -73, 345, -15}},
 				{C: 'l', P: []float64{118, 1471}},
@@ -3714,13 +3718,13 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1139,
 			Unicode:   "\u00f0",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00f1": {
 			HorizAdvX: 1307,
 			Unicode:   "\u00f1",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{141, 1398}},
 				{C: 'l', P: []float64{-86, -1405}},
 				{C: 'q', P: []float64{110, -79, 325, -24}},
@@ -3752,8 +3756,8 @@ var helsinkiregularFont = &Font{
 		"\u00f2": {
 			HorizAdvX: 0,
 			Unicode:   "\u00f2",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1241, 1251}},
 				{C: 'q', P: []float64{162, -215, 132, -544.5}},
 				{C: 't', P: []float64{-220, -543.5}},
@@ -3785,8 +3789,8 @@ var helsinkiregularFont = &Font{
 		"\u00f3": {
 			HorizAdvX: 0,
 			Unicode:   "\u00f3",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1241, 1251}},
 				{C: 'q', P: []float64{162, -215, 132, -544.5}},
 				{C: 't', P: []float64{-220, -543.5}},
@@ -3818,8 +3822,8 @@ var helsinkiregularFont = &Font{
 		"\u00f4": {
 			HorizAdvX: 0,
 			Unicode:   "\u00f4",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1241, 1251}},
 				{C: 'q', P: []float64{162, -215, 132, -544.5}},
 				{C: 't', P: []float64{-220, -543.5}},
@@ -3855,8 +3859,8 @@ var helsinkiregularFont = &Font{
 		"\u00f5": {
 			HorizAdvX: 0,
 			Unicode:   "\u00f5",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1241, 1251}},
 				{C: 'q', P: []float64{162, -215, 132, -544.5}},
 				{C: 't', P: []float64{-220, -543.5}},
@@ -3896,8 +3900,8 @@ var helsinkiregularFont = &Font{
 		"\u00f6": {
 			HorizAdvX: 0,
 			Unicode:   "\u00f6",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dcdd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1241, 1251}},
 				{C: 'q', P: []float64{162, -215, 132, -544.5}},
 				{C: 't', P: []float64{-220, -543.5}},
@@ -3952,25 +3956,13 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1124,
 			Unicode:   "\u00f7",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00f8": {
 			HorizAdvX: 0,
 			Unicode:   "\u00f8",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
-				{C: 'M', P: []float64{870, 1071}},
-				{C: 'q', P: []float64{-43, 18, -94, 19}},
-				{C: 'q', P: []float64{-132, 1, -237.5, -106.5}},
-				{C: 't', P: []float64{-127.5, -285.5}},
-				{C: 'q', P: []float64{-19, -151, 47, -258}},
-				{C: 'z'},
-				{C: 'M', P: []float64{595, 314}},
-				{C: 'q', P: []float64{57, -26, 122, -22}},
-				{C: 'q', P: []float64{136, 6, 228, 117.5}},
-				{C: 't', P: []float64{108, 279.5}},
-				{C: 'q', P: []float64{13, 149, -49, 257}},
-				{C: 'z'},
+			GerberLP:  "dcc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{1219, 1278}},
 				{C: 'q', P: []float64{11, -13, 22, -27}},
 				{C: 'q', P: []float64{162, -215, 132, -544.5}},
@@ -3988,13 +3980,25 @@ var helsinkiregularFont = &Font{
 				{C: 'l', P: []float64{175, 268}},
 				{C: 'q', P: []float64{98, 3, 141, -110}},
 				{C: 'z'},
+				{C: 'M', P: []float64{870, 1071}},
+				{C: 'q', P: []float64{-43, 18, -94, 19}},
+				{C: 'q', P: []float64{-132, 1, -237.5, -106.5}},
+				{C: 't', P: []float64{-127.5, -285.5}},
+				{C: 'q', P: []float64{-19, -151, 47, -258}},
+				{C: 'z'},
+				{C: 'M', P: []float64{595, 314}},
+				{C: 'q', P: []float64{57, -26, 122, -22}},
+				{C: 'q', P: []float64{136, 6, 228, 117.5}},
+				{C: 't', P: []float64{108, 279.5}},
+				{C: 'q', P: []float64{13, 149, -49, 257}},
+				{C: 'z'},
 			},
 		},
 		"\u00f9": {
 			HorizAdvX: 1295,
 			Unicode:   "\u00f9",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{135, 1439}},
 				{C: 'q', P: []float64{180, 35, 343, -5}},
 				{C: 'q', P: []float64{-61, -794, -56.5, -922.5}},
@@ -4022,8 +4026,8 @@ var helsinkiregularFont = &Font{
 		"\u00fa": {
 			HorizAdvX: 1295,
 			Unicode:   "\u00fa",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{135, 1439}},
 				{C: 'q', P: []float64{180, 35, 343, -5}},
 				{C: 'q', P: []float64{-61, -794, -56.5, -922.5}},
@@ -4051,8 +4055,8 @@ var helsinkiregularFont = &Font{
 		"\u00fb": {
 			HorizAdvX: 1295,
 			Unicode:   "\u00fb",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{135, 1439}},
 				{C: 'q', P: []float64{180, 35, 343, -5}},
 				{C: 'q', P: []float64{-61, -794, -56.5, -922.5}},
@@ -4084,8 +4088,8 @@ var helsinkiregularFont = &Font{
 		"\u00fc": {
 			HorizAdvX: 1295,
 			Unicode:   "\u00fc",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{135, 1439}},
 				{C: 'q', P: []float64{180, 35, 343, -5}},
 				{C: 'q', P: []float64{-61, -794, -56.5, -922.5}},
@@ -4136,19 +4140,19 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1024,
 			Unicode:   "\u00fd",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00fe": {
 			HorizAdvX: 1139,
 			Unicode:   "\u00fe",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u00ff": {
 			HorizAdvX: 1278,
 			Unicode:   "\u00ff",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, 1359}},
 				{C: 'l', P: []float64{367, -685}},
 				{C: 'l', P: []float64{-27, -711}},
@@ -4193,18 +4197,8 @@ var helsinkiregularFont = &Font{
 		"\u0152": {
 			HorizAdvX: 1768,
 			Unicode:   "\u0152",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
-				{C: 'M', P: []float64{985.5, 681.5}},
-				{C: 'q', P: []float64{-15.5, -167.5, -107.5, -279}},
-				{C: 't', P: []float64{-228, -118}},
-				{C: 't', P: []float64{-232, 110.5}},
-				{C: 't', P: []float64{-74, 295.5}},
-				{C: 't', P: []float64{127.5, 286}},
-				{C: 't', P: []float64{237.5, 106}},
-				{C: 't', P: []float64{212, -117.5}},
-				{C: 't', P: []float64{64.5, -283.5}},
-				{C: 'z'},
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{737, 1459}},
 				{C: 'q', P: []float64{-275, 0, -483, -223}},
 				{C: 't', P: []float64{-237, -550}},
@@ -4225,24 +4219,24 @@ var helsinkiregularFont = &Font{
 				{C: 'l', P: []float64{-763, -24}},
 				{C: 'q', P: []float64{-16, -7, -27, -19}},
 				{C: 'q', P: []float64{-94, 37, -208, 37}},
+				{C: 'z'},
+				{C: 'M', P: []float64{985.5, 681.5}},
+				{C: 'q', P: []float64{-15.5, -167.5, -107.5, -279}},
+				{C: 't', P: []float64{-228, -118}},
+				{C: 't', P: []float64{-232, 110.5}},
+				{C: 't', P: []float64{-74, 295.5}},
+				{C: 't', P: []float64{127.5, 286}},
+				{C: 't', P: []float64{237.5, 106}},
+				{C: 't', P: []float64{212, -117.5}},
+				{C: 't', P: []float64{64.5, -283.5}},
 				{C: 'z'},
 			},
 		},
 		"\u0153": {
 			HorizAdvX: 1768,
 			Unicode:   "\u0153",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
-				{C: 'M', P: []float64{985.5, 681.5}},
-				{C: 'q', P: []float64{-15.5, -167.5, -107.5, -279}},
-				{C: 't', P: []float64{-228, -118}},
-				{C: 't', P: []float64{-232, 110.5}},
-				{C: 't', P: []float64{-74, 295.5}},
-				{C: 't', P: []float64{127.5, 286}},
-				{C: 't', P: []float64{237.5, 106}},
-				{C: 't', P: []float64{212, -117.5}},
-				{C: 't', P: []float64{64.5, -283.5}},
-				{C: 'z'},
+			GerberLP:  "dc",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{737, 1459}},
 				{C: 'q', P: []float64{-275, 0, -483, -223}},
 				{C: 't', P: []float64{-237, -550}},
@@ -4264,13 +4258,23 @@ var helsinkiregularFont = &Font{
 				{C: 'q', P: []float64{-16, -7, -27, -19}},
 				{C: 'q', P: []float64{-94, 37, -208, 37}},
 				{C: 'z'},
+				{C: 'M', P: []float64{985.5, 681.5}},
+				{C: 'q', P: []float64{-15.5, -167.5, -107.5, -279}},
+				{C: 't', P: []float64{-228, -118}},
+				{C: 't', P: []float64{-232, 110.5}},
+				{C: 't', P: []float64{-74, 295.5}},
+				{C: 't', P: []float64{127.5, 286}},
+				{C: 't', P: []float64{237.5, 106}},
+				{C: 't', P: []float64{212, -117.5}},
+				{C: 't', P: []float64{64.5, -283.5}},
+				{C: 'z'},
 			},
 		},
 		"\u0178": {
 			HorizAdvX: 1278,
 			Unicode:   "\u0178",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "ddd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{55, 1359}},
 				{C: 'l', P: []float64{367, -685}},
 				{C: 'l', P: []float64{-27, -711}},
@@ -4316,85 +4320,85 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 682,
 			Unicode:   "\u02c6",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u02dc": {
 			HorizAdvX: 682,
 			Unicode:   "\u02dc",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2000": {
 			HorizAdvX: 927,
 			Unicode:   "\u2000",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2001": {
 			HorizAdvX: 1854,
 			Unicode:   "\u2001",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2002": {
 			HorizAdvX: 927,
 			Unicode:   "\u2002",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2003": {
 			HorizAdvX: 1854,
 			Unicode:   "\u2003",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2004": {
 			HorizAdvX: 618,
 			Unicode:   "\u2004",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2005": {
 			HorizAdvX: 463,
 			Unicode:   "\u2005",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2006": {
 			HorizAdvX: 309,
 			Unicode:   "\u2006",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2007": {
 			HorizAdvX: 309,
 			Unicode:   "\u2007",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2008": {
 			HorizAdvX: 231,
 			Unicode:   "\u2008",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2009": {
 			HorizAdvX: 370,
 			Unicode:   "\u2009",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u200a": {
 			HorizAdvX: 103,
 			Unicode:   "\u200a",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2010": {
 			HorizAdvX: 871,
 			Unicode:   "\u2010",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{78, 631}},
 				{C: 'q', P: []float64{-23, 162, 35, 331}},
 				{C: 'h', P: []float64{685}},
@@ -4406,8 +4410,8 @@ var helsinkiregularFont = &Font{
 		"\u2011": {
 			HorizAdvX: 871,
 			Unicode:   "\u2011",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{78, 631}},
 				{C: 'q', P: []float64{-23, 162, 35, 331}},
 				{C: 'h', P: []float64{685}},
@@ -4419,8 +4423,8 @@ var helsinkiregularFont = &Font{
 		"\u2012": {
 			HorizAdvX: 871,
 			Unicode:   "\u2012",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{78, 631}},
 				{C: 'q', P: []float64{-23, 162, 35, 331}},
 				{C: 'h', P: []float64{685}},
@@ -4433,19 +4437,19 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 1139,
 			Unicode:   "\u2013",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2014": {
 			HorizAdvX: 2048,
 			Unicode:   "\u2014",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2018": {
 			HorizAdvX: 419,
 			Unicode:   "\u2018",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{359, 1518}},
 				{C: 'l', P: []float64{-44, -564}},
 				{C: 'q', P: []float64{-128, -76, -260, -3}},
@@ -4457,8 +4461,8 @@ var helsinkiregularFont = &Font{
 		"\u2019": {
 			HorizAdvX: 419,
 			Unicode:   "\u2019",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{359, 1518}},
 				{C: 'l', P: []float64{-44, -564}},
 				{C: 'q', P: []float64{-128, -76, -260, -3}},
@@ -4471,13 +4475,13 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 455,
 			Unicode:   "\u201a",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u201c": {
 			HorizAdvX: 720,
 			Unicode:   "\u201c",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{359, 1518}},
 				{C: 'l', P: []float64{-44, -564}},
 				{C: 'q', P: []float64{-128, -76, -260, -3}},
@@ -4495,8 +4499,8 @@ var helsinkiregularFont = &Font{
 		"\u201d": {
 			HorizAdvX: 720,
 			Unicode:   "\u201d",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "dd",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{359, 1518}},
 				{C: 'l', P: []float64{-44, -564}},
 				{C: 'q', P: []float64{-128, -76, -260, -3}},
@@ -4515,13 +4519,13 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 682,
 			Unicode:   "\u201e",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2022": {
 			HorizAdvX: 611,
 			Unicode:   "\u2022",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{304, 1156}},
 				{C: 'q', P: []float64{63, 0, 122.5, -32}},
 				{C: 't', P: []float64{93, -91.5}},
@@ -4542,37 +4546,37 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 2048,
 			Unicode:   "\u2026",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u202f": {
 			HorizAdvX: 370,
 			Unicode:   "\u202f",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u2039": {
 			HorizAdvX: 682,
 			Unicode:   "\u2039",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u203a": {
 			HorizAdvX: 682,
 			Unicode:   "\u203a",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u205f": {
 			HorizAdvX: 463,
 			Unicode:   "\u205f",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\u20ac": {
 			HorizAdvX: 1274,
 			Unicode:   "\u20ac",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{162, 912}},
 				{C: 'q', P: []float64{55, 272, 201, 422}},
 				{C: 'q', P: []float64{223, 181, 541, 148}},
@@ -4610,13 +4614,13 @@ var helsinkiregularFont = &Font{
 			HorizAdvX: 2048,
 			Unicode:   "\u2122",
 			GerberLP:  "",
-			PathSteps: []*PathStep{},
+			PathSteps: []*gerber.PathStep{},
 		},
 		"\ue000": {
 			HorizAdvX: 1470,
 			Unicode:   "\ue000",
-			GerberLP:  "",
-			PathSteps: []*PathStep{
+			GerberLP:  "d",
+			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{0, 1470}},
 				{C: 'h', P: []float64{1470}},
 				{C: 'v', P: []float64{-1470}},
