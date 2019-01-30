@@ -27,6 +27,8 @@ var (
 	msg = flag.String("msg", `0123456789
 ABCDEFGHIJKLM
 NOPQRSTUVWXYZ
+abcdefghijklm
+nopqrstuvwxyz
 ~!@#$%^&*()-_=/?
 +[]{}\|;':",.<>`, "Message to write to Gerber file silkscreen")
 	pts = flag.Float64("pts", 12.0, "Point size to render font")
