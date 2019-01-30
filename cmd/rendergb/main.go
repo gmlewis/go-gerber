@@ -50,15 +50,23 @@ func main() {
 	dc := gg.NewContext(*width, *height)
 	dc.SetRGB(0, 0, 0)
 	dc.Clear()
+	currentColor := func() {
+		dc.SetRGB(1, 1, 1)
+	}
 	for _, arg := range flag.Args() {
 		log.Printf("Processing %v ...", arg)
 		switch strings.ToLower(arg[len(arg)-4:]) {
 		case ".gto":
-			dc.SetRGB(1, 1, 1)
+			currentColor = func() {
+				dc.SetRGB(1, 1, 1)
+			}
 		default:
-			dc.SetRGB(1, 0, 0)
+			currentColor = func() {
+				dc.SetRGB(1, 0, 0)
+			}
 		}
-		renderLayer(arg, dc, mbb)
+		currentColor()
+		renderLayer(arg, dc, mbb, currentColor)
 	}
 	dc.SavePNG(*out)
 }
@@ -69,7 +77,7 @@ type mbbT struct {
 	scale      float64
 }
 
-func renderLayer(filename string, dc *gg.Context, mbb *mbbT) {
+func renderLayer(filename string, dc *gg.Context, mbb *mbbT, currentColor func()) {
 	f, err := os.Open(filename)
 	if err != nil {
 		log.Fatal(err)
@@ -80,6 +88,12 @@ func renderLayer(filename string, dc *gg.Context, mbb *mbbT) {
 		s, err := r.ReadString('\n')
 		if err != nil && err != io.EOF {
 			log.Fatal(err)
+		}
+
+		if strings.HasPrefix(s, "%LPD") {
+			currentColor()
+		} else if strings.HasPrefix(s, "%LPC") {
+			dc.SetRGB(0, 0, 0)
 		}
 
 		m := xyRE.FindStringSubmatch(s)
