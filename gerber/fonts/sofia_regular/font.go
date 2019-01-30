@@ -466,7 +466,7 @@ var sofia_regularFont = &gerber.Font{
 		"L": {
 			HorizAdvX: 500,
 			Unicode:   "L",
-			GerberLP:  "dcd",
+			GerberLP:  "dcc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{-99, 587}},
 				{C: 'c', P: []float64{36, 0, 72, -3, 111, 1}},
@@ -823,7 +823,7 @@ var sofia_regularFont = &gerber.Font{
 		"j": {
 			HorizAdvX: 198,
 			Unicode:   "j",
-			GerberLP:  "ddd",
+			GerberLP:  "dcc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{89, -152}},
 				{C: 'v', P: []float64{-21}},
@@ -1122,7 +1122,7 @@ var sofia_regularFont = &gerber.Font{
 		"G": {
 			HorizAdvX: 590,
 			Unicode:   "G",
-			GerberLP:  "dd",
+			GerberLP:  "dc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{535, 249}},
 				{C: 'v', P: []float64{-396}},
@@ -1275,7 +1275,7 @@ var sofia_regularFont = &gerber.Font{
 		"Y": {
 			HorizAdvX: 670,
 			Unicode:   "Y",
-			GerberLP:  "dd",
+			GerberLP:  "dc",
 			PathSteps: []*gerber.PathStep{
 				{C: 'M', P: []float64{160, 700}},
 				{C: 'v', P: []float64{-352}},
