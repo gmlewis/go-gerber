@@ -9,10 +9,7 @@ import (
 )
 
 const (
-	mmPerPt    = 25.4 / 72.0
-	resolution = 0.1 // mm
-	minSteps   = 4
-	maxSteps   = 100
+	mmPerPt = 25.4 / 72.0
 )
 
 // TextT represents text and satisfies the Primitive interface.
@@ -65,7 +62,7 @@ func (t *TextT) WriteGerber(w io.Writer, apertureIndex int) error {
 		if poly.Dark && !currentDark {
 			io.WriteString(w, "%LPD*%\n")
 			currentDark = true
-		} else if !poly.Dark && !currentDark {
+		} else if !poly.Dark && currentDark {
 			io.WriteString(w, "%LPC*%\n")
 			currentDark = false
 		}
