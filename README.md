@@ -20,9 +20,9 @@ and this shows the font and top/bottom silkscreen support:
 
 ![with silkscreen](images/go-gerber-with-silkscreen.png)
 
-## Docs
-
+## Status
 [![GoDoc](https://godoc.org/github.com/gmlewis/go-gerber/gerber?status.svg)](https://godoc.org/github.com/gmlewis/go-gerber/gerber)
+[![Build Status](https://travis-ci.org/gmlewis/go-gerber.png)](https://travis-ci.org/gmlewis/go-gerber)
 
 ----------------------------------------------------------------------
 

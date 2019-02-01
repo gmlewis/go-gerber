@@ -11,8 +11,9 @@ import (
 	"math"
 	"strings"
 
+	"github.com/gmlewis/go-fonts/fonts"
+	_ "github.com/gmlewis/go-fonts/fonts/ubuntumonoregular"
 	. "github.com/gmlewis/go-gerber/gerber"
-	_ "github.com/gmlewis/go-gerber/gerber/fonts/ubuntumonoregular"
 )
 
 var (
@@ -27,6 +28,10 @@ var (
 
 func main() {
 	flag.Parse()
+
+	for fn := range fonts.Fonts {
+		log.Printf("font=%v", fn)
+	}
 
 	g := New(*prefix)
 

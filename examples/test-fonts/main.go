@@ -2,24 +2,22 @@
 // given message in all imported fonts in order to test out the font rendering.
 package main
 
+// To import any desired fonts, import them below:
+// _ "github.com/gmlewis/go-fonts/fonts/ubuntumonoregular"
+// _ "github.com/gmlewis/go-fonts/fonts/znikomitno24"
+// etc.
+
 import (
 	"flag"
 	"fmt"
 	"log"
+	"math"
 	"sort"
 	"strings"
 
-	. "github.com/gmlewis/go-gerber/gerber" // To import any desired fonts, import them here:
-	// _ "github.com/gmlewis/go-gerber/gerber/fonts/aaarghnormal"
-	// _ "github.com/gmlewis/go-gerber/gerber/fonts/fascinate_inlineregular"
-	// _ "github.com/gmlewis/go-gerber/gerber/fonts/gooddogregular"
-	// _ "github.com/gmlewis/go-gerber/gerber/fonts/helsinkiregular"
-	// _ "github.com/gmlewis/go-gerber/gerber/fonts/latoregular"
-	// _ "github.com/gmlewis/go-gerber/gerber/fonts/overlockregular"
-	// _ "github.com/gmlewis/go-gerber/gerber/fonts/pacifico"
-	// _ "github.com/gmlewis/go-gerber/gerber/fonts/snickles"
-	// _ "github.com/gmlewis/go-gerber/gerber/fonts/ubuntumonoregular"
-	_ "github.com/gmlewis/go-gerber/gerber/fonts/znikomitno24"
+	"github.com/gmlewis/go-fonts/fonts"
+	_ "github.com/gmlewis/go-fonts/fonts/znikomitno24"
+	. "github.com/gmlewis/go-gerber/gerber"
 )
 
 var (
@@ -39,26 +37,25 @@ nopqrstuvwxyz
 func main() {
 	flag.Parse()
 
-	for name, font := range Fonts {
+	for name, font := range fonts.Fonts {
 		g := New(name)
 
 		message := *msg
 		if *all {
-			var glyphs []string
+			var glyphs []rune
 			for g := range font.Glyphs {
 				glyphs = append(glyphs, g)
 			}
-			sort.Strings(glyphs)
+			sort.Slice(glyphs, func(a, b int) bool { return glyphs[a] < glyphs[b] })
 
-			// lineLength := int(0.5 + math.Sqrt(float64(len(glyphs))))
-			lineLength := 80
+			lineLength := int(0.5 + math.Sqrt(float64(len(glyphs))))
 			var lines []string
 			for len(glyphs) > 0 {
 				end := lineLength
 				if end > len(glyphs) {
 					end = len(glyphs)
 				}
-				lines = append(lines, fmt.Sprintf("%v", strings.Join(glyphs[0:end], "")))
+				lines = append(lines, string(glyphs[0:end]))
 				glyphs = glyphs[end:]
 			}
 			message = strings.Join(lines, "\n")
