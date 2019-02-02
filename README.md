@@ -26,11 +26,13 @@ and this shows the font and top/bottom silkscreen support:
 
 ----------------------------------------------------------------------
 
-## Webfonts
+## Webfonts using `go-fonts`
 
-The SVG webfonts were copied from the excellent
-[github.com/boldport/pcbmode](https://github.com/boldport/pcbmode/tree/master/pcbmode/fonts)
-project and tweaked.
+Webfont support has been switched to using
+[github.com/gmlewis/go-fonts](https://github.com/gmlewis/go-fonts).
+
+Below are some example fonts but there are many more in the `go-fonts` repo
+to choose from.
 
 ### AaarghNormal
 
