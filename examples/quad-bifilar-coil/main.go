@@ -52,13 +52,13 @@ func main() {
 	padD := 2.0
 	drillD := 1.0
 	padOffset := 0.5 * (padD - *trace)
-	botSpiralL := s.genSpiral(-1.0, math.Pi, startL.Y+2*padOffset)
+	botSpiralL := s.genSpiral(-1.0, math.Pi, *trace+padD)
 
 	shiftAngle := 0.5 * math.Pi
 	layer2SpiralR := s.genSpiral(1.0, shiftAngle, 0)
 	layer2SpiralL := s.genSpiral(1.0, math.Pi+shiftAngle, 0)
 	layer3SpiralR := s.genSpiral(-1.0, shiftAngle, 0)
-	layer3SpiralL := s.genSpiral(-1.0, math.Pi+shiftAngle, startL.Y+2*padOffset)
+	layer3SpiralL := s.genSpiral(-1.0, math.Pi+shiftAngle, *trace+padD)
 	startLayer2R := genPt(1.0, s.startAngle, 0, shiftAngle)
 	//	endLayer2R := genPt(1.0, s.endAngle, 0, shiftAngle)
 	startLayer2L := genPt(1.0, s.startAngle, 0, math.Pi+shiftAngle)
@@ -75,7 +75,7 @@ func main() {
 	// hole3 := Point(startL.X, startL.Y-viaPadOffset)
 	hole3 := Point(-viaOffset, 0)
 	halfTW := *trace * 0.5
-	hole4 := Point(endR.X+padOffset-halfTW, startL.Y+2*padOffset)
+	hole4 := Point(endR.X+padOffset-halfTW, *trace+padD)
 	// Lower connecting trace for right spiral
 	hole5 := Point(endR.X+padOffset, endR.Y)
 	// Layer 2 and 3 inner connecting holes
@@ -220,9 +220,21 @@ func main() {
 		radius := -endL.X
 		x := -0.75 * radius
 		y := 0.3 * radius
+		labelSize := 6.0
+		hole3Text := Text(0, 0, 1.0, "hole3", *fontName, labelSize)
+		textWidth := hole3Text.Width()
+		textHeight := hole3Text.Height()
+
 		tss := g.TopSilkscreen()
 		tss.Add(
 			Text(x, y, 1.0, message, *fontName, *pts),
+			Text(hole1.X-0.5*textWidth, hole1.Y+2*viaPadD, 1.0, "hole1", *fontName, labelSize),
+			Text(hole2.X+viaPadD, hole2.Y-0.5*textHeight+viaPadD, 1.0, "hole2", *fontName, labelSize),
+			Text(hole3.X-0.5*textWidth, hole3.Y-textHeight-2*viaPadD, 1.0, "hole3", *fontName, labelSize),
+			Text(hole4.X-textWidth-padD, hole4.Y-0.5*padD, 1.0, "hole4", *fontName, labelSize),
+			Text(hole5.X-textWidth-padD, hole5.Y-textHeight+0.5*padD, 1.0, "hole5", *fontName, labelSize),
+			Text(hole6.X-textWidth-2*viaPadD, hole6.Y-0.5*textHeight, 1.0, "hole6", *fontName, labelSize),
+			Text(hole7.X+viaPadD, hole7.Y-0.5*textHeight, 1.0, "hole7", *fontName, labelSize),
 		)
 	}
 
