@@ -128,6 +128,7 @@ func main() {
 		Line(startLayer2L.X, startLayer2L.Y, hole1.X, hole1.Y, RectShape, *trace),
 		// Layer 2 and 3 outer connecting hole
 		Circle(hole8.X, hole8.Y, viaPadD),
+		Line(layer2EndR.X, layer2EndR.Y, hole8.X, hole8.Y, RectShape, *trace),
 	)
 
 	topMask := g.TopSolderMask()
@@ -193,6 +194,7 @@ func main() {
 		Line(startLayer2L.X, startLayer2L.Y, hole1.X, hole1.Y, RectShape, *trace),
 		// Layer 2 and 3 outer connecting hole
 		Circle(hole8.X, hole8.Y, viaPadD),
+		Line(layer2EndR.X, layer2EndR.Y, hole8.X, hole8.Y, RectShape, *trace),
 	)
 
 	bottomMask := g.BottomSolderMask()
