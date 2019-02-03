@@ -55,7 +55,7 @@ func main() {
 
 	shiftAngle := 0.5 * math.Pi
 	layer2SpiralR, layer2EndR := s.genSpiral(1.0, shiftAngle, 0)
-	layer2SpiralL, _ := s.genSpiral(1.0, math.Pi+shiftAngle, 0)
+	layer2SpiralL, layer2EndL := s.genSpiral(1.0, math.Pi+shiftAngle, -(*trace + padD))
 	layer3SpiralR, _ := s.genSpiral(-1.0, shiftAngle, 0)
 	layer3SpiralL, layer3EndL := s.genSpiral(-1.0, math.Pi+shiftAngle, *trace+padD)
 	startLayer2R := genPt(1.0, s.startAngle, 0, shiftAngle)
@@ -83,6 +83,7 @@ func main() {
 	hole7 := Point(0, -viaOffset)
 	// Layer 2 and 3 outer connecting hole
 	hole8 := Point(layer2EndR.X, layer2EndR.Y+hole2Offset)
+	hole9 := Point(layer2EndL.X+hole5PadOffset, -(*trace + padD))
 
 	top := g.TopCopper()
 	top.Add(
@@ -105,6 +106,7 @@ func main() {
 		Line(startL.X, startL.Y, hole7.X, hole7.Y, RectShape, *trace),
 		// Layer 2 and 3 outer connecting hole
 		Circle(hole8.X, hole8.Y, viaPadD),
+		Circle(hole9.X, hole9.Y, padD),
 	)
 
 	layer2 := g.Layer2()
@@ -129,6 +131,7 @@ func main() {
 		// Layer 2 and 3 outer connecting hole
 		Circle(hole8.X, hole8.Y, viaPadD),
 		Line(layer2EndR.X, layer2EndR.Y, hole8.X, hole8.Y, RectShape, *trace),
+		Circle(hole9.X, hole9.Y, padD),
 	)
 
 	topMask := g.TopSolderMask()
@@ -146,6 +149,7 @@ func main() {
 		Circle(hole7.X, hole7.Y, viaPadD),
 		// Layer 2 and 3 outer connecting hole
 		Circle(hole8.X, hole8.Y, viaPadD),
+		Circle(hole9.X, hole9.Y, padD),
 	)
 
 	bottom := g.BottomCopper()
@@ -170,6 +174,7 @@ func main() {
 		Line(startL.X, startL.Y, hole7.X, hole7.Y, RectShape, *trace),
 		// Layer 2 and 3 outer connecting hole
 		Circle(hole8.X, hole8.Y, viaPadD),
+		Circle(hole9.X, hole9.Y, padD),
 	)
 
 	layer3 := g.Layer3()
@@ -195,6 +200,7 @@ func main() {
 		// Layer 2 and 3 outer connecting hole
 		Circle(hole8.X, hole8.Y, viaPadD),
 		Line(layer2EndR.X, layer2EndR.Y, hole8.X, hole8.Y, RectShape, *trace),
+		Circle(hole9.X, hole9.Y, padD),
 	)
 
 	bottomMask := g.BottomSolderMask()
@@ -212,6 +218,7 @@ func main() {
 		Circle(hole7.X, hole7.Y, viaPadD),
 		// Layer 2 and 3 outer connecting hole
 		Circle(hole8.X, hole8.Y, viaPadD),
+		Circle(hole9.X, hole9.Y, padD),
 	)
 
 	drill := g.Drill()
@@ -229,6 +236,7 @@ func main() {
 		Circle(hole7.X, hole7.Y, viaDrillD),
 		// Layer 2 and 3 outer connecting hole
 		Circle(hole8.X, hole8.Y, viaPadD),
+		Circle(hole9.X, hole9.Y, padD),
 	)
 
 	outline := g.Outline()
@@ -299,7 +307,11 @@ func newSpiral() *spiral {
 
 func (s *spiral) genSpiral(xScale, offset, trimY float64) (pts []Pt, endPt Pt) {
 	halfTW := *trace * 0.5
-	steps := int(0.5 + (s.endAngle-s.startAngle) / *step)
+	endAngle := s.endAngle
+	if trimY < 0 { // Only for layer2SpiralL - extend another Pi/2
+		endAngle += 0.5 * math.Pi
+	}
+	steps := int(0.5 + (endAngle-s.startAngle) / *step)
 	for i := 0; i < steps; i++ {
 		angle := s.startAngle + *step*float64(i)
 		pts = append(pts, genPt(xScale, angle, halfTW, offset))
@@ -322,10 +334,11 @@ func (s *spiral) genSpiral(xScale, offset, trimY float64) (pts []Pt, endPt Pt) {
 		endPt = Pt{X: eX.X, Y: trimY}
 		nX := genPt(xScale, angle, -halfTW, offset)
 		pts = append(pts, Pt{X: nX.X, Y: trimY})
+		// } else if trimY < 0 { // Only for layer2SpiralL
 	} else {
-		pts = append(pts, genPt(xScale, s.endAngle, halfTW, offset))
-		endPt = genPt(xScale, s.endAngle, 0, offset)
-		pts = append(pts, genPt(xScale, s.endAngle, -halfTW, offset))
+		pts = append(pts, genPt(xScale, endAngle, halfTW, offset))
+		endPt = genPt(xScale, endAngle, 0, offset)
+		pts = append(pts, genPt(xScale, endAngle, -halfTW, offset))
 	}
 	for i := steps - 1 - trimYsteps; i >= 0; i-- {
 		angle := s.startAngle + *step*float64(i)
