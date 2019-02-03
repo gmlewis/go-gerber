@@ -54,7 +54,7 @@ func main() {
 	botSpiralL, botEndL := s.genSpiral(-1.0, math.Pi, *trace+padD)
 
 	shiftAngle := 0.5 * math.Pi
-	layer2SpiralR, _ := s.genSpiral(1.0, shiftAngle, 0)
+	layer2SpiralR, layer2EndR := s.genSpiral(1.0, shiftAngle, 0)
 	layer2SpiralL, _ := s.genSpiral(1.0, math.Pi+shiftAngle, 0)
 	layer3SpiralR, _ := s.genSpiral(-1.0, shiftAngle, 0)
 	layer3SpiralL, layer3EndL := s.genSpiral(-1.0, math.Pi+shiftAngle, *trace+padD)
@@ -65,8 +65,8 @@ func main() {
 
 	viaOffset := math.Sqrt(0.5 * (*trace + viaPadD) * (*trace + viaPadD))
 	hole2Offset := 0.5 * (*trace + viaPadD)
-	hole4PadOffset := 0.5 * (viaPadD - *trace)
-	hole5PadOffset := 0.5 * (padD - *trace)
+	hole4PadOffset := 0.5 * (viaPadD + *trace)
+	hole5PadOffset := 0.5 * (padD + *trace)
 
 	// Lower connecting trace between two spirals
 	// hole1 := Point(startR.X, startR.Y+viaPadOffset)
@@ -75,13 +75,14 @@ func main() {
 	// Upper connecting trace for left spiral
 	// hole3 := Point(startL.X, startL.Y-viaPadOffset)
 	hole3 := Point(-viaOffset, 0)
-	halfTW := *trace * 0.5
-	hole4 := Point(endR.X+hole4PadOffset+halfTW, *trace+padD)
+	hole4 := Point(endR.X+hole4PadOffset, *trace+padD)
 	// Lower connecting trace for right spiral
 	hole5 := Point(endR.X+hole5PadOffset, endR.Y)
 	// Layer 2 and 3 inner connecting holes
 	hole6 := Point(0, viaOffset)
 	hole7 := Point(0, -viaOffset)
+	// Layer 2 and 3 outer connecting hole
+	hole8 := Point(layer2EndR.X, layer2EndR.Y+hole2Offset)
 
 	top := g.TopCopper()
 	top.Add(
@@ -96,11 +97,14 @@ func main() {
 		Circle(hole4.X, hole4.Y, viaPadD),
 		// Lower connecting trace for right spiral
 		Circle(hole5.X, hole5.Y, padD),
+		Line(endR.X, endR.Y, hole5.X, hole5.Y, RectShape, *trace),
 		// Layer 2 and 3 inner connecting holes
 		Circle(hole6.X, hole6.Y, viaPadD),
 		Circle(hole7.X, hole7.Y, viaPadD),
 		Line(startR.X, startR.Y, hole6.X, hole6.Y, RectShape, *trace),
 		Line(startL.X, startL.Y, hole7.X, hole7.Y, RectShape, *trace),
+		// Layer 2 and 3 outer connecting hole
+		Circle(hole8.X, hole8.Y, viaPadD),
 	)
 
 	layer2 := g.Layer2()
@@ -122,6 +126,8 @@ func main() {
 		Circle(hole3.X, hole3.Y, viaPadD),
 		Line(startLayer2R.X, startLayer2R.Y, hole3.X, hole3.Y, RectShape, *trace),
 		Line(startLayer2L.X, startLayer2L.Y, hole1.X, hole1.Y, RectShape, *trace),
+		// Layer 2 and 3 outer connecting hole
+		Circle(hole8.X, hole8.Y, viaPadD),
 	)
 
 	topMask := g.TopSolderMask()
@@ -137,6 +143,8 @@ func main() {
 		// Layer 2 and 3 inner connecting holes
 		Circle(hole6.X, hole6.Y, viaPadD),
 		Circle(hole7.X, hole7.Y, viaPadD),
+		// Layer 2 and 3 outer connecting hole
+		Circle(hole8.X, hole8.Y, viaPadD),
 	)
 
 	bottom := g.BottomCopper()
@@ -159,6 +167,8 @@ func main() {
 		Circle(hole7.X, hole7.Y, viaPadD),
 		Line(startR.X, startR.Y, hole6.X, hole6.Y, RectShape, *trace),
 		Line(startL.X, startL.Y, hole7.X, hole7.Y, RectShape, *trace),
+		// Layer 2 and 3 outer connecting hole
+		Circle(hole8.X, hole8.Y, viaPadD),
 	)
 
 	layer3 := g.Layer3()
@@ -181,6 +191,8 @@ func main() {
 		Circle(hole3.X, hole3.Y, viaPadD),
 		Line(startLayer2R.X, startLayer2R.Y, hole3.X, hole3.Y, RectShape, *trace),
 		Line(startLayer2L.X, startLayer2L.Y, hole1.X, hole1.Y, RectShape, *trace),
+		// Layer 2 and 3 outer connecting hole
+		Circle(hole8.X, hole8.Y, viaPadD),
 	)
 
 	bottomMask := g.BottomSolderMask()
@@ -196,6 +208,8 @@ func main() {
 		// Layer 2 and 3 inner connecting holes
 		Circle(hole6.X, hole6.Y, viaPadD),
 		Circle(hole7.X, hole7.Y, viaPadD),
+		// Layer 2 and 3 outer connecting hole
+		Circle(hole8.X, hole8.Y, viaPadD),
 	)
 
 	drill := g.Drill()
@@ -211,13 +225,16 @@ func main() {
 		// Layer 2 and 3 inner connecting holes
 		Circle(hole6.X, hole6.Y, viaDrillD),
 		Circle(hole7.X, hole7.Y, viaDrillD),
+		// Layer 2 and 3 outer connecting hole
+		Circle(hole8.X, hole8.Y, viaPadD),
 	)
 
 	outline := g.Outline()
+	r := 0.5*s.size + padD + *trace
 	outline.Add(
-		Arc(0, 0, 0.5*s.size+padD, CircleShape, 1, 1, 0, 360, 0.1),
+		Arc(0, 0, r, CircleShape, 1, 1, 0, 360, 0.1),
 	)
-	fmt.Printf("n=%v: (%.2f,%.2f)\n", *n, s.size+2*padD, s.size+2*padD)
+	fmt.Printf("n=%v: (%.2f,%.2f)\n", *n, 2*r, 2*r)
 
 	if *fontName != "" {
 		radius := -endL.X
@@ -238,6 +255,7 @@ func main() {
 			Text(hole5.X-textWidth-padD, hole5.Y-textHeight+0.5*padD, 1.0, "hole5", *fontName, labelSize),
 			Text(hole6.X-textWidth-2*viaPadD, hole6.Y-0.5*textHeight, 1.0, "hole6", *fontName, labelSize),
 			Text(hole7.X+viaPadD, hole7.Y-0.5*textHeight, 1.0, "hole7", *fontName, labelSize),
+			Text(hole8.X-0.5*textWidth, hole8.Y-textHeight-2*viaPadD, 1.0, "hole8", *fontName, labelSize),
 		)
 	}
 
