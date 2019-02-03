@@ -6,13 +6,10 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"math"
-	"strings"
 
-	"github.com/gmlewis/go-fonts/fonts"
-	_ "github.com/gmlewis/go-fonts/fonts/ubuntumonoregular"
+	_ "github.com/gmlewis/go-fonts/fonts/freeserif"
 	. "github.com/gmlewis/go-gerber/gerber"
 )
 
@@ -22,16 +19,18 @@ var (
 	gap      = flag.Float64("gap", 0.15, "Gap between traces in mm (6mil = 0.15mm)")
 	trace    = flag.Float64("trace", 0.15, "Width of traces in mm")
 	prefix   = flag.String("prefix", "bifilar-coil", "Filename prefix for all Gerber files and zip")
-	fontName = flag.String("font", "ubuntumonoregular", "Name of font to use for writing source on PCB (empty to not write)")
-	pts      = flag.Float64("pts", 1.75, "Font point size (72 pts = 1 inch = 25.4 mm)")
+	fontName = flag.String("font", "freeserif", "Name of font to use for writing source on PCB (empty to not write)")
+	pts      = flag.Float64("pts", 18.0, "Font point size (72 pts = 1 inch = 25.4 mm)")
+)
+
+const (
+	message = `With a trace and gap size of 0.15mm, this
+bifilar coil has a DC resistance of 232.2Ω.
+Each spiral has 100 coils.`
 )
 
 func main() {
 	flag.Parse()
-
-	for fn := range fonts.Fonts {
-		log.Printf("font=%v", fn)
-	}
 
 	g := New(*prefix)
 
@@ -45,16 +44,20 @@ func main() {
 	startL := genPt(s.startAngle, 0, math.Pi)
 	endL := genPt(s.endAngle, 0, math.Pi)
 
-	padD := 0.5
-	drillD := 0.25
+	viaPadD := 0.5
+	viaDrillD := 0.25
+	viaPadOffset := 0.5 * (viaPadD - *trace)
+
+	padD := 2.0
+	drillD := 1.0
 	padOffset := 0.5 * (padD - *trace)
 
 	// Lower connecting trace between two spirals
-	hole1 := Point(startR.X, startR.Y+padOffset)
-	hole2 := Point(endL.X-padOffset, endL.Y)
+	hole1 := Point(startR.X, startR.Y+viaPadOffset)
+	hole2 := Point(endL.X-viaPadOffset, endL.Y)
 	// Upper connecting trace for left spiral
-	hole3 := Point(startL.X, startL.Y-padOffset)
-	hole4 := Point(endR.X+padOffset, startL.Y+padOffset)
+	hole3 := Point(startL.X, startL.Y-viaPadOffset)
+	hole4 := Point(endR.X+padOffset, startL.Y+2*padOffset)
 	// Lower connecting trace for right spiral
 	hole5 := Point(endR.X+padOffset, endR.Y)
 
@@ -63,10 +66,10 @@ func main() {
 		Polygon(0, 0, true, spiralR, 0.0),
 		Polygon(0, 0, true, spiralL, 0.0),
 		// Lower connecting trace between two spirals
-		Circle(hole1.X, hole1.Y, padD),
-		Circle(hole2.X, hole2.Y, padD),
+		Circle(hole1.X, hole1.Y, viaPadD),
+		Circle(hole2.X, hole2.Y, viaPadD),
 		// Upper connecting trace for left spiral
-		Circle(hole3.X, hole3.Y, padD),
+		Circle(hole3.X, hole3.Y, viaPadD),
 		Circle(hole4.X, hole4.Y, padD),
 		// Lower connecting trace for right spiral
 		Circle(hole5.X, hole5.Y, padD),
@@ -75,10 +78,10 @@ func main() {
 	topMask := g.TopSolderMask()
 	topMask.Add(
 		// Lower connecting trace between two spirals
-		Circle(hole1.X, hole1.Y, padD),
-		Circle(hole2.X, hole2.Y, padD),
+		Circle(hole1.X, hole1.Y, viaPadD),
+		Circle(hole2.X, hole2.Y, viaPadD),
 		// Upper connecting trace for left spiral
-		Circle(hole3.X, hole3.Y, padD),
+		Circle(hole3.X, hole3.Y, viaPadD),
 		Circle(hole4.X, hole4.Y, padD),
 		// Lower connecting trace for right spiral
 		Circle(hole5.X, hole5.Y, padD),
@@ -87,13 +90,14 @@ func main() {
 	bottom := g.BottomCopper()
 	bottom.Add(
 		// Lower connecting trace between two spirals
-		Circle(hole1.X, hole1.Y, padD),
+		Circle(hole1.X, hole1.Y, viaPadD),
 		Line(startR.X, startR.Y, endL.X, startR.Y, RectShape, *trace),
 		Line(endL.X, startR.Y, endL.X, endL.Y, RectShape, *trace),
-		Circle(hole2.X, hole2.Y, padD),
+		Circle(hole2.X, hole2.Y, viaPadD),
 		// Upper connecting trace for left spiral
-		Circle(hole3.X, hole3.Y, padD),
-		Line(startL.X, startL.Y, endR.X+padOffset, startL.Y, RectShape, *trace),
+		Circle(hole3.X, hole3.Y, viaPadD),
+		Line(startL.X, startL.Y, startL.X, startL.Y+padOffset, RectShape, *trace),
+		Line(startL.X, startL.Y+padOffset, endR.X+padOffset, startL.Y+padOffset, RectShape, *trace),
 		Circle(hole4.X, hole4.Y, padD),
 		// Lower connecting trace for right spiral
 		Circle(hole5.X, hole5.Y, padD),
@@ -102,10 +106,10 @@ func main() {
 	bottomMask := g.BottomSolderMask()
 	bottomMask.Add(
 		// Lower connecting trace between two spirals
-		Circle(hole1.X, hole1.Y, padD),
-		Circle(hole2.X, hole2.Y, padD),
+		Circle(hole1.X, hole1.Y, viaPadD),
+		Circle(hole2.X, hole2.Y, viaPadD),
 		// Upper connecting trace for left spiral
-		Circle(hole3.X, hole3.Y, padD),
+		Circle(hole3.X, hole3.Y, viaPadD),
 		Circle(hole4.X, hole4.Y, padD),
 		// Lower connecting trace for right spiral
 		Circle(hole5.X, hole5.Y, padD),
@@ -114,10 +118,10 @@ func main() {
 	drill := g.Drill()
 	drill.Add(
 		// Lower connecting trace between two spirals
-		Circle(hole1.X, hole1.Y, drillD),
-		Circle(hole2.X, hole2.Y, drillD),
+		Circle(hole1.X, hole1.Y, viaDrillD),
+		Circle(hole2.X, hole2.Y, viaDrillD),
 		// Upper connecting trace for left spiral
-		Circle(hole3.X, hole3.Y, drillD),
+		Circle(hole3.X, hole3.Y, viaDrillD),
 		Circle(hole4.X, hole4.Y, drillD),
 		// Lower connecting trace for right spiral
 		Circle(hole5.X, hole5.Y, drillD),
@@ -128,23 +132,13 @@ func main() {
 		Arc(0, 0, 0.5*s.size+padD, CircleShape, 1, 1, 0, 360, 0.1),
 	)
 
-	if *fontName != "" { // Write the code on the top and bottom silkscreens (split in half).
-		buf, err := ioutil.ReadFile("main.go")
-		if err != nil {
-			log.Fatal(err)
-		}
-		lines := strings.Split(string(buf), "\n")
-		half := len(lines) / 2
-		x, y := -40000.0, 100000.0
-
+	if *fontName != "" {
+		radius := -endL.X
+		x := -0.75 * radius
+		y := 0.3 * radius
 		tss := g.TopSilkscreen()
 		tss.Add(
-			Text(x, y, 1.0, strings.Join(lines[:half], "\n"), *fontName, *pts),
-		)
-
-		bss := g.BottomSilkscreen()
-		bss.Add(
-			Text(-x, y, -1.0, strings.Join(lines[half:], "\n"), *fontName, *pts),
+			Text(x, y, 1.0, message, *fontName, *pts),
 		)
 	}
 

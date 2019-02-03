@@ -38,8 +38,8 @@ func Text(x, y, xScale float64, message, fontName string, pts float64) *TextT {
 	}
 
 	return &TextT{
-		x:        x,
-		y:        y,
+		x:        sf * x,
+		y:        sf * y,
 		xScale:   xScale,
 		message:  message,
 		fontName: fontName,
