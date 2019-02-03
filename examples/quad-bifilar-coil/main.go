@@ -28,6 +28,14 @@ const (
 	message = `With a trace and gap size of 0.15mm, this
 quad bifilar coil should have a DC resistance
 of approx. 928.8Ω. Each spiral has 100 coils.`
+	message2 = `Top layer: hole5 ⇨ hole1
+Bottom layer: hole1 ⇨ hole2
+Top layer: hole2 ⇨ hole3
+Bottom layer: hole3 ⇨ hole4
+Layer 3: hole4 ⇨ hole6
+Layer 2: hole6 ⇨ hole8
+Layer 3: hole8 ⇨ hole7
+Layer 2: hole7 ⇨ hole9`
 )
 
 func main() {
@@ -268,6 +276,7 @@ func main() {
 			Text(hole7.X+viaPadD, hole7.Y-0.5*textHeight, 1.0, "hole7", *fontName, labelSize),
 			Text(hole8.X-0.5*textWidth, hole8.Y-textHeight-2*viaPadD, 1.0, "hole8", *fontName, labelSize),
 			Text(hole9.X-textWidth-padD, hole9.Y-textHeight+0.5*padD, 1.0, "hole9", *fontName, labelSize),
+			Text(-0.5*radius, -10, 1.0, message2, *fontName, *pts),
 		)
 	}
 
