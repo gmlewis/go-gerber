@@ -37,13 +37,13 @@ func main() {
 
 	s := newSpiral()
 
-	topSpiralR := s.genSpiral(1.0, 0, 0)
-	topSpiralL := s.genSpiral(1.0, math.Pi, 0)
-	botSpiralR := s.genSpiral(-1.0, 0, 0)
+	topSpiralR, endR := s.genSpiral(1.0, 0, 0)
+	topSpiralL, endL := s.genSpiral(1.0, math.Pi, 0)
+	botSpiralR, _ := s.genSpiral(-1.0, 0, 0)
 	startR := genPt(1.0, s.startAngle, 0, 0)
-	endR := genPt(1.0, s.endAngle, 0, 0)
+	// endR := genPt(1.0, s.endAngle, 0, 0)
 	startL := genPt(1.0, s.startAngle, 0, math.Pi)
-	endL := genPt(1.0, s.endAngle, 0, math.Pi)
+	// endL := genPt(1.0, s.endAngle, 0, math.Pi)
 
 	viaPadD := 0.5
 	viaDrillD := 0.25
@@ -51,14 +51,13 @@ func main() {
 
 	padD := 2.0
 	drillD := 1.0
-	padOffset := 0.5 * (padD - *trace)
-	botSpiralL := s.genSpiral(-1.0, math.Pi, *trace+padD)
+	botSpiralL, botEndL := s.genSpiral(-1.0, math.Pi, *trace+padD)
 
 	shiftAngle := 0.5 * math.Pi
-	layer2SpiralR := s.genSpiral(1.0, shiftAngle, 0)
-	layer2SpiralL := s.genSpiral(1.0, math.Pi+shiftAngle, 0)
-	layer3SpiralR := s.genSpiral(-1.0, shiftAngle, 0)
-	layer3SpiralL := s.genSpiral(-1.0, math.Pi+shiftAngle, *trace+padD)
+	layer2SpiralR, _ := s.genSpiral(1.0, shiftAngle, 0)
+	layer2SpiralL, _ := s.genSpiral(1.0, math.Pi+shiftAngle, 0)
+	layer3SpiralR, _ := s.genSpiral(-1.0, shiftAngle, 0)
+	layer3SpiralL, layer3EndL := s.genSpiral(-1.0, math.Pi+shiftAngle, *trace+padD)
 	startLayer2R := genPt(1.0, s.startAngle, 0, shiftAngle)
 	//	endLayer2R := genPt(1.0, s.endAngle, 0, shiftAngle)
 	startLayer2L := genPt(1.0, s.startAngle, 0, math.Pi+shiftAngle)
@@ -66,6 +65,8 @@ func main() {
 
 	viaOffset := math.Sqrt(0.5 * (*trace + viaPadD) * (*trace + viaPadD))
 	hole2Offset := 0.5 * (*trace + viaPadD)
+	hole4PadOffset := 0.5 * (viaPadD - *trace)
+	hole5PadOffset := 0.5 * (padD - *trace)
 
 	// Lower connecting trace between two spirals
 	// hole1 := Point(startR.X, startR.Y+viaPadOffset)
@@ -75,9 +76,9 @@ func main() {
 	// hole3 := Point(startL.X, startL.Y-viaPadOffset)
 	hole3 := Point(-viaOffset, 0)
 	halfTW := *trace * 0.5
-	hole4 := Point(endR.X+padOffset-halfTW, *trace+padD)
+	hole4 := Point(endR.X+hole4PadOffset+halfTW, *trace+padD)
 	// Lower connecting trace for right spiral
-	hole5 := Point(endR.X+padOffset, endR.Y)
+	hole5 := Point(endR.X+hole5PadOffset, endR.Y)
 	// Layer 2 and 3 inner connecting holes
 	hole6 := Point(0, viaOffset)
 	hole7 := Point(0, -viaOffset)
@@ -92,7 +93,7 @@ func main() {
 		Line(endL.X, endL.Y, hole2.X, hole2.Y, RectShape, *trace),
 		// Upper connecting trace for left spiral
 		Circle(hole3.X, hole3.Y, viaPadD),
-		Circle(hole4.X, hole4.Y, padD),
+		Circle(hole4.X, hole4.Y, viaPadD),
 		// Lower connecting trace for right spiral
 		Circle(hole5.X, hole5.Y, padD),
 		// Layer 2 and 3 inner connecting holes
@@ -111,7 +112,7 @@ func main() {
 		Circle(hole2.X, hole2.Y, viaPadD),
 		// Upper connecting trace for left spiral
 		Circle(hole3.X, hole3.Y, viaPadD),
-		Circle(hole4.X, hole4.Y, padD),
+		Circle(hole4.X, hole4.Y, viaPadD),
 		// Lower connecting trace for right spiral
 		Circle(hole5.X, hole5.Y, padD),
 		// Layer 2 and 3 inner connecting holes
@@ -130,7 +131,7 @@ func main() {
 		Circle(hole2.X, hole2.Y, viaPadD),
 		// Upper connecting trace for left spiral
 		Circle(hole3.X, hole3.Y, viaPadD),
-		Circle(hole4.X, hole4.Y, padD),
+		Circle(hole4.X, hole4.Y, viaPadD),
 		// Lower connecting trace for right spiral
 		Circle(hole5.X, hole5.Y, padD),
 		// Layer 2 and 3 inner connecting holes
@@ -149,7 +150,8 @@ func main() {
 		Line(endL.X, endL.Y, hole2.X, hole2.Y, RectShape, *trace),
 		// Upper connecting trace for left spiral
 		Circle(hole3.X, hole3.Y, viaPadD),
-		Circle(hole4.X, hole4.Y, padD),
+		Circle(hole4.X, hole4.Y, viaPadD),
+		Line(botEndL.X, botEndL.Y, hole4.X, hole4.Y, RectShape, *trace),
 		// Lower connecting trace for right spiral
 		Circle(hole5.X, hole5.Y, padD),
 		// Layer 2 and 3 inner connecting holes
@@ -168,7 +170,8 @@ func main() {
 		Circle(hole2.X, hole2.Y, viaPadD),
 		// Upper connecting trace for left spiral
 		Circle(hole3.X, hole3.Y, viaPadD),
-		Circle(hole4.X, hole4.Y, padD),
+		Circle(hole4.X, hole4.Y, viaPadD),
+		Line(layer3EndL.X, layer3EndL.Y, hole4.X, hole4.Y, RectShape, *trace),
 		// Lower connecting trace for right spiral
 		Circle(hole5.X, hole5.Y, padD),
 		// Layer 2 and 3 inner connecting holes
@@ -187,7 +190,7 @@ func main() {
 		Circle(hole2.X, hole2.Y, viaPadD),
 		// Upper connecting trace for left spiral
 		Circle(hole3.X, hole3.Y, viaPadD),
-		Circle(hole4.X, hole4.Y, padD),
+		Circle(hole4.X, hole4.Y, viaPadD),
 		// Lower connecting trace for right spiral
 		Circle(hole5.X, hole5.Y, padD),
 		// Layer 2 and 3 inner connecting holes
@@ -202,7 +205,7 @@ func main() {
 		Circle(hole2.X, hole2.Y, viaDrillD),
 		// Upper connecting trace for left spiral
 		Circle(hole3.X, hole3.Y, viaDrillD),
-		Circle(hole4.X, hole4.Y, drillD),
+		Circle(hole4.X, hole4.Y, viaPadD),
 		// Lower connecting trace for right spiral
 		Circle(hole5.X, hole5.Y, drillD),
 		// Layer 2 and 3 inner connecting holes
@@ -274,9 +277,8 @@ func newSpiral() *spiral {
 	}
 }
 
-func (s *spiral) genSpiral(xScale, offset, trimY float64) []Pt {
+func (s *spiral) genSpiral(xScale, offset, trimY float64) (pts []Pt, endPt Pt) {
 	halfTW := *trace * 0.5
-	var pts []Pt
 	steps := int(0.5 + (s.endAngle-s.startAngle) / *step)
 	for i := 0; i < steps; i++ {
 		angle := s.startAngle + *step*float64(i)
@@ -296,10 +298,13 @@ func (s *spiral) genSpiral(xScale, offset, trimY float64) []Pt {
 		pts = pts[0 : lastStep+1]
 		pts = append(pts, Pt{X: pts[lastStep].X, Y: trimY})
 		angle := s.startAngle + *step*float64(steps-1-trimYsteps)
-		nextP := genPt(xScale, angle, -halfTW, offset)
-		pts = append(pts, Pt{X: nextP.X, Y: trimY})
+		eX := genPt(xScale, angle, 0, offset)
+		endPt = Pt{X: eX.X, Y: trimY}
+		nX := genPt(xScale, angle, -halfTW, offset)
+		pts = append(pts, Pt{X: nX.X, Y: trimY})
 	} else {
 		pts = append(pts, genPt(xScale, s.endAngle, halfTW, offset))
+		endPt = genPt(xScale, s.endAngle, 0, offset)
 		pts = append(pts, genPt(xScale, s.endAngle, -halfTW, offset))
 	}
 	for i := steps - 1 - trimYsteps; i >= 0; i-- {
@@ -307,5 +312,5 @@ func (s *spiral) genSpiral(xScale, offset, trimY float64) []Pt {
 		pts = append(pts, genPt(xScale, angle, -halfTW, offset))
 	}
 	pts = append(pts, pts[0])
-	return pts
+	return pts, endPt
 }
