@@ -18,6 +18,7 @@ type TextT struct {
 	message      string
 	fontName     string
 	pts          float64
+	render       *fonts.Render
 }
 
 // Text returns a text primitive.
@@ -47,18 +48,45 @@ func Text(x, y, xScale float64, message, fontName string, pts float64) *TextT {
 	}
 }
 
+func (t *TextT) renderText() error {
+	if t.render == nil {
+		yScale := sf * t.pts * mmPerPt
+		xScale := t.xScale * yScale
+		render, err := fonts.Text(t.x, t.y, xScale, yScale, t.message, t.fontName)
+		if err != nil {
+			return err
+		}
+		t.render = render
+	}
+	return nil
+}
+
+// Width returns the width of the text in millimeters.
+func (t *TextT) Width() float64 {
+	if err := t.renderText(); err != nil {
+		log.Fatal(err)
+	}
+	width := t.render.Xmax - t.render.Xmin
+	return width / sf
+}
+
+// Height returns the height of the text in millimeters
+func (t *TextT) Height() float64 {
+	if err := t.renderText(); err != nil {
+		log.Fatal(err)
+	}
+	height := t.render.Ymax - t.render.Ymin
+	return height / sf
+}
+
 // WriteGerber writes the primitive to the Gerber file.
 func (t *TextT) WriteGerber(w io.Writer, apertureIndex int) error {
-	yScale := sf * t.pts * mmPerPt
-	xScale := t.xScale * yScale
-
-	render, err := fonts.Text(t.x, t.y, xScale, yScale, t.message, t.fontName)
-	if err != nil {
+	if err := t.renderText(); err != nil {
 		return err
 	}
 
 	currentDark := true
-	for _, poly := range render.Polygons {
+	for _, poly := range t.render.Polygons {
 		if poly.Dark && !currentDark {
 			io.WriteString(w, "%LPD*%\n")
 			currentDark = true

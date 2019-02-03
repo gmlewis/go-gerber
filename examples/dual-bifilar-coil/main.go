@@ -138,9 +138,18 @@ func main() {
 		radius := -endL.X
 		x := -0.75 * radius
 		y := 0.3 * radius
+		hole3Text := Text(hole3.X, hole3.Y, 1.0, "hole3", *fontName, *pts)
+		textWidth := hole3Text.Width()
+		textHeight := hole3Text.Height()
+
 		tss := g.TopSilkscreen()
 		tss.Add(
 			Text(x, y, 1.0, message, *fontName, *pts),
+			Text(hole1.X-0.5*textWidth, hole1.Y+2*viaPadD, 1.0, "hole1", *fontName, *pts),
+			Text(hole2.X+viaPadD, hole2.Y-0.5*textHeight+viaPadD, 1.0, "hole2", *fontName, *pts),
+			Text(hole3.X-0.5*textWidth, hole3.Y-textHeight-2*viaPadD, 1.0, "hole3", *fontName, *pts),
+			Text(hole4.X-textWidth-padD, hole4.Y-0.5*padD, 1.0, "hole4", *fontName, *pts),
+			Text(hole5.X-textWidth-padD, hole5.Y-textHeight+0.5*padD, 1.0, "hole5", *fontName, *pts),
 		)
 	}
 
