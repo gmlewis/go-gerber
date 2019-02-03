@@ -35,7 +35,6 @@ func main() {
 	g := New(*prefix)
 
 	s := newSpiral()
-	fmt.Printf("n=%v: (%.2f,%.2f)\n", *n, s.size, s.size)
 
 	spiralR := s.genSpiral(0)
 	spiralL := s.genSpiral(math.Pi)
@@ -131,6 +130,7 @@ func main() {
 	outline.Add(
 		Arc(0, 0, 0.5*s.size+padD, CircleShape, 1, 1, 0, 360, 0.1),
 	)
+	fmt.Printf("n=%v: (%.2f,%.2f)\n", *n, s.size+2*padD, s.size+2*padD)
 
 	if *fontName != "" {
 		radius := -endL.X
