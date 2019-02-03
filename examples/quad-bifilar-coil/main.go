@@ -132,6 +132,7 @@ func main() {
 		Circle(hole8.X, hole8.Y, viaPadD),
 		Line(layer2EndR.X, layer2EndR.Y, hole8.X, hole8.Y, RectShape, *trace),
 		Circle(hole9.X, hole9.Y, padD),
+		Line(layer2EndL.X, layer2EndL.Y, hole9.X, hole9.Y, RectShape, *trace),
 	)
 
 	topMask := g.TopSolderMask()
@@ -266,6 +267,7 @@ func main() {
 			Text(hole6.X-textWidth-2*viaPadD, hole6.Y-0.5*textHeight, 1.0, "hole6", *fontName, labelSize),
 			Text(hole7.X+viaPadD, hole7.Y-0.5*textHeight, 1.0, "hole7", *fontName, labelSize),
 			Text(hole8.X-0.5*textWidth, hole8.Y-textHeight-2*viaPadD, 1.0, "hole8", *fontName, labelSize),
+			Text(hole9.X-textWidth-padD, hole9.Y-textHeight+0.5*padD, 1.0, "hole9", *fontName, labelSize),
 		)
 	}
 
@@ -334,7 +336,23 @@ func (s *spiral) genSpiral(xScale, offset, trimY float64) (pts []Pt, endPt Pt) {
 		endPt = Pt{X: eX.X, Y: trimY}
 		nX := genPt(xScale, angle, -halfTW, offset)
 		pts = append(pts, Pt{X: nX.X, Y: trimY})
-		// } else if trimY < 0 { // Only for layer2SpiralL
+	} else if trimY < 0 { // Only for layer2SpiralL
+		trimYsteps++
+		for {
+			if pts[len(pts)-trimYsteps].Y < trimY {
+				break
+			}
+			trimYsteps++
+		}
+		lastStep := len(pts) - trimYsteps
+		trimYsteps--
+		pts = pts[0 : lastStep+1]
+		pts = append(pts, Pt{X: pts[lastStep].X, Y: trimY})
+		angle := s.startAngle + *step*float64(steps-1-trimYsteps)
+		eX := genPt(xScale, angle, 0, offset)
+		endPt = Pt{X: eX.X, Y: trimY}
+		nX := genPt(xScale, angle, -halfTW, offset)
+		pts = append(pts, Pt{X: nX.X, Y: trimY})
 	} else {
 		pts = append(pts, genPt(xScale, endAngle, halfTW, offset))
 		endPt = genPt(xScale, endAngle, 0, offset)
