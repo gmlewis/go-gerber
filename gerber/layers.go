@@ -102,16 +102,28 @@ func (g *Gerber) BottomSilkscreen() *Layer {
 	return g.makeLayer("gbo")
 }
 
-// Layer2 adds a layer-2 copper layer to a four-layer design
+// Layer2 adds a layer-2 copper layer to a four-layer or six-layer design
 // and returns the layer.
 func (g *Gerber) Layer2() *Layer {
 	return g.makeLayer("g2l")
 }
 
-// Layer3 adds a layer-3 copper layer to a four-layer design
+// Layer3 adds a layer-3 copper layer to a four-layer or six-layer design
 // and returns the layer.
 func (g *Gerber) Layer3() *Layer {
 	return g.makeLayer("g3l")
+}
+
+// Layer4 adds a layer-4 copper layer to a six-layer design
+// and returns the layer.
+func (g *Gerber) Layer4() *Layer {
+	return g.makeLayer("g4l")
+}
+
+// Layer5 adds a layer-5 copper layer to a six-layer design
+// and returns the layer.
+func (g *Gerber) Layer5() *Layer {
+	return g.makeLayer("g5l")
 }
 
 // Drill adds a drill layer to the design
