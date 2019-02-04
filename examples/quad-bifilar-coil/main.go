@@ -15,7 +15,7 @@ import (
 )
 
 var (
-	step     = flag.Float64("step", 0.01, "Resolution (in radians) of the spiral")
+	step     = flag.Float64("step", 0.02, "Resolution (in radians) of the spiral")
 	n        = flag.Int("n", 100, "Number of full winds in each spiral")
 	gap      = flag.Float64("gap", 0.15, "Gap between traces in mm (6mil = 0.15mm)")
 	trace    = flag.Float64("trace", 0.15, "Width of traces in mm")
