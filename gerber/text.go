@@ -83,19 +83,22 @@ func (t *TextT) renderText() error {
 	if t.render == nil {
 		yScale := sf * t.pts * mmPerPt
 		xScale := t.xScale * yScale
+		// Get the MBB.
 		render, err := fonts.Text(t.x, t.y, xScale, yScale, t.message, t.fontName)
 		if err != nil {
 			return err
 		}
-		if t.xAlign != 0 || t.yAlign != 0 { // re-render with MBB info.
-			width := (render.Xmax - render.Xmin)
-			height := (render.Ymax - render.Ymin)
-			x := t.x - t.xAlign*width
-			y := t.y - t.yAlign*height
-			if render, err = fonts.Text(x, y, xScale, yScale, t.message, t.fontName); err != nil {
-				return err
-			}
+		// Re-render with MBB info.
+		width := (render.Xmax - render.Xmin)
+		height := (render.Ymax - render.Ymin)
+		xError := render.Xmin - t.x
+		yError := render.Ymin - t.y
+		x := t.x - t.xAlign*width - xError
+		y := t.y - t.yAlign*height - yError
+		if render, err = fonts.Text(x, y, xScale, yScale, t.message, t.fontName); err != nil {
+			return err
 		}
+		// log.Printf("t.message=%q t.x,t.y=(%.2f, %.2f), MBB=(%.2f,%.2f)-(%.2f,%.2f)", t.message, t.x, t.y, render.Xmin, render.Ymin, render.Xmax, render.Ymax)
 		t.render = render
 	}
 	return nil

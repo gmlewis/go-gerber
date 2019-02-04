@@ -28,14 +28,14 @@ const (
 	message = `With a trace and gap size of 0.15mm, this
 quad bifilar coil should have a DC resistance
 of approx. 928.8Ω. Each spiral has 100 coils.`
-	message2 = `Top layer: hole5 ⇨ hole1
-Bottom layer: hole1 ⇨ hole2
-Top layer: hole2 ⇨ hole3
-Bottom layer: hole3 ⇨ hole4
-Layer 3: hole4 ⇨ hole6
-Layer 2: hole6 ⇨ hole8
-Layer 3: hole8 ⇨ hole7
-Layer 2: hole7 ⇨ hole9`
+	message2 = `Top layer: hole5 ⇨ hole6
+Bottom layer: hole6 ⇨ hole2
+Top layer: hole2 ⇨ hole7
+Bottom layer: hole7 ⇨ hole4
+Layer 3: hole4 ⇨ hole3
+Layer 2: hole3 ⇨ hole8
+Layer 3: hole8 ⇨ hole1
+Layer 2: hole1 ⇨ hole9`
 )
 
 func main() {
@@ -264,16 +264,16 @@ func main() {
 		tss := g.TopSilkscreen()
 		tss.Add(
 			Text(x, y, 1.0, message, *fontName, *pts, nil),
-			Text(hole1.X, hole1.Y+2*viaPadD, 1.0, "hole1", *fontName, labelSize, &TextOpts{XAlign: XCenter, YAlign: YBottom}),
-			Text(hole2.X+viaPadD, hole2.Y+viaPadD, 1.0, "hole2", *fontName, labelSize, &TextOpts{XAlign: XLeft, YAlign: YCenter}),
-			Text(hole3.X, hole3.Y-2*viaPadD, 1.0, "hole3", *fontName, labelSize, &TextOpts{XAlign: XCenter, YAlign: YTop}),
-			Text(hole4.X-padD, hole4.Y-0.5*padD, 1.0, "hole4", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YBottom}),
-			Text(hole5.X-padD, hole5.Y+0.5*padD, 1.0, "hole5", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YTop}),
-			Text(hole6.X-2*viaPadD, hole6.Y, 1.0, "hole6", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YCenter}),
-			Text(hole7.X+viaPadD, hole7.Y, 1.0, "hole7", *fontName, labelSize, &TextOpts{XAlign: XLeft, YAlign: YCenter}),
-			Text(hole8.X, hole8.Y-2*viaPadD, 1.0, "hole8", *fontName, labelSize, &TextOpts{XAlign: XCenter, YAlign: YTop}),
-			Text(hole9.X-padD, hole9.Y+0.5*padD, 1.0, "hole9", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YTop}),
-			Text(-0.5*radius, -10, 1.0, message2, *fontName, *pts, nil),
+			Text(hole1.X+viaPadD, hole1.Y, 1.0, "hole1", *fontName, labelSize, &TextOpts{XAlign: XLeft, YAlign: YCenter}),
+			Text(hole2.X+viaPadD, hole2.Y, 1.0, "hole2", *fontName, labelSize, &TextOpts{XAlign: XLeft, YAlign: YCenter}),
+			Text(hole3.X-viaPadD, hole3.Y, 1.0, "hole3", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YCenter}),
+			Text(hole4.X-padD, hole4.Y, 1.0, "hole4", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YCenter}),
+			Text(hole5.X-padD, hole5.Y, 1.0, "hole5", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YCenter}),
+			Text(hole6.X, hole6.Y+viaPadD, 1.0, "hole6", *fontName, labelSize, &TextOpts{XAlign: XCenter, YAlign: YBottom}),
+			Text(hole7.X, hole7.Y-viaPadD, 1.0, "hole7", *fontName, labelSize, &TextOpts{XAlign: XCenter, YAlign: YTop}),
+			Text(hole8.X, hole8.Y-viaPadD, 1.0, "hole8", *fontName, labelSize, &TextOpts{XAlign: XCenter, YAlign: YTop}),
+			Text(hole9.X-padD, hole9.Y, 1.0, "hole9", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YCenter}),
+			Text(-0.5*radius, -10, 1.0, message2, *fontName, *pts, &TextOpts{XAlign: XLeft, YAlign: YTop}),
 		)
 	}
 
