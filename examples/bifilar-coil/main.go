@@ -138,7 +138,7 @@ func main() {
 		y := 0.3 * radius
 		tss := g.TopSilkscreen()
 		tss.Add(
-			Text(x, y, 1.0, message, *fontName, *pts),
+			Text(x, y, 1.0, message, *fontName, *pts, nil),
 		)
 	}
 

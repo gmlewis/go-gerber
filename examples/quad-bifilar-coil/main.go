@@ -260,23 +260,20 @@ func main() {
 		x := -0.75 * radius
 		y := 0.3 * radius
 		labelSize := 6.0
-		hole3Text := Text(0, 0, 1.0, "hole3", *fontName, labelSize)
-		textWidth := hole3Text.Width()
-		textHeight := hole3Text.Height()
 
 		tss := g.TopSilkscreen()
 		tss.Add(
-			Text(x, y, 1.0, message, *fontName, *pts),
-			Text(hole1.X-0.5*textWidth, hole1.Y+2*viaPadD, 1.0, "hole1", *fontName, labelSize),
-			Text(hole2.X+viaPadD, hole2.Y-0.5*textHeight+viaPadD, 1.0, "hole2", *fontName, labelSize),
-			Text(hole3.X-0.5*textWidth, hole3.Y-textHeight-2*viaPadD, 1.0, "hole3", *fontName, labelSize),
-			Text(hole4.X-textWidth-padD, hole4.Y-0.5*padD, 1.0, "hole4", *fontName, labelSize),
-			Text(hole5.X-textWidth-padD, hole5.Y-textHeight+0.5*padD, 1.0, "hole5", *fontName, labelSize),
-			Text(hole6.X-textWidth-2*viaPadD, hole6.Y-0.5*textHeight, 1.0, "hole6", *fontName, labelSize),
-			Text(hole7.X+viaPadD, hole7.Y-0.5*textHeight, 1.0, "hole7", *fontName, labelSize),
-			Text(hole8.X-0.5*textWidth, hole8.Y-textHeight-2*viaPadD, 1.0, "hole8", *fontName, labelSize),
-			Text(hole9.X-textWidth-padD, hole9.Y-textHeight+0.5*padD, 1.0, "hole9", *fontName, labelSize),
-			Text(-0.5*radius, -10, 1.0, message2, *fontName, *pts),
+			Text(x, y, 1.0, message, *fontName, *pts, nil),
+			Text(hole1.X, hole1.Y+2*viaPadD, 1.0, "hole1", *fontName, labelSize, &TextOpts{XAlign: XCenter, YAlign: YBottom}),
+			Text(hole2.X+viaPadD, hole2.Y+viaPadD, 1.0, "hole2", *fontName, labelSize, &TextOpts{XAlign: XLeft, YAlign: YCenter}),
+			Text(hole3.X, hole3.Y-2*viaPadD, 1.0, "hole3", *fontName, labelSize, &TextOpts{XAlign: XCenter, YAlign: YTop}),
+			Text(hole4.X-padD, hole4.Y-0.5*padD, 1.0, "hole4", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YBottom}),
+			Text(hole5.X-padD, hole5.Y+0.5*padD, 1.0, "hole5", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YTop}),
+			Text(hole6.X-2*viaPadD, hole6.Y, 1.0, "hole6", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YCenter}),
+			Text(hole7.X+viaPadD, hole7.Y, 1.0, "hole7", *fontName, labelSize, &TextOpts{XAlign: XLeft, YAlign: YCenter}),
+			Text(hole8.X, hole8.Y-2*viaPadD, 1.0, "hole8", *fontName, labelSize, &TextOpts{XAlign: XCenter, YAlign: YTop}),
+			Text(hole9.X-padD, hole9.Y+0.5*padD, 1.0, "hole9", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YTop}),
+			Text(-0.5*radius, -10, 1.0, message2, *fontName, *pts, nil),
 		)
 	}
 

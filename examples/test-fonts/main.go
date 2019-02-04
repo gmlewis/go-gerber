@@ -63,7 +63,7 @@ func main() {
 
 		tss := g.TopSilkscreen()
 		tss.Add(
-			Text(*x, *y, 1.0, message, name, *pts),
+			Text(*x, *y, 1.0, message, name, *pts, nil),
 		)
 
 		if err := g.WriteGerber(); err != nil {
