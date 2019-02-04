@@ -143,11 +143,11 @@ func main() {
 		tss := g.TopSilkscreen()
 		tss.Add(
 			Text(x, y, 1.0, message, *fontName, *pts, nil),
-			Text(hole1.X, hole1.Y+2*viaPadD, 1.0, "hole1", *fontName, labelSize, &TextOpts{XAlign: XCenter, YAlign: YBottom}),
-			Text(hole2.X+viaPadD, hole2.Y+viaPadD, 1.0, "hole2", *fontName, labelSize, &TextOpts{XAlign: XLeft, YAlign: YCenter}),
-			Text(hole3.X, hole3.Y-2*viaPadD, 1.0, "hole3", *fontName, labelSize, &TextOpts{XAlign: XCenter, YAlign: YTop}),
-			Text(hole4.X-padD, hole4.Y-0.5*padD, 1.0, "hole4", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YBottom}),
-			Text(hole5.X-padD, hole5.Y+0.5*padD, 1.0, "hole5", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YTop}),
+			Text(hole1.X, hole1.Y-viaPadD, 1.0, "hole1", *fontName, labelSize, &TextOpts{XAlign: XCenter, YAlign: YTop}),
+			Text(hole2.X+viaPadD, hole2.Y, 1.0, "hole2", *fontName, labelSize, &TextOpts{XAlign: XLeft, YAlign: YCenter}),
+			Text(hole3.X, hole3.Y+viaPadD, 1.0, "hole3", *fontName, labelSize, &TextOpts{XAlign: XCenter, YAlign: YBottom}),
+			Text(hole4.X-padD, hole4.Y, 1.0, "hole4", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YCenter}),
+			Text(hole5.X-padD, hole5.Y, 1.0, "hole5", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YCenter}),
 		)
 	}
 
