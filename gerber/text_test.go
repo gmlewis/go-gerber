@@ -45,7 +45,7 @@ func TestText(t *testing.T) {
 		},
 		{
 			name:     "XCenter,YBottom",
-			opts:     &TextOpts{XAlign: XCenter, YAlign: YBottom},
+			opts:     BottomCenter,
 			wantXmin: -0.5 * wantWidth * sf,
 			wantYmin: 0,
 			wantXmax: 0.5 * wantWidth * sf,
@@ -55,7 +55,7 @@ func TestText(t *testing.T) {
 			name:     "XCenter,YBottom w/ offset",
 			x:        10,
 			y:        20,
-			opts:     &TextOpts{XAlign: XCenter, YAlign: YBottom},
+			opts:     BottomCenter,
 			wantXmin: (10 - 0.5*wantWidth) * sf,
 			wantYmin: 20 * sf,
 			wantXmax: (10 + 0.5*wantWidth) * sf,
@@ -63,7 +63,7 @@ func TestText(t *testing.T) {
 		},
 		{
 			name:     "XRight,YBottom",
-			opts:     &TextOpts{XAlign: XRight, YAlign: YBottom},
+			opts:     BottomRight,
 			wantXmin: -wantWidth * sf,
 			wantYmin: 0,
 			wantXmax: 0,
@@ -73,7 +73,7 @@ func TestText(t *testing.T) {
 			name:     "XRight,YBottom w/ offset",
 			x:        10,
 			y:        20,
-			opts:     &TextOpts{XAlign: XRight, YAlign: YBottom},
+			opts:     BottomRight,
 			wantXmin: (10 - wantWidth) * sf,
 			wantYmin: 20 * sf,
 			wantXmax: 10 * sf,
@@ -81,7 +81,7 @@ func TestText(t *testing.T) {
 		},
 		{
 			name:     "XLeft,YCenter",
-			opts:     &TextOpts{XAlign: XLeft, YAlign: YCenter},
+			opts:     CenterLeft,
 			wantXmin: 0,
 			wantYmin: -0.5 * wantHeight * sf,
 			wantXmax: wantWidth * sf,
@@ -91,7 +91,7 @@ func TestText(t *testing.T) {
 			name:     "XLeft,YCenter w/ offset",
 			x:        10,
 			y:        20,
-			opts:     &TextOpts{XAlign: XLeft, YAlign: YCenter},
+			opts:     CenterLeft,
 			wantXmin: 10 * sf,
 			wantYmin: (20 - 0.5*wantHeight) * sf,
 			wantXmax: (10 + wantWidth) * sf,
@@ -99,7 +99,7 @@ func TestText(t *testing.T) {
 		},
 		{
 			name:     "XCenter,YCenter",
-			opts:     &TextOpts{XAlign: XCenter, YAlign: YCenter},
+			opts:     Center,
 			wantXmin: -0.5 * wantWidth * sf,
 			wantYmin: -0.5 * wantHeight * sf,
 			wantXmax: 0.5 * wantWidth * sf,
@@ -109,7 +109,7 @@ func TestText(t *testing.T) {
 			name:     "XCenter,YCenter w/ offset",
 			x:        10,
 			y:        20,
-			opts:     &TextOpts{XAlign: XCenter, YAlign: YCenter},
+			opts:     Center,
 			wantXmin: (10 - 0.5*wantWidth) * sf,
 			wantYmin: (20 - 0.5*wantHeight) * sf,
 			wantXmax: (10 + 0.5*wantWidth) * sf,
@@ -117,7 +117,7 @@ func TestText(t *testing.T) {
 		},
 		{
 			name:     "XRight,YCenter",
-			opts:     &TextOpts{XAlign: XRight, YAlign: YCenter},
+			opts:     CenterRight,
 			wantXmin: -wantWidth * sf,
 			wantYmin: -0.5 * wantHeight * sf,
 			wantXmax: 0,
@@ -127,7 +127,7 @@ func TestText(t *testing.T) {
 			name:     "XRight,YCenter w/ offset",
 			x:        10,
 			y:        20,
-			opts:     &TextOpts{XAlign: XRight, YAlign: YCenter},
+			opts:     CenterRight,
 			wantXmin: (10 - wantWidth) * sf,
 			wantYmin: (20 - 0.5*wantHeight) * sf,
 			wantXmax: 10 * sf,
@@ -135,7 +135,7 @@ func TestText(t *testing.T) {
 		},
 		{
 			name:     "XLeft,YTop",
-			opts:     &TextOpts{XAlign: XLeft, YAlign: YTop},
+			opts:     TopLeft,
 			wantXmin: 0,
 			wantYmin: -wantHeight * sf,
 			wantXmax: wantWidth * sf,
@@ -145,7 +145,7 @@ func TestText(t *testing.T) {
 			name:     "XLeft,YTop w/ offset",
 			x:        10,
 			y:        20,
-			opts:     &TextOpts{XAlign: XLeft, YAlign: YTop},
+			opts:     TopLeft,
 			wantXmin: 10 * sf,
 			wantYmin: (20 - wantHeight) * sf,
 			wantXmax: (10 + wantWidth) * sf,
@@ -153,7 +153,7 @@ func TestText(t *testing.T) {
 		},
 		{
 			name:     "XCenter,YTop",
-			opts:     &TextOpts{XAlign: XCenter, YAlign: YTop},
+			opts:     TopCenter,
 			wantXmin: -0.5 * wantWidth * sf,
 			wantYmin: -wantHeight * sf,
 			wantXmax: 0.5 * wantWidth * sf,
@@ -163,7 +163,7 @@ func TestText(t *testing.T) {
 			name:     "XCenter,YTop w/ offset",
 			x:        10,
 			y:        20,
-			opts:     &TextOpts{XAlign: XCenter, YAlign: YTop},
+			opts:     TopCenter,
 			wantXmin: (10 - 0.5*wantWidth) * sf,
 			wantYmin: (20 - wantHeight) * sf,
 			wantXmax: (10 + 0.5*wantWidth) * sf,
@@ -171,7 +171,7 @@ func TestText(t *testing.T) {
 		},
 		{
 			name:     "XRight,YTop",
-			opts:     &TextOpts{XAlign: XRight, YAlign: YTop},
+			opts:     TopRight,
 			wantXmin: -wantWidth * sf,
 			wantYmin: -wantHeight * sf,
 			wantXmax: 0,
@@ -181,7 +181,7 @@ func TestText(t *testing.T) {
 			name:     "XRight,YTop w/ offset",
 			x:        10,
 			y:        20,
-			opts:     &TextOpts{XAlign: XRight, YAlign: YTop},
+			opts:     TopRight,
 			wantXmin: (10 - wantWidth) * sf,
 			wantYmin: (20 - wantHeight) * sf,
 			wantXmax: 10 * sf,
@@ -201,17 +201,17 @@ func TestText(t *testing.T) {
 				t.Errorf("height = %v, want %v", gotHeight, wantHeight)
 			}
 			render := text.render
-			if math.Abs(render.Xmin-tt.wantXmin) > eps {
-				t.Errorf("Xmin = %v, want %v", render.Xmin, tt.wantXmin)
+			if math.Abs(render.MBB.Min[0]-tt.wantXmin) > eps {
+				t.Errorf("Xmin = %v, want %v", render.MBB.Min[0], tt.wantXmin)
 			}
-			if math.Abs(render.Ymin-tt.wantYmin) > eps {
-				t.Errorf("Ymin = %v, want %v", render.Ymin, tt.wantYmin)
+			if math.Abs(render.MBB.Min[1]-tt.wantYmin) > eps {
+				t.Errorf("Ymin = %v, want %v", render.MBB.Min[1], tt.wantYmin)
 			}
-			if math.Abs(render.Xmax-tt.wantXmax) > eps {
-				t.Errorf("Xmax = %v, want %v", render.Xmax, tt.wantXmax)
+			if math.Abs(render.MBB.Max[0]-tt.wantXmax) > eps {
+				t.Errorf("Xmax = %v, want %v", render.MBB.Max[0], tt.wantXmax)
 			}
-			if math.Abs(render.Ymax-tt.wantYmax) > eps {
-				t.Errorf("Ymax = %v, want %v", render.Ymax, tt.wantYmax)
+			if math.Abs(render.MBB.Max[1]-tt.wantYmax) > eps {
+				t.Errorf("Ymax = %v, want %v", render.MBB.Max[1], tt.wantYmax)
 			}
 		})
 	}

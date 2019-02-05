@@ -11,37 +11,38 @@ import (
 const (
 	mmPerPt = 25.4 / 72.0
 
-	XLeft   = 0
-	XCenter = 0.5
-	XRight  = 1
-	YBottom = 0
-	YCenter = 0.5
-	YTop    = 1
+	XLeft   = fonts.XLeft
+	XCenter = fonts.XCenter
+	XRight  = fonts.XRight
+	YBottom = fonts.YBottom
+	YCenter = fonts.YCenter
+	YTop    = fonts.YTop
 )
 
-// TextT represents text and satisfies the Primitive interface.
-type TextT struct {
-	x, y, xScale   float64 // x, y in Gerber units (nm)
-	xAlign, yAlign float64
-	message        string
-	fontName       string
-	pts            float64
-	render         *fonts.Render
-}
+var (
+	BottomLeft   = fonts.BottomLeft
+	BottomCenter = fonts.BottomCenter
+	BottomRight  = fonts.BottomRight
+	CenterLeft   = fonts.CenterLeft
+	Center       = fonts.Center
+	CenterRight  = fonts.CenterRight
+	TopLeft      = fonts.TopLeft
+	TopCenter    = fonts.TopCenter
+	TopRight     = fonts.TopRight
+)
 
 // TextOpts provides options for positioning (aligning) the text based on
 // its minimum bounding box.
-type TextOpts struct {
-	// XAlign represents the horizontal alignment of the text.
-	// 0=x origin at left (the default), 1=x origin at right, 0.5=center.
-	// XLeft, XCenter, and XRight are defined for convenience and
-	// readability of the code.
-	XAlign float64
-	// YAlign represents the vertical alignment of the text.
-	// 0=y origin at bottom (the default), 1=y origin at top, 0.5=center.
-	// YBottom, YCenter, and YTop are defined for convenience and
-	// readbility of the code.
-	YAlign float64
+type TextOpts = fonts.TextOpts
+
+// TextT represents text and satisfies the Primitive interface.
+type TextT struct {
+	x, y, xScale float64 // x, y in Gerber units (nm)
+	opts         *TextOpts
+	message      string
+	fontName     string
+	pts          float64
+	render       *fonts.Render
 }
 
 // Text returns a text primitive.
@@ -61,18 +62,11 @@ func Text(x, y, xScale float64, message, fontName string, pts float64, opts *Tex
 		fontName = name
 	}
 
-	var xAlign float64
-	var yAlign float64
-	if opts != nil {
-		xAlign = opts.XAlign
-		yAlign = opts.YAlign
-	}
 	return &TextT{
 		x:        sf * x,
 		y:        sf * y,
 		xScale:   xScale,
-		xAlign:   xAlign,
-		yAlign:   yAlign,
+		opts:     opts,
 		message:  message,
 		fontName: fontName,
 		pts:      pts,
@@ -83,23 +77,10 @@ func (t *TextT) renderText() error {
 	if t.render == nil {
 		yScale := sf * t.pts * mmPerPt
 		xScale := t.xScale * yScale
-		// Get the MBB.
-		render, err := fonts.Text(t.x, t.y, xScale, yScale, t.message, t.fontName)
-		if err != nil {
+		var err error
+		if t.render, err = fonts.Text(t.x, t.y, xScale, yScale, t.message, t.fontName, t.opts); err != nil {
 			return err
 		}
-		// Re-render with MBB info.
-		width := (render.Xmax - render.Xmin)
-		height := (render.Ymax - render.Ymin)
-		xError := render.Xmin - t.x
-		yError := render.Ymin - t.y
-		x := t.x - t.xAlign*width - xError
-		y := t.y - t.yAlign*height - yError
-		if render, err = fonts.Text(x, y, xScale, yScale, t.message, t.fontName); err != nil {
-			return err
-		}
-		// log.Printf("t.message=%q t.x,t.y=(%.2f, %.2f), MBB=(%.2f,%.2f)-(%.2f,%.2f)", t.message, t.x, t.y, render.Xmin, render.Ymin, render.Xmax, render.Ymax)
-		t.render = render
 	}
 	return nil
 }
@@ -109,7 +90,7 @@ func (t *TextT) Width() float64 {
 	if err := t.renderText(); err != nil {
 		log.Fatal(err)
 	}
-	width := t.render.Xmax - t.render.Xmin
+	width := t.render.MBB.Max[0] - t.render.MBB.Min[0]
 	return width / sf
 }
 
@@ -118,7 +99,7 @@ func (t *TextT) Height() float64 {
 	if err := t.renderText(); err != nil {
 		log.Fatal(err)
 	}
-	height := t.render.Ymax - t.render.Ymin
+	height := t.render.MBB.Max[1] - t.render.MBB.Min[1]
 	return height / sf
 }
 
@@ -142,12 +123,12 @@ func (t *TextT) WriteGerber(w io.Writer, apertureIndex int) error {
 		io.WriteString(w, "G36*\n")
 		for i, pt := range poly.Pts {
 			if i == 0 {
-				fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+pt.X), int(0.5+pt.Y))
+				fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+pt[0]), int(0.5+pt[1]))
 				continue
 			}
-			fmt.Fprintf(w, "X%06dY%06dD01*\n", int(0.5+pt.X), int(0.5+pt.Y))
+			fmt.Fprintf(w, "X%06dY%06dD01*\n", int(0.5+pt[0]), int(0.5+pt[1]))
 		}
-		fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+poly.Pts[0].X), int(0.5+poly.Pts[0].Y))
+		fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+poly.Pts[0][0]), int(0.5+poly.Pts[0][1]))
 		io.WriteString(w, "G37*\n")
 	}
 

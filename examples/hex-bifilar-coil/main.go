@@ -322,18 +322,18 @@ func main() {
 		tss := g.TopSilkscreen()
 		tss.Add(
 			Text(x, y, 1.0, message, *fontName, *pts, nil),
-			Text(hole1.X+viaPadD, hole1.Y, 1.0, "hole1", *fontName, labelSize, &TextOpts{XAlign: XLeft, YAlign: YCenter}),
-			Text(hole2.X+viaPadD, hole2.Y, 1.0, "hole2", *fontName, labelSize, &TextOpts{XAlign: XLeft, YAlign: YCenter}),
-			Text(hole3.X-viaPadD, hole3.Y, 1.0, "hole3", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YCenter}),
-			Text(hole4.X-padD, hole4.Y, 1.0, "hole4", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YCenter}),
-			Text(hole5.X-padD, hole5.Y, 1.0, "hole5", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YCenter}),
-			Text(hole6.X, hole6.Y+viaPadD, 1.0, "hole6", *fontName, labelSize, &TextOpts{XAlign: XCenter, YAlign: YBottom}),
-			Text(hole7.X, hole7.Y-viaPadD, 1.0, "hole7", *fontName, labelSize, &TextOpts{XAlign: XCenter, YAlign: YTop}),
-			Text(hole8.X, hole8.Y-viaPadD, 1.0, "hole8", *fontName, labelSize, &TextOpts{XAlign: XCenter, YAlign: YTop}),
-			Text(hole9.X-padD, hole9.Y, 1.0, "hole9", *fontName, labelSize, &TextOpts{XAlign: XRight, YAlign: YCenter}),
-			Text(hole10.X, hole10.Y, 1.0, "hole10", *fontName, labelSize, &TextOpts{XAlign: XCenter, YAlign: YCenter}),
-			Text(hole11.X, hole11.Y, 1.0, "hole11", *fontName, labelSize, &TextOpts{XAlign: XCenter, YAlign: YCenter}),
-			Text(-0.5*radius, -10, 1.0, message2, *fontName, *pts, &TextOpts{XAlign: XLeft, YAlign: YTop}),
+			Text(hole1.X+viaPadD, hole1.Y, 1.0, "hole1", *fontName, labelSize, CenterLeft),
+			Text(hole2.X+viaPadD, hole2.Y, 1.0, "hole2", *fontName, labelSize, CenterLeft),
+			Text(hole3.X-viaPadD, hole3.Y, 1.0, "hole3", *fontName, labelSize, CenterRight),
+			Text(hole4.X-padD, hole4.Y, 1.0, "hole4", *fontName, labelSize, CenterRight),
+			Text(hole5.X-padD, hole5.Y, 1.0, "hole5", *fontName, labelSize, CenterRight),
+			Text(hole6.X, hole6.Y+viaPadD, 1.0, "hole6", *fontName, labelSize, BottomCenter),
+			Text(hole7.X, hole7.Y-viaPadD, 1.0, "hole7", *fontName, labelSize, TopCenter),
+			Text(hole8.X, hole8.Y-viaPadD, 1.0, "hole8", *fontName, labelSize, TopCenter),
+			Text(hole9.X-padD, hole9.Y, 1.0, "hole9", *fontName, labelSize, CenterRight),
+			Text(hole10.X, hole10.Y, 1.0, "hole10", *fontName, labelSize, Center),
+			Text(hole11.X, hole11.Y, 1.0, "hole11", *fontName, labelSize, Center),
+			Text(-0.5*radius, -10, 1.0, message2, *fontName, *pts, TopLeft),
 		)
 	}
 
