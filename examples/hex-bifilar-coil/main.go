@@ -28,14 +28,17 @@ const (
 	message = `With a trace and gap size of 0.15mm, this
 hex bifilar coil should have a DC resistance
 of approx. 1393.2Ω. Each spiral has 100 coils.`
-	message2 = `Top layer: hole5 ⇨ hole3
-Bottom layer: hole3 ⇨ hole2
-Top layer: hole2 ⇨ hole1
-Bottom layer: hole1 ⇨ hole4
-Layer 3: hole4 ⇨ hole3
-Layer 2: hole3 ⇨ hole8
-Layer 3: hole8 ⇨ hole1
-Layer 2: hole1 ⇨ hole9`
+	message2 = `3L ⇨ 4L
+4L ⇨ BL
+BL ⇨ TL
+TL ⇨ 5L
+5L ⇨ 2L
+2L ⇨ 3R`
+	message3 = `3R ⇨ 4R
+4R ⇨ BR
+BR ⇨ TR
+TR ⇨ 5R
+5R ⇨ 2R`
 )
 
 func main() {
@@ -371,34 +374,35 @@ func main() {
 	fmt.Printf("n=%v: (%.2f,%.2f)\n", *n, 2*r, 2*r)
 
 	if *fontName != "" {
-		radius := -endTopL.X
+		radius := endLayer3L.X
 		labelSize := 4.0
 
 		tss := g.TopSilkscreen()
 		tss.Add(
 			Text(0, 0.3*radius, 1.0, message, *fontName, *pts, Center),
-			Text(hole1.X, hole1.Y+viaPadD, 1.0, "hole1", *fontName, labelSize, BottomCenter),
+			Text(hole1.X, hole1.Y+viaPadD, 1.0, "TL/BL", *fontName, labelSize, BottomCenter),
 			//			Text(hole2.X+viaPadD, hole2.Y, 1.0, "hole2", *fontName, labelSize, CenterLeft),
-			Text(hole3.X, hole3.Y-viaPadD, 1.0, "hole3", *fontName, labelSize, TopCenter),
+			Text(hole3.X, hole3.Y-viaPadD, 1.0, "TR/BR", *fontName, labelSize, TopCenter),
 			//			Text(hole4.X-padD, hole4.Y, 1.0, "hole4", *fontName, labelSize, CenterRight),
-			Text(hole5.X-padD, hole5.Y, 1.0, "hole5", *fontName, labelSize, CenterRight),
-			Text(hole6.X+viaPadD, hole6.Y-0.5*viaPadD, 1.0, "hole6", *fontName, labelSize, BottomLeft),
-			Text(hole7.X-viaPadD, hole7.Y+0.5*viaPadD, 1.0, "hole7", *fontName, labelSize, TopRight),
+			// Text(hole5.X-padD, hole5.Y, 1.0, "hole5", *fontName, labelSize, CenterRight),
+			Text(hole6.X+viaPadD, hole6.Y-0.5*viaPadD, 1.0, "3L/4L", *fontName, labelSize, BottomLeft),
+			Text(hole7.X-viaPadD, hole7.Y+0.5*viaPadD, 1.0, "3R/4R", *fontName, labelSize, TopRight),
 			//			Text(hole8.X, hole8.Y-viaPadD, 1.0, "hole8", *fontName, labelSize, TopCenter),
 			//FIX THIS Text(hole9.X-padD, hole9.Y, 1.0, "hole9", *fontName, labelSize, CenterRight),
-			Text(hole10.X+viaPadD, hole10.Y+0.5*viaPadD, 1.0, "hole10", *fontName, labelSize, TopLeft),
-			Text(hole11.X-viaPadD, hole11.Y-0.5*viaPadD, 1.0, "hole11", *fontName, labelSize, BottomRight),
-			Text(0, -0.5*radius, 1.0, message2, *fontName, *pts, Center),
+			Text(hole10.X+viaPadD, hole10.Y+0.5*viaPadD, 1.0, "2R/5R", *fontName, labelSize, TopLeft),
+			Text(hole11.X-viaPadD, hole11.Y-0.5*viaPadD, 1.0, "2L/5L", *fontName, labelSize, BottomRight),
+			Text(-0.5*radius, -0.4*radius, 1.0, message2, *fontName, *pts, Center),
+			Text(0.5*radius, -0.4*radius, 1.0, message3, *fontName, *pts, Center),
 
 			// Debugging outer connections
-			Text(endTopR.X, endTopR.Y, 1.0, "TR", *fontName, labelSize, BottomCenter),
-			Text(endTopL.X, endTopL.Y, 1.0, "TL", *fontName, labelSize, TopCenter),
-			Text(endBotR.X, endBotR.Y, 1.0, "BR", *fontName, labelSize, BottomCenter),
-			Text(endBotL.X, endBotL.Y, 1.0, "BL", *fontName, labelSize, TopCenter),
-			Text(endLayer2R.X, endLayer2R.Y, 1.0, "2R", *fontName, labelSize, BottomCenter),
+			Text(endTopR.X, endTopR.Y, 1.0, "TR", *fontName, labelSize, TopCenter),
+			Text(endTopL.X, endTopL.Y, 1.0, "TL", *fontName, labelSize, BottomCenter),
+			Text(endBotR.X, endBotR.Y, 1.0, "BR", *fontName, labelSize, TopCenter),
+			Text(endBotL.X, endBotL.Y, 1.0, "BL", *fontName, labelSize, BottomCenter),
+			Text(endLayer2R.X, endLayer2R.Y, 1.0, "2R", *fontName, labelSize, TopCenter),
 			Text(endLayer2L.X, endLayer2L.Y, 1.0, "2L", *fontName, labelSize, TopCenter),
 			Text(endLayer3R.X, endLayer3R.Y, 1.0, "3R", *fontName, labelSize, BottomCenter),
-			Text(endLayer3L.X, endLayer3L.Y, 1.0, "3L", *fontName, labelSize, TopCenter),
+			Text(endLayer3L.X, endLayer3L.Y, 1.0, "3L", *fontName, labelSize, BottomCenter),
 			Text(endLayer4R.X, endLayer4R.Y, 1.0, "4R", *fontName, labelSize, BottomCenter),
 			Text(endLayer4L.X, endLayer4L.Y, 1.0, "4L", *fontName, labelSize, TopCenter),
 			Text(endLayer5R.X, endLayer5R.Y, 1.0, "5R", *fontName, labelSize, BottomCenter),
