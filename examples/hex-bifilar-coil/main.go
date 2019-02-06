@@ -83,6 +83,7 @@ func main() {
 	log.Printf("startLayer5R=%v, startLayer5L=%v", startLayer5R, startLayer5L)
 	log.Printf("layer4EndR=%v, layer4EndL=%v", layer4EndR, layer4EndL)
 	log.Printf("layer5EndL=%v", layer5EndL)
+	log.Printf("%v, %v, %v, %v, %v, %v", len(topSpiralL), len(botSpiralL), len(layer2SpiralL), len(layer3SpiralL), len(layer4SpiralL), len(layer5SpiralL))
 
 	// viaOffset := math.Sqrt(0.5 * (*trace + viaPadD) * (*trace + viaPadD))
 	hole2Offset := 0.5 * (*trace + viaPadD)
@@ -366,25 +367,23 @@ func main() {
 
 	if *fontName != "" {
 		radius := -endTopL.X
-		x := -0.75 * radius
-		y := 0.3 * radius
-		labelSize := 5.0
+		labelSize := 4.0
 
 		tss := g.TopSilkscreen()
 		tss.Add(
-			Text(x, y, 1.0, message, *fontName, *pts, nil),
+			Text(0, 0.3*radius, 1.0, message, *fontName, *pts, Center),
 			Text(hole1.X, hole1.Y+viaPadD, 1.0, "hole1", *fontName, labelSize, BottomCenter),
 			Text(hole2.X+viaPadD, hole2.Y, 1.0, "hole2", *fontName, labelSize, CenterLeft),
 			Text(hole3.X, hole3.Y-viaPadD, 1.0, "hole3", *fontName, labelSize, TopCenter),
 			Text(hole4.X-padD, hole4.Y, 1.0, "hole4", *fontName, labelSize, CenterRight),
 			Text(hole5.X-padD, hole5.Y, 1.0, "hole5", *fontName, labelSize, CenterRight),
-			Text(hole6.X+viaPadD, hole6.Y-viaPadD, 1.0, "hole6", *fontName, labelSize, BottomLeft),
-			Text(hole7.X-viaPadD, hole7.Y+viaPadD, 1.0, "hole7", *fontName, labelSize, TopRight),
+			Text(hole6.X+viaPadD, hole6.Y-0.5*viaPadD, 1.0, "hole6", *fontName, labelSize, BottomLeft),
+			Text(hole7.X-viaPadD, hole7.Y+0.5*viaPadD, 1.0, "hole7", *fontName, labelSize, TopRight),
 			Text(hole8.X, hole8.Y-viaPadD, 1.0, "hole8", *fontName, labelSize, TopCenter),
 			//FIX THIS Text(hole9.X-padD, hole9.Y, 1.0, "hole9", *fontName, labelSize, CenterRight),
-			Text(hole10.X+viaPadD, hole10.Y+viaPadD, 1.0, "hole10", *fontName, labelSize, TopLeft),
-			Text(hole11.X-viaPadD, hole11.Y-viaPadD, 1.0, "hole11", *fontName, labelSize, BottomRight),
-			Text(-0.5*radius, -10, 1.0, message2, *fontName, *pts, TopLeft),
+			Text(hole10.X+viaPadD, hole10.Y+0.5*viaPadD, 1.0, "hole10", *fontName, labelSize, TopLeft),
+			Text(hole11.X-viaPadD, hole11.Y-0.5*viaPadD, 1.0, "hole11", *fontName, labelSize, BottomRight),
+			Text(0, -0.5*radius, 1.0, message2, *fontName, *pts, Center),
 		)
 	}
 
