@@ -15,7 +15,7 @@ import (
 )
 
 var (
-	step     = flag.Float64("step", 0.04, "Resolution (in radians) of the spiral")
+	step     = flag.Float64("step", 0.02, "Resolution (in radians) of the spiral")
 	n        = flag.Int("n", 100, "Number of full winds in each spiral")
 	gap      = flag.Float64("gap", 0.15, "Gap between traces in mm (6mil = 0.15mm)")
 	trace    = flag.Float64("trace", 0.15, "Width of traces in mm")
@@ -51,67 +51,55 @@ func main() {
 	startTopR, topSpiralR, endTopR := s.genSpiral(1.0, 0, 0)
 	startTopL, topSpiralL, endTopL := s.genSpiral(1.0, math.Pi, 0)
 	startBotR, botSpiralR, endBotR := s.genSpiral(-1.0, 0, 0)
-	// startTopR := genPt(1.0, s.startAngle, 0, 0)
-	// startTopL := genPt(1.0, s.startAngle, 0, math.Pi)
-	log.Printf("startTopR=%v, startTopL=%v", startTopR, startTopL)
-	log.Printf("endTopR=%v, endTopL=%v", endTopR, endTopL)
 
-	startBotL, botSpiralL, endBotL := s.genSpiral(-1.0, math.Pi, 0 /**trace+padD */)
-	log.Printf("startBotR=%v, startBotL=%v", startBotR, startBotL)
-	log.Printf("endBotL=%v", endBotL)
+	startBotL, botSpiralL, endBotL := s.genSpiral(-1.0, math.Pi, 0)
 
 	shiftAngle := math.Pi / 3.0
+	padD := 2.0
 	startLayer2R, layer2SpiralR, endLayer2R := s.genSpiral(1.0, shiftAngle, 0)
-	startLayer2L, layer2SpiralL, endLayer2L := s.genSpiral(1.0, math.Pi+shiftAngle, 0 /*-(*trace + padD)*/)
+	startLayer2L, layer2SpiralL, endLayer2L := s.genSpiral(1.0, math.Pi+shiftAngle, 0)
 	startLayer3R, layer3SpiralR, endLayer3R := s.genSpiral(-1.0, shiftAngle, 0)
-	startLayer3L, layer3SpiralL, endLayer3L := s.genSpiral(-1.0, math.Pi+shiftAngle, 0 /* *trace+padD*/)
-	log.Printf("startLayer2R=%v, startLayer2L=%v", startLayer2R, startLayer2L)
-	log.Printf("startLayer3R=%v, startLayer3L=%v", startLayer3R, startLayer3L)
-	log.Printf("endLayer2L=%v", endLayer2L)
-	log.Printf("endLayer3L=%v", endLayer3L)
-	log.Printf("endLayer2R=%v", endLayer2R)
-	log.Printf("endLayer3R=%v", endLayer3R)
+	startLayer3L, layer3SpiralL, endLayer3L := s.genSpiral(-1.0, math.Pi+shiftAngle, *trace+padD)
 
 	shiftAngle = -math.Pi / 3.0
 	startLayer4R, layer4SpiralR, endLayer4R := s.genSpiral(1.0, shiftAngle, 0)
-	startLayer4L, layer4SpiralL, endLayer4L := s.genSpiral(1.0, math.Pi+shiftAngle, 0 /*-(*trace + padD)*/)
+	startLayer4L, layer4SpiralL, endLayer4L := s.genSpiral(1.0, math.Pi+shiftAngle, 0)
 	startLayer5R, layer5SpiralR, endLayer5R := s.genSpiral(-1.0, shiftAngle, 0)
-	startLayer5L, layer5SpiralL, endLayer5L := s.genSpiral(-1.0, math.Pi+shiftAngle, 0 /**trace+padD*/)
-	// startLayer4R := genPt(1.0, s.startAngle, 0, shiftAngle)
-	// startLayer4L := genPt(1.0, s.startAngle, 0, math.Pi+shiftAngle)
-	log.Printf("startLayer4R=%v, startLayer4L=%v", startLayer4R, startLayer4L)
-	log.Printf("startLayer5R=%v, startLayer5L=%v", startLayer5R, startLayer5L)
-	log.Printf("endLayer4R=%v, endLayer4L=%v", endLayer4R, endLayer4L)
-	log.Printf("endLayer5L=%v", endLayer5L)
-	log.Printf("%v, %v, %v, %v, %v, %v", len(topSpiralL), len(botSpiralL), len(layer2SpiralL), len(layer3SpiralL), len(layer4SpiralL), len(layer5SpiralL))
+	startLayer5L, layer5SpiralL, endLayer5L := s.genSpiral(-1.0, math.Pi+shiftAngle, 0)
 
 	viaPadD := 0.5
-	padD := 2.0
-	// viaOffset := math.Sqrt(0.5 * (*trace + viaPadD) * (*trace + viaPadD))
-	hole2Offset := 0.5 * (*trace + viaPadD)
-	// hole4PadOffset := 0.5 * (viaPadD + *trace)
-	hole5PadOffset := 0.5 * (padD + *trace)
 	innerHole1Y := 0.5 * (*trace + viaPadD) / math.Sin(math.Pi/6)
 	innerHole6X := innerHole1Y * math.Cos(math.Pi/6)
 
-	// Lower connecting trace between two spirals
-	// hole1 := Point(viaOffset, 0)
 	hole1 := Point(0, innerHole1Y)
-	hole2 := Point(endTopL.X-hole2Offset, endTopL.Y)
-	// Upper connecting trace for left spiral
 	hole3 := Point(0, -innerHole1Y)
-	// FIX hole4 := Point(endTopR.X+hole4PadOffset, *trace+padD)
-	// Lower connecting trace for right spiral
-	hole5 := Point(endTopR.X+hole5PadOffset, endTopR.Y)
-	// Layer 2 and 3 inner connecting holes
 	hole6 := Point(innerHole6X, 0.5*(*trace+viaPadD))
 	hole7 := Point(-innerHole6X, -0.5*(*trace+viaPadD))
-	// Layer 2 and 3 outer connecting hole
-	// FIX hole8 := Point(endLayer2R.X, endLayer2R.Y+hole2Offset)
-	// FIX THIS hole9 := Point(endLayer2L.X+hole5PadOffset, -(*trace + padD))
-	// Layer 4 and 5 inner connecting holes
 	hole10 := Point(innerHole6X, -0.5*(*trace+viaPadD))
 	hole11 := Point(-innerHole6X, 0.5*(*trace+viaPadD))
+
+	outerViaPt := func(pt Pt, angle float64) Pt {
+		r := *trace*1.5 + 0.5*viaPadD
+		dx := r * math.Cos(angle)
+		dy := r * math.Sin(angle)
+		return Point(pt.X+dx, pt.Y+dy)
+	}
+
+	holeBL4L := outerViaPt(endBotL, math.Pi/3.0)
+	holeTL5L := outerViaPt(endTopL, 2.0*math.Pi/3.0)
+	hole2L3R := outerViaPt(endLayer2L, math.Pi)
+	holeBR4R := outerViaPt(endBotR, 4.0*math.Pi/3.0)
+	holeTR5R := outerViaPt(endTopR, 5.0*math.Pi/3.0)
+
+	outerContactPt := func(pt Pt, angle float64) Pt {
+		r := *trace*1.5 + 0.5*padD
+		dx := r * math.Cos(angle)
+		dy := r * math.Sin(angle)
+		return Point(pt.X+dx, pt.Y+dy)
+	}
+
+	hole2R := outerContactPt(endLayer2R, 0)
+	hole3L := outerContactPt(endLayer3L, 0)
 
 	viaDrill := func(pt Pt) *CircleT {
 		const viaDrillD = 0.25
@@ -124,23 +112,23 @@ func main() {
 
 	drill := g.Drill()
 	drill.Add(
-		// Lower connecting trace between two spirals
 		viaDrill(hole1),
-		viaDrill(hole2),
-		// Upper connecting trace for left spiral
+
 		viaDrill(hole3),
-		// 		viaDrill(hole4),
-		// Lower connecting trace for right spiral
-		contactDrill(hole5),
-		// Layer 2 and 3 inner connecting holes
+
 		viaDrill(hole6),
 		viaDrill(hole7),
-		// Layer 2 and 3 outer connecting hole
-		//		viaDrill(hole8),
-		//FIX THIS Circle(hole9.X, hole9.Y, drillD),
-		// Layer 4 and 5 inner connecting holes
+
 		viaDrill(hole10),
 		viaDrill(hole11),
+
+		viaDrill(holeBL4L),
+		viaDrill(holeTL5L),
+		viaDrill(hole2L3R),
+		viaDrill(holeBR4R),
+		viaDrill(holeTR5R),
+		contactDrill(hole2R),
+		contactDrill(hole3L),
 	)
 
 	viaPad := func(pt Pt) *CircleT {
@@ -157,213 +145,210 @@ func main() {
 	top.Add(
 		Polygon(0, 0, true, topSpiralR, 0.0),
 		Polygon(0, 0, true, topSpiralL, 0.0),
-		// Lower connecting trace between two spirals
+
 		viaPad(hole1),
 		padLine(startTopL, hole1),
-		viaPad(hole2),
-		// Upper connecting trace for left spiral
+
 		viaPad(hole3),
 		padLine(startTopR, hole3),
-		//		viaPad(hole4),
-		// Lower connecting trace for right spiral
-		contactPad(hole5),
-		// Layer 2 and 3 inner connecting holes
+
 		viaPad(hole6),
 		viaPad(hole7),
-		// Layer 2 and 3 outer connecting hole
-		//		viaPad(hole8),
-		//FIX THIS Circle(hole9.X, hole9.Y, padD),
-		// Layer 4 and 5 inner connecting holes
+
 		viaPad(hole10),
 		viaPad(hole11),
+
+		viaPad(holeBL4L),
+		viaPad(holeTL5L),
+		padLine(endTopL, holeTL5L),
+		viaPad(hole2L3R),
+		viaPad(holeBR4R),
+		viaPad(holeTR5R),
+		padLine(endTopR, holeTR5R),
+		contactPad(hole2R),
+		contactPad(hole3L),
 	)
 
 	layer2 := g.Layer2()
 	layer2.Add(
 		Polygon(0, 0, true, layer2SpiralR, 0.0),
 		Polygon(0, 0, true, layer2SpiralL, 0.0),
-		// Lower connecting trace between two spirals
+
 		viaPad(hole1),
-		viaPad(hole2),
-		// Upper connecting trace for left spiral
+
 		viaPad(hole3),
-		//		Circle(hole4.X, hole4.Y, viaPadD),
-		// Lower connecting trace for right spiral
-		contactPad(hole5),
-		// Layer 2 and 3 inner connecting holes
+
 		viaPad(hole6),
 		viaPad(hole7),
-		//		Line(startLayer2R.X, startLayer2R.Y, hole3.X, hole3.Y, RectShape, *trace),
-		//		Line(startLayer2L.X, startLayer2L.Y, hole1.X, hole1.Y, RectShape, *trace),
-		// Layer 2 and 3 outer connecting hole
-		//		Circle(hole8.X, hole8.Y, viaPadD),
-		//		Line(endLayer2R.X, endLayer2R.Y, hole8.X, hole8.Y, RectShape, *trace),
-		//FIX THIS Circle(hole9.X, hole9.Y, padD),
-		//		Line(endLayer2L.X, endLayer2L.Y, hole9.X, hole9.Y, RectShape, *trace),
-		// Layer 4 and 5 inner connecting holes
+
 		viaPad(hole10),
 		padLine(startLayer2R, hole10),
 		viaPad(hole11),
 		padLine(startLayer2L, hole11),
+
+		viaPad(holeBL4L),
+		viaPad(holeTL5L),
+		viaPad(hole2L3R),
+		padLine(endLayer2L, hole2L3R),
+		viaPad(holeBR4R),
+		viaPad(holeTR5R),
+		contactPad(hole2R),
+		padLine(endLayer2R, hole2R),
+		contactPad(hole3L),
 	)
 
 	layer4 := g.Layer4()
 	layer4.Add(
 		Polygon(0, 0, true, layer4SpiralR, 0.0),
 		Polygon(0, 0, true, layer4SpiralL, 0.0),
-		// Lower connecting trace between two spirals
+
 		viaPad(hole1),
-		//		Circle(hole2.X, hole2.Y, viaPadD),
-		// Upper connecting trace for left spiral
+
 		viaPad(hole3),
-		//		Circle(hole4.X, hole4.Y, viaPadD),
-		// Lower connecting trace for right spiral
-		contactPad(hole5),
-		// Layer 2 and 3 inner connecting holes
+
 		viaPad(hole6),
 		padLine(startLayer4L, hole6),
 		viaPad(hole7),
 		padLine(startLayer4R, hole7),
-		//		Line(startLayer4R.X, startLayer4R.Y, hole3.X, hole3.Y, RectShape, *trace),
-		//		Line(startLayer4L.X, startLayer4L.Y, hole1.X, hole1.Y, RectShape, *trace),
-		// Layer 2 and 3 outer connecting hole
-		//		Circle(hole8.X, hole8.Y, viaPadD),
-		//		Line(endLayer4R.X, endLayer4R.Y, hole8.X, hole8.Y, RectShape, *trace),
-		//FIX THIS Circle(hole9.X, hole9.Y, padD),
-		//		Line(endLayer4L.X, endLayer4L.Y, hole9.X, hole9.Y, RectShape, *trace),
-		// Layer 4 and 5 inner connecting holes
+
 		viaPad(hole10),
 		viaPad(hole11),
+
+		viaPad(holeBL4L),
+		padLine(endLayer4L, holeBL4L),
+		viaPad(holeTL5L),
+		viaPad(hole2L3R),
+		viaPad(holeBR4R),
+		padLine(endLayer4R, holeBR4R),
+		viaPad(holeTR5R),
+		contactPad(hole2R),
+		contactPad(hole3L),
 	)
 
 	topMask := g.TopSolderMask()
 	topMask.Add(
-		// Lower connecting trace between two spirals
 		viaPad(hole1),
-		//		Circle(hole2.X, hole2.Y, viaPadD),
-		// Upper connecting trace for left spiral
+
 		viaPad(hole3),
-		//		Circle(hole4.X, hole4.Y, viaPadD),
-		// Lower connecting trace for right spiral
-		contactPad(hole5),
-		// Layer 2 and 3 inner connecting holes
+
 		viaPad(hole6),
 		viaPad(hole7),
-		// Layer 2 and 3 outer connecting hole
-		//		Circle(hole8.X, hole8.Y, viaPadD),
-		//FIX THIS Circle(hole9.X, hole9.Y, padD),
-		// Layer 4 and 5 inner connecting holes
+
 		viaPad(hole10),
 		viaPad(hole11),
+
+		viaPad(holeBL4L),
+		viaPad(holeTL5L),
+		viaPad(hole2L3R),
+		viaPad(holeBR4R),
+		viaPad(holeTR5R),
+		contactPad(hole2R),
+		contactPad(hole3L),
 	)
 
 	bottom := g.BottomCopper()
 	bottom.Add(
 		Polygon(0, 0, true, botSpiralR, 0.0),
 		Polygon(0, 0, true, botSpiralL, 0.0),
-		//		Line(endTopL.X, endTopL.Y, hole2.X, hole2.Y, RectShape, *trace),
-		// Lower connecting trace between two spirals
+
 		viaPad(hole1),
 		padLine(startBotL, hole1),
-		//		Circle(hole2.X, hole2.Y, viaPadD),
-		//		Line(endTopL.X, endTopL.Y, hole2.X, hole2.Y, RectShape, *trace),
-		// Upper connecting trace for left spiral
+
 		viaPad(hole3),
 		padLine(startBotR, hole3),
-		//		Circle(hole4.X, hole4.Y, viaPadD),
-		//		Line(endBotL.X, endBotL.Y, hole4.X, hole4.Y, RectShape, *trace),
-		// Lower connecting trace for right spiral
-		contactPad(hole5),
-		// Layer 2 and 3 inner connecting holes
+
 		viaPad(hole6),
 		viaPad(hole7),
-		//		Line(startTopR.X, startTopR.Y, hole6.X, hole6.Y, RectShape, *trace),
-		//		Line(startL.X, startL.Y, hole7.X, hole7.Y, RectShape, *trace),
-		// Layer 2 and 3 outer connecting hole
-		//		Circle(hole8.X, hole8.Y, viaPadD),
-		//FIX THIS Circle(hole9.X, hole9.Y, padD),
-		// Layer 4 and 5 inner connecting holes
+
 		viaPad(hole10),
 		viaPad(hole11),
+
+		viaPad(holeBL4L),
+		padLine(endBotL, holeBL4L),
+		viaPad(holeTL5L),
+		viaPad(hole2L3R),
+		viaPad(holeBR4R),
+		padLine(endBotR, holeBR4R),
+		viaPad(holeTR5R),
+		contactPad(hole2R),
+		contactPad(hole3L),
 	)
 
 	layer3 := g.Layer3()
 	layer3.Add(
 		Polygon(0, 0, true, layer3SpiralR, 0.0),
 		Polygon(0, 0, true, layer3SpiralL, 0.0),
-		// Lower connecting trace between two spirals
+
 		viaPad(hole1),
-		//		Circle(hole2.X, hole2.Y, viaPadD),
-		// Upper connecting trace for left spiral
+
 		viaPad(hole3),
-		//		Circle(hole4.X, hole4.Y, viaPadD),
-		//		Line(endLayer3L.X, endLayer3L.Y, hole4.X, hole4.Y, RectShape, *trace),
-		// Lower connecting trace for right spiral
-		contactPad(hole5),
-		// Layer 2 and 3 inner connecting holes
+
 		viaPad(hole6),
 		padLine(startLayer3L, hole6),
 		viaPad(hole7),
 		padLine(startLayer3R, hole7),
-		//		Line(startLayer2R.X, startLayer2R.Y, hole3.X, hole3.Y, RectShape, *trace),
-		//		Line(startLayer2L.X, startLayer2L.Y, hole1.X, hole1.Y, RectShape, *trace),
-		// Layer 2 and 3 outer connecting hole
-		//		Circle(hole8.X, hole8.Y, viaPadD),
-		//		Line(endLayer2R.X, endLayer2R.Y, hole8.X, hole8.Y, RectShape, *trace),
-		//FIX THIS Circle(hole9.X, hole9.Y, padD),
-		// Layer 4 and 5 inner connecting holes
+
 		viaPad(hole10),
 		viaPad(hole11),
+
+		viaPad(holeBL4L),
+		viaPad(holeTL5L),
+		viaPad(hole2L3R),
+		padLine(endLayer3R, hole2L3R),
+		viaPad(holeBR4R),
+		viaPad(holeTR5R),
+		contactPad(hole2R),
+		contactPad(hole3L),
+		padLine(endLayer3L, hole3L),
 	)
 
 	layer5 := g.Layer5()
 	layer5.Add(
 		Polygon(0, 0, true, layer5SpiralR, 0.0),
 		Polygon(0, 0, true, layer5SpiralL, 0.0),
-		// Lower connecting trace between two spirals
+
 		viaPad(hole1),
-		//		Circle(hole2.X, hole2.Y, viaPadD),
-		// Upper connecting trace for left spiral
+
 		viaPad(hole3),
-		//		Circle(hole4.X, hole4.Y, viaPadD),
-		//		Line(endLayer5L.X, endLayer5L.Y, hole4.X, hole4.Y, RectShape, *trace),
-		// Lower connecting trace for right spiral
-		contactPad(hole5),
-		// Layer 2 and 3 inner connecting holes
+
 		viaPad(hole6),
 		viaPad(hole7),
-		//		Line(startLayer2R.X, startLayer2R.Y, hole3.X, hole3.Y, RectShape, *trace),
-		//		Line(startLayer2L.X, startLayer2L.Y, hole1.X, hole1.Y, RectShape, *trace),
-		// Layer 2 and 3 outer connecting hole
-		//		Circle(hole8.X, hole8.Y, viaPadD),
-		//		Line(endLayer2R.X, endLayer2R.Y, hole8.X, hole8.Y, RectShape, *trace),
-		//FIX THIS Circle(hole9.X, hole9.Y, padD),
-		// Layer 4 and 5 inner connecting holes
+
 		viaPad(hole10),
 		padLine(startLayer5R, hole10),
 		viaPad(hole11),
 		padLine(startLayer5L, hole11),
+
+		viaPad(holeBL4L),
+		viaPad(holeTL5L),
+		padLine(endLayer5L, holeTL5L),
+		viaPad(hole2L3R),
+		viaPad(holeBR4R),
+		viaPad(holeTR5R),
+		padLine(endLayer5R, holeTR5R),
+		contactPad(hole2R),
+		contactPad(hole3L),
 	)
 
 	bottomMask := g.BottomSolderMask()
 	bottomMask.Add(
-		// Lower connecting trace between two spirals
 		viaPad(hole1),
-		//		Circle(hole2.X, hole2.Y, viaPadD),
-		// Upper connecting trace for left spiral
+
 		viaPad(hole3),
-		// Circle(hole4.X, hole4.Y, viaPadD),
-		// Lower connecting trace for right spiral
-		contactPad(hole5),
-		// Layer 2 and 3 inner connecting holes
+
 		viaPad(hole6),
 		viaPad(hole7),
-		// Layer 2 and 3 outer connecting hole
-		//		Circle(hole8.X, hole8.Y, viaPadD),
-		//FIX THIS Circle(hole9.X, hole9.Y, padD),
-		// Layer 4 and 5 inner connecting holes
+
 		viaPad(hole10),
 		viaPad(hole11),
+
+		viaPad(holeBL4L),
+		viaPad(holeTL5L),
+		viaPad(hole2L3R),
+		viaPad(holeBR4R),
+		viaPad(holeTR5R),
+		contactPad(hole2R),
+		contactPad(hole3L),
 	)
 
 	outline := g.Outline()
@@ -381,32 +366,32 @@ func main() {
 		tss.Add(
 			Text(0, 0.3*radius, 1.0, message, *fontName, *pts, Center),
 			Text(hole1.X, hole1.Y+viaPadD, 1.0, "TL/BL", *fontName, labelSize, BottomCenter),
-			//			Text(hole2.X+viaPadD, hole2.Y, 1.0, "hole2", *fontName, labelSize, CenterLeft),
 			Text(hole3.X, hole3.Y-viaPadD, 1.0, "TR/BR", *fontName, labelSize, TopCenter),
-			//			Text(hole4.X-padD, hole4.Y, 1.0, "hole4", *fontName, labelSize, CenterRight),
-			// Text(hole5.X-padD, hole5.Y, 1.0, "hole5", *fontName, labelSize, CenterRight),
 			Text(hole6.X+viaPadD, hole6.Y-0.5*viaPadD, 1.0, "3L/4L", *fontName, labelSize, BottomLeft),
 			Text(hole7.X-viaPadD, hole7.Y+0.5*viaPadD, 1.0, "3R/4R", *fontName, labelSize, TopRight),
-			//			Text(hole8.X, hole8.Y-viaPadD, 1.0, "hole8", *fontName, labelSize, TopCenter),
-			//FIX THIS Text(hole9.X-padD, hole9.Y, 1.0, "hole9", *fontName, labelSize, CenterRight),
 			Text(hole10.X+viaPadD, hole10.Y+0.5*viaPadD, 1.0, "2R/5R", *fontName, labelSize, TopLeft),
 			Text(hole11.X-viaPadD, hole11.Y-0.5*viaPadD, 1.0, "2L/5L", *fontName, labelSize, BottomRight),
 			Text(-0.5*radius, -0.4*radius, 1.0, message2, *fontName, *pts, Center),
 			Text(0.5*radius, -0.4*radius, 1.0, message3, *fontName, *pts, Center),
 
-			// Debugging outer connections
-			Text(endTopR.X, endTopR.Y, 1.0, "TR", *fontName, labelSize, TopCenter),
-			Text(endTopL.X, endTopL.Y, 1.0, "TL", *fontName, labelSize, BottomCenter),
-			Text(endBotR.X, endBotR.Y, 1.0, "BR", *fontName, labelSize, TopCenter),
-			Text(endBotL.X, endBotL.Y, 1.0, "BL", *fontName, labelSize, BottomCenter),
-			Text(endLayer2R.X, endLayer2R.Y, 1.0, "2R", *fontName, labelSize, TopCenter),
-			Text(endLayer2L.X, endLayer2L.Y, 1.0, "2L", *fontName, labelSize, TopCenter),
-			Text(endLayer3R.X, endLayer3R.Y, 1.0, "3R", *fontName, labelSize, BottomCenter),
-			Text(endLayer3L.X, endLayer3L.Y, 1.0, "3L", *fontName, labelSize, BottomCenter),
-			Text(endLayer4R.X, endLayer4R.Y, 1.0, "4R", *fontName, labelSize, BottomCenter),
-			Text(endLayer4L.X, endLayer4L.Y, 1.0, "4L", *fontName, labelSize, TopCenter),
-			Text(endLayer5R.X, endLayer5R.Y, 1.0, "5R", *fontName, labelSize, BottomCenter),
-			Text(endLayer5L.X, endLayer5L.Y, 1.0, "5L", *fontName, labelSize, TopCenter),
+			// Outer connections
+			Text(holeTR5R.X, holeTR5R.Y+viaPadD, 1.0, "5R", *fontName, labelSize, BottomCenter),
+			Text(holeTR5R.X, holeTR5R.Y-viaPadD, 1.0, "TR", *fontName, labelSize, TopCenter),
+
+			Text(holeTL5L.X, holeTL5L.Y+viaPadD, 1.0, "TL", *fontName, labelSize, BottomCenter),
+			Text(holeTL5L.X, holeTL5L.Y-viaPadD, 1.0, "5L", *fontName, labelSize, TopCenter),
+
+			Text(holeBR4R.X, holeBR4R.Y+viaPadD, 1.0, "4R", *fontName, labelSize, BottomCenter),
+			Text(holeBR4R.X, holeBR4R.Y-viaPadD, 1.0, "BR", *fontName, labelSize, TopCenter),
+
+			Text(holeBL4L.X, holeBL4L.Y+viaPadD, 1.0, "BL", *fontName, labelSize, BottomCenter),
+			Text(holeBL4L.X, holeBL4L.Y-viaPadD, 1.0, "4L", *fontName, labelSize, TopCenter),
+
+			Text(hole2L3R.X, hole2L3R.Y+viaPadD, 1.0, "3R", *fontName, labelSize, BottomCenter),
+			Text(hole2L3R.X, hole2L3R.Y-viaPadD, 1.0, "2L", *fontName, labelSize, TopCenter),
+
+			Text(endLayer3L.X-0.5*padD, endLayer3L.Y, 1.0, "3L", *fontName, *pts, BottomRight),
+			Text(endLayer2R.X-0.5*padD, endLayer2R.Y, 1.0, "2R", *fontName, *pts, TopRight),
 		)
 	}
 
