@@ -1,5 +1,5 @@
 #!/bin/bash -ex
-go run main.go
+go run main.go -step 0.04
 gerbview \
   quad-bifilar-coil.g2l \
   quad-bifilar-coil.g3l	\
