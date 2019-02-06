@@ -413,7 +413,7 @@ type spiral struct {
 
 func newSpiral() *spiral {
 	startAngle := 3.5 * math.Pi
-	endAngle := 2*math.Pi + float64(*n)*2.0*math.Pi
+	endAngle := 2*math.Pi/3 + float64(*n)*2.0*math.Pi
 	p1 := genPt(1.0, endAngle, *trace*0.5, 0)
 	size := 2 * math.Abs(p1.X)
 	p2 := genPt(1.0, endAngle, *trace*0.5, math.Pi)
