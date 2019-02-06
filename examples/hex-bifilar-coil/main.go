@@ -47,39 +47,39 @@ func main() {
 
 	startTopR, topSpiralR, endTopR := s.genSpiral(1.0, 0, 0)
 	startTopL, topSpiralL, endTopL := s.genSpiral(1.0, math.Pi, 0)
-	startBotR, botSpiralR, _ := s.genSpiral(-1.0, 0, 0)
+	startBotR, botSpiralR, endBotR := s.genSpiral(-1.0, 0, 0)
 	// startTopR := genPt(1.0, s.startAngle, 0, 0)
 	// startTopL := genPt(1.0, s.startAngle, 0, math.Pi)
 	log.Printf("startTopR=%v, startTopL=%v", startTopR, startTopL)
 	log.Printf("endTopR=%v, endTopL=%v", endTopR, endTopL)
 
-	startBotL, botSpiralL, botEndL := s.genSpiral(-1.0, math.Pi, 0 /**trace+padD */)
+	startBotL, botSpiralL, endBotL := s.genSpiral(-1.0, math.Pi, 0 /**trace+padD */)
 	log.Printf("startBotR=%v, startBotL=%v", startBotR, startBotL)
-	log.Printf("botEndL=%v", botEndL)
+	log.Printf("endBotL=%v", endBotL)
 
 	shiftAngle := math.Pi / 3.0
-	startLayer2R, layer2SpiralR, layer2EndR := s.genSpiral(1.0, shiftAngle, 0)
-	startLayer2L, layer2SpiralL, layer2EndL := s.genSpiral(1.0, math.Pi+shiftAngle, 0 /*-(*trace + padD)*/)
-	startLayer3R, layer3SpiralR, layer3EndR := s.genSpiral(-1.0, shiftAngle, 0)
-	startLayer3L, layer3SpiralL, layer3EndL := s.genSpiral(-1.0, math.Pi+shiftAngle, 0 /* *trace+padD*/)
+	startLayer2R, layer2SpiralR, endLayer2R := s.genSpiral(1.0, shiftAngle, 0)
+	startLayer2L, layer2SpiralL, endLayer2L := s.genSpiral(1.0, math.Pi+shiftAngle, 0 /*-(*trace + padD)*/)
+	startLayer3R, layer3SpiralR, endLayer3R := s.genSpiral(-1.0, shiftAngle, 0)
+	startLayer3L, layer3SpiralL, endLayer3L := s.genSpiral(-1.0, math.Pi+shiftAngle, 0 /* *trace+padD*/)
 	log.Printf("startLayer2R=%v, startLayer2L=%v", startLayer2R, startLayer2L)
 	log.Printf("startLayer3R=%v, startLayer3L=%v", startLayer3R, startLayer3L)
-	log.Printf("layer2EndL=%v", layer2EndL)
-	log.Printf("layer3EndL=%v", layer3EndL)
-	log.Printf("layer2EndR=%v", layer2EndR)
-	log.Printf("layer3EndR=%v", layer3EndR)
+	log.Printf("endLayer2L=%v", endLayer2L)
+	log.Printf("endLayer3L=%v", endLayer3L)
+	log.Printf("endLayer2R=%v", endLayer2R)
+	log.Printf("endLayer3R=%v", endLayer3R)
 
 	shiftAngle = -math.Pi / 3.0
-	startLayer4R, layer4SpiralR, layer4EndR := s.genSpiral(1.0, shiftAngle, 0)
-	startLayer4L, layer4SpiralL, layer4EndL := s.genSpiral(1.0, math.Pi+shiftAngle, 0 /*-(*trace + padD)*/)
-	startLayer5R, layer5SpiralR, _ := s.genSpiral(-1.0, shiftAngle, 0)
-	startLayer5L, layer5SpiralL, layer5EndL := s.genSpiral(-1.0, math.Pi+shiftAngle, 0 /**trace+padD*/)
+	startLayer4R, layer4SpiralR, endLayer4R := s.genSpiral(1.0, shiftAngle, 0)
+	startLayer4L, layer4SpiralL, endLayer4L := s.genSpiral(1.0, math.Pi+shiftAngle, 0 /*-(*trace + padD)*/)
+	startLayer5R, layer5SpiralR, endLayer5R := s.genSpiral(-1.0, shiftAngle, 0)
+	startLayer5L, layer5SpiralL, endLayer5L := s.genSpiral(-1.0, math.Pi+shiftAngle, 0 /**trace+padD*/)
 	// startLayer4R := genPt(1.0, s.startAngle, 0, shiftAngle)
 	// startLayer4L := genPt(1.0, s.startAngle, 0, math.Pi+shiftAngle)
 	log.Printf("startLayer4R=%v, startLayer4L=%v", startLayer4R, startLayer4L)
 	log.Printf("startLayer5R=%v, startLayer5L=%v", startLayer5R, startLayer5L)
-	log.Printf("layer4EndR=%v, layer4EndL=%v", layer4EndR, layer4EndL)
-	log.Printf("layer5EndL=%v", layer5EndL)
+	log.Printf("endLayer4R=%v, endLayer4L=%v", endLayer4R, endLayer4L)
+	log.Printf("endLayer5L=%v", endLayer5L)
 	log.Printf("%v, %v, %v, %v, %v, %v", len(topSpiralL), len(botSpiralL), len(layer2SpiralL), len(layer3SpiralL), len(layer4SpiralL), len(layer5SpiralL))
 
 	viaPadD := 0.5
@@ -104,8 +104,8 @@ func main() {
 	hole6 := Point(innerHole6X, 0.5*(*trace+viaPadD))
 	hole7 := Point(-innerHole6X, -0.5*(*trace+viaPadD))
 	// Layer 2 and 3 outer connecting hole
-	// FIX hole8 := Point(layer2EndR.X, layer2EndR.Y+hole2Offset)
-	// FIX THIS hole9 := Point(layer2EndL.X+hole5PadOffset, -(*trace + padD))
+	// FIX hole8 := Point(endLayer2R.X, endLayer2R.Y+hole2Offset)
+	// FIX THIS hole9 := Point(endLayer2L.X+hole5PadOffset, -(*trace + padD))
 	// Layer 4 and 5 inner connecting holes
 	hole10 := Point(innerHole6X, -0.5*(*trace+viaPadD))
 	hole11 := Point(-innerHole6X, 0.5*(*trace+viaPadD))
@@ -194,9 +194,9 @@ func main() {
 		//		Line(startLayer2L.X, startLayer2L.Y, hole1.X, hole1.Y, RectShape, *trace),
 		// Layer 2 and 3 outer connecting hole
 		//		Circle(hole8.X, hole8.Y, viaPadD),
-		//		Line(layer2EndR.X, layer2EndR.Y, hole8.X, hole8.Y, RectShape, *trace),
+		//		Line(endLayer2R.X, endLayer2R.Y, hole8.X, hole8.Y, RectShape, *trace),
 		//FIX THIS Circle(hole9.X, hole9.Y, padD),
-		//		Line(layer2EndL.X, layer2EndL.Y, hole9.X, hole9.Y, RectShape, *trace),
+		//		Line(endLayer2L.X, endLayer2L.Y, hole9.X, hole9.Y, RectShape, *trace),
 		// Layer 4 and 5 inner connecting holes
 		viaPad(hole10),
 		padLine(startLayer2R, hole10),
@@ -225,9 +225,9 @@ func main() {
 		//		Line(startLayer4L.X, startLayer4L.Y, hole1.X, hole1.Y, RectShape, *trace),
 		// Layer 2 and 3 outer connecting hole
 		//		Circle(hole8.X, hole8.Y, viaPadD),
-		//		Line(layer4EndR.X, layer4EndR.Y, hole8.X, hole8.Y, RectShape, *trace),
+		//		Line(endLayer4R.X, endLayer4R.Y, hole8.X, hole8.Y, RectShape, *trace),
 		//FIX THIS Circle(hole9.X, hole9.Y, padD),
-		//		Line(layer4EndL.X, layer4EndL.Y, hole9.X, hole9.Y, RectShape, *trace),
+		//		Line(endLayer4L.X, endLayer4L.Y, hole9.X, hole9.Y, RectShape, *trace),
 		// Layer 4 and 5 inner connecting holes
 		viaPad(hole10),
 		viaPad(hole11),
@@ -268,7 +268,7 @@ func main() {
 		viaPad(hole3),
 		padLine(startBotR, hole3),
 		//		Circle(hole4.X, hole4.Y, viaPadD),
-		//		Line(botEndL.X, botEndL.Y, hole4.X, hole4.Y, RectShape, *trace),
+		//		Line(endBotL.X, endBotL.Y, hole4.X, hole4.Y, RectShape, *trace),
 		// Lower connecting trace for right spiral
 		contactPad(hole5),
 		// Layer 2 and 3 inner connecting holes
@@ -294,7 +294,7 @@ func main() {
 		// Upper connecting trace for left spiral
 		viaPad(hole3),
 		//		Circle(hole4.X, hole4.Y, viaPadD),
-		//		Line(layer3EndL.X, layer3EndL.Y, hole4.X, hole4.Y, RectShape, *trace),
+		//		Line(endLayer3L.X, endLayer3L.Y, hole4.X, hole4.Y, RectShape, *trace),
 		// Lower connecting trace for right spiral
 		contactPad(hole5),
 		// Layer 2 and 3 inner connecting holes
@@ -306,7 +306,7 @@ func main() {
 		//		Line(startLayer2L.X, startLayer2L.Y, hole1.X, hole1.Y, RectShape, *trace),
 		// Layer 2 and 3 outer connecting hole
 		//		Circle(hole8.X, hole8.Y, viaPadD),
-		//		Line(layer2EndR.X, layer2EndR.Y, hole8.X, hole8.Y, RectShape, *trace),
+		//		Line(endLayer2R.X, endLayer2R.Y, hole8.X, hole8.Y, RectShape, *trace),
 		//FIX THIS Circle(hole9.X, hole9.Y, padD),
 		// Layer 4 and 5 inner connecting holes
 		viaPad(hole10),
@@ -323,7 +323,7 @@ func main() {
 		// Upper connecting trace for left spiral
 		viaPad(hole3),
 		//		Circle(hole4.X, hole4.Y, viaPadD),
-		//		Line(layer5EndL.X, layer5EndL.Y, hole4.X, hole4.Y, RectShape, *trace),
+		//		Line(endLayer5L.X, endLayer5L.Y, hole4.X, hole4.Y, RectShape, *trace),
 		// Lower connecting trace for right spiral
 		contactPad(hole5),
 		// Layer 2 and 3 inner connecting holes
@@ -333,7 +333,7 @@ func main() {
 		//		Line(startLayer2L.X, startLayer2L.Y, hole1.X, hole1.Y, RectShape, *trace),
 		// Layer 2 and 3 outer connecting hole
 		//		Circle(hole8.X, hole8.Y, viaPadD),
-		//		Line(layer2EndR.X, layer2EndR.Y, hole8.X, hole8.Y, RectShape, *trace),
+		//		Line(endLayer2R.X, endLayer2R.Y, hole8.X, hole8.Y, RectShape, *trace),
 		//FIX THIS Circle(hole9.X, hole9.Y, padD),
 		// Layer 4 and 5 inner connecting holes
 		viaPad(hole10),
@@ -389,6 +389,20 @@ func main() {
 			Text(hole10.X+viaPadD, hole10.Y+0.5*viaPadD, 1.0, "hole10", *fontName, labelSize, TopLeft),
 			Text(hole11.X-viaPadD, hole11.Y-0.5*viaPadD, 1.0, "hole11", *fontName, labelSize, BottomRight),
 			Text(0, -0.5*radius, 1.0, message2, *fontName, *pts, Center),
+
+			// Debugging outer connections
+			Text(endTopR.X, endTopR.Y, 1.0, "TR", *fontName, labelSize, BottomCenter),
+			Text(endTopL.X, endTopL.Y, 1.0, "TL", *fontName, labelSize, TopCenter),
+			Text(endBotR.X, endBotR.Y, 1.0, "BR", *fontName, labelSize, BottomCenter),
+			Text(endBotL.X, endBotL.Y, 1.0, "BL", *fontName, labelSize, TopCenter),
+			Text(endLayer2R.X, endLayer2R.Y, 1.0, "2R", *fontName, labelSize, BottomCenter),
+			Text(endLayer2L.X, endLayer2L.Y, 1.0, "2L", *fontName, labelSize, TopCenter),
+			Text(endLayer3R.X, endLayer3R.Y, 1.0, "3R", *fontName, labelSize, BottomCenter),
+			Text(endLayer3L.X, endLayer3L.Y, 1.0, "3L", *fontName, labelSize, TopCenter),
+			Text(endLayer4R.X, endLayer4R.Y, 1.0, "4R", *fontName, labelSize, BottomCenter),
+			Text(endLayer4L.X, endLayer4L.Y, 1.0, "4L", *fontName, labelSize, TopCenter),
+			Text(endLayer5R.X, endLayer5R.Y, 1.0, "5R", *fontName, labelSize, BottomCenter),
+			Text(endLayer5L.X, endLayer5L.Y, 1.0, "5L", *fontName, labelSize, TopCenter),
 		)
 	}
 
@@ -413,7 +427,7 @@ type spiral struct {
 
 func newSpiral() *spiral {
 	startAngle := 3.5 * math.Pi
-	endAngle := 2*math.Pi/3 + float64(*n)*2.0*math.Pi
+	endAngle := 2.0*math.Pi + float64(*n)*2.0*math.Pi
 	p1 := genPt(1.0, endAngle, *trace*0.5, 0)
 	size := 2 * math.Abs(p1.X)
 	p2 := genPt(1.0, endAngle, *trace*0.5, math.Pi)
@@ -430,7 +444,7 @@ func newSpiral() *spiral {
 
 func (s *spiral) genSpiral(xScale, offset, trimY float64) (startPt Pt, pts []Pt, endPt Pt) {
 	halfTW := *trace * 0.5
-	endAngle := s.endAngle
+	endAngle := s.endAngle - math.Pi/3.0
 	if trimY < 0 { // Only for layer2SpiralL - extend another Pi/2
 		endAngle += 0.5 * math.Pi
 	}
