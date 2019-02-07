@@ -43,9 +43,9 @@ TR ⇨ 5R
 func main() {
 	flag.Parse()
 
-	if *n < 3 {
+	if *n < 12 {
 		flag.Usage()
-		log.Fatal("N must be >= 3.")
+		log.Fatal("N must be >= 12.")
 	}
 
 	g := New(*prefix)
