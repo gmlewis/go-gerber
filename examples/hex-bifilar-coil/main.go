@@ -21,13 +21,12 @@ var (
 	trace    = flag.Float64("trace", 0.15, "Width of traces in mm")
 	prefix   = flag.String("prefix", "hex-bifilar-coil", "Filename prefix for all Gerber files and zip")
 	fontName = flag.String("font", "freeserif", "Name of font to use for writing source on PCB (empty to not write)")
-	pts      = flag.Float64("pts", 18.0, "Font point size (72 pts = 1 inch = 25.4 mm)")
 )
 
 const (
-	message = `With a trace and gap size of 0.15mm, this
-hex bifilar coil should have a DC resistance
-of approx. 1393.2Ω. Each spiral has 100 coils.`
+	messageFmt = `Trace size = %0.2fmm.
+Gap size = %0.2fmm.
+Each spiral has %v coils.`
 	message2 = `3L ⇨ 4L
 4L ⇨ BL
 BL ⇨ TL
@@ -43,6 +42,11 @@ TR ⇨ 5R
 
 func main() {
 	flag.Parse()
+
+	if *n < 3 {
+		flag.Usage()
+		log.Fatal("N must be >= 3.")
+	}
 
 	g := New(*prefix)
 
@@ -359,20 +363,21 @@ func main() {
 	fmt.Printf("n=%v: (%.2f,%.2f)\n", *n, 2*r, 2*r)
 
 	if *fontName != "" {
-		radius := endLayer3L.X
-		labelSize := 4.0
+		pts := 36.0 * r / 139.18 // determined emperically
+		labelSize := pts * 4.0 / 18.0
+		message := fmt.Sprintf(messageFmt, *trace, *gap, *n)
 
 		tss := g.TopSilkscreen()
 		tss.Add(
-			Text(0, 0.3*radius, 1.0, message, *fontName, *pts, Center),
+			Text(0, 0.3*r, 1.0, message, *fontName, pts, Center),
 			Text(hole1.X, hole1.Y+viaPadD, 1.0, "TL/BL", *fontName, labelSize, BottomCenter),
 			Text(hole3.X, hole3.Y-viaPadD, 1.0, "TR/BR", *fontName, labelSize, TopCenter),
 			Text(hole6.X+viaPadD, hole6.Y-0.5*viaPadD, 1.0, "3L/4L", *fontName, labelSize, BottomLeft),
 			Text(hole7.X-viaPadD, hole7.Y+0.5*viaPadD, 1.0, "3R/4R", *fontName, labelSize, TopRight),
 			Text(hole10.X+viaPadD, hole10.Y+0.5*viaPadD, 1.0, "2R/5R", *fontName, labelSize, TopLeft),
 			Text(hole11.X-viaPadD, hole11.Y-0.5*viaPadD, 1.0, "2L/5L", *fontName, labelSize, BottomRight),
-			Text(-0.5*radius, -0.4*radius, 1.0, message2, *fontName, *pts, Center),
-			Text(0.5*radius, -0.4*radius, 1.0, message3, *fontName, *pts, Center),
+			Text(-0.5*r, -0.4*r, 1.0, message2, *fontName, pts, Center),
+			Text(0.5*r, -0.4*r, 1.0, message3, *fontName, pts, Center),
 
 			// Outer connections
 			Text(holeTR5R.X, holeTR5R.Y+viaPadD, 1.0, "5R", *fontName, labelSize, BottomCenter),
@@ -390,8 +395,8 @@ func main() {
 			Text(hole2L3R.X, hole2L3R.Y+viaPadD, 1.0, "3R", *fontName, labelSize, BottomCenter),
 			Text(hole2L3R.X, hole2L3R.Y-viaPadD, 1.0, "2L", *fontName, labelSize, TopCenter),
 
-			Text(endLayer3L.X-0.5*padD, endLayer3L.Y, 1.0, "3L", *fontName, *pts, BottomRight),
-			Text(endLayer2R.X-0.5*padD, endLayer2R.Y, 1.0, "2R", *fontName, *pts, TopRight),
+			Text(endLayer3L.X-0.5*padD, endLayer3L.Y, 1.0, "3L", *fontName, pts, BottomRight),
+			Text(endLayer2R.X-0.5*padD, endLayer2R.Y, 1.0, "2R", *fontName, pts, TopRight),
 		)
 	}
 
