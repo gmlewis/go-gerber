@@ -9,6 +9,12 @@ resonant frequency, it can transfer power at its greatest efficiency.
 
 The beauty of this design is that it is parametric.
 
+## How it is wound
+
+Both coils are concentric and wind in the same direction.
+Therefore the magnetic field from each coil section combines uniformly
+with the other coil resulting in a stronger, cohesive field.
+
 ## Parametric design
 
 In this design, coils can be created with varying trace widths, gaps

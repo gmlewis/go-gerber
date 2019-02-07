@@ -14,6 +14,12 @@ coils properly from the different tap points, this single coil design
 can potentially support the optimal energy transfer of multiple
 frequencies.
 
+## How it is wound
+
+All coils are concentric and wind in the same direction.
+Therefore the magnetic field from each coil section combines uniformly
+with the other coils resulting in a stronger, cohesive field.
+
 ## Parametric design
 
 In this design, coils can be created with varying trace widths, gaps

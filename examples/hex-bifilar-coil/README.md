@@ -14,6 +14,17 @@ coils properly from the different tap points, this single coil design
 can potentially support the optimal energy transfer of multiple
 frequencies.
 
+Another experiment to try is to ground the second tap from the end,
+drive the end tap with a sine wave at the resonant frequency of the
+remainder of the coil, and then get the amplified benefits of the
+remainder as in a secondary coil of a transformer.
+
+## How it is wound
+
+All coils are concentric and wind in the same direction.
+Therefore the magnetic field from each coil section combines uniformly
+with the other coils resulting in a stronger, cohesive field.
+
 ## Parametric design
 
 In this design, coils can be created with varying trace widths, gaps
