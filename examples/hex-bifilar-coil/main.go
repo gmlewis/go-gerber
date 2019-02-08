@@ -369,34 +369,34 @@ func main() {
 
 		tss := g.TopSilkscreen()
 		tss.Add(
-			Text(0, 0.3*r, 1.0, message, *fontName, pts, Center),
-			Text(hole1.X, hole1.Y+viaPadD, 1.0, "TL/BL", *fontName, labelSize, BottomCenter),
-			Text(hole3.X, hole3.Y-viaPadD, 1.0, "TR/BR", *fontName, labelSize, TopCenter),
-			Text(hole6.X+viaPadD, hole6.Y-0.5*viaPadD, 1.0, "3L/4L", *fontName, labelSize, BottomLeft),
-			Text(hole7.X-viaPadD, hole7.Y+0.5*viaPadD, 1.0, "3R/4R", *fontName, labelSize, TopRight),
-			Text(hole10.X+viaPadD, hole10.Y+0.5*viaPadD, 1.0, "2R/5R", *fontName, labelSize, TopLeft),
-			Text(hole11.X-viaPadD, hole11.Y-0.5*viaPadD, 1.0, "2L/5L", *fontName, labelSize, BottomRight),
-			Text(-0.5*r, -0.4*r, 1.0, message2, *fontName, pts, Center),
-			Text(0.5*r, -0.4*r, 1.0, message3, *fontName, pts, Center),
+			Text(0, 0.3*r, 1.0, message, *fontName, pts, &Center),
+			Text(hole1.X, hole1.Y+viaPadD, 1.0, "TL/BL", *fontName, labelSize, &BottomCenter),
+			Text(hole3.X, hole3.Y-viaPadD, 1.0, "TR/BR", *fontName, labelSize, &TopCenter),
+			Text(hole6.X+viaPadD, hole6.Y-0.5*viaPadD, 1.0, "3L/4L", *fontName, labelSize, &BottomLeft),
+			Text(hole7.X-viaPadD, hole7.Y+0.5*viaPadD, 1.0, "3R/4R", *fontName, labelSize, &TopRight),
+			Text(hole10.X+viaPadD, hole10.Y+0.5*viaPadD, 1.0, "2R/5R", *fontName, labelSize, &TopLeft),
+			Text(hole11.X-viaPadD, hole11.Y-0.5*viaPadD, 1.0, "2L/5L", *fontName, labelSize, &BottomRight),
+			Text(-0.5*r, -0.4*r, 1.0, message2, *fontName, pts, &Center),
+			Text(0.5*r, -0.4*r, 1.0, message3, *fontName, pts, &Center),
 
 			// Outer connections
-			Text(holeTR5R.X, holeTR5R.Y+viaPadD, 1.0, "5R", *fontName, labelSize, BottomCenter),
-			Text(holeTR5R.X, holeTR5R.Y-viaPadD, 1.0, "TR", *fontName, labelSize, TopCenter),
+			Text(holeTR5R.X, holeTR5R.Y+viaPadD, 1.0, "5R", *fontName, labelSize, &BottomCenter),
+			Text(holeTR5R.X, holeTR5R.Y-viaPadD, 1.0, "TR", *fontName, labelSize, &TopCenter),
 
-			Text(holeTL5L.X, holeTL5L.Y+viaPadD, 1.0, "TL", *fontName, labelSize, BottomCenter),
-			Text(holeTL5L.X, holeTL5L.Y-viaPadD, 1.0, "5L", *fontName, labelSize, TopCenter),
+			Text(holeTL5L.X, holeTL5L.Y+viaPadD, 1.0, "TL", *fontName, labelSize, &BottomCenter),
+			Text(holeTL5L.X, holeTL5L.Y-viaPadD, 1.0, "5L", *fontName, labelSize, &TopCenter),
 
-			Text(holeBR4R.X, holeBR4R.Y+viaPadD, 1.0, "4R", *fontName, labelSize, BottomCenter),
-			Text(holeBR4R.X, holeBR4R.Y-viaPadD, 1.0, "BR", *fontName, labelSize, TopCenter),
+			Text(holeBR4R.X, holeBR4R.Y+viaPadD, 1.0, "4R", *fontName, labelSize, &BottomCenter),
+			Text(holeBR4R.X, holeBR4R.Y-viaPadD, 1.0, "BR", *fontName, labelSize, &TopCenter),
 
-			Text(holeBL4L.X, holeBL4L.Y+viaPadD, 1.0, "BL", *fontName, labelSize, BottomCenter),
-			Text(holeBL4L.X, holeBL4L.Y-viaPadD, 1.0, "4L", *fontName, labelSize, TopCenter),
+			Text(holeBL4L.X, holeBL4L.Y+viaPadD, 1.0, "BL", *fontName, labelSize, &BottomCenter),
+			Text(holeBL4L.X, holeBL4L.Y-viaPadD, 1.0, "4L", *fontName, labelSize, &TopCenter),
 
-			Text(hole2L3R.X, hole2L3R.Y+viaPadD, 1.0, "3R", *fontName, labelSize, BottomCenter),
-			Text(hole2L3R.X, hole2L3R.Y-viaPadD, 1.0, "2L", *fontName, labelSize, TopCenter),
+			Text(hole2L3R.X, hole2L3R.Y+viaPadD, 1.0, "3R", *fontName, labelSize, &BottomCenter),
+			Text(hole2L3R.X, hole2L3R.Y-viaPadD, 1.0, "2L", *fontName, labelSize, &TopCenter),
 
-			Text(endLayer3L.X-0.5*padD, endLayer3L.Y, 1.0, "3L", *fontName, pts, BottomRight),
-			Text(endLayer2R.X-0.5*padD, endLayer2R.Y, 1.0, "2R", *fontName, pts, TopRight),
+			Text(endLayer3L.X-0.5*padD, endLayer3L.Y, 1.0, "3L", *fontName, pts, &BottomRight),
+			Text(endLayer2R.X-0.5*padD, endLayer2R.Y, 1.0, "2R", *fontName, pts, &TopRight),
 		)
 	}
 

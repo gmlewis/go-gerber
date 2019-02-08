@@ -21,7 +21,7 @@ func TestText(t *testing.T) {
 	tests := []struct {
 		name     string
 		x, y     float64
-		opts     *TextOpts
+		opts     TextOpts
 		wantXmin float64
 		wantYmin float64
 		wantXmax float64
@@ -191,7 +191,7 @@ func TestText(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			text := Text(tt.x, tt.y, 1, message, fontName, pts, tt.opts)
+			text := Text(tt.x, tt.y, 1, message, fontName, pts, &tt.opts)
 			gotWidth := text.Width()
 			if math.Abs(gotWidth-wantWidth) > eps {
 				t.Errorf("width = %v, want %v", gotWidth, wantWidth)

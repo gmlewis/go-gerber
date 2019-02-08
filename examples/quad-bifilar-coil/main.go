@@ -261,17 +261,17 @@ func main() {
 
 		tss := g.TopSilkscreen()
 		tss.Add(
-			Text(0, 0.3*radius, 1.0, message, *fontName, *pts, Center),
-			Text(hole1.X+viaPadD, hole1.Y, 1.0, "hole1", *fontName, labelSize, CenterLeft),
-			Text(hole2.X+viaPadD, hole2.Y, 1.0, "hole2", *fontName, labelSize, CenterLeft),
-			Text(hole3.X-viaPadD, hole3.Y, 1.0, "hole3", *fontName, labelSize, CenterRight),
-			Text(hole4.X-padD, hole4.Y, 1.0, "hole4", *fontName, labelSize, CenterRight),
-			Text(hole5.X-padD, hole5.Y, 1.0, "hole5", *fontName, labelSize, CenterRight),
-			Text(hole6.X, hole6.Y+viaPadD, 1.0, "hole6", *fontName, labelSize, BottomCenter),
-			Text(hole7.X, hole7.Y-viaPadD, 1.0, "hole7", *fontName, labelSize, TopCenter),
-			Text(hole8.X, hole8.Y-viaPadD, 1.0, "hole8", *fontName, labelSize, TopCenter),
-			Text(hole9.X-padD, hole9.Y, 1.0, "hole9", *fontName, labelSize, CenterRight),
-			Text(0, -0.5*radius, 1.0, message2, *fontName, *pts, Center),
+			Text(0, 0.3*radius, 1.0, message, *fontName, *pts, &Center),
+			Text(hole1.X+viaPadD, hole1.Y, 1.0, "hole1", *fontName, labelSize, &CenterLeft),
+			Text(hole2.X+viaPadD, hole2.Y, 1.0, "hole2", *fontName, labelSize, &CenterLeft),
+			Text(hole3.X-viaPadD, hole3.Y, 1.0, "hole3", *fontName, labelSize, &CenterRight),
+			Text(hole4.X-padD, hole4.Y, 1.0, "hole4", *fontName, labelSize, &CenterRight),
+			Text(hole5.X-padD, hole5.Y, 1.0, "hole5", *fontName, labelSize, &CenterRight),
+			Text(hole6.X, hole6.Y+viaPadD, 1.0, "hole6", *fontName, labelSize, &BottomCenter),
+			Text(hole7.X, hole7.Y-viaPadD, 1.0, "hole7", *fontName, labelSize, &TopCenter),
+			Text(hole8.X, hole8.Y-viaPadD, 1.0, "hole8", *fontName, labelSize, &TopCenter),
+			Text(hole9.X-padD, hole9.Y, 1.0, "hole9", *fontName, labelSize, &CenterRight),
+			Text(0, -0.5*radius, 1.0, message2, *fontName, *pts, &Center),
 		)
 	}
 
