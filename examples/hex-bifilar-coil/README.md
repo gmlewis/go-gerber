@@ -25,6 +25,10 @@ All coils are concentric and wind in the same direction.
 Therefore the magnetic field from each coil section combines uniformly
 with the other coils resulting in a stronger, cohesive field.
 
+Here is a diagram showing how it is wound:
+
+![hex-bifilar-coil-diagram](hex-bifilar-coil-diagram.png)
+
 ## Parametric design
 
 In this design, coils can be created with varying trace widths, gaps
