@@ -29,6 +29,12 @@ Here is a diagram showing how it is wound:
 
 ![hex-bifilar-coil-diagram](hex-bifilar-coil-diagram.png)
 
+This shows the various layers on a small (n=12) coil to highlight
+the wiring and various layers of the PCB:
+
+![hex-bifilar-coil-layers](hex-bifilar-coil-layers.gif)
+
+
 ## Parametric design
 
 In this design, coils can be created with varying trace widths, gaps
