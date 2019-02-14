@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"io"
 	"log"
-	"sync"
 
 	"github.com/gmlewis/go-fonts/fonts"
 )
@@ -101,23 +100,12 @@ func (t *TextT) IsDark(bbox *MBB) bool {
 		return false
 	}
 
-	var mu sync.Mutex
 	var hits []*fonts.Polygon
-
-	var wg sync.WaitGroup
 	for _, poly := range t.render.Polygons {
-		wg.Add(1)
-		go func(poly *fonts.Polygon) {
-			if poly.MBB.ContainsPoint(&p0) {
-				mu.Lock()
-				hits = append(hits, poly)
-				mu.Unlock()
-			}
-			wg.Done()
-		}(poly)
+		if poly.MBB.ContainsPoint(&p0) {
+			hits = append(hits, poly)
+		}
 	}
-	wg.Wait()
-
 	if len(hits) == 0 {
 		return false
 	}
