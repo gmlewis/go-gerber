@@ -110,8 +110,13 @@ func (t *TextT) IsDark(bbox *MBB) bool {
 		return false
 	}
 
-	// TODO: Iterate over hit polygons to determine if pixel is dark.
-	return mbb.Contains(bbox)
+	var result bool
+	for _, poly := range hits { // Must process polys in-order!
+		if poly.ContainsPoint(&p0) {
+			result = poly.Dark
+		}
+	}
+	return result
 }
 
 // Width returns the width of the text in millimeters.
