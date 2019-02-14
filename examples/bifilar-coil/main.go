@@ -21,7 +21,6 @@ var (
 	trace    = flag.Float64("trace", 0.15, "Width of traces in mm")
 	prefix   = flag.String("prefix", "bifilar-coil", "Filename prefix for all Gerber files and zip")
 	fontName = flag.String("font", "freeserif", "Name of font to use for writing source on PCB (empty to not write)")
-	pts      = flag.Float64("pts", 18.0, "Font point size (72 pts = 1 inch = 25.4 mm)")
 	view     = flag.Bool("view", false, "View the resulting design using Fyne")
 )
 
@@ -129,18 +128,18 @@ func main() {
 	)
 
 	outline := g.Outline()
+	r := 0.5*s.size + padD + *trace
 	outline.Add(
-		Arc(Pt{0, 0}, 0.5*s.size+padD, CircleShape, 1, 1, 0, 360, 0.1),
+		Arc(Pt{0, 0}, r, CircleShape, 1, 1, 0, 360, 0.1),
 	)
-	fmt.Printf("n=%v: (%.2f,%.2f)\n", *n, s.size+2*padD, s.size+2*padD)
+	fmt.Printf("n=%v: (%.2f,%.2f)\n", *n, 2*r, 2*r)
 
 	if *fontName != "" {
-		radius := -endL[0]
-		x := -0.75 * radius
-		y := 0.3 * radius
+		pts := 36.0 * r / 139.18 // determined emperically
+		y := 0.3 * r
 		tss := g.TopSilkscreen()
 		tss.Add(
-			Text(x, y, 1.0, message, *fontName, *pts, nil),
+			Text(0, y, 1.0, message, *fontName, pts, &Center),
 		)
 	}
 
