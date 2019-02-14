@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"sync"
 
 	"github.com/gmlewis/go-fonts/fonts"
 )
@@ -95,7 +96,33 @@ func (t *TextT) MBB() MBB {
 
 func (t *TextT) IsDark(bbox *MBB) bool {
 	mbb := t.MBB()
-	// TODO: Improve this later.
+	p0 := Pt{0.5 * (bbox.Max[0] + bbox.Min[0]), 0.5 * (bbox.Max[1] + bbox.Min[1])}
+	if !mbb.ContainsPoint(&p0) {
+		return false
+	}
+
+	var mu sync.Mutex
+	var hits []*fonts.Polygon
+
+	var wg sync.WaitGroup
+	for _, poly := range t.render.Polygons {
+		wg.Add(1)
+		go func(poly *fonts.Polygon) {
+			if poly.MBB.ContainsPoint(&p0) {
+				mu.Lock()
+				hits = append(hits, poly)
+				mu.Unlock()
+			}
+			wg.Done()
+		}(poly)
+	}
+	wg.Wait()
+
+	if len(hits) == 0 {
+		return false
+	}
+
+	// TODO: Iterate over hit polygons to determine if pixel is dark.
 	return mbb.Contains(bbox)
 }
 
