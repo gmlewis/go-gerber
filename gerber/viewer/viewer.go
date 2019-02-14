@@ -21,6 +21,10 @@ type viewController struct {
 	scale     float64
 	drawLayer []bool
 
+	// These control the panning within the drawing area.
+	xOffset int
+	yOffset int
+
 	indexDrill            int
 	indexTopSilkscreen    int
 	indexTopSolderMask    int
@@ -142,11 +146,18 @@ func (vc *viewController) pixelFunc(x, y, w, h int) color.Color {
 		if s := (vc.mbb.Max[1] - vc.mbb.Min[1]) / float64(h); s > vc.scale {
 			vc.scale = s
 		}
+		if w == h {
+			vc.xOffset, vc.yOffset = 0, 0
+		} else if w > h {
+			vc.xOffset, vc.yOffset = (w-h)/2, 0
+		} else {
+			vc.xOffset, vc.yOffset = 0, (h-w)/2
+		}
 		log.Printf("(%v,%v): mbb=%v, scale=%v", w, h, vc.mbb, vc.scale)
 	}
 
-	ll := gerber.Pt{vc.scale*(float64(x)-0.5) + vc.mbb.Min[0], vc.scale*(float64(h-y-1)-0.5) + vc.mbb.Min[1]}
-	ur := gerber.Pt{vc.scale*(float64(x)+0.5) + vc.mbb.Min[0], vc.scale*(float64(h-y-1)+0.5) + vc.mbb.Min[1]}
+	ll := gerber.Pt{vc.scale*(float64(x-vc.xOffset)-0.5) + vc.mbb.Min[0], vc.scale*(float64(h-y-1-vc.yOffset)-0.5) + vc.mbb.Min[1]}
+	ur := gerber.Pt{vc.scale*(float64(x-vc.xOffset)+0.5) + vc.mbb.Min[0], vc.scale*(float64(h-y-1-vc.yOffset)+0.5) + vc.mbb.Min[1]}
 	bbox := &gerber.MBB{Min: ll, Max: ur}
 
 	// Draw layers from bottom up

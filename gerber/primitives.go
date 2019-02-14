@@ -236,11 +236,11 @@ func (c *CircleT) MBB() MBB {
 
 func (c *CircleT) IsDark(bbox *MBB) bool {
 	mbb := c.MBB()
-	if !mbb.Contains(bbox) {
+	p0 := Pt{0.5 * (bbox.Max[0] + bbox.Min[0]), 0.5 * (bbox.Max[1] + bbox.Min[1])}
+	if !mbb.ContainsPoint(&p0) {
 		return false
 	}
-	pt := Pt{0.5 * (bbox.Max[0] + bbox.Min[0]), 0.5 * (bbox.Max[1] + bbox.Min[1])}
-	v := vec2.Sub(&c.pt, &pt)
+	v := vec2.Sub(&c.pt, &p0)
 	dist := v.Length()
 	return dist <= 0.5*c.thickness
 }
@@ -301,10 +301,10 @@ func (l *LineT) MBB() MBB {
 
 func (l *LineT) IsDark(bbox *MBB) bool {
 	mbb := l.MBB()
-	if !mbb.Contains(bbox) {
+	p0 := Pt{0.5 * (bbox.Max[0] + bbox.Min[0]), 0.5 * (bbox.Max[1] + bbox.Min[1])}
+	if !mbb.ContainsPoint(&p0) {
 		return false
 	}
-	p0 := Pt{0.5 * (bbox.Max[0] + bbox.Min[0]), 0.5 * (bbox.Max[1] + bbox.Min[1])}
 	if l.length == 0 {
 		v := vec2.Sub(&l.p1, &p0)
 		dist := v.Length()
@@ -370,6 +370,10 @@ func (p *PolygonT) MBB() MBB {
 
 func (p *PolygonT) IsDark(bbox *MBB) bool {
 	mbb := p.MBB()
+	p0 := Pt{0.5 * (bbox.Max[0] + bbox.Min[0]), 0.5 * (bbox.Max[1] + bbox.Min[1])}
+	if !mbb.ContainsPoint(&p0) {
+		return false
+	}
 	// TODO: Improve this later.
 	return mbb.Contains(bbox)
 }
