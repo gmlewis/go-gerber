@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"io"
 	"math"
+
+	"github.com/gmlewis/go3d/float64/vec2"
 )
 
 const (
@@ -24,6 +26,8 @@ const (
 type Primitive interface {
 	WriteGerber(w io.Writer, apertureIndex int) error
 	Aperture() *Aperture
+	// MBB returns the minimum bounding box in millimeters.
+	MBB() MBB
 }
 
 // Aperture represents the nature of the primitive
@@ -32,6 +36,8 @@ type Aperture struct {
 	Shape Shape
 	Size  float64
 }
+
+func (a *Aperture) MBB() MBB { return MBB{} }
 
 // WriteGerber writes the aperture to the Gerber file.
 func (a *Aperture) WriteGerber(w io.Writer, apertureIndex int) error {
@@ -57,20 +63,20 @@ func (a *Aperture) ID() string {
 }
 
 // Pt represents a 2D Point.
-type Pt struct {
-	X, Y float64
-}
+type Pt = vec2.T
+
+// MBB represents a minimum bounding box.
+type MBB = vec2.Rect
 
 // Point is a simple convenience function that keeps the code easy to read.
 // All dimensions are in millimeters.
 func Point(x, y float64) Pt {
-	return Pt{X: x, Y: y}
+	return Pt{x, y}
 }
 
 // ArcT represents an arc and satisfies the Primitive interface.
 type ArcT struct {
-	x          float64
-	y          float64
+	center     Pt
 	radius     float64
 	shape      Shape
 	xScale     float64
@@ -78,12 +84,14 @@ type ArcT struct {
 	startAngle float64
 	endAngle   float64
 	thickness  float64
+	mbb        *MBB // cached minimum bounding box
 }
 
 // Arc returns an arc primitive.
 // All dimensions are in millimeters. Angles are in degrees.
 func Arc(
-	x, y, radius float64,
+	center Pt,
+	radius float64,
 	shape Shape,
 	xScale, yScale, startAngle, endAngle float64,
 	thickness float64) *ArcT {
@@ -91,8 +99,7 @@ func Arc(
 		startAngle, endAngle = endAngle, startAngle
 	}
 	return &ArcT{
-		x:          x,
-		y:          y,
+		center:     center,
 		radius:     radius,
 		shape:      shape,
 		xScale:     math.Abs(xScale),
@@ -113,13 +120,13 @@ func (a *ArcT) WriteGerber(w io.Writer, apertureIndex int) error {
 
 	angle := float64(a.startAngle)
 	for i := 0; i < segments; i++ {
-		x1 := a.x + a.xScale*math.Cos(angle)*a.radius
-		y1 := a.y + a.yScale*math.Sin(angle)*a.radius
+		x1 := a.center[0] + a.xScale*math.Cos(angle)*a.radius
+		y1 := a.center[1] + a.yScale*math.Sin(angle)*a.radius
 
 		angle += delta
 
-		x2 := a.x + a.xScale*math.Cos(angle)*a.radius
-		y2 := a.y + a.yScale*math.Sin(angle)*a.radius
+		x2 := a.center[0] + a.xScale*math.Cos(angle)*a.radius
+		y2 := a.center[1] + a.yScale*math.Sin(angle)*a.radius
 
 		line := Line(x1, y1, x2, y2, a.shape, a.thickness)
 		line.WriteGerber(w, apertureIndex)
@@ -135,18 +142,48 @@ func (a *ArcT) Aperture() *Aperture {
 	}
 }
 
+func (a *ArcT) MBB() MBB {
+	if a.mbb != nil {
+		return *a.mbb
+	}
+
+	delta := a.endAngle - a.startAngle
+	length := delta * a.radius
+	// Resolution of segments is 0.1mm
+	segments := int(0.5+length*10.0) + 1
+	delta /= float64(segments)
+
+	angle := float64(a.startAngle)
+	a.mbb = &MBB{Min: Pt{a.center[0], a.center[1]}, Max: Pt{a.center[0], a.center[1]}}
+	for i := 0; i < segments; i++ {
+		x1 := a.center[0] + a.xScale*math.Cos(angle)*a.radius
+		y1 := a.center[1] + a.yScale*math.Sin(angle)*a.radius
+
+		angle += delta
+
+		x2 := a.center[0] + a.xScale*math.Cos(angle)*a.radius
+		y2 := a.center[1] + a.yScale*math.Sin(angle)*a.radius
+
+		line := Line(x1, y1, x2, y2, a.shape, a.thickness)
+		mbb := line.MBB()
+		a.mbb.Join(&mbb)
+	}
+
+	return *a.mbb
+}
+
 // CircleT represents a circle and satisfies the Primitive interface.
 type CircleT struct {
-	x, y      float64
+	pt        Pt
 	thickness float64
+	mbb       *MBB // cached minimum bounding box
 }
 
 // Circle returns a circle primitive.
 // All dimensions are in millimeters.
-func Circle(x, y float64, thickness float64) *CircleT {
+func Circle(center Pt, thickness float64) *CircleT {
 	return &CircleT{
-		x:         x,
-		y:         y,
+		pt:        center,
 		thickness: thickness,
 	}
 }
@@ -154,8 +191,8 @@ func Circle(x, y float64, thickness float64) *CircleT {
 // WriteGerber writes the primitive to the Gerber file.
 func (c *CircleT) WriteGerber(w io.Writer, apertureIndex int) error {
 	fmt.Fprintf(w, "G54D%d*\n", apertureIndex)
-	fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+sf*(c.x)), int(0.5+sf*(c.y)))
-	fmt.Fprintf(w, "X%06dY%06dD01*\n", int(0.5+sf*(c.x)), int(0.5+sf*(c.y)))
+	fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+sf*(c.pt[0])), int(0.5+sf*(c.pt[1])))
+	fmt.Fprintf(w, "X%06dY%06dD01*\n", int(0.5+sf*(c.pt[0])), int(0.5+sf*(c.pt[1])))
 	return nil
 }
 
@@ -167,22 +204,31 @@ func (c *CircleT) Aperture() *Aperture {
 	}
 }
 
+func (c *CircleT) MBB() MBB {
+	if c.mbb != nil {
+		return *c.mbb
+	}
+	r := 0.5 * c.thickness
+	ll := Pt{c.pt[0] - r, c.pt[0] - r}
+	ur := Pt{c.pt[0] + r, c.pt[0] + r}
+	c.mbb = &MBB{Min: ll, Max: ur}
+	return *c.mbb
+}
+
 // LineT represents a line and satisfies the Primitive interface.
 type LineT struct {
-	x1, y1    float64
-	x2, y2    float64
+	p1, p2    Pt
 	shape     Shape
 	thickness float64
+	mbb       *MBB // cached minimum bounding box
 }
 
 // Line returns a line primitive.
 // All dimensions are in millimeters.
 func Line(x1, y1, x2, y2 float64, shape Shape, thickness float64) *LineT {
 	return &LineT{
-		x1:        x1,
-		y1:        y1,
-		x2:        x2,
-		y2:        y2,
+		p1:        Pt{x1, y1},
+		p2:        Pt{x2, y2},
 		shape:     shape,
 		thickness: thickness,
 	}
@@ -191,8 +237,8 @@ func Line(x1, y1, x2, y2 float64, shape Shape, thickness float64) *LineT {
 // WriteGerber writes the primitive to the Gerber file.
 func (l *LineT) WriteGerber(w io.Writer, apertureIndex int) error {
 	fmt.Fprintf(w, "G54D%d*\n", apertureIndex)
-	fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+sf*(l.x1)), int(0.5+sf*(l.y1)))
-	fmt.Fprintf(w, "X%06dY%06dD01*\n", int(0.5+sf*(l.x2)), int(0.5+sf*(l.y2)))
+	fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+sf*(l.p1[0])), int(0.5+sf*(l.p1[1])))
+	fmt.Fprintf(w, "X%06dY%06dD01*\n", int(0.5+sf*(l.p2[0])), int(0.5+sf*(l.p2[1])))
 	return nil
 }
 
@@ -204,18 +250,31 @@ func (l *LineT) Aperture() *Aperture {
 	}
 }
 
+func (l *LineT) MBB() MBB {
+	if l.mbb != nil {
+		return *l.mbb
+	}
+	l.mbb = &MBB{Min: l.p1, Max: l.p1}
+	l.mbb.Join(&MBB{Min: l.p2, Max: l.p2})
+	l.mbb.Min[0] -= 0.5 * l.thickness
+	l.mbb.Min[1] -= 0.5 * l.thickness
+	l.mbb.Max[0] += 0.5 * l.thickness
+	l.mbb.Max[1] += 0.5 * l.thickness
+	return *l.mbb
+}
+
 // PolygonT represents a polygon and satisfies the Primitive interface.
 type PolygonT struct {
-	x, y   float64
+	offset Pt
 	points []Pt
+	mbb    *MBB // cached minimum bounding box
 }
 
 // Polygon returns a polygon primitive.
 // All dimensions are in millimeters.
-func Polygon(x, y float64, filled bool, points []Pt, thickness float64) *PolygonT {
+func Polygon(offset Pt, filled bool, points []Pt, thickness float64) *PolygonT {
 	return &PolygonT{
-		x:      x,
-		y:      y,
+		offset: offset,
 		points: points,
 	}
 }
@@ -226,12 +285,12 @@ func (p *PolygonT) WriteGerber(w io.Writer, apertureIndex int) error {
 	io.WriteString(w, "G36*\n")
 	for i, pt := range p.points {
 		if i == 0 {
-			fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+sf*(pt.X+p.x)), int(0.5+sf*(pt.Y+p.y)))
+			fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+sf*(pt[0]+p.offset[0])), int(0.5+sf*(pt[1]+p.offset[1])))
 			continue
 		}
-		fmt.Fprintf(w, "X%06dY%06dD01*\n", int(0.5+sf*(pt.X+p.x)), int(0.5+sf*(pt.Y+p.y)))
+		fmt.Fprintf(w, "X%06dY%06dD01*\n", int(0.5+sf*(pt[0]+p.offset[0])), int(0.5+sf*(pt[1]+p.offset[1])))
 	}
-	fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+sf*(p.points[0].X+p.x)), int(0.5+sf*(p.points[0].Y+p.y)))
+	fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+sf*(p.points[0][0]+p.offset[0])), int(0.5+sf*(p.points[0][1]+p.offset[1])))
 	io.WriteString(w, "G37*\n")
 	return nil
 }
@@ -239,4 +298,20 @@ func (p *PolygonT) WriteGerber(w io.Writer, apertureIndex int) error {
 // Aperture returns nil for PolygonT because it uses the default aperture.
 func (p *PolygonT) Aperture() *Aperture {
 	return nil
+}
+
+func (p *PolygonT) MBB() MBB {
+	if p.mbb != nil {
+		return *p.mbb
+	}
+	for i, pt := range p.points {
+		newPt := Pt{pt[0] + p.offset[0], pt[1] + p.offset[1]}
+		v := &MBB{Min: newPt, Max: newPt}
+		if i == 0 {
+			p.mbb = v
+			continue
+		}
+		p.mbb.Join(v)
+	}
+	return *p.mbb
 }

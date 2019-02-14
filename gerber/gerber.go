@@ -4,6 +4,7 @@ package gerber
 import (
 	"archive/zip"
 	"os"
+	"sync"
 )
 
 // Gerber represents the layers needed to build a PCB.
@@ -12,6 +13,7 @@ type Gerber struct {
 	FilenamePrefix string
 	// Layers represents the layers making up the Gerber design.
 	Layers []*Layer
+	mbb    *MBB // cached minimum bounding box
 }
 
 // New returns a new Gerber design.
@@ -51,4 +53,30 @@ func (g *Gerber) WriteGerber() error {
 		}
 	}
 	return zw.Close()
+}
+
+// MBB returns the minimum bounding box of the design in millimeters.
+func (g *Gerber) MBB() MBB {
+	if g.mbb != nil {
+		return *g.mbb
+	}
+
+	var mu sync.Mutex
+	var wg sync.WaitGroup
+	for _, p := range g.Layers {
+		wg.Add(1)
+		go func(p *Layer) {
+			v := p.MBB()
+			mu.Lock()
+			if g.mbb == nil {
+				g.mbb = &v
+			} else {
+				g.mbb.Join(&v)
+			}
+			mu.Unlock()
+			wg.Done()
+		}(p)
+	}
+	wg.Wait()
+	return *g.mbb
 }

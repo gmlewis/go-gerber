@@ -52,90 +52,90 @@ func main() {
 	padD := 2.0
 	drillD := 1.0
 	padOffset := 0.5 * (padD - *trace)
-	botSpiralL := s.genSpiral(-1.0, math.Pi, startL.Y+2*padOffset)
+	botSpiralL := s.genSpiral(-1.0, math.Pi, startL[1]+2*padOffset)
 
 	// Lower connecting trace between two spirals
-	hole1 := Point(startR.X, startR.Y+viaPadOffset)
-	hole2 := Point(endL.X-viaPadOffset, endL.Y)
+	hole1 := Point(startR[0], startR[1]+viaPadOffset)
+	hole2 := Point(endL[0]-viaPadOffset, endL[1])
 	// Upper connecting trace for left spiral
-	hole3 := Point(startL.X, startL.Y-viaPadOffset)
+	hole3 := Point(startL[0], startL[1]-viaPadOffset)
 	halfTW := *trace * 0.5
-	hole4 := Point(endR.X+padOffset-halfTW, startL.Y+2*padOffset)
+	hole4 := Point(endR[0]+padOffset-halfTW, startL[1]+2*padOffset)
 	// Lower connecting trace for right spiral
-	hole5 := Point(endR.X+padOffset, endR.Y)
+	hole5 := Point(endR[0]+padOffset, endR[1])
 
 	top := g.TopCopper()
 	top.Add(
-		Polygon(0, 0, true, topSpiralR, 0.0),
-		Polygon(0, 0, true, topSpiralL, 0.0),
+		Polygon(Pt{0, 0}, true, topSpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, topSpiralL, 0.0),
 		// Lower connecting trace between two spirals
-		Circle(hole1.X, hole1.Y, viaPadD),
-		Circle(hole2.X, hole2.Y, viaPadD),
+		Circle(hole1, viaPadD),
+		Circle(hole2, viaPadD),
 		// Upper connecting trace for left spiral
-		Circle(hole3.X, hole3.Y, viaPadD),
-		Circle(hole4.X, hole4.Y, padD),
+		Circle(hole3, viaPadD),
+		Circle(hole4, padD),
 		// Lower connecting trace for right spiral
-		Circle(hole5.X, hole5.Y, padD),
+		Circle(hole5, padD),
 	)
 
 	topMask := g.TopSolderMask()
 	topMask.Add(
 		// Lower connecting trace between two spirals
-		Circle(hole1.X, hole1.Y, viaPadD),
-		Circle(hole2.X, hole2.Y, viaPadD),
+		Circle(hole1, viaPadD),
+		Circle(hole2, viaPadD),
 		// Upper connecting trace for left spiral
-		Circle(hole3.X, hole3.Y, viaPadD),
-		Circle(hole4.X, hole4.Y, padD),
+		Circle(hole3, viaPadD),
+		Circle(hole4, padD),
 		// Lower connecting trace for right spiral
-		Circle(hole5.X, hole5.Y, padD),
+		Circle(hole5, padD),
 	)
 
 	bottom := g.BottomCopper()
 	bottom.Add(
-		Polygon(0, 0, true, botSpiralR, 0.0),
-		Polygon(0, 0, true, botSpiralL, 0.0),
+		Polygon(Pt{0, 0}, true, botSpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, botSpiralL, 0.0),
 		// Lower connecting trace between two spirals
-		Circle(hole1.X, hole1.Y, viaPadD),
-		Circle(hole2.X, hole2.Y, viaPadD),
+		Circle(hole1, viaPadD),
+		Circle(hole2, viaPadD),
 		// Upper connecting trace for left spiral
-		Circle(hole3.X, hole3.Y, viaPadD),
-		Circle(hole4.X, hole4.Y, padD),
+		Circle(hole3, viaPadD),
+		Circle(hole4, padD),
 		// Lower connecting trace for right spiral
-		Circle(hole5.X, hole5.Y, padD),
+		Circle(hole5, padD),
 	)
 
 	bottomMask := g.BottomSolderMask()
 	bottomMask.Add(
 		// Lower connecting trace between two spirals
-		Circle(hole1.X, hole1.Y, viaPadD),
-		Circle(hole2.X, hole2.Y, viaPadD),
+		Circle(hole1, viaPadD),
+		Circle(hole2, viaPadD),
 		// Upper connecting trace for left spiral
-		Circle(hole3.X, hole3.Y, viaPadD),
-		Circle(hole4.X, hole4.Y, padD),
+		Circle(hole3, viaPadD),
+		Circle(hole4, padD),
 		// Lower connecting trace for right spiral
-		Circle(hole5.X, hole5.Y, padD),
+		Circle(hole5, padD),
 	)
 
 	drill := g.Drill()
 	drill.Add(
 		// Lower connecting trace between two spirals
-		Circle(hole1.X, hole1.Y, viaDrillD),
-		Circle(hole2.X, hole2.Y, viaDrillD),
+		Circle(hole1, viaDrillD),
+		Circle(hole2, viaDrillD),
 		// Upper connecting trace for left spiral
-		Circle(hole3.X, hole3.Y, viaDrillD),
-		Circle(hole4.X, hole4.Y, drillD),
+		Circle(hole3, viaDrillD),
+		Circle(hole4, drillD),
 		// Lower connecting trace for right spiral
-		Circle(hole5.X, hole5.Y, drillD),
+		Circle(hole5, drillD),
 	)
 
 	outline := g.Outline()
 	outline.Add(
-		Arc(0, 0, 0.5*s.size+padD, CircleShape, 1, 1, 0, 360, 0.1),
+		Arc(Pt{0, 0}, 0.5*s.size+padD, CircleShape, 1, 1, 0, 360, 0.1),
 	)
 	fmt.Printf("n=%v: (%.2f,%.2f)\n", *n, s.size+2*padD, s.size+2*padD)
 
 	if *fontName != "" {
-		radius := -endL.X
+		radius := -endL[0]
 		x := -0.75 * radius
 		y := 0.3 * radius
 		labelSize := 6.0
@@ -143,11 +143,11 @@ func main() {
 		tss := g.TopSilkscreen()
 		tss.Add(
 			Text(x, y, 1.0, message, *fontName, *pts, nil),
-			Text(hole1.X, hole1.Y-viaPadD, 1.0, "hole1", *fontName, labelSize, &TopCenter),
-			Text(hole2.X+viaPadD, hole2.Y, 1.0, "hole2", *fontName, labelSize, &CenterLeft),
-			Text(hole3.X, hole3.Y+viaPadD, 1.0, "hole3", *fontName, labelSize, &BottomCenter),
-			Text(hole4.X-padD, hole4.Y, 1.0, "hole4", *fontName, labelSize, &CenterRight),
-			Text(hole5.X-padD, hole5.Y, 1.0, "hole5", *fontName, labelSize, &CenterRight),
+			Text(hole1[0], hole1[1]-viaPadD, 1.0, "hole1", *fontName, labelSize, &TopCenter),
+			Text(hole2[0]+viaPadD, hole2[1], 1.0, "hole2", *fontName, labelSize, &CenterLeft),
+			Text(hole3[0], hole3[1]+viaPadD, 1.0, "hole3", *fontName, labelSize, &BottomCenter),
+			Text(hole4[0]-padD, hole4[1], 1.0, "hole4", *fontName, labelSize, &CenterRight),
+			Text(hole5[0]-padD, hole5[1], 1.0, "hole5", *fontName, labelSize, &CenterRight),
 		)
 	}
 
@@ -174,9 +174,9 @@ func newSpiral() *spiral {
 	startAngle := 1.5 * math.Pi
 	endAngle := 2*math.Pi + float64(*n)*2.0*math.Pi
 	p1 := genPt(1.0, endAngle, *trace*0.5, 0)
-	size := 2 * math.Abs(p1.X)
+	size := 2 * math.Abs(p1[0])
 	p2 := genPt(1.0, endAngle, *trace*0.5, math.Pi)
-	xl := 2 * math.Abs(p2.X)
+	xl := 2 * math.Abs(p2[0])
 	if xl > size {
 		size = xl
 	}
@@ -199,7 +199,7 @@ func (s *spiral) genSpiral(xScale, offset, trimY float64) []Pt {
 	if trimY > 0 {
 		trimYsteps++
 		for {
-			if pts[len(pts)-trimYsteps].Y > trimY {
+			if pts[len(pts)-trimYsteps][1] > trimY {
 				break
 			}
 			trimYsteps++
@@ -207,10 +207,10 @@ func (s *spiral) genSpiral(xScale, offset, trimY float64) []Pt {
 		lastStep := len(pts) - trimYsteps
 		trimYsteps--
 		pts = pts[0 : lastStep+1]
-		pts = append(pts, Pt{X: pts[lastStep].X, Y: trimY})
+		pts = append(pts, Pt{pts[lastStep][0], trimY})
 		angle := s.startAngle + *step*float64(steps-1-trimYsteps)
 		nextP := genPt(xScale, angle, -halfTW, offset)
-		pts = append(pts, Pt{X: nextP.X, Y: trimY})
+		pts = append(pts, Pt{nextP[0], trimY})
 	} else {
 		pts = append(pts, genPt(xScale, s.endAngle, halfTW, offset))
 		pts = append(pts, genPt(xScale, s.endAngle, -halfTW, offset))

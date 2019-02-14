@@ -86,7 +86,7 @@ func main() {
 		r := *trace*1.5 + 0.5*viaPadD
 		dx := r * math.Cos(angle)
 		dy := r * math.Sin(angle)
-		return Point(pt.X+dx, pt.Y+dy)
+		return Point(pt[0]+dx, pt[1]+dy)
 	}
 
 	holeBL4L := outerViaPt(endBotL, math.Pi/3.0)
@@ -99,7 +99,7 @@ func main() {
 		r := *trace*1.5 + 0.5*padD
 		dx := r * math.Cos(angle)
 		dy := r * math.Sin(angle)
-		return Point(pt.X+dx, pt.Y+dy)
+		return Point(pt[0]+dx, pt[1]+dy)
 	}
 
 	hole2R := outerContactPt(endLayer2R, 0)
@@ -107,11 +107,11 @@ func main() {
 
 	viaDrill := func(pt Pt) *CircleT {
 		const viaDrillD = 0.25
-		return Circle(pt.X, pt.Y, viaDrillD)
+		return Circle(pt, viaDrillD)
 	}
 	contactDrill := func(pt Pt) *CircleT {
 		const drillD = 1.0
-		return Circle(pt.X, pt.Y, drillD)
+		return Circle(pt, drillD)
 	}
 
 	drill := g.Drill()
@@ -136,19 +136,19 @@ func main() {
 	)
 
 	viaPad := func(pt Pt) *CircleT {
-		return Circle(pt.X, pt.Y, viaPadD)
+		return Circle(pt, viaPadD)
 	}
 	contactPad := func(pt Pt) *CircleT {
-		return Circle(pt.X, pt.Y, padD)
+		return Circle(pt, padD)
 	}
 	padLine := func(pt1, pt2 Pt) *LineT {
-		return Line(pt1.X, pt1.Y, pt2.X, pt2.Y, CircleShape, *trace)
+		return Line(pt1[0], pt1[1], pt2[0], pt2[1], CircleShape, *trace)
 	}
 
 	top := g.TopCopper()
 	top.Add(
-		Polygon(0, 0, true, topSpiralR, 0.0),
-		Polygon(0, 0, true, topSpiralL, 0.0),
+		Polygon(Pt{0, 0}, true, topSpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, topSpiralL, 0.0),
 
 		viaPad(hole1),
 		padLine(startTopL, hole1),
@@ -175,8 +175,8 @@ func main() {
 
 	layer2 := g.Layer2()
 	layer2.Add(
-		Polygon(0, 0, true, layer2SpiralR, 0.0),
-		Polygon(0, 0, true, layer2SpiralL, 0.0),
+		Polygon(Pt{0, 0}, true, layer2SpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, layer2SpiralL, 0.0),
 
 		viaPad(hole1),
 
@@ -203,8 +203,8 @@ func main() {
 
 	layer4 := g.Layer4()
 	layer4.Add(
-		Polygon(0, 0, true, layer4SpiralR, 0.0),
-		Polygon(0, 0, true, layer4SpiralL, 0.0),
+		Polygon(Pt{0, 0}, true, layer4SpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, layer4SpiralL, 0.0),
 
 		viaPad(hole1),
 
@@ -252,8 +252,8 @@ func main() {
 
 	bottom := g.BottomCopper()
 	bottom.Add(
-		Polygon(0, 0, true, botSpiralR, 0.0),
-		Polygon(0, 0, true, botSpiralL, 0.0),
+		Polygon(Pt{0, 0}, true, botSpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, botSpiralL, 0.0),
 
 		viaPad(hole1),
 		padLine(startBotL, hole1),
@@ -280,8 +280,8 @@ func main() {
 
 	layer3 := g.Layer3()
 	layer3.Add(
-		Polygon(0, 0, true, layer3SpiralR, 0.0),
-		Polygon(0, 0, true, layer3SpiralL, 0.0),
+		Polygon(Pt{0, 0}, true, layer3SpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, layer3SpiralL, 0.0),
 
 		viaPad(hole1),
 
@@ -308,8 +308,8 @@ func main() {
 
 	layer5 := g.Layer5()
 	layer5.Add(
-		Polygon(0, 0, true, layer5SpiralR, 0.0),
-		Polygon(0, 0, true, layer5SpiralL, 0.0),
+		Polygon(Pt{0, 0}, true, layer5SpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, layer5SpiralL, 0.0),
 
 		viaPad(hole1),
 
@@ -358,7 +358,7 @@ func main() {
 	outline := g.Outline()
 	r := 0.5*s.size + padD + *trace
 	outline.Add(
-		Arc(0, 0, r, CircleShape, 1, 1, 0, 360, 0.1),
+		Arc(Pt{0, 0}, r, CircleShape, 1, 1, 0, 360, 0.1),
 	)
 	fmt.Printf("n=%v: (%.2f,%.2f)\n", *n, 2*r, 2*r)
 
@@ -370,33 +370,33 @@ func main() {
 		tss := g.TopSilkscreen()
 		tss.Add(
 			Text(0, 0.3*r, 1.0, message, *fontName, pts, &Center),
-			Text(hole1.X, hole1.Y+viaPadD, 1.0, "TL/BL", *fontName, labelSize, &BottomCenter),
-			Text(hole3.X, hole3.Y-viaPadD, 1.0, "TR/BR", *fontName, labelSize, &TopCenter),
-			Text(hole6.X+viaPadD, hole6.Y-0.5*viaPadD, 1.0, "3L/4L", *fontName, labelSize, &BottomLeft),
-			Text(hole7.X-viaPadD, hole7.Y+0.5*viaPadD, 1.0, "3R/4R", *fontName, labelSize, &TopRight),
-			Text(hole10.X+viaPadD, hole10.Y+0.5*viaPadD, 1.0, "2R/5R", *fontName, labelSize, &TopLeft),
-			Text(hole11.X-viaPadD, hole11.Y-0.5*viaPadD, 1.0, "2L/5L", *fontName, labelSize, &BottomRight),
+			Text(hole1[0], hole1[1]+viaPadD, 1.0, "TL/BL", *fontName, labelSize, &BottomCenter),
+			Text(hole3[0], hole3[1]-viaPadD, 1.0, "TR/BR", *fontName, labelSize, &TopCenter),
+			Text(hole6[0]+viaPadD, hole6[1]-0.5*viaPadD, 1.0, "3L/4L", *fontName, labelSize, &BottomLeft),
+			Text(hole7[0]-viaPadD, hole7[1]+0.5*viaPadD, 1.0, "3R/4R", *fontName, labelSize, &TopRight),
+			Text(hole10[0]+viaPadD, hole10[1]+0.5*viaPadD, 1.0, "2R/5R", *fontName, labelSize, &TopLeft),
+			Text(hole11[0]-viaPadD, hole11[1]-0.5*viaPadD, 1.0, "2L/5L", *fontName, labelSize, &BottomRight),
 			Text(-0.5*r, -0.4*r, 1.0, message2, *fontName, pts, &Center),
 			Text(0.5*r, -0.4*r, 1.0, message3, *fontName, pts, &Center),
 
 			// Outer connections
-			Text(holeTR5R.X, holeTR5R.Y+viaPadD, 1.0, "5R", *fontName, labelSize, &BottomCenter),
-			Text(holeTR5R.X, holeTR5R.Y-viaPadD, 1.0, "TR", *fontName, labelSize, &TopCenter),
+			Text(holeTR5R[0], holeTR5R[1]+viaPadD, 1.0, "5R", *fontName, labelSize, &BottomCenter),
+			Text(holeTR5R[0], holeTR5R[1]-viaPadD, 1.0, "TR", *fontName, labelSize, &TopCenter),
 
-			Text(holeTL5L.X, holeTL5L.Y+viaPadD, 1.0, "TL", *fontName, labelSize, &BottomCenter),
-			Text(holeTL5L.X, holeTL5L.Y-viaPadD, 1.0, "5L", *fontName, labelSize, &TopCenter),
+			Text(holeTL5L[0], holeTL5L[1]+viaPadD, 1.0, "TL", *fontName, labelSize, &BottomCenter),
+			Text(holeTL5L[0], holeTL5L[1]-viaPadD, 1.0, "5L", *fontName, labelSize, &TopCenter),
 
-			Text(holeBR4R.X, holeBR4R.Y+viaPadD, 1.0, "4R", *fontName, labelSize, &BottomCenter),
-			Text(holeBR4R.X, holeBR4R.Y-viaPadD, 1.0, "BR", *fontName, labelSize, &TopCenter),
+			Text(holeBR4R[0], holeBR4R[1]+viaPadD, 1.0, "4R", *fontName, labelSize, &BottomCenter),
+			Text(holeBR4R[0], holeBR4R[1]-viaPadD, 1.0, "BR", *fontName, labelSize, &TopCenter),
 
-			Text(holeBL4L.X, holeBL4L.Y+viaPadD, 1.0, "BL", *fontName, labelSize, &BottomCenter),
-			Text(holeBL4L.X, holeBL4L.Y-viaPadD, 1.0, "4L", *fontName, labelSize, &TopCenter),
+			Text(holeBL4L[0], holeBL4L[1]+viaPadD, 1.0, "BL", *fontName, labelSize, &BottomCenter),
+			Text(holeBL4L[0], holeBL4L[1]-viaPadD, 1.0, "4L", *fontName, labelSize, &TopCenter),
 
-			Text(hole2L3R.X, hole2L3R.Y+viaPadD, 1.0, "3R", *fontName, labelSize, &BottomCenter),
-			Text(hole2L3R.X, hole2L3R.Y-viaPadD, 1.0, "2L", *fontName, labelSize, &TopCenter),
+			Text(hole2L3R[0], hole2L3R[1]+viaPadD, 1.0, "3R", *fontName, labelSize, &BottomCenter),
+			Text(hole2L3R[0], hole2L3R[1]-viaPadD, 1.0, "2L", *fontName, labelSize, &TopCenter),
 
-			Text(endLayer3L.X-0.5*padD, endLayer3L.Y, 1.0, "3L", *fontName, pts, &BottomRight),
-			Text(endLayer2R.X-0.5*padD, endLayer2R.Y, 1.0, "2R", *fontName, pts, &TopRight),
+			Text(endLayer3L[0]-0.5*padD, endLayer3L[1], 1.0, "3L", *fontName, pts, &BottomRight),
+			Text(endLayer2R[0]-0.5*padD, endLayer2R[1], 1.0, "2R", *fontName, pts, &TopRight),
 		)
 	}
 
@@ -423,9 +423,9 @@ func newSpiral() *spiral {
 	startAngle := 3.5 * math.Pi
 	endAngle := 2.0*math.Pi + float64(*n)*2.0*math.Pi
 	p1 := genPt(1.0, endAngle, *trace*0.5, 0)
-	size := 2 * math.Abs(p1.X)
+	size := 2 * math.Abs(p1[0])
 	p2 := genPt(1.0, endAngle, *trace*0.5, math.Pi)
-	xl := 2 * math.Abs(p2.X)
+	xl := 2 * math.Abs(p2[0])
 	if xl > size {
 		size = xl
 	}
@@ -454,7 +454,7 @@ func (s *spiral) genSpiral(xScale, offset, trimY float64) (startPt Pt, pts []Pt,
 	if trimY > 0 {
 		trimYsteps++
 		for {
-			if pts[len(pts)-trimYsteps].Y > trimY {
+			if pts[len(pts)-trimYsteps][1] > trimY {
 				break
 			}
 			trimYsteps++
@@ -462,16 +462,16 @@ func (s *spiral) genSpiral(xScale, offset, trimY float64) (startPt Pt, pts []Pt,
 		lastStep := len(pts) - trimYsteps
 		trimYsteps--
 		pts = pts[0 : lastStep+1]
-		pts = append(pts, Pt{X: pts[lastStep].X, Y: trimY})
+		pts = append(pts, Pt{pts[lastStep][0], trimY})
 		angle := s.startAngle + *step*float64(steps-1-trimYsteps)
 		eX := genPt(xScale, angle, 0, offset)
-		endPt = Pt{X: eX.X, Y: trimY}
+		endPt = Pt{eX[0], trimY}
 		nX := genPt(xScale, angle, -halfTW, offset)
-		pts = append(pts, Pt{X: nX.X, Y: trimY})
+		pts = append(pts, Pt{nX[0], trimY})
 	} else if trimY < 0 { // Only for layer2SpiralL
 		trimYsteps++
 		for {
-			if pts[len(pts)-trimYsteps].Y < trimY {
+			if pts[len(pts)-trimYsteps][1] < trimY {
 				break
 			}
 			trimYsteps++
@@ -479,12 +479,12 @@ func (s *spiral) genSpiral(xScale, offset, trimY float64) (startPt Pt, pts []Pt,
 		lastStep := len(pts) - trimYsteps
 		trimYsteps--
 		pts = pts[0 : lastStep+1]
-		pts = append(pts, Pt{X: pts[lastStep].X, Y: trimY})
+		pts = append(pts, Pt{pts[lastStep][0], trimY})
 		angle := s.startAngle + *step*float64(steps-1-trimYsteps)
 		eX := genPt(xScale, angle, 0, offset)
-		endPt = Pt{X: eX.X, Y: trimY}
+		endPt = Pt{eX[0], trimY}
 		nX := genPt(xScale, angle, -halfTW, offset)
-		pts = append(pts, Pt{X: nX.X, Y: trimY})
+		pts = append(pts, Pt{nX[0], trimY})
 	} else {
 		pts = append(pts, genPt(xScale, endAngle, halfTW, offset))
 		endPt = genPt(xScale, endAngle, 0, offset)

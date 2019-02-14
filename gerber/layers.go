@@ -16,7 +16,8 @@ type Layer struct {
 	// apertureMap maps an aperture to its index in the Apertures slice.
 	apertureMap map[string]int
 	// g is the root Gerber object.
-	g *Gerber
+	g   *Gerber
+	mbb *MBB // cached minimum bounding box
 }
 
 // Add adds primitives to a layer.
@@ -55,6 +56,22 @@ func (l *Layer) WriteGerber(w io.Writer) error {
 
 	io.WriteString(w, "M02*\n")
 	return nil
+}
+
+// MBB returns the minimum bounding box of the layer in millimeters.
+func (l *Layer) MBB() MBB {
+	if l.mbb != nil {
+		return *l.mbb
+	}
+	for i, p := range l.Primitives {
+		v := p.MBB()
+		if i == 0 {
+			l.mbb = &v
+			continue
+		}
+		l.mbb.Join(&v)
+	}
+	return *l.mbb
 }
 
 func (g *Gerber) makeLayer(extension string) *Layer {

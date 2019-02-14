@@ -7,6 +7,14 @@ import (
 	_ "github.com/gmlewis/go-fonts/fonts/freeserif"
 )
 
+func TestTextT_Primitive(t *testing.T) {
+	var p Primitive = &TextT{}
+	if p == nil {
+		// In actuality, this test won't compile if it isn't a Primitive.
+		t.Errorf("TextT does not implement the Primitive interface")
+	}
+}
+
 func TestText(t *testing.T) {
 	const (
 		message    = "012"
@@ -200,18 +208,18 @@ func TestText(t *testing.T) {
 			if math.Abs(gotHeight-wantHeight) > eps {
 				t.Errorf("height = %v, want %v", gotHeight, wantHeight)
 			}
-			render := text.render
-			if math.Abs(render.MBB.Min[0]-tt.wantXmin) > eps {
-				t.Errorf("Xmin = %v, want %v", render.MBB.Min[0], tt.wantXmin)
+			mbb := text.MBB()
+			if math.Abs(mbb.Min[0]-tt.wantXmin) > eps {
+				t.Errorf("Xmin = %v, want %v", mbb.Min[0], tt.wantXmin)
 			}
-			if math.Abs(render.MBB.Min[1]-tt.wantYmin) > eps {
-				t.Errorf("Ymin = %v, want %v", render.MBB.Min[1], tt.wantYmin)
+			if math.Abs(mbb.Min[1]-tt.wantYmin) > eps {
+				t.Errorf("Ymin = %v, want %v", mbb.Min[1], tt.wantYmin)
 			}
-			if math.Abs(render.MBB.Max[0]-tt.wantXmax) > eps {
-				t.Errorf("Xmax = %v, want %v", render.MBB.Max[0], tt.wantXmax)
+			if math.Abs(mbb.Max[0]-tt.wantXmax) > eps {
+				t.Errorf("Xmax = %v, want %v", mbb.Max[0], tt.wantXmax)
 			}
-			if math.Abs(render.MBB.Max[1]-tt.wantYmax) > eps {
-				t.Errorf("Ymax = %v, want %v", render.MBB.Max[1], tt.wantYmax)
+			if math.Abs(mbb.Max[1]-tt.wantYmax) > eps {
+				t.Errorf("Ymax = %v, want %v", mbb.Max[1], tt.wantYmax)
 			}
 		})
 	}

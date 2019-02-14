@@ -85,6 +85,13 @@ func (t *TextT) renderText() error {
 	return nil
 }
 
+func (t *TextT) MBB() MBB {
+	if err := t.renderText(); err != nil {
+		log.Fatal(err)
+	}
+	return t.render.MBB
+}
+
 // Width returns the width of the text in millimeters.
 func (t *TextT) Width() float64 {
 	if err := t.renderText(); err != nil {
