@@ -5,11 +5,13 @@ import (
 	"io"
 	"math"
 
+	"github.com/gmlewis/go-fonts/fonts"
 	"github.com/gmlewis/go3d/float64/vec2"
 )
 
 const (
-	sf = 1e6 // scale factor
+	sf     = 1e6 // scale factor
+	maxPts = 10000
 )
 
 // Shape represents the type of shape the apertures use.
@@ -320,6 +322,10 @@ type PolygonT struct {
 	offset Pt
 	points []Pt
 	mbb    *MBB // cached minimum bounding box
+
+	// subdivs are subdivided polygons (into 4 quadrants) to reduce the point count.
+	// Whenever polygons contain more than maxPts, they are subdivided recursively.
+	subdivs [4]*PolygonT
 }
 
 // Polygon returns a polygon primitive.
@@ -365,7 +371,80 @@ func (p *PolygonT) MBB() MBB {
 		}
 		p.mbb.Join(v)
 	}
+
+	if len(p.points) > maxPts {
+		p.subdivide()
+	}
+
 	return *p.mbb
+}
+
+func (p *PolygonT) subdivide() {
+	center := &Pt{0.5 * (p.mbb.Max[0] + p.mbb.Min[0]), 0.5 * (p.mbb.Max[1] + p.mbb.Min[1])}
+	ul := &MBB{Min: Pt{p.mbb.Min[0], center[1]}, Max: Pt{center[0], p.mbb.Max[1]}}
+	ur := &MBB{Min: Pt{center[0], center[1]}, Max: Pt{p.mbb.Max[0], p.mbb.Max[1]}}
+	ll := &MBB{Min: Pt{p.mbb.Min[0], p.mbb.Min[1]}, Max: Pt{center[0], center[1]}}
+	lr := &MBB{Min: Pt{center[0], p.mbb.Min[1]}, Max: Pt{p.mbb.Max[0], center[1]}}
+	p.subdivs[0] = p.intersect(ul)
+	p.subdivs[1] = p.intersect(ur)
+	p.subdivs[2] = p.intersect(ll)
+	p.subdivs[3] = p.intersect(lr)
+}
+
+func (p *PolygonT) intersect(bbox *MBB) *PolygonT {
+	result := &PolygonT{
+		offset: p.offset,
+		mbb:    bbox,
+	}
+
+	clipPolygon := []Pt{
+		{bbox.Min[0], bbox.Min[1]},
+		{bbox.Max[0], bbox.Min[1]},
+		{bbox.Max[0], bbox.Max[1]},
+		{bbox.Min[0], bbox.Max[1]},
+	}
+	var cp1, cp2, s, e Pt
+	inside := func(p Pt) bool {
+		return (cp2[0]-cp1[0])*(p[1]-cp1[1]) > (cp2[1]-cp1[1])*(p[0]-cp1[0])
+	}
+	intersection := func() (p Pt) {
+		dcx, dcy := cp1[0]-cp2[0], cp1[1]-cp2[1]
+		dpx, dpy := s[0]-e[0], s[1]-e[1]
+		n1 := cp1[0]*cp2[1] - cp1[1]*cp2[0]
+		n2 := s[0]*e[1] - s[1]*e[0]
+		n3 := 1 / (dcx*dpy - dcy*dpx)
+		p[0] = (n1*dpx - n2*dcx) * n3
+		p[1] = (n1*dpy - n2*dcy) * n3
+		return
+	}
+	outputList := p.points
+	cp1 = clipPolygon[len(clipPolygon)-1]
+	for _, cp2 = range clipPolygon { // WP clipEdge is cp1,cp2 here
+		inputList := outputList
+		outputList = nil
+		if len(inputList) == 0 { // No intersection
+			return nil
+		}
+		s = inputList[len(inputList)-1]
+		for _, e = range inputList {
+			if inside(e) {
+				if !inside(s) {
+					outputList = append(outputList, intersection())
+				}
+				outputList = append(outputList, e)
+			} else if inside(s) {
+				outputList = append(outputList, intersection())
+			}
+			s = e
+		}
+		cp1 = cp2
+	}
+	result.points = outputList
+	if len(result.points) > maxPts {
+		result.subdivide()
+	}
+
+	return result
 }
 
 func (p *PolygonT) IsDark(bbox *MBB) bool {
@@ -374,6 +453,27 @@ func (p *PolygonT) IsDark(bbox *MBB) bool {
 	if !mbb.ContainsPoint(&p0) {
 		return false
 	}
-	// TODO: Improve this later.
-	return mbb.Contains(bbox)
+
+	if len(p.points) < 3 {
+		return false
+	}
+
+	// Don't attempt this algorithm on polygons with more than maxPts.
+	if len(p.points) > maxPts {
+		for _, sd := range p.subdivs {
+			if sd == nil || !sd.mbb.ContainsPoint(&p0) {
+				continue
+			}
+			return sd.IsDark(bbox)
+		}
+		return false
+	}
+
+	in := fonts.RayIntersectsSegment(&p0, &p.points[len(p.points)-1], &p.points[0])
+	for i := 1; i < len(p.points); i++ {
+		if fonts.RayIntersectsSegment(&p0, &p.points[i-1], &p.points[i]) {
+			in = !in
+		}
+	}
+	return in
 }
