@@ -180,8 +180,15 @@ func (a *ArcT) MBB() MBB {
 
 func (a *ArcT) IsDark(bbox *MBB) bool {
 	mbb := a.MBB()
-	// TODO: Improve this later.
-	return mbb.Contains(bbox)
+	p0 := Pt{0.5 * (bbox.Max[0] + bbox.Min[0]), 0.5 * (bbox.Max[1] + bbox.Min[1])}
+	if !mbb.ContainsPoint(&p0) {
+		return false
+	}
+	// Since p0 is within mbb, calculate the distance to a circle with the same radius.
+	v := vec2.Sub(&p0, &a.center)
+	r := v.Length()
+	dist := math.Abs(r - a.radius)
+	return dist <= 0.5*a.thickness
 }
 
 // CircleT represents a circle and satisfies the Primitive interface.

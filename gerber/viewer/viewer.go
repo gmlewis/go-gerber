@@ -15,11 +15,13 @@ import (
 
 type viewController struct {
 	g         *gerber.Gerber
+	mbb       gerber.MBB
 	lastW     int
 	lastH     int
 	scale     float64
 	drawLayer []bool
 
+	indexDrill            int
 	indexTopSilkscreen    int
 	indexTopSolderMask    int
 	indexTop              int
@@ -30,14 +32,15 @@ type viewController struct {
 	indexBottom           int
 	indexBottomSilkscreen int
 	indexBottomSolderMask int
-	indexDrill            int
 	indexOutline          int
 }
 
 func initController(g *gerber.Gerber) *viewController {
 	vc := &viewController{
 		g:                     g,
+		mbb:                   g.MBB(),
 		drawLayer:             make([]bool, len(g.Layers)),
+		indexDrill:            -1,
 		indexTopSilkscreen:    -1,
 		indexTopSolderMask:    -1,
 		indexTop:              -1,
@@ -48,7 +51,6 @@ func initController(g *gerber.Gerber) *viewController {
 		indexBottom:           -1,
 		indexBottomSilkscreen: -1,
 		indexBottomSolderMask: -1,
-		indexDrill:            -1,
 		indexOutline:          -1,
 	}
 
@@ -104,6 +106,7 @@ func Gerber(g *gerber.Gerber) {
 			layers.Append(widget.NewHBox(check, layout.NewSpacer()))
 		}
 	}
+	addCheck(vc.indexDrill, "Drill")
 	addCheck(vc.indexTopSilkscreen, "Top Silkscreen")
 	addCheck(vc.indexTopSolderMask, "Top Solder Mask")
 	addCheck(vc.indexTop, "Top")
@@ -114,7 +117,6 @@ func Gerber(g *gerber.Gerber) {
 	addCheck(vc.indexBottom, "Bottom")
 	addCheck(vc.indexBottomSolderMask, "Bottom Solder Mask")
 	addCheck(vc.indexBottomSilkscreen, "Bottom Silkscreen")
-	addCheck(vc.indexDrill, "Drill")
 	addCheck(vc.indexOutline, "Outline")
 	quit := widget.NewHBox(
 		layout.NewSpacer(),
@@ -134,18 +136,17 @@ func Gerber(g *gerber.Gerber) {
 }
 
 func (vc *viewController) pixelFunc(x, y, w, h int) color.Color {
-	mbb := vc.g.MBB()
 	if vc.lastW != w || vc.lastH != h {
 		vc.lastW, vc.lastH = w, h
-		vc.scale = (mbb.Max[0] - mbb.Min[0]) / float64(w)
-		if s := (mbb.Max[1] - mbb.Min[1]) / float64(h); s < vc.scale {
+		vc.scale = (vc.mbb.Max[0] - vc.mbb.Min[0]) / float64(w)
+		if s := (vc.mbb.Max[1] - vc.mbb.Min[1]) / float64(h); s > vc.scale {
 			vc.scale = s
 		}
-		log.Printf("(%v,%v): mbb=%v, scale=%v", w, h, mbb, vc.scale)
+		log.Printf("(%v,%v): mbb=%v, scale=%v", w, h, vc.mbb, vc.scale)
 	}
 
-	ll := gerber.Pt{vc.scale*(float64(x)-0.5) + mbb.Min[0], vc.scale*(float64(h-y-1)-0.5) + mbb.Min[1]}
-	ur := gerber.Pt{vc.scale*(float64(x)+0.5) + mbb.Min[0], vc.scale*(float64(h-y-1)+0.5) + mbb.Min[1]}
+	ll := gerber.Pt{vc.scale*(float64(x)-0.5) + vc.mbb.Min[0], vc.scale*(float64(h-y-1)-0.5) + vc.mbb.Min[1]}
+	ur := gerber.Pt{vc.scale*(float64(x)+0.5) + vc.mbb.Min[0], vc.scale*(float64(h-y-1)+0.5) + vc.mbb.Min[1]}
 	bbox := &gerber.MBB{Min: ll, Max: ur}
 
 	// Draw layers from bottom up
@@ -160,7 +161,6 @@ func (vc *viewController) pixelFunc(x, y, w, h int) color.Color {
 		}
 	}
 	renderLayer(vc.indexOutline, color.RGBA{R: 0, G: 255, B: 0, A: 255})
-	renderLayer(vc.indexDrill, color.RGBA{R: 50, G: 50, B: 50, A: 255})
 	renderLayer(vc.indexBottomSilkscreen, color.RGBA{R: 250, G: 50, B: 250, A: 255})
 	renderLayer(vc.indexBottomSolderMask, color.RGBA{R: 250, G: 50, B: 50, A: 255})
 	renderLayer(vc.indexBottom, color.RGBA{R: 50, G: 50, B: 250, A: 255})
@@ -169,8 +169,9 @@ func (vc *viewController) pixelFunc(x, y, w, h int) color.Color {
 	renderLayer(vc.indexLayer3, color.RGBA{R: 50, G: 50, B: 150, A: 255})
 	renderLayer(vc.indexLayer2, color.RGBA{R: 50, G: 250, B: 250, A: 255})
 	renderLayer(vc.indexTop, color.RGBA{R: 250, G: 50, B: 250, A: 255})
-	renderLayer(vc.indexTopSolderMask, color.RGBA{R: 250, G: 250, B: 50, A: 255})
+	renderLayer(vc.indexTopSolderMask, color.RGBA{R: 0, G: 150, B: 200, A: 255})
 	renderLayer(vc.indexTopSilkscreen, color.RGBA{R: 250, G: 150, B: 0, A: 255})
+	renderLayer(vc.indexDrill, color.RGBA{R: 200, G: 200, B: 200, A: 255})
 
 	if len(colors) == 0 {
 		return color.RGBA{R: 0, G: 0, B: 0, A: 255}
