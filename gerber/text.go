@@ -93,6 +93,12 @@ func (t *TextT) MBB() MBB {
 	return t.render.MBB
 }
 
+func (a *TextT) IsDark(bbox *MBB) bool {
+	mbb := a.MBB()
+	// TODO: Improve this later.
+	return mbb.Contains(bbox)
+}
+
 // Width returns the width of the text in millimeters.
 func (t *TextT) Width() float64 {
 	if err := t.renderText(); err != nil {

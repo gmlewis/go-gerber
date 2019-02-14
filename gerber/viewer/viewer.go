@@ -133,15 +133,48 @@ func Gerber(g *gerber.Gerber) {
 	w.ShowAndRun()
 }
 
-func (v *viewController) pixelFunc(x, y, w, h int) color.Color {
-	if v.lastW != w || v.lastH != h {
-		v.lastW, v.lastH = w, h
-		mbb := v.g.MBB()
-		v.scale = float64(w) / (mbb.Max[0] - mbb.Min[0])
-		if s := float64(h) / (mbb.Max[1] - mbb.Min[1]); s < v.scale {
-			v.scale = s
+func (vc *viewController) pixelFunc(x, y, w, h int) color.Color {
+	mbb := vc.g.MBB()
+	if vc.lastW != w || vc.lastH != h {
+		vc.lastW, vc.lastH = w, h
+		vc.scale = (mbb.Max[0] - mbb.Min[0]) / float64(w)
+		if s := (mbb.Max[1] - mbb.Min[1]) / float64(h); s < vc.scale {
+			vc.scale = s
 		}
-		log.Printf("(%v,%v): mbb=%v, scale=%v", w, h, mbb, v.scale)
+		log.Printf("(%v,%v): mbb=%v, scale=%v", w, h, mbb, vc.scale)
 	}
-	return color.RGBA{R: 0, G: 255, B: 0, A: 255}
+
+	ll := gerber.Pt{vc.scale*(float64(x)-0.5) - mbb.Min[0], vc.scale*(float64(y)-0.5) - mbb.Min[1]}
+	ur := gerber.Pt{vc.scale*(float64(x)+0.5) - mbb.Min[0], vc.scale*(float64(y)+0.5) - mbb.Min[1]}
+	bbox := &gerber.MBB{Min: ll, Max: ur}
+
+	// Draw layers from bottom up
+	var colors []color.Color
+
+	renderLayer := func(index int, color color.Color) {
+		if index < 0 || !vc.drawLayer[index] {
+			return
+		}
+		if vc.g.Layers[index].IsDark(bbox) {
+			colors = append(colors, color)
+		}
+	}
+	renderLayer(vc.indexOutline, color.RGBA{R: 0, G: 255, B: 0, A: 255})
+	renderLayer(vc.indexDrill, color.RGBA{R: 50, G: 50, B: 50, A: 255})
+	renderLayer(vc.indexBottomSilkscreen, color.RGBA{R: 250, G: 50, B: 250, A: 255})
+	renderLayer(vc.indexBottomSolderMask, color.RGBA{R: 250, G: 50, B: 50, A: 255})
+	renderLayer(vc.indexBottom, color.RGBA{R: 50, G: 50, B: 250, A: 255})
+	renderLayer(vc.indexLayer5, color.RGBA{R: 50, G: 150, B: 250, A: 255})
+	renderLayer(vc.indexLayer4, color.RGBA{R: 150, G: 50, B: 250, A: 255})
+	renderLayer(vc.indexLayer3, color.RGBA{R: 50, G: 50, B: 150, A: 255})
+	renderLayer(vc.indexLayer2, color.RGBA{R: 50, G: 250, B: 250, A: 255})
+	renderLayer(vc.indexTop, color.RGBA{R: 250, G: 50, B: 250, A: 255})
+	renderLayer(vc.indexTopSolderMask, color.RGBA{R: 250, G: 250, B: 50, A: 255})
+	renderLayer(vc.indexTopSilkscreen, color.RGBA{R: 250, G: 150, B: 0, A: 255})
+
+	if len(colors) == 0 {
+		return color.RGBA{R: 0, G: 0, B: 0, A: 255}
+	}
+	// blend colors?
+	return colors[len(colors)-1]
 }

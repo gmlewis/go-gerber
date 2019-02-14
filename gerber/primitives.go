@@ -28,6 +28,8 @@ type Primitive interface {
 	Aperture() *Aperture
 	// MBB returns the minimum bounding box in millimeters.
 	MBB() MBB
+	// IsDark returns true if the primitive has dark polygons within bbox.
+	IsDark(bbox *MBB) bool
 }
 
 // Aperture represents the nature of the primitive
@@ -37,7 +39,8 @@ type Aperture struct {
 	Size  float64
 }
 
-func (a *Aperture) MBB() MBB { return MBB{} }
+func (a *Aperture) MBB() MBB              { return MBB{} }
+func (a *Aperture) IsDark(bbox *MBB) bool { return false }
 
 // WriteGerber writes the aperture to the Gerber file.
 func (a *Aperture) WriteGerber(w io.Writer, apertureIndex int) error {
@@ -172,6 +175,12 @@ func (a *ArcT) MBB() MBB {
 	return *a.mbb
 }
 
+func (a *ArcT) IsDark(bbox *MBB) bool {
+	mbb := a.MBB()
+	// TODO: Improve this later.
+	return mbb.Contains(bbox)
+}
+
 // CircleT represents a circle and satisfies the Primitive interface.
 type CircleT struct {
 	pt        Pt
@@ -213,6 +222,12 @@ func (c *CircleT) MBB() MBB {
 	ur := Pt{c.pt[0] + r, c.pt[0] + r}
 	c.mbb = &MBB{Min: ll, Max: ur}
 	return *c.mbb
+}
+
+func (a *CircleT) IsDark(bbox *MBB) bool {
+	mbb := a.MBB()
+	// TODO: Improve this later.
+	return mbb.Contains(bbox)
 }
 
 // LineT represents a line and satisfies the Primitive interface.
@@ -261,6 +276,12 @@ func (l *LineT) MBB() MBB {
 	l.mbb.Max[0] += 0.5 * l.thickness
 	l.mbb.Max[1] += 0.5 * l.thickness
 	return *l.mbb
+}
+
+func (a *LineT) IsDark(bbox *MBB) bool {
+	mbb := a.MBB()
+	// TODO: Improve this later.
+	return mbb.Contains(bbox)
 }
 
 // PolygonT represents a polygon and satisfies the Primitive interface.
@@ -314,4 +335,10 @@ func (p *PolygonT) MBB() MBB {
 		p.mbb.Join(v)
 	}
 	return *p.mbb
+}
+
+func (a *PolygonT) IsDark(bbox *MBB) bool {
+	mbb := a.MBB()
+	// TODO: Improve this later.
+	return mbb.Contains(bbox)
 }
