@@ -157,7 +157,6 @@ func (a *ArcT) MBB() MBB {
 	delta /= float64(segments)
 
 	angle := float64(a.startAngle)
-	a.mbb = &MBB{Min: Pt{a.center[0], a.center[1]}, Max: Pt{a.center[0], a.center[1]}}
 	for i := 0; i < segments; i++ {
 		x1 := a.center[0] + a.xScale*math.Cos(angle)*a.radius
 		y1 := a.center[1] + a.yScale*math.Sin(angle)*a.radius
@@ -169,7 +168,11 @@ func (a *ArcT) MBB() MBB {
 
 		line := Line(x1, y1, x2, y2, a.shape, a.thickness)
 		mbb := line.MBB()
-		a.mbb.Join(&mbb)
+		if a.mbb == nil {
+			a.mbb = &mbb
+		} else {
+			a.mbb.Join(&mbb)
+		}
 	}
 
 	return *a.mbb

@@ -13,7 +13,9 @@ type Gerber struct {
 	FilenamePrefix string
 	// Layers represents the layers making up the Gerber design.
 	Layers []*Layer
-	mbb    *MBB // cached minimum bounding box
+
+	mu  sync.Mutex // protects mbb against multiple requests
+	mbb *MBB       // cached minimum bounding box
 }
 
 // New returns a new Gerber design.
@@ -57,23 +59,25 @@ func (g *Gerber) WriteGerber() error {
 
 // MBB returns the minimum bounding box of the design in millimeters.
 func (g *Gerber) MBB() MBB {
+	g.mu.Lock()
+	defer g.mu.Unlock() // Only calculate MBB once.
 	if g.mbb != nil {
 		return *g.mbb
 	}
 
-	var mu sync.Mutex
+	var finalMu sync.Mutex
 	var wg sync.WaitGroup
 	for _, p := range g.Layers {
 		wg.Add(1)
 		go func(p *Layer) {
 			v := p.MBB()
-			mu.Lock()
+			finalMu.Lock()
 			if g.mbb == nil {
 				g.mbb = &v
 			} else {
 				g.mbb.Join(&v)
 			}
-			mu.Unlock()
+			finalMu.Unlock()
 			wg.Done()
 		}(p)
 	}

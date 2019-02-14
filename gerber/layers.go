@@ -71,6 +71,7 @@ func (l *Layer) MBB() MBB {
 		}
 		l.mbb.Join(&v)
 	}
+
 	return *l.mbb
 }
 

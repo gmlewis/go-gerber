@@ -144,8 +144,8 @@ func (vc *viewController) pixelFunc(x, y, w, h int) color.Color {
 		log.Printf("(%v,%v): mbb=%v, scale=%v", w, h, mbb, vc.scale)
 	}
 
-	ll := gerber.Pt{vc.scale*(float64(x)-0.5) - mbb.Min[0], vc.scale*(float64(y)-0.5) - mbb.Min[1]}
-	ur := gerber.Pt{vc.scale*(float64(x)+0.5) - mbb.Min[0], vc.scale*(float64(y)+0.5) - mbb.Min[1]}
+	ll := gerber.Pt{vc.scale*(float64(x)-0.5) + mbb.Min[0], vc.scale*(float64(h-y-1)-0.5) + mbb.Min[1]}
+	ur := gerber.Pt{vc.scale*(float64(x)+0.5) + mbb.Min[0], vc.scale*(float64(h-y-1)+0.5) + mbb.Min[1]}
 	bbox := &gerber.MBB{Min: ll, Max: ur}
 
 	// Draw layers from bottom up
