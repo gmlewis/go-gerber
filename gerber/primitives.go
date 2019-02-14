@@ -221,16 +221,21 @@ func (c *CircleT) MBB() MBB {
 		return *c.mbb
 	}
 	r := 0.5 * c.thickness
-	ll := Pt{c.pt[0] - r, c.pt[0] - r}
-	ur := Pt{c.pt[0] + r, c.pt[0] + r}
+	ll := Pt{c.pt[0] - r, c.pt[1] - r}
+	ur := Pt{c.pt[0] + r, c.pt[1] + r}
 	c.mbb = &MBB{Min: ll, Max: ur}
 	return *c.mbb
 }
 
-func (a *CircleT) IsDark(bbox *MBB) bool {
-	mbb := a.MBB()
-	// TODO: Improve this later.
-	return mbb.Contains(bbox)
+func (c *CircleT) IsDark(bbox *MBB) bool {
+	mbb := c.MBB()
+	if !mbb.Contains(bbox) {
+		return false
+	}
+	pt := Pt{0.5 * (bbox.Max[0] + bbox.Min[0]), 0.5 * (bbox.Max[1] + bbox.Min[1])}
+	v := vec2.Sub(&c.pt, &pt)
+	dist := v.Length()
+	return dist <= 0.5*c.thickness
 }
 
 // LineT represents a line and satisfies the Primitive interface.
@@ -281,8 +286,8 @@ func (l *LineT) MBB() MBB {
 	return *l.mbb
 }
 
-func (a *LineT) IsDark(bbox *MBB) bool {
-	mbb := a.MBB()
+func (l *LineT) IsDark(bbox *MBB) bool {
+	mbb := l.MBB()
 	// TODO: Improve this later.
 	return mbb.Contains(bbox)
 }
@@ -340,8 +345,8 @@ func (p *PolygonT) MBB() MBB {
 	return *p.mbb
 }
 
-func (a *PolygonT) IsDark(bbox *MBB) bool {
-	mbb := a.MBB()
+func (p *PolygonT) IsDark(bbox *MBB) bool {
+	mbb := p.MBB()
 	// TODO: Improve this later.
 	return mbb.Contains(bbox)
 }

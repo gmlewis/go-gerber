@@ -93,8 +93,8 @@ func (t *TextT) MBB() MBB {
 	return t.render.MBB
 }
 
-func (a *TextT) IsDark(bbox *MBB) bool {
-	mbb := a.MBB()
+func (t *TextT) IsDark(bbox *MBB) bool {
+	mbb := t.MBB()
 	// TODO: Improve this later.
 	return mbb.Contains(bbox)
 }
