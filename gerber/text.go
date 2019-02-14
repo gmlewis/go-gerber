@@ -37,12 +37,13 @@ type TextOpts = fonts.TextOpts
 
 // TextT represents text and satisfies the Primitive interface.
 type TextT struct {
-	x, y, xScale float64 // x, y in Gerber units (nm)
-	opts         *TextOpts
-	message      string
-	fontName     string
-	pts          float64
-	render       *fonts.Render
+	x, y     float64 // in mm
+	xScale   float64
+	opts     *TextOpts
+	message  string
+	fontName string
+	pts      float64
+	render   *fonts.Render
 }
 
 // Text returns a text primitive.
@@ -63,8 +64,8 @@ func Text(x, y, xScale float64, message, fontName string, pts float64, opts *Tex
 	}
 
 	return &TextT{
-		x:        sf * x,
-		y:        sf * y,
+		x:        x,
+		y:        y,
 		xScale:   xScale,
 		opts:     opts,
 		message:  message,
@@ -75,7 +76,7 @@ func Text(x, y, xScale float64, message, fontName string, pts float64, opts *Tex
 
 func (t *TextT) renderText() error {
 	if t.render == nil {
-		yScale := sf * t.pts * mmPerPt
+		yScale := t.pts * mmPerPt
 		xScale := t.xScale * yScale
 		var err error
 		if t.render, err = fonts.Text(t.x, t.y, xScale, yScale, t.message, t.fontName, t.opts); err != nil {
@@ -98,7 +99,7 @@ func (t *TextT) Width() float64 {
 		log.Fatal(err)
 	}
 	width := t.render.MBB.Max[0] - t.render.MBB.Min[0]
-	return width / sf
+	return width
 }
 
 // Height returns the height of the text in millimeters
@@ -107,7 +108,7 @@ func (t *TextT) Height() float64 {
 		log.Fatal(err)
 	}
 	height := t.render.MBB.Max[1] - t.render.MBB.Min[1]
-	return height / sf
+	return height
 }
 
 // WriteGerber writes the primitive to the Gerber file.
@@ -130,12 +131,12 @@ func (t *TextT) WriteGerber(w io.Writer, apertureIndex int) error {
 		io.WriteString(w, "G36*\n")
 		for i, pt := range poly.Pts {
 			if i == 0 {
-				fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+pt[0]), int(0.5+pt[1]))
+				fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+sf*pt[0]), int(0.5+sf*pt[1]))
 				continue
 			}
-			fmt.Fprintf(w, "X%06dY%06dD01*\n", int(0.5+pt[0]), int(0.5+pt[1]))
+			fmt.Fprintf(w, "X%06dY%06dD01*\n", int(0.5+sf*pt[0]), int(0.5+sf*pt[1]))
 		}
-		fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+poly.Pts[0][0]), int(0.5+poly.Pts[0][1]))
+		fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+sf*poly.Pts[0][0]), int(0.5+sf*poly.Pts[0][1]))
 		io.WriteString(w, "G37*\n")
 	}
 

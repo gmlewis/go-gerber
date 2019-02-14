@@ -3,6 +3,7 @@ package viewer
 
 import (
 	"image/color"
+	"log"
 
 	"fyne.io/fyne"
 	"fyne.io/fyne/app"
@@ -13,7 +14,10 @@ import (
 )
 
 type viewController struct {
-	g *gerber.Gerber
+	g     *gerber.Gerber
+	lastW int
+	lastH int
+	scale float64
 }
 
 func Gerber(g *gerber.Gerber) {
@@ -79,5 +83,14 @@ func Gerber(g *gerber.Gerber) {
 }
 
 func (v *viewController) pixelFunc(x, y, w, h int) color.Color {
+	if v.lastW != w || v.lastH != h {
+		v.lastW, v.lastH = w, h
+		mbb := v.g.MBB()
+		v.scale = float64(w) / (mbb.Max[0] - mbb.Min[0])
+		if s := float64(h) / (mbb.Max[1] - mbb.Min[1]); s < v.scale {
+			v.scale = s
+		}
+		log.Printf("(%v,%v): mbb=%v, scale=%v", w, h, mbb, v.scale)
+	}
 	return color.RGBA{R: 0, G: 255, B: 0, A: 255}
 }
