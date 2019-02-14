@@ -243,17 +243,23 @@ type LineT struct {
 	p1, p2    Pt
 	shape     Shape
 	thickness float64
-	mbb       *MBB // cached minimum bounding box
+	mbb       *MBB    // cached minimum bounding box
+	length    float64 // cached length of the line
 }
 
 // Line returns a line primitive.
 // All dimensions are in millimeters.
 func Line(x1, y1, x2, y2 float64, shape Shape, thickness float64) *LineT {
+	p1 := Pt{x1, y1}
+	p2 := Pt{x2, y2}
+	v := vec2.Sub(&p1, &p2)
+	length := v.Length()
 	return &LineT{
-		p1:        Pt{x1, y1},
-		p2:        Pt{x2, y2},
+		p1:        p1,
+		p2:        p2,
 		shape:     shape,
 		thickness: thickness,
+		length:    length,
 	}
 }
 
@@ -288,8 +294,18 @@ func (l *LineT) MBB() MBB {
 
 func (l *LineT) IsDark(bbox *MBB) bool {
 	mbb := l.MBB()
-	// TODO: Improve this later.
-	return mbb.Contains(bbox)
+	if !mbb.Contains(bbox) {
+		return false
+	}
+	p0 := Pt{0.5 * (bbox.Max[0] + bbox.Min[0]), 0.5 * (bbox.Max[1] + bbox.Min[1])}
+	if l.length == 0 {
+		v := vec2.Sub(&l.p1, &p0)
+		dist := v.Length()
+		return dist <= 0.5*l.thickness
+	}
+	num := math.Abs((l.p2[1]-l.p1[1])*p0[0] - (l.p2[0]-l.p1[0])*p0[1] + l.p2[0]*l.p1[1] - l.p2[1]*l.p1[0])
+	dist := num / l.length
+	return dist <= 0.5*l.thickness
 }
 
 // PolygonT represents a polygon and satisfies the Primitive interface.
