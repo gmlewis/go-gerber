@@ -4,6 +4,7 @@ package viewer
 import (
 	"image/color"
 	"log"
+	"math"
 
 	"fyne.io/fyne"
 	"fyne.io/fyne/app"
@@ -20,6 +21,8 @@ type viewController struct {
 	lastH     int
 	scale     float64
 	drawLayer []bool
+	app       fyne.App
+	canvasObj fyne.CanvasObject
 
 	// These control the panning within the drawing area.
 	xOffset int
@@ -39,9 +42,10 @@ type viewController struct {
 	indexOutline          int
 }
 
-func initController(g *gerber.Gerber) *viewController {
+func initController(g *gerber.Gerber, app fyne.App) *viewController {
 	vc := &viewController{
 		g:                     g,
+		app:                   app,
 		mbb:                   g.MBB(),
 		drawLayer:             make([]bool, len(g.Layers)),
 		indexDrill:            -1,
@@ -95,9 +99,10 @@ func initController(g *gerber.Gerber) *viewController {
 func Gerber(g *gerber.Gerber) {
 	a := app.New()
 
-	vc := initController(g)
+	vc := initController(g, a) // Expensive! Builds quadtree for polygons.
 	c := canvas.NewRaster(vc.pixelFunc)
 	c.SetMinSize(fyne.Size{Width: 800, Height: 800})
+	vc.canvasObj = c
 
 	layers := widget.NewVBox()
 	addCheck := func(index int, label string) {
@@ -128,6 +133,8 @@ func Gerber(g *gerber.Gerber) {
 	)
 
 	w := a.NewWindow("Gerber viewer")
+	w.Canvas().SetOnTypedRune(vc.OnTypedRune)
+	w.Canvas().SetOnTypedKey(vc.OnTypedKey)
 	w.SetContent(
 		fyne.NewContainerWithLayout(
 			layout.NewBorderLayout(nil, quit, nil, layers),
@@ -137,6 +144,46 @@ func Gerber(g *gerber.Gerber) {
 		))
 
 	w.ShowAndRun()
+}
+
+func (vc *viewController) OnTypedRune(key rune) {
+	log.Printf("rune=%+q", key)
+	switch key {
+	case 'q': // TODO: Switch this to Alt-q when available.
+		vc.app.Quit()
+	case '-', '_':
+		vc.zoom(0.25)
+	case '+', '=':
+		vc.zoom(-0.25)
+	}
+}
+
+func (vc *viewController) OnTypedKey(event *fyne.KeyEvent) {
+	if event == nil {
+		return
+	}
+	log.Printf("event=%#v", *event)
+	switch event.Name {
+	case "Up":
+		vc.pan(0, -vc.canvasObj.Size().Height/5)
+	case "Down":
+		vc.pan(0, vc.canvasObj.Size().Height/5)
+	case "Left":
+		vc.pan(vc.canvasObj.Size().Width/5, 0)
+	case "Right":
+		vc.pan(-vc.canvasObj.Size().Width/5, 0)
+	}
+}
+
+func (vc *viewController) zoom(amount float64) {
+	vc.scale = math.Exp2(amount) * vc.scale
+	canvas.Refresh(vc.canvasObj)
+}
+
+func (vc *viewController) pan(dx, dy int) {
+	vc.xOffset += dx
+	vc.yOffset += dy
+	canvas.Refresh(vc.canvasObj)
 }
 
 func (vc *viewController) pixelFunc(x, y, w, h int) color.Color {
