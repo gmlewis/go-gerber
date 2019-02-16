@@ -271,7 +271,11 @@ func (vc *viewController) Refresh() {
 			return
 		}
 		r, g, b, a := color.RGBA()
-		dc.SetRGBA(float64(r)*cs, float64(g)*cs, float64(b)*cs, float64(a)*cs)
+		fr, fg, fb, fa := float64(r)*cs, float64(g)*cs, float64(b)*cs, float64(a)*cs
+		foreground := func() {
+			dc.SetRGBA(fr, fg, fb, fa)
+		}
+		foreground()
 		layer := vc.g.Layers[index]
 		for _, p := range layer.Primitives {
 			mbb := p.MBB()
@@ -289,6 +293,22 @@ func (vc *viewController) Refresh() {
 				dc.SetLineWidth(v.Thickness * vc.scale)
 				dc.DrawLine(xf(v.P1[0]), yf(v.P1[1]), xf(v.P2[0]), yf(v.P2[1]))
 				dc.Stroke()
+			case *gerber.TextT:
+				for _, poly := range v.Render.Polygons {
+					if poly.Dark {
+						foreground()
+					} else {
+						dc.SetRGB(0, 0, 0)
+					}
+					for i, pt := range poly.Pts {
+						if i == 0 {
+							dc.MoveTo(xf(pt[0]), yf(pt[1]))
+						} else {
+							dc.LineTo(xf(pt[0]), yf(pt[1]))
+						}
+					}
+					dc.Fill()
+				}
 			default:
 				log.Printf("%T not yet supported", v)
 			}

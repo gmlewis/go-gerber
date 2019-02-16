@@ -43,7 +43,7 @@ type TextT struct {
 	message  string
 	fontName string
 	pts      float64
-	render   *fonts.Render
+	Render   *fonts.Render
 }
 
 // Text returns a text primitive.
@@ -75,11 +75,11 @@ func Text(x, y, xScale float64, message, fontName string, pts float64, opts *Tex
 }
 
 func (t *TextT) renderText() error {
-	if t.render == nil {
+	if t.Render == nil {
 		yScale := t.pts * mmPerPt
 		xScale := t.xScale * yScale
 		var err error
-		if t.render, err = fonts.Text(t.x, t.y, xScale, yScale, t.message, t.fontName, t.opts); err != nil {
+		if t.Render, err = fonts.Text(t.x, t.y, xScale, yScale, t.message, t.fontName, t.opts); err != nil {
 			return err
 		}
 	}
@@ -90,7 +90,7 @@ func (t *TextT) MBB() MBB {
 	if err := t.renderText(); err != nil {
 		log.Fatal(err)
 	}
-	return t.render.MBB
+	return t.Render.MBB
 }
 
 // Width returns the width of the text in millimeters.
@@ -98,7 +98,7 @@ func (t *TextT) Width() float64 {
 	if err := t.renderText(); err != nil {
 		log.Fatal(err)
 	}
-	width := t.render.MBB.Max[0] - t.render.MBB.Min[0]
+	width := t.Render.MBB.Max[0] - t.Render.MBB.Min[0]
 	return width
 }
 
@@ -107,7 +107,7 @@ func (t *TextT) Height() float64 {
 	if err := t.renderText(); err != nil {
 		log.Fatal(err)
 	}
-	height := t.render.MBB.Max[1] - t.render.MBB.Min[1]
+	height := t.Render.MBB.Max[1] - t.Render.MBB.Min[1]
 	return height
 }
 
@@ -118,7 +118,7 @@ func (t *TextT) WriteGerber(w io.Writer, apertureIndex int) error {
 	}
 
 	currentDark := true
-	for _, poly := range t.render.Polygons {
+	for _, poly := range t.Render.Polygons {
 		if poly.Dark && !currentDark {
 			io.WriteString(w, "%LPD*%\n")
 			currentDark = true
