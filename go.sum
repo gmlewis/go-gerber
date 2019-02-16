@@ -3,6 +3,7 @@ fyne.io/fyne v0.0.0-20190213212017-954a85695c81/go.mod h1:7zZ/iK2TrnF2/9eDvB7EEb
 fyne.io/fyne v0.0.0-20190215130116-145de86e9281/go.mod h1:7zZ/iK2TrnF2/9eDvB7EEbTtKdbHzQfREhUyFmvAKeM=
 fyne.io/fyne v0.0.0-20190215223428-6559b5634f62 h1:RTIrSCTDZM++woxnxAh0ClgLm1XDBQ7loriVkWZPReU=
 fyne.io/fyne v0.0.0-20190215223428-6559b5634f62/go.mod h1:7zZ/iK2TrnF2/9eDvB7EEbTtKdbHzQfREhUyFmvAKeM=
+fyne.io/fyne v0.0.0-20190216115544-28c4d7642bbf h1:YDF0Uv/J2K6OrJtyD3XM3InBLutec0IRj9OhXCz+TZM=
 fyne.io/fyne v0.0.0-20190216115544-28c4d7642bbf/go.mod h1:7zZ/iK2TrnF2/9eDvB7EEbTtKdbHzQfREhUyFmvAKeM=
 github.com/barnex/fmath v0.0.0-20150108074215-ec9671f295c2/go.mod h1:G7XW+2O6Hk/x6OP8AuwZjI8ZTyXvKDTTKaRK92gapfk=
 github.com/fogleman/gg v1.2.0 h1:Z0uOlqo+EbPQwdbrpKV1/jEcefXGPICDtGmS/gwly30=
@@ -21,10 +22,14 @@ github.com/gmlewis/go-fonts v0.0.3 h1:RcU8C8EUJpKDm36WRe3gane+3ANSevHHMvLFy5L3UZ
 github.com/gmlewis/go-fonts v0.0.3/go.mod h1:ouM52c2Hy/3E9A0a36qcSbJZKPD5ZeVEUNVUfCs5e0s=
 github.com/gmlewis/go-fonts v0.0.4 h1:H+aYDkC8JhpsEd0hkmss3+kaNr/EeWDKobW/+kv9o80=
 github.com/gmlewis/go-fonts v0.0.4/go.mod h1:ouM52c2Hy/3E9A0a36qcSbJZKPD5ZeVEUNVUfCs5e0s=
+github.com/gmlewis/go-fonts v0.0.5 h1:hNIpqKEowen4t6+qm2Kg8oOO4atLlAvYtoSkuoeYUfI=
+github.com/gmlewis/go-fonts v0.0.5/go.mod h1:p8T5phl67ujcsZTCrDyyOiEiG9cf/j0xkXpV3g25Zs0=
 github.com/gmlewis/go3d v0.0.0-20190128014203-bf15e82649fa h1:Jz+gB6ErNCS0EYYApKMgy/xKwP2cxJkLgY/jPMvLgqo=
 github.com/gmlewis/go3d v0.0.0-20190128014203-bf15e82649fa/go.mod h1:+/uN50S5WWVVyL5tKuhhWfgd+xoVtqm2a/0UcPDudTY=
 github.com/gmlewis/go3d v0.0.0-20190216050356-fc1b5a36db1f/go.mod h1:+/uN50S5WWVVyL5tKuhhWfgd+xoVtqm2a/0UcPDudTY=
 github.com/gmlewis/go3d v0.0.0-20190216150727-a7d18ec47524/go.mod h1:+/uN50S5WWVVyL5tKuhhWfgd+xoVtqm2a/0UcPDudTY=
+github.com/gmlewis/go3d v0.0.1 h1:QxKs1hMHMj6nv9AJLV0lBQaUFSKSQh5Rlzz48x9qBjM=
+github.com/gmlewis/go3d v0.0.1/go.mod h1:+/uN50S5WWVVyL5tKuhhWfgd+xoVtqm2a/0UcPDudTY=
 github.com/go-gl/gl v0.0.0-20181026044259-55b76b7df9d2 h1:78Hza2KHn2PX1jdydQnffaU2A/xM0g3Nx1xmMdep9Gk=
 github.com/go-gl/gl v0.0.0-20181026044259-55b76b7df9d2/go.mod h1:482civXOzJJCPzJ4ZOX/pwvXBWSnzD4OKMdH4ClKGbk=
 github.com/go-gl/glfw v0.0.0-20181213070059-819e8ce5125f h1:7MsFMbSn8Lcw0blK4+NEOf8DuHoOBDhJsHz04yh13pM=
