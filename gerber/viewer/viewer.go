@@ -6,6 +6,7 @@ import (
 	"image/color"
 	"log"
 	"math"
+	"sync"
 
 	"fyne.io/fyne"
 	"fyne.io/fyne/app"
@@ -19,6 +20,7 @@ import (
 type viewController struct {
 	g         *gerber.Gerber
 	mbb       gerber.MBB
+	center    gerber.Pt
 	lastW     int
 	lastH     int
 	scale     float64
@@ -43,13 +45,18 @@ type viewController struct {
 	indexBottomSilkscreen int
 	indexBottomSolderMask int
 	indexOutline          int
+
+	// mu protects Refresh from being hit multiple times concurrently.
+	mu sync.Mutex
 }
 
 func initController(g *gerber.Gerber, app fyne.App) *viewController {
+	mbb := g.MBB()
 	vc := &viewController{
 		g:                     g,
 		app:                   app,
-		mbb:                   g.MBB(),
+		mbb:                   mbb,
+		center:                gerber.Pt{0.5 * (mbb.Max[0] + mbb.Min[0]), 0.5 * (mbb.Max[1] + mbb.Min[1])},
 		drawLayer:             make([]bool, len(g.Layers)),
 		indexDrill:            -1,
 		indexTopSilkscreen:    -1,
@@ -159,9 +166,9 @@ func (vc *viewController) OnTypedRune(key rune) {
 	case 'q': // TODO: Switch this to Alt-q when available.
 		vc.app.Quit()
 	case '-', '_':
-		vc.zoom(0.25)
-	case '+', '=':
 		vc.zoom(-0.25)
+	case '+', '=':
+		vc.zoom(0.25)
 	}
 }
 
@@ -197,102 +204,64 @@ func (vc *viewController) pan(dx, dy int) {
 	canvas.Refresh(vc.canvasObj)
 }
 
-func (vc *viewController) ApplyTheme() {
-	log.Printf("ApplyTheme")
-}
-
-func (vc *viewController) BackgroundColor() color.Color {
-	return color.RGBA{R: 0, G: 0, B: 0, A: 255}
-}
-
-func (vc *viewController) CreateRenderer() fyne.WidgetRenderer {
-	// log.Printf("CreateRenderer")
-	return vc
-}
-
-func (vc *viewController) Hide() {
-	// log.Printf("Hide")
-	vc.canvasObj.Hide()
-}
-
-func (vc *viewController) Layout(size fyne.Size) {
-	log.Printf("Layout")
-}
-
-func (vc *viewController) MinSize() fyne.Size {
-	return vc.canvasObj.MinSize()
-}
-
-func (vc *viewController) Move(pos fyne.Position) {
-	// log.Printf("Move")
-	vc.canvasObj.Move(pos)
-}
-
-func (vc *viewController) Objects() []fyne.CanvasObject {
-	// log.Printf("Objects")
-	return []fyne.CanvasObject{vc.canvasObj}
-}
-
-func (vc *viewController) Position() fyne.Position {
-	// log.Printf("Position")
-	return vc.canvasObj.Position()
+func (vc *viewController) rescale(w, h int) {
+	vc.lastW, vc.lastH = w, h
+	vc.scale = float64(w-1) / (vc.mbb.Max[0] - vc.mbb.Min[0])
+	if s := float64(h-1) / (vc.mbb.Max[1] - vc.mbb.Min[1]); s < vc.scale {
+		vc.scale = s
+	}
 }
 
 func (vc *viewController) Resize(size fyne.Size) {
 	// log.Printf("Resize")
 	if w, h := size.Width, size.Height; vc.lastW != w || vc.lastH != h {
-		// vc.canvasObj.Resize(size)
-		vc.lastW, vc.lastH = w, h
-		vc.scale = (vc.mbb.Max[0] - vc.mbb.Min[0]) / float64(w)
-		if s := (vc.mbb.Max[1] - vc.mbb.Min[1]) / float64(h); s > vc.scale {
-			vc.scale = s
-		}
-		if w == h {
-			vc.xOffset, vc.yOffset = 0, 0
-		} else if w > h {
-			vc.xOffset, vc.yOffset = (w-h)/2, 0
-		} else {
-			vc.xOffset, vc.yOffset = 0, (h-w)/2
-		}
+		vc.rescale(w, h)
+		// if w == h {
+		// 	vc.xOffset, vc.yOffset = 0, 0
+		// } else if w > h {
+		// 	vc.xOffset, vc.yOffset = (w-h)/2, 0
+		// } else {
+		// 	vc.xOffset, vc.yOffset = 0, (h-w)/2
+		// }
 		log.Printf("(%v,%v): mbb=%v, scale=%v", w, h, vc.mbb, vc.scale)
 		vc.img = image.NewRGBA(image.Rect(0, 0, w, h))
 		vc.Refresh()
 	}
 }
 
-func (vc *viewController) Show() {
-	// log.Printf("Show")
-	vc.canvasObj.Show()
+func (vc *viewController) MBB() *gerber.MBB {
+	// a vc.Offset of (0,0) means to center the design.
+	xOffset, yOffset := float64(-vc.xOffset)/vc.scale, float64(-vc.yOffset)/vc.scale
+	halfWidth, halfHeight := 0.5*float64(vc.lastW-1)/vc.scale, 0.5*float64(vc.lastH-1)/vc.scale
+	ll := gerber.Pt{
+		vc.center[0] + xOffset - halfWidth,
+		vc.center[1] + yOffset - halfHeight,
+	}
+	ur := gerber.Pt{
+		vc.center[0] + xOffset + halfWidth,
+		vc.center[1] + yOffset + halfHeight,
+	}
+	return &gerber.MBB{Min: ll, Max: ur}
 }
 
-func (vc *viewController) Size() fyne.Size {
-	// log.Printf("Size")
-	return vc.canvasObj.Size()
+func (vc *viewController) xf(bbox *gerber.MBB) func(x float64) float64 {
+	return func(x float64) float64 {
+		return vc.scale * (x - bbox.Min[0])
+	}
 }
 
-func (vc *viewController) Visible() bool {
-	// log.Printf("Visible")
-	return vc.canvasObj.Visible()
+func (vc *viewController) yf(bbox *gerber.MBB) func(y float64) float64 {
+	return func(y float64) float64 {
+		return vc.scale * (bbox.Max[1] - y)
+	}
 }
 
 func (vc *viewController) Refresh() {
 	const cs = 1.0 / float64(0xffff)
-	ll := gerber.Pt{
-		vc.scale*(float64(-vc.xOffset)) + vc.mbb.Min[0],
-		vc.scale*(float64(-vc.yOffset)) + vc.mbb.Min[1],
-	}
-	ur := gerber.Pt{
-		vc.scale*(float64(vc.lastW-1-vc.xOffset)) + vc.mbb.Min[0],
-		vc.scale*(float64(vc.lastH-1-vc.yOffset)) + vc.mbb.Min[1],
-	}
-	bbox := &gerber.MBB{Min: ll, Max: ur}
+	bbox := vc.MBB()
 	log.Printf("Refresh: MBB=%v", bbox)
-	xf := func(x float64) float64 {
-		return (x-vc.mbb.Min[0])/vc.scale + float64(vc.xOffset)
-	}
-	yf := func(y float64) float64 {
-		return float64(vc.lastH) - ((y-vc.mbb.Min[1])/vc.scale + float64(vc.yOffset))
-	}
+	xf := vc.xf(bbox)
+	yf := vc.yf(bbox)
 
 	dc := gg.NewContextForImage(vc.img)
 	dc.SetRGB(0, 0, 0)
@@ -313,11 +282,11 @@ func (vc *viewController) Refresh() {
 			switch v := p.(type) {
 			case *gerber.CircleT:
 				x, y, r := 0.5*(mbb.Min[0]+mbb.Max[0]), 0.5*(mbb.Min[1]+mbb.Max[1]), 0.5*(mbb.Max[0]-mbb.Min[0])
-				dc.DrawCircle(xf(x), yf(y), r/vc.scale)
+				dc.DrawCircle(xf(x), yf(y), r*vc.scale)
 				dc.Fill()
 			case *gerber.LineT:
 				// TODO: account for line shape.
-				dc.SetLineWidth(v.Thickness / vc.scale)
+				dc.SetLineWidth(v.Thickness * vc.scale)
 				dc.DrawLine(xf(v.P1[0]), yf(v.P1[1]), xf(v.P2[0]), yf(v.P2[1]))
 				dc.Stroke()
 			default:
@@ -342,6 +311,8 @@ func (vc *viewController) Refresh() {
 }
 
 func (vc *viewController) pixelFunc(x, y, w, h int) color.Color {
+	vc.mu.Lock()
 	vc.Resize(fyne.Size{Width: w, Height: h})
+	vc.mu.Unlock()
 	return vc.img.At(x, y)
 }
