@@ -287,6 +287,12 @@ func (vc *viewController) Refresh() {
 	}
 	bbox := &gerber.MBB{Min: ll, Max: ur}
 	log.Printf("Refresh: MBB=%v", bbox)
+	xf := func(x float64) float64 {
+		return (x-vc.mbb.Min[0])/vc.scale + float64(vc.xOffset)
+	}
+	yf := func(y float64) float64 {
+		return float64(vc.lastH) - ((y-vc.mbb.Min[1])/vc.scale + float64(vc.yOffset))
+	}
 
 	dc := gg.NewContextForImage(vc.img)
 	dc.SetRGB(0, 0, 0)
@@ -300,16 +306,20 @@ func (vc *viewController) Refresh() {
 		layer := vc.g.Layers[index]
 		for _, p := range layer.Primitives {
 			mbb := p.MBB()
-			if !bbox.Contains(&mbb) {
+			if !bbox.Intersects(&mbb) {
 				continue
 			}
 			// Render this primitive.
 			switch v := p.(type) {
 			case *gerber.CircleT:
-				log.Printf("Render circle %v", mbb)
 				x, y, r := 0.5*(mbb.Min[0]+mbb.Max[0]), 0.5*(mbb.Min[1]+mbb.Max[1]), 0.5*(mbb.Max[0]-mbb.Min[0])
-				dc.DrawCircle(x/vc.scale-float64(vc.xOffset), y/vc.scale-float64(vc.yOffset), r/vc.scale)
+				dc.DrawCircle(xf(x), yf(y), r/vc.scale)
 				dc.Fill()
+			case *gerber.LineT:
+				// TODO: account for line shape.
+				dc.SetLineWidth(v.Thickness / vc.scale)
+				dc.DrawLine(xf(v.P1[0]), yf(v.P1[1]), xf(v.P2[0]), yf(v.P2[1]))
+				dc.Stroke()
 			default:
 				log.Printf("%T not yet supported", v)
 			}

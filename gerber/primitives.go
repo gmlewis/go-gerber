@@ -221,11 +221,10 @@ func (c *CircleT) MBB() MBB {
 
 // LineT represents a line and satisfies the Primitive interface.
 type LineT struct {
-	p1, p2    Pt
-	shape     Shape
-	thickness float64
-	mbb       *MBB    // cached minimum bounding box
-	length    float64 // cached length of the line
+	P1, P2    Pt
+	Shape     Shape
+	Thickness float64
+	mbb       *MBB // cached minimum bounding box
 }
 
 // Line returns a line primitive.
@@ -233,30 +232,27 @@ type LineT struct {
 func Line(x1, y1, x2, y2 float64, shape Shape, thickness float64) *LineT {
 	p1 := Pt{x1, y1}
 	p2 := Pt{x2, y2}
-	v := vec2.Sub(&p1, &p2)
-	length := v.Length()
 	return &LineT{
-		p1:        p1,
-		p2:        p2,
-		shape:     shape,
-		thickness: thickness,
-		length:    length,
+		P1:        p1,
+		P2:        p2,
+		Shape:     shape,
+		Thickness: thickness,
 	}
 }
 
 // WriteGerber writes the primitive to the Gerber file.
 func (l *LineT) WriteGerber(w io.Writer, apertureIndex int) error {
 	fmt.Fprintf(w, "G54D%d*\n", apertureIndex)
-	fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+sf*(l.p1[0])), int(0.5+sf*(l.p1[1])))
-	fmt.Fprintf(w, "X%06dY%06dD01*\n", int(0.5+sf*(l.p2[0])), int(0.5+sf*(l.p2[1])))
+	fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+sf*(l.P1[0])), int(0.5+sf*(l.P1[1])))
+	fmt.Fprintf(w, "X%06dY%06dD01*\n", int(0.5+sf*(l.P2[0])), int(0.5+sf*(l.P2[1])))
 	return nil
 }
 
 // Aperture returns the primitive's desired aperture.
 func (l *LineT) Aperture() *Aperture {
 	return &Aperture{
-		Shape: l.shape,
-		Size:  l.thickness,
+		Shape: l.Shape,
+		Size:  l.Thickness,
 	}
 }
 
@@ -264,12 +260,12 @@ func (l *LineT) MBB() MBB {
 	if l.mbb != nil {
 		return *l.mbb
 	}
-	l.mbb = &MBB{Min: l.p1, Max: l.p1}
-	l.mbb.Join(&MBB{Min: l.p2, Max: l.p2})
-	l.mbb.Min[0] -= 0.5 * l.thickness
-	l.mbb.Min[1] -= 0.5 * l.thickness
-	l.mbb.Max[0] += 0.5 * l.thickness
-	l.mbb.Max[1] += 0.5 * l.thickness
+	l.mbb = &MBB{Min: l.P1, Max: l.P1}
+	l.mbb.Join(&MBB{Min: l.P2, Max: l.P2})
+	l.mbb.Min[0] -= 0.5 * l.Thickness
+	l.mbb.Min[1] -= 0.5 * l.Thickness
+	l.mbb.Max[0] += 0.5 * l.Thickness
+	l.mbb.Max[1] += 0.5 * l.Thickness
 	return *l.mbb
 }
 

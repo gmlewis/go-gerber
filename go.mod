@@ -4,7 +4,7 @@ require (
 	fyne.io/fyne v0.0.0-20190215223428-6559b5634f62
 	github.com/fogleman/gg v1.2.0
 	github.com/gmlewis/go-fonts v0.0.4
-	github.com/gmlewis/go3d v0.0.0-20190128014203-bf15e82649fa
+	github.com/gmlewis/go3d v0.0.0-20190216050356-fc1b5a36db1f
 	github.com/go-gl/gl v0.0.0-20181026044259-55b76b7df9d2 // indirect
 	github.com/go-gl/glfw v0.0.0-20181213070059-819e8ce5125f // indirect
 	github.com/goki/freetype v0.0.0-20181231101311-fa8a33aabaff // indirect
