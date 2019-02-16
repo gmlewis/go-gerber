@@ -77,19 +77,20 @@ func Point(x, y float64) Pt {
 
 // ArcT represents an arc and satisfies the Primitive interface.
 type ArcT struct {
-	center     Pt
-	radius     float64
-	shape      Shape
-	xScale     float64
-	yScale     float64
-	startAngle float64
-	endAngle   float64
-	thickness  float64
+	Center     Pt
+	Radius     float64
+	Shape      Shape
+	XScale     float64
+	YScale     float64
+	StartAngle float64
+	EndAngle   float64
+	Thickness  float64
 	mbb        *MBB // cached minimum bounding box
 }
 
 // Arc returns an arc primitive.
-// All dimensions are in millimeters. Angles are in degrees.
+// All dimensions are in millimeters.
+// Angles are specified in degrees (and stored as radians).
 func Arc(
 	center Pt,
 	radius float64,
@@ -100,36 +101,36 @@ func Arc(
 		startAngle, endAngle = endAngle, startAngle
 	}
 	return &ArcT{
-		center:     center,
-		radius:     radius,
-		shape:      shape,
-		xScale:     math.Abs(xScale),
-		yScale:     math.Abs(yScale),
-		startAngle: math.Pi * startAngle / 180.0,
-		endAngle:   math.Pi * endAngle / 180.0,
-		thickness:  thickness,
+		Center:     center,
+		Radius:     radius,
+		Shape:      shape,
+		XScale:     math.Abs(xScale),
+		YScale:     math.Abs(yScale),
+		StartAngle: math.Pi * startAngle / 180.0,
+		EndAngle:   math.Pi * endAngle / 180.0,
+		Thickness:  thickness,
 	}
 }
 
 // WriteGerber writes the primitive to the Gerber file.
 func (a *ArcT) WriteGerber(w io.Writer, apertureIndex int) error {
-	delta := a.endAngle - a.startAngle
-	length := delta * a.radius
+	delta := a.EndAngle - a.StartAngle
+	length := delta * a.Radius
 	// Resolution of segments is 0.1mm
 	segments := int(0.5+length*10.0) + 1
 	delta /= float64(segments)
 
-	angle := float64(a.startAngle)
+	angle := float64(a.StartAngle)
 	for i := 0; i < segments; i++ {
-		x1 := a.center[0] + a.xScale*math.Cos(angle)*a.radius
-		y1 := a.center[1] + a.yScale*math.Sin(angle)*a.radius
+		x1 := a.Center[0] + a.XScale*math.Cos(angle)*a.Radius
+		y1 := a.Center[1] + a.YScale*math.Sin(angle)*a.Radius
 
 		angle += delta
 
-		x2 := a.center[0] + a.xScale*math.Cos(angle)*a.radius
-		y2 := a.center[1] + a.yScale*math.Sin(angle)*a.radius
+		x2 := a.Center[0] + a.XScale*math.Cos(angle)*a.Radius
+		y2 := a.Center[1] + a.YScale*math.Sin(angle)*a.Radius
 
-		line := Line(x1, y1, x2, y2, a.shape, a.thickness)
+		line := Line(x1, y1, x2, y2, a.Shape, a.Thickness)
 		line.WriteGerber(w, apertureIndex)
 	}
 	return nil
@@ -138,8 +139,8 @@ func (a *ArcT) WriteGerber(w io.Writer, apertureIndex int) error {
 // Aperture returns the primitive's desired aperture.
 func (a *ArcT) Aperture() *Aperture {
 	return &Aperture{
-		Shape: a.shape,
-		Size:  a.thickness,
+		Shape: a.Shape,
+		Size:  a.Thickness,
 	}
 }
 
@@ -148,23 +149,23 @@ func (a *ArcT) MBB() MBB {
 		return *a.mbb
 	}
 
-	delta := a.endAngle - a.startAngle
-	length := delta * a.radius
+	delta := a.EndAngle - a.StartAngle
+	length := delta * a.Radius
 	// Resolution of segments is 0.1mm
 	segments := int(0.5+length*10.0) + 1
 	delta /= float64(segments)
 
-	angle := float64(a.startAngle)
+	angle := float64(a.StartAngle)
 	for i := 0; i < segments; i++ {
-		x1 := a.center[0] + a.xScale*math.Cos(angle)*a.radius
-		y1 := a.center[1] + a.yScale*math.Sin(angle)*a.radius
+		x1 := a.Center[0] + a.XScale*math.Cos(angle)*a.Radius
+		y1 := a.Center[1] + a.YScale*math.Sin(angle)*a.Radius
 
 		angle += delta
 
-		x2 := a.center[0] + a.xScale*math.Cos(angle)*a.radius
-		y2 := a.center[1] + a.yScale*math.Sin(angle)*a.radius
+		x2 := a.Center[0] + a.XScale*math.Cos(angle)*a.Radius
+		y2 := a.Center[1] + a.YScale*math.Sin(angle)*a.Radius
 
-		line := Line(x1, y1, x2, y2, a.shape, a.thickness)
+		line := Line(x1, y1, x2, y2, a.Shape, a.Thickness)
 		mbb := line.MBB()
 		if a.mbb == nil {
 			a.mbb = &mbb

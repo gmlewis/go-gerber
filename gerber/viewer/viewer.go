@@ -284,6 +284,28 @@ func (vc *viewController) Refresh() {
 			}
 			// Render this primitive.
 			switch v := p.(type) {
+			case *gerber.ArcT:
+				// TODO: account for line shape.
+				dc.SetLineWidth(v.Thickness * vc.scale)
+				delta := v.EndAngle - v.StartAngle
+				length := delta * v.Radius
+				// Resolution of segments is 0.1mm
+				segments := int(0.5+length*10.0) + 1
+				delta /= float64(segments)
+
+				angle := float64(v.StartAngle)
+				for i := 0; i < segments; i++ {
+					x1 := v.Center[0] + v.XScale*math.Cos(angle)*v.Radius
+					y1 := v.Center[1] + v.YScale*math.Sin(angle)*v.Radius
+
+					angle += delta
+
+					x2 := v.Center[0] + v.XScale*math.Cos(angle)*v.Radius
+					y2 := v.Center[1] + v.YScale*math.Sin(angle)*v.Radius
+
+					dc.DrawLine(xf(x1), yf(y1), xf(x2), yf(y2))
+				}
+				dc.Stroke()
 			case *gerber.CircleT:
 				x, y, r := 0.5*(mbb.Min[0]+mbb.Max[0]), 0.5*(mbb.Min[1]+mbb.Max[1]), 0.5*(mbb.Max[0]-mbb.Min[0])
 				dc.DrawCircle(xf(x), yf(y), r*vc.scale)
