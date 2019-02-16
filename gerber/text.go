@@ -93,32 +93,6 @@ func (t *TextT) MBB() MBB {
 	return t.render.MBB
 }
 
-func (t *TextT) IsDark(bbox *MBB) bool {
-	mbb := t.MBB()
-	p0 := Pt{0.5 * (bbox.Max[0] + bbox.Min[0]), 0.5 * (bbox.Max[1] + bbox.Min[1])}
-	if !mbb.ContainsPoint(&p0) {
-		return false
-	}
-
-	var hits []*fonts.Polygon
-	for _, poly := range t.render.Polygons {
-		if poly.MBB.ContainsPoint(&p0) {
-			hits = append(hits, poly)
-		}
-	}
-	if len(hits) == 0 {
-		return false
-	}
-
-	var result bool
-	for _, poly := range hits { // Must process polys in-order!
-		if poly.ContainsPoint(&p0) {
-			result = poly.Dark
-		}
-	}
-	return result
-}
-
 // Width returns the width of the text in millimeters.
 func (t *TextT) Width() float64 {
 	if err := t.renderText(); err != nil {

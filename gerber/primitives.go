@@ -29,8 +29,6 @@ type Primitive interface {
 	Aperture() *Aperture
 	// MBB returns the minimum bounding box in millimeters.
 	MBB() MBB
-	// IsDark returns true if the primitive has dark polygons within bbox.
-	IsDark(bbox *MBB) bool
 }
 
 // Aperture represents the nature of the primitive
@@ -40,8 +38,7 @@ type Aperture struct {
 	Size  float64
 }
 
-func (a *Aperture) MBB() MBB              { return MBB{} }
-func (a *Aperture) IsDark(bbox *MBB) bool { return false }
+func (a *Aperture) MBB() MBB { return MBB{} }
 
 // WriteGerber writes the aperture to the Gerber file.
 func (a *Aperture) WriteGerber(w io.Writer, apertureIndex int) error {
@@ -179,19 +176,6 @@ func (a *ArcT) MBB() MBB {
 	return *a.mbb
 }
 
-func (a *ArcT) IsDark(bbox *MBB) bool {
-	mbb := a.MBB()
-	p0 := Pt{0.5 * (bbox.Max[0] + bbox.Min[0]), 0.5 * (bbox.Max[1] + bbox.Min[1])}
-	if !mbb.ContainsPoint(&p0) {
-		return false
-	}
-	// Since p0 is within mbb, calculate the distance to a circle with the same radius.
-	v := vec2.Sub(&p0, &a.center)
-	r := v.Length()
-	dist := math.Abs(r - a.radius)
-	return dist <= 0.5*a.thickness
-}
-
 // CircleT represents a circle and satisfies the Primitive interface.
 type CircleT struct {
 	pt        Pt
@@ -233,17 +217,6 @@ func (c *CircleT) MBB() MBB {
 	ur := Pt{c.pt[0] + r, c.pt[1] + r}
 	c.mbb = &MBB{Min: ll, Max: ur}
 	return *c.mbb
-}
-
-func (c *CircleT) IsDark(bbox *MBB) bool {
-	mbb := c.MBB()
-	p0 := Pt{0.5 * (bbox.Max[0] + bbox.Min[0]), 0.5 * (bbox.Max[1] + bbox.Min[1])}
-	if !mbb.ContainsPoint(&p0) {
-		return false
-	}
-	v := vec2.Sub(&c.pt, &p0)
-	dist := v.Length()
-	return dist <= 0.5*c.thickness
 }
 
 // LineT represents a line and satisfies the Primitive interface.
@@ -300,31 +273,11 @@ func (l *LineT) MBB() MBB {
 	return *l.mbb
 }
 
-func (l *LineT) IsDark(bbox *MBB) bool {
-	mbb := l.MBB()
-	p0 := Pt{0.5 * (bbox.Max[0] + bbox.Min[0]), 0.5 * (bbox.Max[1] + bbox.Min[1])}
-	if !mbb.ContainsPoint(&p0) {
-		return false
-	}
-	if l.length == 0 {
-		v := vec2.Sub(&l.p1, &p0)
-		dist := v.Length()
-		return dist <= 0.5*l.thickness
-	}
-	num := math.Abs((l.p2[1]-l.p1[1])*p0[0] - (l.p2[0]-l.p1[0])*p0[1] + l.p2[0]*l.p1[1] - l.p2[1]*l.p1[0])
-	dist := num / l.length
-	return dist <= 0.5*l.thickness
-}
-
 // PolygonT represents a polygon and satisfies the Primitive interface.
 type PolygonT struct {
 	offset Pt
 	points []Pt
 	mbb    *MBB // cached minimum bounding box
-
-	// subdivs are subdivided polygons (into 4 quadrants) to reduce the point count.
-	// Whenever polygons contain more than maxPts, they are subdivided recursively.
-	subdivs [4]*PolygonT
 }
 
 // Polygon returns a polygon primitive.
@@ -371,109 +324,5 @@ func (p *PolygonT) MBB() MBB {
 		p.mbb.Join(v)
 	}
 
-	if len(p.points) > maxPts {
-		p.subdivide()
-	}
-
 	return *p.mbb
-}
-
-func (p *PolygonT) subdivide() {
-	center := &Pt{0.5 * (p.mbb.Max[0] + p.mbb.Min[0]), 0.5 * (p.mbb.Max[1] + p.mbb.Min[1])}
-	ul := &MBB{Min: Pt{p.mbb.Min[0], center[1]}, Max: Pt{center[0], p.mbb.Max[1]}}
-	ur := &MBB{Min: Pt{center[0], center[1]}, Max: Pt{p.mbb.Max[0], p.mbb.Max[1]}}
-	ll := &MBB{Min: Pt{p.mbb.Min[0], p.mbb.Min[1]}, Max: Pt{center[0], center[1]}}
-	lr := &MBB{Min: Pt{center[0], p.mbb.Min[1]}, Max: Pt{p.mbb.Max[0], center[1]}}
-	p.subdivs[0] = p.intersect(ul)
-	p.subdivs[1] = p.intersect(ur)
-	p.subdivs[2] = p.intersect(ll)
-	p.subdivs[3] = p.intersect(lr)
-}
-
-func (p *PolygonT) intersect(bbox *MBB) *PolygonT {
-	result := &PolygonT{
-		offset: p.offset,
-		mbb:    bbox,
-	}
-
-	clipPolygon := []Pt{
-		{bbox.Min[0], bbox.Min[1]},
-		{bbox.Max[0], bbox.Min[1]},
-		{bbox.Max[0], bbox.Max[1]},
-		{bbox.Min[0], bbox.Max[1]},
-	}
-	var cp1, cp2, s, e Pt
-	inside := func(p Pt) bool {
-		return (cp2[0]-cp1[0])*(p[1]-cp1[1]) > (cp2[1]-cp1[1])*(p[0]-cp1[0])
-	}
-	intersection := func() (p Pt) {
-		dcx, dcy := cp1[0]-cp2[0], cp1[1]-cp2[1]
-		dpx, dpy := s[0]-e[0], s[1]-e[1]
-		n1 := cp1[0]*cp2[1] - cp1[1]*cp2[0]
-		n2 := s[0]*e[1] - s[1]*e[0]
-		n3 := 1 / (dcx*dpy - dcy*dpx)
-		p[0] = (n1*dpx - n2*dcx) * n3
-		p[1] = (n1*dpy - n2*dcy) * n3
-		return
-	}
-	outputList := p.points
-	cp1 = clipPolygon[len(clipPolygon)-1]
-	for _, cp2 = range clipPolygon { // WP clipEdge is cp1,cp2 here
-		inputList := outputList
-		outputList = nil
-		if len(inputList) == 0 { // No intersection
-			return nil
-		}
-		s = inputList[len(inputList)-1]
-		for _, e = range inputList {
-			if inside(e) {
-				if !inside(s) {
-					outputList = append(outputList, intersection())
-				}
-				outputList = append(outputList, e)
-			} else if inside(s) {
-				outputList = append(outputList, intersection())
-			}
-			s = e
-		}
-		cp1 = cp2
-	}
-	result.points = outputList
-	if len(result.points) > maxPts {
-		result.subdivide()
-	}
-
-	return result
-}
-
-func (p *PolygonT) IsDark(bbox *MBB) bool {
-	mbb := p.MBB()
-	p0 := Pt{0.5 * (bbox.Max[0] + bbox.Min[0]), 0.5 * (bbox.Max[1] + bbox.Min[1])}
-	if !mbb.ContainsPoint(&p0) {
-		return false
-	}
-
-	if len(p.points) < 3 {
-		return false
-	}
-
-	// Don't attempt this algorithm on polygons with more than maxPts.
-	if len(p.points) > maxPts {
-		for _, sd := range p.subdivs {
-			if sd == nil || !sd.mbb.ContainsPoint(&p0) {
-				continue
-			}
-			return sd.IsDark(bbox)
-		}
-		return false
-	}
-
-	var in bool
-	for i, j := 0, len(p.points)-1; i < len(p.points); i, j = i+1, i {
-		if (p.points[i][1] > p0[1]) != (p.points[j][1] > p0[1]) &&
-			p0[0] < (p.points[j][0]-p.points[i][0])*(p0[1]-p.points[i][1])/(p.points[j][1]-p.points[i][1])+p.points[i][0] {
-			in = !in
-		}
-	}
-	return in
 }

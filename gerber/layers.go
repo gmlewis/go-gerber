@@ -75,16 +75,6 @@ func (l *Layer) MBB() MBB {
 	return *l.mbb
 }
 
-// IsDark returns true if the layer has dark polygons within bbox.
-func (l *Layer) IsDark(bbox *MBB) bool {
-	for _, p := range l.Primitives {
-		if p.IsDark(bbox) {
-			return true
-		}
-	}
-	return false
-}
-
 func (g *Gerber) makeLayer(extension string) *Layer {
 	layer := &Layer{
 		Filename:    g.FilenamePrefix + "." + extension,

@@ -2,6 +2,7 @@
 package viewer
 
 import (
+	"image"
 	"image/color"
 	"log"
 	"math"
@@ -11,6 +12,7 @@ import (
 	"fyne.io/fyne/canvas"
 	"fyne.io/fyne/layout"
 	"fyne.io/fyne/widget"
+	"github.com/fogleman/gg"
 	"github.com/gmlewis/go-gerber/gerber"
 )
 
@@ -23,6 +25,7 @@ type viewController struct {
 	drawLayer []bool
 	app       fyne.App
 	canvasObj fyne.CanvasObject
+	img       *image.RGBA
 
 	// These control the panning within the drawing area.
 	xOffset int
@@ -99,7 +102,9 @@ func initController(g *gerber.Gerber, app fyne.App) *viewController {
 func Gerber(g *gerber.Gerber) {
 	a := app.New()
 
-	vc := initController(g, a) // Expensive! Builds quadtree for polygons.
+	vc := initController(g, a)
+	vc.img = image.NewRGBA(image.Rect(0, 0, 800, 800))
+	vc.Resize(fyne.Size{Width: 800, Height: 800})
 	c := canvas.NewRaster(vc.pixelFunc)
 	c.SetMinSize(fyne.Size{Width: 800, Height: 800})
 	vc.canvasObj = c
@@ -109,6 +114,8 @@ func Gerber(g *gerber.Gerber) {
 		if index >= 0 {
 			check := widget.NewCheck(label, func(v bool) {
 				vc.drawLayer[index] = v
+				// widget.Refresh(vc)
+				vc.Refresh()
 				canvas.Refresh(c)
 			})
 			check.SetChecked(true)
@@ -177,17 +184,64 @@ func (vc *viewController) OnTypedKey(event *fyne.KeyEvent) {
 
 func (vc *viewController) zoom(amount float64) {
 	vc.scale = math.Exp2(amount) * vc.scale
+	// widget.Refresh(vc)
+	vc.Refresh()
 	canvas.Refresh(vc.canvasObj)
 }
 
 func (vc *viewController) pan(dx, dy int) {
 	vc.xOffset += dx
 	vc.yOffset += dy
+	// widget.Refresh(vc)
+	vc.Refresh()
 	canvas.Refresh(vc.canvasObj)
 }
 
-func (vc *viewController) pixelFunc(x, y, w, h int) color.Color {
-	if vc.lastW != w || vc.lastH != h {
+func (vc *viewController) ApplyTheme() {
+	log.Printf("ApplyTheme")
+}
+
+func (vc *viewController) BackgroundColor() color.Color {
+	return color.RGBA{R: 0, G: 0, B: 0, A: 255}
+}
+
+func (vc *viewController) CreateRenderer() fyne.WidgetRenderer {
+	// log.Printf("CreateRenderer")
+	return vc
+}
+
+func (vc *viewController) Hide() {
+	// log.Printf("Hide")
+	vc.canvasObj.Hide()
+}
+
+func (vc *viewController) Layout(size fyne.Size) {
+	log.Printf("Layout")
+}
+
+func (vc *viewController) MinSize() fyne.Size {
+	return vc.canvasObj.MinSize()
+}
+
+func (vc *viewController) Move(pos fyne.Position) {
+	// log.Printf("Move")
+	vc.canvasObj.Move(pos)
+}
+
+func (vc *viewController) Objects() []fyne.CanvasObject {
+	// log.Printf("Objects")
+	return []fyne.CanvasObject{vc.canvasObj}
+}
+
+func (vc *viewController) Position() fyne.Position {
+	// log.Printf("Position")
+	return vc.canvasObj.Position()
+}
+
+func (vc *viewController) Resize(size fyne.Size) {
+	// log.Printf("Resize")
+	if w, h := size.Width, size.Height; vc.lastW != w || vc.lastH != h {
+		// vc.canvasObj.Resize(size)
 		vc.lastW, vc.lastH = w, h
 		vc.scale = (vc.mbb.Max[0] - vc.mbb.Min[0]) / float64(w)
 		if s := (vc.mbb.Max[1] - vc.mbb.Min[1]) / float64(h); s > vc.scale {
@@ -201,23 +255,67 @@ func (vc *viewController) pixelFunc(x, y, w, h int) color.Color {
 			vc.xOffset, vc.yOffset = 0, (h-w)/2
 		}
 		log.Printf("(%v,%v): mbb=%v, scale=%v", w, h, vc.mbb, vc.scale)
+		vc.img = image.NewRGBA(image.Rect(0, 0, w, h))
+		vc.Refresh()
 	}
+}
 
-	ll := gerber.Pt{vc.scale*(float64(x-vc.xOffset)-0.5) + vc.mbb.Min[0], vc.scale*(float64(h-y-1-vc.yOffset)-0.5) + vc.mbb.Min[1]}
-	ur := gerber.Pt{vc.scale*(float64(x-vc.xOffset)+0.5) + vc.mbb.Min[0], vc.scale*(float64(h-y-1-vc.yOffset)+0.5) + vc.mbb.Min[1]}
+func (vc *viewController) Show() {
+	// log.Printf("Show")
+	vc.canvasObj.Show()
+}
+
+func (vc *viewController) Size() fyne.Size {
+	// log.Printf("Size")
+	return vc.canvasObj.Size()
+}
+
+func (vc *viewController) Visible() bool {
+	// log.Printf("Visible")
+	return vc.canvasObj.Visible()
+}
+
+func (vc *viewController) Refresh() {
+	const cs = 1.0 / float64(0xffff)
+	ll := gerber.Pt{
+		vc.scale*(float64(-vc.xOffset)) + vc.mbb.Min[0],
+		vc.scale*(float64(-vc.yOffset)) + vc.mbb.Min[1],
+	}
+	ur := gerber.Pt{
+		vc.scale*(float64(vc.lastW-1-vc.xOffset)) + vc.mbb.Min[0],
+		vc.scale*(float64(vc.lastH-1-vc.yOffset)) + vc.mbb.Min[1],
+	}
 	bbox := &gerber.MBB{Min: ll, Max: ur}
+	log.Printf("Refresh: MBB=%v", bbox)
 
-	// Draw layers from bottom up
-	var colors []color.Color
-
+	dc := gg.NewContextForImage(vc.img)
+	dc.SetRGB(0, 0, 0)
+	dc.Clear()
 	renderLayer := func(index int, color color.Color) {
 		if index < 0 || !vc.drawLayer[index] {
 			return
 		}
-		if vc.g.Layers[index].IsDark(bbox) {
-			colors = append(colors, color)
+		r, g, b, a := color.RGBA()
+		dc.SetRGBA(float64(r)*cs, float64(g)*cs, float64(b)*cs, float64(a)*cs)
+		layer := vc.g.Layers[index]
+		for _, p := range layer.Primitives {
+			mbb := p.MBB()
+			if !bbox.Contains(&mbb) {
+				continue
+			}
+			// Render this primitive.
+			switch v := p.(type) {
+			case *gerber.CircleT:
+				log.Printf("Render circle %v", mbb)
+				x, y, r := 0.5*(mbb.Min[0]+mbb.Max[0]), 0.5*(mbb.Min[1]+mbb.Max[1]), 0.5*(mbb.Max[0]-mbb.Min[0])
+				dc.DrawCircle(x/vc.scale-float64(vc.xOffset), y/vc.scale-float64(vc.yOffset), r/vc.scale)
+				dc.Fill()
+			default:
+				log.Printf("%T not yet supported", v)
+			}
 		}
 	}
+	// Draw layers from bottom up
 	renderLayer(vc.indexOutline, color.RGBA{R: 0, G: 255, B: 0, A: 255})
 	renderLayer(vc.indexBottomSilkscreen, color.RGBA{R: 250, G: 50, B: 250, A: 255})
 	renderLayer(vc.indexBottomSolderMask, color.RGBA{R: 250, G: 50, B: 50, A: 255})
@@ -230,10 +328,10 @@ func (vc *viewController) pixelFunc(x, y, w, h int) color.Color {
 	renderLayer(vc.indexTopSolderMask, color.RGBA{R: 0, G: 150, B: 200, A: 255})
 	renderLayer(vc.indexTopSilkscreen, color.RGBA{R: 250, G: 150, B: 0, A: 255})
 	renderLayer(vc.indexDrill, color.RGBA{R: 200, G: 200, B: 200, A: 255})
+	vc.img = dc.Image().(*image.RGBA)
+}
 
-	if len(colors) == 0 {
-		return color.RGBA{R: 0, G: 0, B: 0, A: 255}
-	}
-	// blend colors?
-	return colors[len(colors)-1]
+func (vc *viewController) pixelFunc(x, y, w, h int) color.Color {
+	vc.Resize(fyne.Size{Width: w, Height: h})
+	return vc.img.At(x, y)
 }
