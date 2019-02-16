@@ -272,8 +272,8 @@ func (l *LineT) MBB() MBB {
 
 // PolygonT represents a polygon and satisfies the Primitive interface.
 type PolygonT struct {
-	offset Pt
-	points []Pt
+	Offset Pt
+	Points []Pt
 	mbb    *MBB // cached minimum bounding box
 }
 
@@ -281,8 +281,8 @@ type PolygonT struct {
 // All dimensions are in millimeters.
 func Polygon(offset Pt, filled bool, points []Pt, thickness float64) *PolygonT {
 	return &PolygonT{
-		offset: offset,
-		points: points,
+		Offset: offset,
+		Points: points,
 	}
 }
 
@@ -290,14 +290,14 @@ func Polygon(offset Pt, filled bool, points []Pt, thickness float64) *PolygonT {
 func (p *PolygonT) WriteGerber(w io.Writer, apertureIndex int) error {
 	io.WriteString(w, "G54D11*\n")
 	io.WriteString(w, "G36*\n")
-	for i, pt := range p.points {
+	for i, pt := range p.Points {
 		if i == 0 {
-			fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+sf*(pt[0]+p.offset[0])), int(0.5+sf*(pt[1]+p.offset[1])))
+			fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+sf*(pt[0]+p.Offset[0])), int(0.5+sf*(pt[1]+p.Offset[1])))
 			continue
 		}
-		fmt.Fprintf(w, "X%06dY%06dD01*\n", int(0.5+sf*(pt[0]+p.offset[0])), int(0.5+sf*(pt[1]+p.offset[1])))
+		fmt.Fprintf(w, "X%06dY%06dD01*\n", int(0.5+sf*(pt[0]+p.Offset[0])), int(0.5+sf*(pt[1]+p.Offset[1])))
 	}
-	fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+sf*(p.points[0][0]+p.offset[0])), int(0.5+sf*(p.points[0][1]+p.offset[1])))
+	fmt.Fprintf(w, "X%06dY%06dD02*\n", int(0.5+sf*(p.Points[0][0]+p.Offset[0])), int(0.5+sf*(p.Points[0][1]+p.Offset[1])))
 	io.WriteString(w, "G37*\n")
 	return nil
 }
@@ -311,8 +311,8 @@ func (p *PolygonT) MBB() MBB {
 	if p.mbb != nil {
 		return *p.mbb
 	}
-	for i, pt := range p.points {
-		newPt := Pt{pt[0] + p.offset[0], pt[1] + p.offset[1]}
+	for i, pt := range p.Points {
+		newPt := Pt{pt[0] + p.Offset[0], pt[1] + p.Offset[1]}
 		v := &MBB{Min: newPt, Max: newPt}
 		if i == 0 {
 			p.mbb = v

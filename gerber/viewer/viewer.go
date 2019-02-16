@@ -331,6 +331,16 @@ func (vc *viewController) Refresh() {
 					}
 					dc.Fill()
 				}
+			case *gerber.PolygonT:
+				for i, pt := range v.Points {
+					p := gerber.Pt{pt[0] + v.Offset[0], pt[1] + v.Offset[1]}
+					if i == 0 {
+						dc.MoveTo(xf(p[0]), yf(p[1]))
+					} else {
+						dc.LineTo(xf(p[0]), yf(p[1]))
+					}
+				}
+				dc.Fill()
 			default:
 				log.Printf("%T not yet supported", v)
 			}
