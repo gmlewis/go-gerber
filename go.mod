@@ -1,7 +1,7 @@
 module github.com/gmlewis/go-gerber
 
 require (
-	fyne.io/fyne v0.0.0-20190215130116-145de86e9281
+	fyne.io/fyne v0.0.0-20190215223428-6559b5634f62
 	github.com/fogleman/gg v1.2.0
 	github.com/gmlewis/go-fonts v0.0.4
 	github.com/gmlewis/go3d v0.0.0-20190128014203-bf15e82649fa

@@ -5,7 +5,6 @@ import (
 	"io"
 	"math"
 
-	"github.com/gmlewis/go-fonts/fonts"
 	"github.com/gmlewis/go3d/float64/vec2"
 )
 
@@ -469,9 +468,10 @@ func (p *PolygonT) IsDark(bbox *MBB) bool {
 		return false
 	}
 
-	in := fonts.RayIntersectsSegment(&p0, &p.points[len(p.points)-1], &p.points[0])
-	for i := 1; i < len(p.points); i++ {
-		if fonts.RayIntersectsSegment(&p0, &p.points[i-1], &p.points[i]) {
+	var in bool
+	for i, j := 0, len(p.points)-1; i < len(p.points); i, j = i+1, i {
+		if (p.points[i][1] > p0[1]) != (p.points[j][1] > p0[1]) &&
+			p0[0] < (p.points[j][0]-p.points[i][0])*(p0[1]-p.points[i][1])/(p.points[j][1]-p.points[i][1])+p.points[i][0] {
 			in = !in
 		}
 	}

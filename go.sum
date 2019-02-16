@@ -1,6 +1,8 @@
 fyne.io/fyne v0.0.0-20190213212017-954a85695c81 h1:aumMgF7h+g8AB2MxVhT5p8lb3GRgxVDyLGoT7S43sSA=
 fyne.io/fyne v0.0.0-20190213212017-954a85695c81/go.mod h1:7zZ/iK2TrnF2/9eDvB7EEbTtKdbHzQfREhUyFmvAKeM=
 fyne.io/fyne v0.0.0-20190215130116-145de86e9281/go.mod h1:7zZ/iK2TrnF2/9eDvB7EEbTtKdbHzQfREhUyFmvAKeM=
+fyne.io/fyne v0.0.0-20190215223428-6559b5634f62 h1:RTIrSCTDZM++woxnxAh0ClgLm1XDBQ7loriVkWZPReU=
+fyne.io/fyne v0.0.0-20190215223428-6559b5634f62/go.mod h1:7zZ/iK2TrnF2/9eDvB7EEbTtKdbHzQfREhUyFmvAKeM=
 github.com/barnex/fmath v0.0.0-20150108074215-ec9671f295c2/go.mod h1:G7XW+2O6Hk/x6OP8AuwZjI8ZTyXvKDTTKaRK92gapfk=
 github.com/fogleman/gg v1.2.0 h1:Z0uOlqo+EbPQwdbrpKV1/jEcefXGPICDtGmS/gwly30=
 github.com/fogleman/gg v1.2.0/go.mod h1:R/bRT+9gY/C5z7JzPU0zXsXHKM4/ayA+zqcVNZzPa1k=
