@@ -272,10 +272,10 @@ func (vc *viewController) Refresh() {
 		}
 		r, g, b, a := color.RGBA()
 		fr, fg, fb, fa := float64(r)*cs, float64(g)*cs, float64(b)*cs, float64(a)*cs
-		foreground := func() {
-			dc.SetRGBA(fr, fg, fb, fa)
+		foreground := func(ctx *gg.Context) {
+			ctx.SetRGBA(fr, fg, fb, fa)
 		}
-		foreground()
+		foreground(dc)
 		layer := vc.g.Layers[index]
 		for _, p := range layer.Primitives {
 			mbb := p.MBB()
@@ -316,20 +316,39 @@ func (vc *viewController) Refresh() {
 				dc.DrawLine(xf(v.P1[0]), yf(v.P1[1]), xf(v.P2[0]), yf(v.P2[1]))
 				dc.Stroke()
 			case *gerber.TextT:
+				// Render text into new context, the copy foreground pixels only.
+				bnds := vc.img.Bounds()
+				nc := gg.NewContext(bnds.Max.X, bnds.Max.Y)
+				// nc := gg.NewContextForImage(vc.img)
 				for _, poly := range v.Render.Polygons {
 					if poly.Dark {
-						foreground()
+						foreground(nc)
 					} else {
-						dc.SetRGB(0, 0, 0)
+						nc.SetRGB(0, 0, 0)
 					}
 					for i, pt := range poly.Pts {
 						if i == 0 {
-							dc.MoveTo(xf(pt[0]), yf(pt[1]))
+							nc.MoveTo(xf(pt[0]), yf(pt[1]))
 						} else {
-							dc.LineTo(xf(pt[0]), yf(pt[1]))
+							nc.LineTo(xf(pt[0]), yf(pt[1]))
 						}
 					}
-					dc.Fill()
+					nc.Fill()
+				}
+				llx, lly := int(xf(mbb.Min[0])), int(yf(mbb.Max[1]))
+				urx, ury := int(0.5+xf(mbb.Max[0])), int(0.5+yf(mbb.Min[1]))
+				// log.Printf("ll=(%v,%v), ur=(%v,%v)", llx, lly, urx, ury)
+				img := nc.Image()
+				foreground(dc)
+				for y := lly; y <= ury; y++ {
+					for x := llx; x <= urx; x++ {
+						c := img.At(x, y)
+						cr, cg, cb, _ := c.RGBA()
+						if cr == 0 && cg == 0 && cb == 0 {
+							continue
+						}
+						dc.SetPixel(x, y)
+					}
 				}
 			case *gerber.PolygonT:
 				for i, pt := range v.Points {
