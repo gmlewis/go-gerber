@@ -69,7 +69,7 @@ func TestMBB(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			tt.vc.rescale(tt.w, tt.h)
+			tt.vc.scaleToFit(tt.w, tt.h)
 			if tt.scaleOverride != 0.0 {
 				tt.vc.scale = tt.scaleOverride
 			}

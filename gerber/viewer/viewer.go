@@ -110,8 +110,8 @@ func Gerber(g *gerber.Gerber) {
 	a := app.New()
 
 	vc := initController(g, a)
+	vc.scaleToFit(800, 800)
 	vc.img = image.NewRGBA(image.Rect(0, 0, 800, 800))
-	vc.Resize(fyne.Size{Width: 800, Height: 800})
 	c := canvas.NewRaster(vc.pixelFunc)
 	c.SetMinSize(fyne.Size{Width: 800, Height: 800})
 	vc.canvasObj = c
@@ -123,7 +123,7 @@ func Gerber(g *gerber.Gerber) {
 				vc.drawLayer[index] = v
 				// widget.Refresh(vc)
 				vc.Refresh()
-				canvas.Refresh(c)
+				// canvas.Refresh(c)
 			})
 			check.SetChecked(true)
 			layers.Append(widget.NewHBox(check, layout.NewSpacer()))
@@ -161,14 +161,20 @@ func Gerber(g *gerber.Gerber) {
 }
 
 func (vc *viewController) OnTypedRune(key rune) {
-	log.Printf("rune=%+q", key)
 	switch key {
-	case 'q': // TODO: Switch this to Alt-q when available.
+	case 'q', 'Q': // TODO: Switch this to Alt-q when available.
 		vc.app.Quit()
 	case '-', '_':
 		vc.zoom(-0.25)
 	case '+', '=':
 		vc.zoom(0.25)
+	case 'f', 'F':
+		vc.xOffset, vc.yOffset = 0, 0
+		vc.scaleToFit(vc.lastW, vc.lastH)
+		vc.Refresh()
+		canvas.Refresh(vc.canvasObj)
+	default:
+		log.Printf("Unhandled rune=%+q", key)
 	}
 }
 
@@ -176,7 +182,6 @@ func (vc *viewController) OnTypedKey(event *fyne.KeyEvent) {
 	if event == nil {
 		return
 	}
-	log.Printf("event=%#v", *event)
 	switch event.Name {
 	case "Up":
 		vc.pan(0, -vc.canvasObj.Size().Height/5)
@@ -186,12 +191,13 @@ func (vc *viewController) OnTypedKey(event *fyne.KeyEvent) {
 		vc.pan(vc.canvasObj.Size().Width/5, 0)
 	case "Right":
 		vc.pan(-vc.canvasObj.Size().Width/5, 0)
+	default:
+		log.Printf("Unhandled event=%#v", *event)
 	}
 }
 
 func (vc *viewController) zoom(amount float64) {
 	vc.scale = math.Exp2(amount) * vc.scale
-	// widget.Refresh(vc)
 	vc.Refresh()
 	canvas.Refresh(vc.canvasObj)
 }
@@ -199,31 +205,23 @@ func (vc *viewController) zoom(amount float64) {
 func (vc *viewController) pan(dx, dy int) {
 	vc.xOffset += dx
 	vc.yOffset += dy
-	// widget.Refresh(vc)
+	// TODO: Shift the old image over and only redraw the newly-exposed region.
 	vc.Refresh()
 	canvas.Refresh(vc.canvasObj)
 }
 
-func (vc *viewController) rescale(w, h int) {
+func (vc *viewController) scaleToFit(w, h int) {
 	vc.lastW, vc.lastH = w, h
 	vc.scale = float64(w-1) / (vc.mbb.Max[0] - vc.mbb.Min[0])
 	if s := float64(h-1) / (vc.mbb.Max[1] - vc.mbb.Min[1]); s < vc.scale {
 		vc.scale = s
 	}
+	log.Printf("(%v,%v): mbb=%v, scale=%v", w, h, vc.mbb, vc.scale)
 }
 
-func (vc *viewController) Resize(size fyne.Size) {
-	// log.Printf("Resize")
-	if w, h := size.Width, size.Height; vc.lastW != w || vc.lastH != h {
-		vc.rescale(w, h)
-		// if w == h {
-		// 	vc.xOffset, vc.yOffset = 0, 0
-		// } else if w > h {
-		// 	vc.xOffset, vc.yOffset = (w-h)/2, 0
-		// } else {
-		// 	vc.xOffset, vc.yOffset = 0, (h-w)/2
-		// }
-		log.Printf("(%v,%v): mbb=%v, scale=%v", w, h, vc.mbb, vc.scale)
+func (vc *viewController) Resize(w, h int) {
+	if vc.lastW != w || vc.lastH != h {
+		vc.lastW, vc.lastH = w, h
 		vc.img = image.NewRGBA(image.Rect(0, 0, w, h))
 		vc.Refresh()
 	}
@@ -259,7 +257,7 @@ func (vc *viewController) yf(bbox *gerber.MBB) func(y float64) float64 {
 func (vc *viewController) Refresh() {
 	const cs = 1.0 / float64(0xffff)
 	bbox := vc.MBB()
-	log.Printf("Refresh: MBB=%v", bbox)
+	// log.Printf("Refresh: MBB=%v", bbox)
 	xf := vc.xf(bbox)
 	yf := vc.yf(bbox)
 
@@ -382,8 +380,10 @@ func (vc *viewController) Refresh() {
 }
 
 func (vc *viewController) pixelFunc(x, y, w, h int) color.Color {
-	vc.mu.Lock()
-	vc.Resize(fyne.Size{Width: w, Height: h})
-	vc.mu.Unlock()
+	if vc.lastW != w || vc.lastH != h {
+		vc.mu.Lock()
+		vc.Resize(w, h)
+		vc.mu.Unlock()
+	}
 	return vc.img.At(x, y)
 }
