@@ -4,6 +4,7 @@ package viewer
 import (
 	"image"
 	"image/color"
+	"image/draw"
 	"log"
 	"math"
 	"sync"
@@ -121,9 +122,8 @@ func Gerber(g *gerber.Gerber) {
 		if index >= 0 {
 			check := widget.NewCheck(label, func(v bool) {
 				vc.drawLayer[index] = v
-				// widget.Refresh(vc)
-				vc.Refresh()
-				// canvas.Refresh(c)
+				vc.Refresh(nil)
+				canvas.Refresh(c)
 			})
 			check.SetChecked(true)
 			layers.Append(widget.NewHBox(check, layout.NewSpacer()))
@@ -171,7 +171,7 @@ func (vc *viewController) OnTypedRune(key rune) {
 	case 'f', 'F':
 		vc.xOffset, vc.yOffset = 0, 0
 		vc.scaleToFit(vc.lastW, vc.lastH)
-		vc.Refresh()
+		vc.Refresh(nil)
 		canvas.Refresh(vc.canvasObj)
 	default:
 		log.Printf("Unhandled rune=%+q", key)
@@ -198,15 +198,33 @@ func (vc *viewController) OnTypedKey(event *fyne.KeyEvent) {
 
 func (vc *viewController) zoom(amount float64) {
 	vc.scale = math.Exp2(amount) * vc.scale
-	vc.Refresh()
+	vc.Refresh(nil)
 	canvas.Refresh(vc.canvasObj)
 }
 
 func (vc *viewController) pan(dx, dy int) {
+	if dx == 0 && dy == 0 {
+		return
+	}
 	vc.xOffset += dx
 	vc.yOffset += dy
-	// TODO: Shift the old image over and only redraw the newly-exposed region.
-	vc.Refresh()
+	b := vc.img.Bounds()
+	p := image.Pt(-dx, dy)
+	draw.Draw(vc.img, b, vc.img, b.Min.Add(p), draw.Src)
+	dirtyRect := image.Rectangle{}
+	switch {
+	case dx > 0 && dy == 0: // pan left (image moves right)
+		dirtyRect = b.Intersect(image.Rect(b.Min.X, b.Min.Y, b.Min.X+dx, b.Max.Y))
+	case dx < 0 && dy == 0: // pan right (image moves left)
+		dirtyRect = b.Intersect(image.Rect(b.Max.X+dx, b.Min.Y, b.Max.X, b.Max.Y))
+	case dx == 0 && dy > 0: // pan down (image moves up)
+		dirtyRect = b.Intersect(image.Rect(b.Min.X, b.Max.Y-dy, b.Max.X, b.Max.Y))
+	case dx == 0 && dy < 0: // pan up (image moves down)
+		dirtyRect = b.Intersect(image.Rect(b.Min.X, b.Min.Y, b.Max.X, b.Min.Y-dy))
+	default:
+		log.Printf("Unhandled pan (%v,%v)", dx, dy)
+	}
+	vc.Refresh(&dirtyRect)
 	canvas.Refresh(vc.canvasObj)
 }
 
@@ -223,7 +241,7 @@ func (vc *viewController) Resize(w, h int) {
 	if vc.lastW != w || vc.lastH != h {
 		vc.lastW, vc.lastH = w, h
 		vc.img = image.NewRGBA(image.Rect(0, 0, w, h))
-		vc.Refresh()
+		vc.Refresh(nil)
 	}
 }
 
@@ -254,14 +272,36 @@ func (vc *viewController) yf(bbox *gerber.MBB) func(y float64) float64 {
 	}
 }
 
-func (vc *viewController) Refresh() {
+func (vc *viewController) Refresh(dirtyRect *image.Rectangle) {
 	const cs = 1.0 / float64(0xffff)
 	bbox := vc.MBB()
+
+	var dc *gg.Context
+	if dirtyRect != nil {
+		sx, sy := 1.0/float64(vc.lastW-1), 1.0/float64(vc.lastH-1)
+		fx1, fx2 := sx*float64(dirtyRect.Min.X), sx*float64(dirtyRect.Max.X)
+		fy1, fy2 := sy*float64(vc.lastH-1-dirtyRect.Min.Y), sy*float64(vc.lastH-1-dirtyRect.Max.Y)
+		wx, wy := bbox.Max[0]-bbox.Min[0], bbox.Max[1]-bbox.Min[1]
+		log.Printf("f1=(%v,%v), f2=(%v,%v), w=(%v,%v)", fx1, fy1, fx2, fy2, wx, wy)
+		dc = gg.NewContext(dirtyRect.Max.X-dirtyRect.Min.X, dirtyRect.Max.Y-dirtyRect.Min.Y)
+		ll := gerber.Pt{
+			bbox.Min[0] + fx1*wx,
+			bbox.Min[1] + fy1*wy,
+		}
+		ur := gerber.Pt{
+			bbox.Min[0] + fx2*wx,
+			bbox.Min[1] + fy2*wy,
+		}
+		log.Printf("dirtyRect=%v, old bbox=%v, new bbox=%v", *dirtyRect, *bbox, gerber.MBB{Min: ll, Max: ur})
+		bbox = &gerber.MBB{Min: ll, Max: ur}
+	} else {
+		dc = gg.NewContextForImage(vc.img)
+	}
+
 	// log.Printf("Refresh: MBB=%v", bbox)
 	xf := vc.xf(bbox)
 	yf := vc.yf(bbox)
 
-	dc := gg.NewContextForImage(vc.img)
 	dc.SetRGB(0, 0, 0)
 	dc.Clear()
 	renderLayer := func(index int, color color.Color) {
@@ -376,7 +416,11 @@ func (vc *viewController) Refresh() {
 	renderLayer(vc.indexTopSolderMask, color.RGBA{R: 0, G: 150, B: 200, A: 255})
 	renderLayer(vc.indexTopSilkscreen, color.RGBA{R: 250, G: 150, B: 0, A: 255})
 	renderLayer(vc.indexDrill, color.RGBA{R: 200, G: 200, B: 200, A: 255})
-	vc.img = dc.Image().(*image.RGBA)
+	if dirtyRect != nil {
+		draw.Draw(vc.img, *dirtyRect, dc.Image(), image.Point{0, 0}, draw.Src)
+	} else {
+		vc.img = dc.Image().(*image.RGBA)
+	}
 }
 
 func (vc *viewController) pixelFunc(x, y, w, h int) color.Color {
