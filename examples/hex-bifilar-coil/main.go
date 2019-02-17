@@ -9,18 +9,23 @@ import (
 	"fmt"
 	"log"
 	"math"
+	"os"
+	"runtime/pprof"
 
 	_ "github.com/gmlewis/go-fonts/fonts/freeserif"
 	. "github.com/gmlewis/go-gerber/gerber"
+	"github.com/gmlewis/go-gerber/gerber/viewer"
 )
 
 var (
-	step     = flag.Float64("step", 0.02, "Resolution (in radians) of the spiral")
-	n        = flag.Int("n", 100, "Number of full winds in each spiral")
-	gap      = flag.Float64("gap", 0.15, "Gap between traces in mm (6mil = 0.15mm)")
-	trace    = flag.Float64("trace", 0.15, "Width of traces in mm")
-	prefix   = flag.String("prefix", "hex-bifilar-coil", "Filename prefix for all Gerber files and zip")
-	fontName = flag.String("font", "freeserif", "Name of font to use for writing source on PCB (empty to not write)")
+	step       = flag.Float64("step", 0.02, "Resolution (in radians) of the spiral")
+	n          = flag.Int("n", 100, "Number of full winds in each spiral")
+	gap        = flag.Float64("gap", 0.15, "Gap between traces in mm (6mil = 0.15mm)")
+	trace      = flag.Float64("trace", 0.15, "Width of traces in mm")
+	prefix     = flag.String("prefix", "hex-bifilar-coil", "Filename prefix for all Gerber files and zip")
+	fontName   = flag.String("font", "freeserif", "Name of font to use for writing source on PCB (empty to not write)")
+	view       = flag.Bool("view", false, "View the resulting design using Fyne")
+	cpuprofile = flag.String("cpuprofile", "", "write cpu profile to file")
 )
 
 const (
@@ -42,6 +47,14 @@ TR ⇨ 5R
 
 func main() {
 	flag.Parse()
+	if *cpuprofile != "" {
+		f, err := os.Create(*cpuprofile)
+		if err != nil {
+			log.Fatal(err)
+		}
+		pprof.StartCPUProfile(f)
+		defer pprof.StopCPUProfile()
+	}
 
 	if *n < 12 {
 		flag.Usage()
@@ -404,6 +417,10 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Println("Done.")
+
+	if *view {
+		viewer.Gerber(g)
+	}
 }
 
 func genPt(xScale, angle, halfTW, offset float64) Pt {
