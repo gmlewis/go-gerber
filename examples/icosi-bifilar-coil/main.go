@@ -301,13 +301,18 @@ func main() {
 			y := r * math.Sin(num*angleDelta)
 			return Text(x, y, 1.0, label, *fontName, labelSize, &Center)
 		}
-		outerLabel := func(label string, num float64) *TextT {
+		outerLabel := func(label string) *TextT {
+			num := float64(outerHole[label])
 			r := outerR + 0.5**trace + *gap + 0.5*padD
 			x := r * math.Cos((0.3+num)*angleDelta)
 			y := r * math.Sin((0.3+num)*angleDelta)
 			return Text(x, y, 1.0, label, *fontName, outerLabelSize, &Center)
 		}
-		outerLabel2 := func(label string, num float64) *TextT {
+		outerLabel2 := func(label string) *TextT {
+			num := float64(outerHole[label])
+			if label == "BL" {
+				num = 0.5
+			}
 			r := outerR + 0.5**trace + *gap + 0.5*padD
 			x := r * math.Cos((-0.3+num)*angleDelta)
 			y := r * math.Sin((-0.3+num)*angleDelta)
@@ -358,46 +363,46 @@ func main() {
 			innerLabel2("19R"),
 			innerLabel2("19L"),
 
-			outerLabel2("TR", 0),
-			outerLabel("TL", 10),
-			outerLabel2("BR", 10),
-			outerLabel2("BL", 0.5),
-			outerLabel("2R", 1),
-			outerLabel("2L", 11),
-			outerLabel("3R", 9),
-			outerLabel("3L", 19),
-			outerLabel2("4R", 19),
-			outerLabel2("4L", 9),
-			outerLabel2("5R", 11),
-			outerLabel2("5L", 1),
-			outerLabel("6R", 2),
-			outerLabel("6L", 12),
-			outerLabel("7R", 8),
-			outerLabel("7L", 18),
-			outerLabel2("8R", 18),
-			outerLabel2("8L", 8),
-			outerLabel2("9R", 12),
-			outerLabel2("9L", 2),
-			outerLabel("10R", 3),
-			outerLabel("10L", 13),
-			outerLabel("11R", 7),
-			outerLabel("11L", 17),
-			outerLabel2("12R", 17),
-			outerLabel2("12L", 7),
-			outerLabel2("13R", 13),
-			outerLabel2("13L", 3),
-			outerLabel("14R", 4),
-			outerLabel("14L", 14),
-			outerLabel("15R", 6),
-			outerLabel("15L", 16),
-			outerLabel2("16R", 16),
-			outerLabel2("16L", 6),
-			outerLabel2("17R", 14),
-			outerLabel2("17L", 4),
-			outerLabel("18R", 15),
-			outerLabel("18L", 5),
-			outerLabel2("19R", 15),
-			outerLabel2("19L", 5),
+			outerLabel2("TR"),
+			outerLabel("TL"),
+			outerLabel2("BR"),
+			outerLabel2("BL"),
+			outerLabel("2R"),
+			outerLabel("2L"),
+			outerLabel("3R"),
+			outerLabel("3L"),
+			outerLabel2("4R"),
+			outerLabel2("4L"),
+			outerLabel2("5R"),
+			outerLabel2("5L"),
+			outerLabel("6R"),
+			outerLabel("6L"),
+			outerLabel("7R"),
+			outerLabel("7L"),
+			outerLabel2("8R"),
+			outerLabel2("8L"),
+			outerLabel2("9R"),
+			outerLabel2("9L"),
+			outerLabel("10R"),
+			outerLabel("10L"),
+			outerLabel("11R"),
+			outerLabel("11L"),
+			outerLabel2("12R"),
+			outerLabel2("12L"),
+			outerLabel2("13R"),
+			outerLabel2("13L"),
+			outerLabel("14R"),
+			outerLabel("14L"),
+			outerLabel("15R"),
+			outerLabel("15L"),
+			outerLabel2("16R"),
+			outerLabel2("16L"),
+			outerLabel2("17R"),
+			outerLabel2("17L"),
+			outerLabel("18R"),
+			outerLabel("18L"),
+			outerLabel2("19R"),
+			outerLabel2("19L"),
 
 			// Text(-0.5*r, -0.4*r, 1.0, message2, *fontName, pts, &Center),
 			// Text(0.5*r, -0.4*r, 1.0, message3, *fontName, pts, &Center),
