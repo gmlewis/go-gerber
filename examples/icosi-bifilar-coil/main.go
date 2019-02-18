@@ -60,9 +60,9 @@ func main() {
 		defer pprof.StopCPUProfile()
 	}
 
-	if *n < 12 {
+	if *n < 20 {
 		flag.Usage()
-		log.Fatal("N must be >= 12.")
+		log.Fatal("N must be >= 20.")
 	}
 
 	g := New(*prefix)
@@ -243,7 +243,6 @@ func main() {
 	addVias(topMask)
 
 	for n := 2; n < nlayers; n++ {
-		log.Printf("Generating layer %v...", n)
 		nr := fmt.Sprintf("%vR", n)
 		nl := fmt.Sprintf("%vL", n)
 		layer := g.LayerN(n)

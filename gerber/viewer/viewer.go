@@ -83,7 +83,7 @@ func initController(g *gerber.Gerber, app fyne.App) *viewController {
 			if err != nil || n < 2 {
 				log.Fatalf("error parsing layer suffix %v", layer.Filename)
 			}
-			vc.indexLayerN[n] = -1
+			vc.indexLayerN[n] = i
 			if n > vc.maxN {
 				vc.maxN = n
 			}
@@ -111,6 +111,7 @@ func initController(g *gerber.Gerber, app fyne.App) *viewController {
 			log.Fatalf("Unknown Gerber layer: %v", layer.Filename)
 		}
 	}
+
 	return vc
 }
 
@@ -141,7 +142,7 @@ func Gerber(g *gerber.Gerber) {
 	addCheck(vc.indexTopSilkscreen, "Top Silkscreen")
 	addCheck(vc.indexTopSolderMask, "Top Solder Mask")
 	addCheck(vc.indexTop, "Top")
-	for i := 2; i < vc.maxN; i++ {
+	for i := 2; i <= vc.maxN; i++ {
 		addCheck(vc.indexLayerN[i], fmt.Sprintf("Layer %v", i))
 	}
 	addCheck(vc.indexBottom, "Bottom")
