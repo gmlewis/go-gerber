@@ -69,33 +69,31 @@ func main() {
 
 	s := newSpiral()
 
-	startTopR, topSpiralR, endTopR := s.genSpiral(1.0, 0, 0)
-	log.Printf("%v, %v, %v", startTopR, len(topSpiralR), endTopR)
-	startTopL, topSpiralL, endTopL := s.genSpiral(1.0, math.Pi, 0)
-	log.Printf("%v, %v, %v", startTopL, len(topSpiralL), endTopL)
-	startBotR, botSpiralR, endBotR := s.genSpiral(-1.0, 0, 0)
-	log.Printf("%v, %v, %v", startBotR, len(botSpiralR), endBotR)
-	startBotL, botSpiralL, endBotL := s.genSpiral(-1.0, math.Pi, 0)
-	log.Printf("%v, %v, %v", startBotL, len(botSpiralL), endBotL)
+	startTopR, topSpiralR, endTopR := s.genSpiral(1, 0, 0)
+	startTopL, topSpiralL, endTopL := s.genSpiral(1, math.Pi, 0)
+	startBotR, botSpiralR, endBotR := s.genSpiral(-1, 0, 0)
+	startBotL, botSpiralL, endBotL := s.genSpiral(-1, math.Pi, 0)
 
 	padD := 2.0
-	startLayer2R, layer2SpiralR, endLayer2R := s.genSpiral(1.0, angleDelta, 0)
-	log.Printf("%v, %v, %v", startLayer2R, len(layer2SpiralR), endLayer2R)
-	startLayer2L, layer2SpiralL, endLayer2L := s.genSpiral(1.0, math.Pi+angleDelta, 0)
-	log.Printf("%v, %v, %v", startLayer2L, len(layer2SpiralL), endLayer2L)
-	startLayer3R, layer3SpiralR, endLayer3R := s.genSpiral(-1.0, angleDelta, 0)
-	log.Printf("%v, %v, %v", startLayer3R, len(layer3SpiralR), endLayer3R)
-	startLayer3L, layer3SpiralL, endLayer3L := s.genSpiral(-1.0, math.Pi+angleDelta, 0) // *trace+padD)
-	log.Printf("%v, %v, %v", startLayer3L, len(layer3SpiralL), endLayer3L)
+	startLayer2R, layer2SpiralR, endLayer2R := s.genSpiral(1, angleDelta, 0)
+	startLayer2L, layer2SpiralL, endLayer2L := s.genSpiral(1, math.Pi+angleDelta, 0)
+	startLayer3R, layer3SpiralR, endLayer3R := s.genSpiral(-1, angleDelta, 0)
+	startLayer3L, layer3SpiralL, endLayer3L := s.genSpiral(-1, math.Pi+angleDelta, 0) // *trace+padD)
 
-	startLayer4R, layer4SpiralR, endLayer4R := s.genSpiral(1.0, -angleDelta, 0)
-	log.Printf("%v, %v, %v", startLayer4R, len(layer4SpiralR), endLayer4R)
-	startLayer4L, layer4SpiralL, endLayer4L := s.genSpiral(1.0, math.Pi-angleDelta, 0)
-	log.Printf("%v, %v, %v", startLayer4L, len(layer4SpiralL), endLayer4L)
-	startLayer5R, layer5SpiralR, endLayer5R := s.genSpiral(-1.0, -angleDelta, 0)
-	log.Printf("%v, %v, %v", startLayer5R, len(layer5SpiralR), endLayer5R)
-	startLayer5L, layer5SpiralL, endLayer5L := s.genSpiral(-1.0, math.Pi-angleDelta, 0)
-	log.Printf("%v, %v, %v", startLayer5L, len(layer5SpiralL), endLayer5L)
+	startLayer4R, layer4SpiralR, endLayer4R := s.genSpiral(1, -angleDelta, 0)
+	startLayer4L, layer4SpiralL, endLayer4L := s.genSpiral(1, math.Pi-angleDelta, 0)
+	startLayer5R, layer5SpiralR, endLayer5R := s.genSpiral(-1, -angleDelta, 0)
+	startLayer5L, layer5SpiralL, endLayer5L := s.genSpiral(-1, math.Pi-angleDelta, 0)
+
+	startLayer6R, layer6SpiralR, endLayer6R := s.genSpiral(1, 2*angleDelta, 0)
+	startLayer6L, layer6SpiralL, endLayer6L := s.genSpiral(1, math.Pi+2*angleDelta, 0)
+	startLayer7R, layer7SpiralR, endLayer7R := s.genSpiral(-1, 2*angleDelta, 0)
+	startLayer7L, layer7SpiralL, endLayer7L := s.genSpiral(-1, math.Pi+2*angleDelta, 0)
+
+	startLayer8R, layer8SpiralR, endLayer8R := s.genSpiral(1, -2*angleDelta, 0)
+	startLayer8L, layer8SpiralL, endLayer8L := s.genSpiral(1, math.Pi-2*angleDelta, 0)
+	startLayer9R, layer9SpiralR, endLayer9R := s.genSpiral(-1, -2*angleDelta, 0)
+	startLayer9L, layer9SpiralL, endLayer9L := s.genSpiral(-1, math.Pi-2*angleDelta, 0)
 
 	viaPadD := 0.5
 	innerR := (*gap + viaPadD) / math.Sin(angleDelta)
@@ -119,23 +117,15 @@ func main() {
 	innerHole4L := innerViaPts[6]
 	innerHole5R := innerViaPts[14]
 	innerHole5L := innerViaPts[4]
+	innerHole6R := innerViaPts[19]
+	innerHole6L := innerViaPts[9]
+	innerHole7R := innerViaPts[11]
+	innerHole7L := innerViaPts[1]
+	innerHole8R := innerViaPts[15]
+	innerHole8L := innerViaPts[5]
+	innerHole9R := innerViaPts[15]
+	innerHole9L := innerViaPts[5]
 
-	// innerHole1Y := 0.5 * (*trace + viaPadD) / math.Sin(math.Pi/ncoils)
-	// innerHole6X := innerHole1Y * math.Cos(math.Pi/ncoils)
-	// hole1 := Point(0, innerHole1Y)
-	// hole3 := Point(0, -innerHole1Y)
-	// hole6 := Point(innerHole6X, 0.5*(*trace+viaPadD))
-	// hole7 := Point(-innerHole6X, -0.5*(*trace+viaPadD))
-	// hole10 := Point(innerHole6X, -0.5*(*trace+viaPadD))
-	// hole11 := Point(-innerHole6X, 0.5*(*trace+viaPadD))
-
-	// outerViaPt := func(pt Pt, angle float64) Pt {
-	// 	r := *trace*1.5 + 0.5*viaPadD
-	// 	dx := r * math.Cos(angle)
-	// 	dy := r * math.Sin(angle)
-	// 	return Point(pt[0]+dx, pt[1]+dy)
-	// }
-	// log.Printf("%v", outerViaPt)
 	outerR := (2.0*math.Pi + float64(*n)*2.0*math.Pi + *trace + *gap) / (3.0 * math.Pi)
 	var outerViaPts []Pt
 	for i := 0; i < ncoils; i++ {
@@ -156,12 +146,14 @@ func main() {
 	outerHole4L := outerViaPts[9]
 	outerHole5R := outerViaPts[11]
 	outerHole5L := outerViaPts[1]
-
-	// holeBL4L := outerViaPt(endBotL, math.Pi/3.0)
-	// holeTL5L := outerViaPt(endTopL, 2.0*math.Pi/3.0)
-	// hole2L3R := outerViaPt(endLayer2L, math.Pi)
-	// holeBR4R := outerViaPt(endBotR, 4.0*math.Pi/3.0)
-	// holeTR5R := outerViaPt(endTopR, 5.0*math.Pi/3.0)
+	outerHole6R := outerViaPts[2]
+	outerHole6L := outerViaPts[12]
+	outerHole7R := outerViaPts[8]
+	outerHole7L := outerViaPts[18]
+	outerHole8R := outerViaPts[18]
+	outerHole8L := outerViaPts[8]
+	outerHole9R := outerViaPts[12]
+	outerHole9L := outerViaPts[2]
 
 	outerContactPt := func(pt Pt, angle float64) Pt {
 		r := *trace*1.5 + 0.5*padD
@@ -170,9 +162,6 @@ func main() {
 		return Point(pt[0]+dx, pt[1]+dy)
 	}
 	log.Printf("%v", outerContactPt)
-
-	// hole2R := outerContactPt(endLayer2R, 0)
-	// hole3L := outerContactPt(endLayer3L, 0)
 
 	viaDrill := func(pt Pt) *CircleT {
 		const viaDrillD = 0.25
@@ -185,10 +174,6 @@ func main() {
 	log.Printf("%v", contactDrill)
 
 	drill := g.Drill()
-	// drill.Add(
-	//   contactDrill(hole2R),
-	//   contactDrill(hole3L),
-	// )
 	for _, pt := range innerViaPts {
 		drill.Add(viaDrill(pt))
 	}
@@ -206,7 +191,14 @@ func main() {
 	padLine := func(pt1, pt2 Pt) *LineT {
 		return Line(pt1[0], pt1[1], pt2[0], pt2[1], CircleShape, *trace)
 	}
-	log.Printf("%v", padLine)
+	addVias := func(layer *Layer) {
+		for _, pt := range innerViaPts {
+			layer.Add(viaPad(pt))
+		}
+		for _, pt := range outerViaPts {
+			layer.Add(viaPad(pt))
+		}
+	}
 
 	top := g.TopCopper()
 	top.Add(
@@ -216,35 +208,11 @@ func main() {
 		padLine(startTopL, innerHoleTL),
 		padLine(endTopR, outerHoleTR),
 		padLine(endTopL, outerHoleTL),
-	//
-	// viaPad(hole1),
-	// padLine(startTopL, hole1),
-	//
-	// viaPad(hole3),
-	// padLine(startTopR, hole3),
-	//
-	// viaPad(hole6),
-	// viaPad(hole7),
-	//
-	// viaPad(hole10),
-	// viaPad(hole11),
-	//
-	// viaPad(holeBL4L),
-	// viaPad(holeTL5L),
-	// padLine(endTopL, holeTL5L),
-	// viaPad(hole2L3R),
-	// viaPad(holeBR4R),
-	// viaPad(holeTR5R),
-	// padLine(endTopR, holeTR5R),
-	// contactPad(hole2R),
-	// contactPad(hole3L),
 	)
-	for _, pt := range innerViaPts {
-		top.Add(viaPad(pt))
-	}
-	for _, pt := range outerViaPts {
-		top.Add(viaPad(pt))
-	}
+	addVias(top)
+
+	topMask := g.TopSolderMask()
+	addVias(topMask)
 
 	layer2 := g.Layer2()
 	layer2.Add(
@@ -254,35 +222,8 @@ func main() {
 		padLine(startLayer2L, innerHole2L),
 		padLine(endLayer2R, outerHole2R),
 		padLine(endLayer2L, outerHole2L),
-	//
-	// viaPad(hole1),
-	//
-	// viaPad(hole3),
-	//
-	// viaPad(hole6),
-	// viaPad(hole7),
-	//
-	// viaPad(hole10),
-	// padLine(startLayer2R, hole10),
-	// viaPad(hole11),
-	// padLine(startLayer2L, hole11),
-	//
-	// viaPad(holeBL4L),
-	// viaPad(holeTL5L),
-	// viaPad(hole2L3R),
-	// padLine(endLayer2L, hole2L3R),
-	// viaPad(holeBR4R),
-	// viaPad(holeTR5R),
-	// contactPad(hole2R),
-	// padLine(endLayer2R, hole2R),
-	// contactPad(hole3L),
 	)
-	for _, pt := range innerViaPts {
-		layer2.Add(viaPad(pt))
-	}
-	for _, pt := range outerViaPts {
-		layer2.Add(viaPad(pt))
-	}
+	addVias(layer2)
 
 	layer4 := g.Layer4()
 	layer4.Add(
@@ -292,62 +233,30 @@ func main() {
 		padLine(startLayer4L, innerHole4L),
 		padLine(endLayer4R, outerHole4R),
 		padLine(endLayer4L, outerHole4L),
-	//
-	// viaPad(hole1),
-	//
-	// viaPad(hole3),
-	//
-	// viaPad(hole6),
-	// padLine(startLayer4L, hole6),
-	// viaPad(hole7),
-	// padLine(startLayer4R, hole7),
-	//
-	// viaPad(hole10),
-	// viaPad(hole11),
-	//
-	// viaPad(holeBL4L),
-	// padLine(endLayer4L, holeBL4L),
-	// viaPad(holeTL5L),
-	// viaPad(hole2L3R),
-	// viaPad(holeBR4R),
-	// padLine(endLayer4R, holeBR4R),
-	// viaPad(holeTR5R),
-	// contactPad(hole2R),
-	// contactPad(hole3L),
 	)
-	for _, pt := range innerViaPts {
-		layer4.Add(viaPad(pt))
-	}
-	for _, pt := range outerViaPts {
-		layer4.Add(viaPad(pt))
-	}
+	addVias(layer4)
 
-	topMask := g.TopSolderMask()
-	topMask.Add(
-	// viaPad(hole1),
-	//
-	// viaPad(hole3),
-	//
-	// viaPad(hole6),
-	// viaPad(hole7),
-	//
-	// viaPad(hole10),
-	// viaPad(hole11),
-	//
-	// viaPad(holeBL4L),
-	// viaPad(holeTL5L),
-	// viaPad(hole2L3R),
-	// viaPad(holeBR4R),
-	// viaPad(holeTR5R),
-	// contactPad(hole2R),
-	// contactPad(hole3L),
+	layer6 := g.Layer6()
+	layer6.Add(
+		Polygon(Pt{0, 0}, true, layer6SpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, layer6SpiralL, 0.0),
+		padLine(startLayer6R, innerHole6R),
+		padLine(startLayer6L, innerHole6L),
+		padLine(endLayer6R, outerHole6R),
+		padLine(endLayer6L, outerHole6L),
 	)
-	for _, pt := range innerViaPts {
-		topMask.Add(viaPad(pt))
-	}
-	for _, pt := range outerViaPts {
-		topMask.Add(viaPad(pt))
-	}
+	addVias(layer6)
+
+	layer8 := g.Layer8()
+	layer8.Add(
+		Polygon(Pt{0, 0}, true, layer8SpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, layer8SpiralL, 0.0),
+		padLine(startLayer8R, innerHole8R),
+		padLine(startLayer8L, innerHole8L),
+		padLine(endLayer8R, outerHole8R),
+		padLine(endLayer8L, outerHole8L),
+	)
+	addVias(layer8)
 
 	bottom := g.BottomCopper()
 	bottom.Add(
@@ -357,35 +266,11 @@ func main() {
 		padLine(startBotL, innerHoleBL),
 		padLine(endBotR, outerHoleBR),
 		padLine(endBotL, outerHoleBL),
-	//
-	// viaPad(hole1),
-	// padLine(startBotL, hole1),
-	//
-	// viaPad(hole3),
-	// padLine(startBotR, hole3),
-	//
-	// viaPad(hole6),
-	// viaPad(hole7),
-	//
-	// viaPad(hole10),
-	// viaPad(hole11),
-	//
-	// viaPad(holeBL4L),
-	// padLine(endBotL, holeBL4L),
-	// viaPad(holeTL5L),
-	// viaPad(hole2L3R),
-	// viaPad(holeBR4R),
-	// padLine(endBotR, holeBR4R),
-	// viaPad(holeTR5R),
-	// contactPad(hole2R),
-	// contactPad(hole3L),
 	)
-	for _, pt := range innerViaPts {
-		bottom.Add(viaPad(pt))
-	}
-	for _, pt := range outerViaPts {
-		bottom.Add(viaPad(pt))
-	}
+	addVias(bottom)
+
+	bottomMask := g.BottomSolderMask()
+	addVias(bottomMask)
 
 	layer3 := g.Layer3()
 	layer3.Add(
@@ -395,35 +280,8 @@ func main() {
 		padLine(startLayer3L, innerHole3L),
 		padLine(endLayer3R, outerHole3R),
 		padLine(endLayer3L, outerHole3L),
-	//
-	// viaPad(hole1),
-	//
-	// viaPad(hole3),
-	//
-	// viaPad(hole6),
-	// padLine(startLayer3L, hole6),
-	// viaPad(hole7),
-	// padLine(startLayer3R, hole7),
-	//
-	// viaPad(hole10),
-	// viaPad(hole11),
-	//
-	// viaPad(holeBL4L),
-	// viaPad(holeTL5L),
-	// viaPad(hole2L3R),
-	// padLine(endLayer3R, hole2L3R),
-	// viaPad(holeBR4R),
-	// viaPad(holeTR5R),
-	// contactPad(hole2R),
-	// contactPad(hole3L),
-	// padLine(endLayer3L, hole3L),
 	)
-	for _, pt := range innerViaPts {
-		layer3.Add(viaPad(pt))
-	}
-	for _, pt := range outerViaPts {
-		layer3.Add(viaPad(pt))
-	}
+	addVias(layer3)
 
 	layer5 := g.Layer5()
 	layer5.Add(
@@ -433,62 +291,30 @@ func main() {
 		padLine(startLayer5L, innerHole5L),
 		padLine(endLayer5R, outerHole5R),
 		padLine(endLayer5L, outerHole5L),
-	//
-	// viaPad(hole1),
-	//
-	// viaPad(hole3),
-	//
-	// viaPad(hole6),
-	// viaPad(hole7),
-	//
-	// viaPad(hole10),
-	// padLine(startLayer5R, hole10),
-	// viaPad(hole11),
-	// padLine(startLayer5L, hole11),
-	//
-	// viaPad(holeBL4L),
-	// viaPad(holeTL5L),
-	// padLine(endLayer5L, holeTL5L),
-	// viaPad(hole2L3R),
-	// viaPad(holeBR4R),
-	// viaPad(holeTR5R),
-	// padLine(endLayer5R, holeTR5R),
-	// contactPad(hole2R),
-	// contactPad(hole3L),
 	)
-	for _, pt := range innerViaPts {
-		layer5.Add(viaPad(pt))
-	}
-	for _, pt := range outerViaPts {
-		layer5.Add(viaPad(pt))
-	}
+	addVias(layer5)
 
-	bottomMask := g.BottomSolderMask()
-	bottomMask.Add(
-	// viaPad(hole1),
-	//
-	// viaPad(hole3),
-	//
-	// viaPad(hole6),
-	// viaPad(hole7),
-	//
-	// viaPad(hole10),
-	// viaPad(hole11),
-	//
-	// viaPad(holeBL4L),
-	// viaPad(holeTL5L),
-	// viaPad(hole2L3R),
-	// viaPad(holeBR4R),
-	// viaPad(holeTR5R),
-	// contactPad(hole2R),
-	// contactPad(hole3L),
+	layer7 := g.Layer7()
+	layer7.Add(
+		Polygon(Pt{0, 0}, true, layer7SpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, layer7SpiralL, 0.0),
+		padLine(startLayer7R, innerHole7R),
+		padLine(startLayer7L, innerHole7L),
+		padLine(endLayer7R, outerHole7R),
+		padLine(endLayer7L, outerHole7L),
 	)
-	for _, pt := range innerViaPts {
-		bottomMask.Add(viaPad(pt))
-	}
-	for _, pt := range outerViaPts {
-		bottomMask.Add(viaPad(pt))
-	}
+	addVias(layer7)
+
+	layer9 := g.Layer9()
+	layer9.Add(
+		Polygon(Pt{0, 0}, true, layer9SpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, layer9SpiralL, 0.0),
+		padLine(startLayer9R, innerHole9R),
+		padLine(startLayer9L, innerHole9L),
+		padLine(endLayer9R, outerHole9R),
+		padLine(endLayer9L, outerHole9L),
+	)
+	addVias(layer9)
 
 	outline := g.Outline()
 	r := 0.5*s.size + padD + *trace
@@ -504,6 +330,12 @@ func main() {
 
 		innerLabel := func(label string, num int) *TextT {
 			r := innerR - viaPadD
+			x := r * math.Cos(float64(num)*angleDelta)
+			y := r * math.Sin(float64(num)*angleDelta)
+			return Text(x, y, 1.0, label, *fontName, labelSize, &Center)
+		}
+		innerLabel2 := func(label string, num int) *TextT {
+			r := innerR + viaPadD
 			x := r * math.Cos(float64(num)*angleDelta)
 			y := r * math.Sin(float64(num)*angleDelta)
 			return Text(x, y, 1.0, label, *fontName, labelSize, &Center)
@@ -536,6 +368,14 @@ func main() {
 			innerLabel("4L", 6),
 			innerLabel("5R", 14),
 			innerLabel("5L", 4),
+			innerLabel("6R", 19),
+			innerLabel("6L", 9),
+			innerLabel("7R", 11),
+			innerLabel("7L", 1),
+			innerLabel("8R", 15),
+			innerLabel("8L", 5),
+			innerLabel2("9R", 15),
+			innerLabel2("9L", 5),
 
 			outerLabel("TR", 0),
 			outerLabel("TL", 10),
@@ -549,6 +389,15 @@ func main() {
 			outerLabel2("4L", 9),
 			outerLabel2("5R", 11),
 			outerLabel2("5L", 1),
+			outerLabel("6R", 2),
+			outerLabel("6L", 12),
+			outerLabel("7R", 8),
+			outerLabel("7L", 18),
+			outerLabel2("8R", 18),
+			outerLabel2("8L", 8),
+			outerLabel2("9R", 12),
+			outerLabel2("9L", 2),
+
 			// Text(-0.5*r, -0.4*r, 1.0, message2, *fontName, pts, &Center),
 			// Text(0.5*r, -0.4*r, 1.0, message3, *fontName, pts, &Center),
 		)
