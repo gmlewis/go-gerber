@@ -69,16 +69,16 @@ func main() {
 
 	s := newSpiral()
 
+	padD := 2.0
 	startTopR, topSpiralR, endTopR := s.genSpiral(1, 0, 0)
 	startTopL, topSpiralL, endTopL := s.genSpiral(1, math.Pi, 0)
 	startBotR, botSpiralR, endBotR := s.genSpiral(-1, 0, 0)
-	startBotL, botSpiralL, endBotL := s.genSpiral(-1, math.Pi, 0)
+	startBotL, botSpiralL, endBotL := s.genSpiral(-1, math.Pi, *trace+padD)
 
-	padD := 2.0
 	startLayer2R, layer2SpiralR, endLayer2R := s.genSpiral(1, angleDelta, 0)
 	startLayer2L, layer2SpiralL, endLayer2L := s.genSpiral(1, math.Pi+angleDelta, 0)
 	startLayer3R, layer3SpiralR, endLayer3R := s.genSpiral(-1, angleDelta, 0)
-	startLayer3L, layer3SpiralL, endLayer3L := s.genSpiral(-1, math.Pi+angleDelta, 0) // *trace+padD)
+	startLayer3L, layer3SpiralL, endLayer3L := s.genSpiral(-1, math.Pi+angleDelta, 0)
 
 	startLayer4R, layer4SpiralR, endLayer4R := s.genSpiral(1, -angleDelta, 0)
 	startLayer4L, layer4SpiralL, endLayer4L := s.genSpiral(1, math.Pi-angleDelta, 0)
@@ -172,17 +172,23 @@ func main() {
 	innerHole19L := innerViaPts[8]
 
 	outerR := (2.0*math.Pi + float64(*n)*2.0*math.Pi + *trace + *gap) / (3.0 * math.Pi)
+	outerContactPt := func(n float64) Pt {
+		r := outerR + 0.5**trace + *gap + 0.5*padD
+		x := r * math.Cos(n*angleDelta)
+		y := r * math.Sin(n*angleDelta)
+		return Pt{x, y}
+	}
+
 	var outerViaPts []Pt
 	for i := 0; i < ncoils; i++ {
-		r := outerR + 0.5**trace + *gap + 0.5*viaPadD
-		x := r * math.Cos(float64(i)*angleDelta)
-		y := r * math.Sin(float64(i)*angleDelta)
-		outerViaPts = append(outerViaPts, Pt{x, y})
+		pt := outerContactPt(float64(i))
+		outerViaPts = append(outerViaPts, pt)
 	}
+	outerViaPts = append(outerViaPts, outerContactPt(0.5))
 	outerHoleTR := outerViaPts[0]
 	outerHoleTL := outerViaPts[10]
 	outerHoleBR := outerViaPts[10]
-	outerHoleBL := outerViaPts[0]
+	outerHoleBL := outerViaPts[20]
 	outerHole2R := outerViaPts[1]
 	outerHole2L := outerViaPts[11]
 	outerHole3R := outerViaPts[9]
@@ -220,48 +226,25 @@ func main() {
 	outerHole19R := outerViaPts[15]
 	outerHole19L := outerViaPts[5]
 
-	outerContactPt := func(pt Pt, angle float64) Pt {
-		r := *trace*1.5 + 0.5*padD
-		dx := r * math.Cos(angle)
-		dy := r * math.Sin(angle)
-		return Point(pt[0]+dx, pt[1]+dy)
-	}
-	log.Printf("%v", outerContactPt)
-
-	viaDrill := func(pt Pt) *CircleT {
-		const viaDrillD = 0.25
-		return Circle(pt, viaDrillD)
-	}
-	contactDrill := func(pt Pt) *CircleT {
-		const drillD = 1.0
-		return Circle(pt, drillD)
-	}
-	log.Printf("%v", contactDrill)
-
 	drill := g.Drill()
 	for _, pt := range innerViaPts {
-		drill.Add(viaDrill(pt))
+		const viaDrillD = 0.25
+		drill.Add(Circle(pt, viaDrillD))
 	}
 	for _, pt := range outerViaPts {
-		drill.Add(viaDrill(pt))
+		const drillD = 1.0
+		drill.Add(Circle(pt, drillD))
 	}
 
-	viaPad := func(pt Pt) *CircleT {
-		return Circle(pt, viaPadD)
-	}
-	contactPad := func(pt Pt) *CircleT {
-		return Circle(pt, padD)
-	}
-	log.Printf("%v", contactPad)
 	padLine := func(pt1, pt2 Pt) *LineT {
 		return Line(pt1[0], pt1[1], pt2[0], pt2[1], CircleShape, *trace)
 	}
 	addVias := func(layer *Layer) {
 		for _, pt := range innerViaPts {
-			layer.Add(viaPad(pt))
+			layer.Add(Circle(pt, viaPadD))
 		}
 		for _, pt := range outerViaPts {
-			layer.Add(viaPad(pt))
+			layer.Add(Circle(pt, padD))
 		}
 	}
 
@@ -501,31 +484,32 @@ func main() {
 	if *fontName != "" {
 		pts := 36.0 * r / 139.18 // determined emperically
 		labelSize := pts * 4.0 / 18.0
+		outerLabelSize := 32.0 * r / 139.18 // determined emperically
 		message := fmt.Sprintf(messageFmt, *trace, *gap, *n)
 
-		innerLabel := func(label string, num int) *TextT {
+		innerLabel := func(label string, num float64) *TextT {
 			r := innerR - viaPadD
-			x := r * math.Cos(float64(num)*angleDelta)
-			y := r * math.Sin(float64(num)*angleDelta)
+			x := r * math.Cos(num*angleDelta)
+			y := r * math.Sin(num*angleDelta)
 			return Text(x, y, 1.0, label, *fontName, labelSize, &Center)
 		}
-		innerLabel2 := func(label string, num int) *TextT {
+		innerLabel2 := func(label string, num float64) *TextT {
 			r := innerR + viaPadD
-			x := r * math.Cos(float64(num)*angleDelta)
-			y := r * math.Sin(float64(num)*angleDelta)
+			x := r * math.Cos(num*angleDelta)
+			y := r * math.Sin(num*angleDelta)
 			return Text(x, y, 1.0, label, *fontName, labelSize, &Center)
 		}
-		outerLabel := func(label string, num int) *TextT {
-			r := outerR + 0.5**trace + *gap + 1.5*viaPadD
-			x := r * math.Cos(float64(num)*angleDelta)
-			y := r * math.Sin(float64(num)*angleDelta)
-			return Text(x, y, 1.0, label, *fontName, labelSize, &Center)
+		outerLabel := func(label string, num float64) *TextT {
+			r := outerR + 0.5**trace + *gap + 0.5*padD
+			x := r * math.Cos((0.3+num)*angleDelta)
+			y := r * math.Sin((0.3+num)*angleDelta)
+			return Text(x, y, 1.0, label, *fontName, outerLabelSize, &Center)
 		}
-		outerLabel2 := func(label string, num int) *TextT {
-			r := outerR + 0.5**trace + *gap + 2.5*viaPadD
-			x := r * math.Cos(float64(num)*angleDelta)
-			y := r * math.Sin(float64(num)*angleDelta)
-			return Text(x, y, 1.0, label, *fontName, labelSize, &Center)
+		outerLabel2 := func(label string, num float64) *TextT {
+			r := outerR + 0.5**trace + *gap + 0.5*padD
+			x := r * math.Cos((-0.3+num)*angleDelta)
+			y := r * math.Sin((-0.3+num)*angleDelta)
+			return Text(x, y, 1.0, label, *fontName, outerLabelSize, &Center)
 		}
 
 		tss := g.TopSilkscreen()
@@ -572,10 +556,10 @@ func main() {
 			innerLabel2("19R", 18),
 			innerLabel2("19L", 8),
 
-			outerLabel("TR", 0),
+			outerLabel2("TR", 0),
 			outerLabel("TL", 10),
 			outerLabel2("BR", 10),
-			outerLabel2("BL", 0),
+			outerLabel2("BL", 0.5),
 			outerLabel("2R", 1),
 			outerLabel("2L", 11),
 			outerLabel("3R", 9),
