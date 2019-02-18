@@ -83,6 +83,9 @@ func main() {
 	layerNSpiralL := map[int][]Pt{}
 	for n := 2; n < nlayers; n += 4 {
 		af := float64((n + 2) / 4)
+		if n+2 >= nlayers {
+			af = -af
+		}
 		startLayerNR[n], layerNSpiralR[n], endLayerNR[n] = s.genSpiral(1, af*angleDelta, 0)
 		startLayerNL[n], layerNSpiralL[n], endLayerNL[n] = s.genSpiral(1, math.Pi+af*angleDelta, 0)
 		startLayerNR[n+1], layerNSpiralR[n+1], endLayerNR[n+1] = s.genSpiral(-1, af*angleDelta, 0)
