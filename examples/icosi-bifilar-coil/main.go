@@ -95,6 +95,31 @@ func main() {
 	startLayer9R, layer9SpiralR, endLayer9R := s.genSpiral(-1, -2*angleDelta, 0)
 	startLayer9L, layer9SpiralL, endLayer9L := s.genSpiral(-1, math.Pi-2*angleDelta, 0)
 
+	startLayer10R, layer10SpiralR, endLayer10R := s.genSpiral(1, 3*angleDelta, 0)
+	startLayer10L, layer10SpiralL, endLayer10L := s.genSpiral(1, math.Pi+3*angleDelta, 0)
+	startLayer11R, layer11SpiralR, endLayer11R := s.genSpiral(-1, 3*angleDelta, 0)
+	startLayer11L, layer11SpiralL, endLayer11L := s.genSpiral(-1, math.Pi+3*angleDelta, 0)
+
+	startLayer12R, layer12SpiralR, endLayer12R := s.genSpiral(1, -3*angleDelta, 0)
+	startLayer12L, layer12SpiralL, endLayer12L := s.genSpiral(1, math.Pi-3*angleDelta, 0)
+	startLayer13R, layer13SpiralR, endLayer13R := s.genSpiral(-1, -3*angleDelta, 0)
+	startLayer13L, layer13SpiralL, endLayer13L := s.genSpiral(-1, math.Pi-3*angleDelta, 0)
+
+	startLayer14R, layer14SpiralR, endLayer14R := s.genSpiral(1, 4*angleDelta, 0)
+	startLayer14L, layer14SpiralL, endLayer14L := s.genSpiral(1, math.Pi+4*angleDelta, 0)
+	startLayer15R, layer15SpiralR, endLayer15R := s.genSpiral(-1, 4*angleDelta, 0)
+	startLayer15L, layer15SpiralL, endLayer15L := s.genSpiral(-1, math.Pi+4*angleDelta, 0)
+
+	startLayer16R, layer16SpiralR, endLayer16R := s.genSpiral(1, -4*angleDelta, 0)
+	startLayer16L, layer16SpiralL, endLayer16L := s.genSpiral(1, math.Pi-4*angleDelta, 0)
+	startLayer17R, layer17SpiralR, endLayer17R := s.genSpiral(-1, -4*angleDelta, 0)
+	startLayer17L, layer17SpiralL, endLayer17L := s.genSpiral(-1, math.Pi-4*angleDelta, 0)
+
+	startLayer18R, layer18SpiralR, endLayer18R := s.genSpiral(1, -5*angleDelta, 0)
+	startLayer18L, layer18SpiralL, endLayer18L := s.genSpiral(1, math.Pi-5*angleDelta, 0)
+	startLayer19R, layer19SpiralR, endLayer19R := s.genSpiral(-1, -5*angleDelta, 0)
+	startLayer19L, layer19SpiralL, endLayer19L := s.genSpiral(-1, math.Pi-5*angleDelta, 0)
+
 	viaPadD := 0.5
 	innerR := (*gap + viaPadD) / math.Sin(angleDelta)
 	// minStartAngle := (innerR + *gap + 0.5**trace + 0.5*viaPadD) * (3 * math.Pi)
@@ -125,6 +150,26 @@ func main() {
 	innerHole8L := innerViaPts[5]
 	innerHole9R := innerViaPts[15]
 	innerHole9L := innerViaPts[5]
+	innerHole10R := innerViaPts[0]
+	innerHole10L := innerViaPts[10]
+	innerHole11R := innerViaPts[10]
+	innerHole11L := innerViaPts[0]
+	innerHole12R := innerViaPts[14]
+	innerHole12L := innerViaPts[4]
+	innerHole13R := innerViaPts[16]
+	innerHole13L := innerViaPts[6]
+	innerHole14R := innerViaPts[1]
+	innerHole14L := innerViaPts[11]
+	innerHole15R := innerViaPts[9]
+	innerHole15L := innerViaPts[19]
+	innerHole16R := innerViaPts[13]
+	innerHole16L := innerViaPts[3]
+	innerHole17R := innerViaPts[17]
+	innerHole17L := innerViaPts[7]
+	innerHole18R := innerViaPts[12]
+	innerHole18L := innerViaPts[2]
+	innerHole19R := innerViaPts[18]
+	innerHole19L := innerViaPts[8]
 
 	outerR := (2.0*math.Pi + float64(*n)*2.0*math.Pi + *trace + *gap) / (3.0 * math.Pi)
 	var outerViaPts []Pt
@@ -154,6 +199,26 @@ func main() {
 	outerHole8L := outerViaPts[8]
 	outerHole9R := outerViaPts[12]
 	outerHole9L := outerViaPts[2]
+	outerHole10R := outerViaPts[3]
+	outerHole10L := outerViaPts[13]
+	outerHole11R := outerViaPts[7]
+	outerHole11L := outerViaPts[17]
+	outerHole12R := outerViaPts[17]
+	outerHole12L := outerViaPts[7]
+	outerHole13R := outerViaPts[13]
+	outerHole13L := outerViaPts[3]
+	outerHole14R := outerViaPts[4]
+	outerHole14L := outerViaPts[14]
+	outerHole15R := outerViaPts[6]
+	outerHole15L := outerViaPts[16]
+	outerHole16R := outerViaPts[16]
+	outerHole16L := outerViaPts[6]
+	outerHole17R := outerViaPts[14]
+	outerHole17L := outerViaPts[4]
+	outerHole18R := outerViaPts[15]
+	outerHole18L := outerViaPts[5]
+	outerHole19R := outerViaPts[15]
+	outerHole19L := outerViaPts[5]
 
 	outerContactPt := func(pt Pt, angle float64) Pt {
 		r := *trace*1.5 + 0.5*padD
@@ -258,6 +323,61 @@ func main() {
 	)
 	addVias(layer8)
 
+	layer10 := g.Layer10()
+	layer10.Add(
+		Polygon(Pt{0, 0}, true, layer10SpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, layer10SpiralL, 0.0),
+		padLine(startLayer10R, innerHole10R),
+		padLine(startLayer10L, innerHole10L),
+		padLine(endLayer10R, outerHole10R),
+		padLine(endLayer10L, outerHole10L),
+	)
+	addVias(layer10)
+
+	layer12 := g.Layer12()
+	layer12.Add(
+		Polygon(Pt{0, 0}, true, layer12SpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, layer12SpiralL, 0.0),
+		padLine(startLayer12R, innerHole12R),
+		padLine(startLayer12L, innerHole12L),
+		padLine(endLayer12R, outerHole12R),
+		padLine(endLayer12L, outerHole12L),
+	)
+	addVias(layer12)
+
+	layer14 := g.Layer14()
+	layer14.Add(
+		Polygon(Pt{0, 0}, true, layer14SpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, layer14SpiralL, 0.0),
+		padLine(startLayer14R, innerHole14R),
+		padLine(startLayer14L, innerHole14L),
+		padLine(endLayer14R, outerHole14R),
+		padLine(endLayer14L, outerHole14L),
+	)
+	addVias(layer14)
+
+	layer16 := g.Layer16()
+	layer16.Add(
+		Polygon(Pt{0, 0}, true, layer16SpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, layer16SpiralL, 0.0),
+		padLine(startLayer16R, innerHole16R),
+		padLine(startLayer16L, innerHole16L),
+		padLine(endLayer16R, outerHole16R),
+		padLine(endLayer16L, outerHole16L),
+	)
+	addVias(layer16)
+
+	layer18 := g.Layer18()
+	layer18.Add(
+		Polygon(Pt{0, 0}, true, layer18SpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, layer18SpiralL, 0.0),
+		padLine(startLayer18R, innerHole18R),
+		padLine(startLayer18L, innerHole18L),
+		padLine(endLayer18R, outerHole18R),
+		padLine(endLayer18L, outerHole18L),
+	)
+	addVias(layer18)
+
 	bottom := g.BottomCopper()
 	bottom.Add(
 		Polygon(Pt{0, 0}, true, botSpiralR, 0.0),
@@ -315,6 +435,61 @@ func main() {
 		padLine(endLayer9L, outerHole9L),
 	)
 	addVias(layer9)
+
+	layer11 := g.Layer11()
+	layer11.Add(
+		Polygon(Pt{0, 0}, true, layer11SpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, layer11SpiralL, 0.0),
+		padLine(startLayer11R, innerHole11R),
+		padLine(startLayer11L, innerHole11L),
+		padLine(endLayer11R, outerHole11R),
+		padLine(endLayer11L, outerHole11L),
+	)
+	addVias(layer11)
+
+	layer13 := g.Layer13()
+	layer13.Add(
+		Polygon(Pt{0, 0}, true, layer13SpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, layer13SpiralL, 0.0),
+		padLine(startLayer13R, innerHole13R),
+		padLine(startLayer13L, innerHole13L),
+		padLine(endLayer13R, outerHole13R),
+		padLine(endLayer13L, outerHole13L),
+	)
+	addVias(layer13)
+
+	layer15 := g.Layer15()
+	layer15.Add(
+		Polygon(Pt{0, 0}, true, layer15SpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, layer15SpiralL, 0.0),
+		padLine(startLayer15R, innerHole15R),
+		padLine(startLayer15L, innerHole15L),
+		padLine(endLayer15R, outerHole15R),
+		padLine(endLayer15L, outerHole15L),
+	)
+	addVias(layer15)
+
+	layer17 := g.Layer17()
+	layer17.Add(
+		Polygon(Pt{0, 0}, true, layer17SpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, layer17SpiralL, 0.0),
+		padLine(startLayer17R, innerHole17R),
+		padLine(startLayer17L, innerHole17L),
+		padLine(endLayer17R, outerHole17R),
+		padLine(endLayer17L, outerHole17L),
+	)
+	addVias(layer17)
+
+	layer19 := g.Layer19()
+	layer19.Add(
+		Polygon(Pt{0, 0}, true, layer19SpiralR, 0.0),
+		Polygon(Pt{0, 0}, true, layer19SpiralL, 0.0),
+		padLine(startLayer19R, innerHole19R),
+		padLine(startLayer19L, innerHole19L),
+		padLine(endLayer19R, outerHole19R),
+		padLine(endLayer19L, outerHole19L),
+	)
+	addVias(layer19)
 
 	outline := g.Outline()
 	r := 0.5*s.size + padD + *trace
@@ -376,6 +551,26 @@ func main() {
 			innerLabel("8L", 5),
 			innerLabel2("9R", 15),
 			innerLabel2("9L", 5),
+			innerLabel("10R", 0),
+			innerLabel("10L", 10),
+			innerLabel2("11R", 10),
+			innerLabel2("11L", 0),
+			innerLabel2("12R", 14),
+			innerLabel2("12L", 4),
+			innerLabel2("13R", 16),
+			innerLabel2("13L", 6),
+			innerLabel2("14R", 1),
+			innerLabel2("14L", 11),
+			innerLabel2("15R", 9),
+			innerLabel2("15L", 19),
+			innerLabel2("16R", 13),
+			innerLabel2("16L", 3),
+			innerLabel2("17R", 17),
+			innerLabel2("17L", 7),
+			innerLabel2("18R", 12),
+			innerLabel2("18L", 2),
+			innerLabel2("19R", 18),
+			innerLabel2("19L", 8),
 
 			outerLabel("TR", 0),
 			outerLabel("TL", 10),
@@ -397,6 +592,26 @@ func main() {
 			outerLabel2("8L", 8),
 			outerLabel2("9R", 12),
 			outerLabel2("9L", 2),
+			outerLabel("10R", 3),
+			outerLabel("10L", 13),
+			outerLabel("11R", 7),
+			outerLabel("11L", 17),
+			outerLabel2("12R", 17),
+			outerLabel2("12L", 7),
+			outerLabel2("13R", 13),
+			outerLabel2("13L", 3),
+			outerLabel("14R", 4),
+			outerLabel("14L", 14),
+			outerLabel("15R", 6),
+			outerLabel("15L", 16),
+			outerLabel2("16R", 16),
+			outerLabel2("16L", 6),
+			outerLabel2("17R", 14),
+			outerLabel2("17L", 4),
+			outerLabel("18R", 15),
+			outerLabel("18L", 5),
+			outerLabel2("19R", 15),
+			outerLabel2("19L", 5),
 
 			// Text(-0.5*r, -0.4*r, 1.0, message2, *fontName, pts, &Center),
 			// Text(0.5*r, -0.4*r, 1.0, message3, *fontName, pts, &Center),

@@ -102,38 +102,38 @@ func initController(g *gerber.Gerber, app fyne.App) *viewController {
 
 	for i, layer := range g.Layers {
 		vc.drawLayer[i] = true
-		switch layer.Filename[len(layer.Filename)-3:] {
-		case "gtl":
+		switch layer.Filename[len(layer.Filename)-4:] {
+		case ".gtl":
 			vc.indexTop = i
-		case "gts":
+		case ".gts":
 			vc.indexTopSolderMask = i
-		case "gto":
+		case ".gto":
 			vc.indexTopSilkscreen = i
-		case "gbl":
+		case ".gbl":
 			vc.indexBottom = i
-		case "gbs":
+		case ".gbs":
 			vc.indexBottomSolderMask = i
-		case "gbo":
+		case ".gbo":
 			vc.indexBottomSilkscreen = i
-		case "g2l":
+		case ".g2l":
 			vc.indexLayer2 = i
-		case "g3l":
+		case ".g3l":
 			vc.indexLayer3 = i
-		case "g4l":
+		case ".g4l":
 			vc.indexLayer4 = i
-		case "g5l":
+		case ".g5l":
 			vc.indexLayer5 = i
-		case "xln":
+		case ".xln":
 			vc.indexDrill = i
-		case "gko":
+		case ".gko":
 			vc.indexOutline = i
-		case "g6l":
+		case ".g6l":
 			vc.indexLayer6 = i
-		case "g7l":
+		case ".g7l":
 			vc.indexLayer7 = i
-		case "g8l":
+		case ".g8l":
 			vc.indexLayer8 = i
-		case "g9l":
+		case ".g9l":
 			vc.indexLayer9 = i
 		case "g10l":
 			vc.indexLayer10 = i
