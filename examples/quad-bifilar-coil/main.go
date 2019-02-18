@@ -130,7 +130,7 @@ func main() {
 		Circle(hole9, padD),
 	)
 
-	layer2 := g.Layer2()
+	layer2 := g.LayerN(2)
 	layer2.Add(
 		Polygon(Pt{0, 0}, true, layer2SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer2SpiralL, 0.0),
@@ -199,7 +199,7 @@ func main() {
 		Circle(hole9, padD),
 	)
 
-	layer3 := g.Layer3()
+	layer3 := g.LayerN(3)
 	layer3.Add(
 		Polygon(Pt{0, 0}, true, layer3SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer3SpiralL, 0.0),

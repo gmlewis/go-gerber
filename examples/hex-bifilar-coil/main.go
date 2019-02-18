@@ -186,7 +186,7 @@ func main() {
 		contactPad(hole3L),
 	)
 
-	layer2 := g.Layer2()
+	layer2 := g.LayerN(2)
 	layer2.Add(
 		Polygon(Pt{0, 0}, true, layer2SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer2SpiralL, 0.0),
@@ -214,7 +214,7 @@ func main() {
 		contactPad(hole3L),
 	)
 
-	layer4 := g.Layer4()
+	layer4 := g.LayerN(4)
 	layer4.Add(
 		Polygon(Pt{0, 0}, true, layer4SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer4SpiralL, 0.0),
@@ -291,7 +291,7 @@ func main() {
 		contactPad(hole3L),
 	)
 
-	layer3 := g.Layer3()
+	layer3 := g.LayerN(3)
 	layer3.Add(
 		Polygon(Pt{0, 0}, true, layer3SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer3SpiralL, 0.0),
@@ -319,7 +319,7 @@ func main() {
 		padLine(endLayer3L, hole3L),
 	)
 
-	layer5 := g.Layer5()
+	layer5 := g.LayerN(5)
 	layer5.Add(
 		Polygon(Pt{0, 0}, true, layer5SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer5SpiralL, 0.0),

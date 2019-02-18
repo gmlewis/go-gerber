@@ -262,7 +262,7 @@ func main() {
 	topMask := g.TopSolderMask()
 	addVias(topMask)
 
-	layer2 := g.Layer2()
+	layer2 := g.LayerN(2)
 	layer2.Add(
 		Polygon(Pt{0, 0}, true, layer2SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer2SpiralL, 0.0),
@@ -273,7 +273,7 @@ func main() {
 	)
 	addVias(layer2)
 
-	layer4 := g.Layer4()
+	layer4 := g.LayerN(4)
 	layer4.Add(
 		Polygon(Pt{0, 0}, true, layer4SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer4SpiralL, 0.0),
@@ -284,7 +284,7 @@ func main() {
 	)
 	addVias(layer4)
 
-	layer6 := g.Layer6()
+	layer6 := g.LayerN(6)
 	layer6.Add(
 		Polygon(Pt{0, 0}, true, layer6SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer6SpiralL, 0.0),
@@ -295,7 +295,7 @@ func main() {
 	)
 	addVias(layer6)
 
-	layer8 := g.Layer8()
+	layer8 := g.LayerN(8)
 	layer8.Add(
 		Polygon(Pt{0, 0}, true, layer8SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer8SpiralL, 0.0),
@@ -306,7 +306,7 @@ func main() {
 	)
 	addVias(layer8)
 
-	layer10 := g.Layer10()
+	layer10 := g.LayerN(10)
 	layer10.Add(
 		Polygon(Pt{0, 0}, true, layer10SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer10SpiralL, 0.0),
@@ -317,7 +317,7 @@ func main() {
 	)
 	addVias(layer10)
 
-	layer12 := g.Layer12()
+	layer12 := g.LayerN(12)
 	layer12.Add(
 		Polygon(Pt{0, 0}, true, layer12SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer12SpiralL, 0.0),
@@ -328,7 +328,7 @@ func main() {
 	)
 	addVias(layer12)
 
-	layer14 := g.Layer14()
+	layer14 := g.LayerN(14)
 	layer14.Add(
 		Polygon(Pt{0, 0}, true, layer14SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer14SpiralL, 0.0),
@@ -339,7 +339,7 @@ func main() {
 	)
 	addVias(layer14)
 
-	layer16 := g.Layer16()
+	layer16 := g.LayerN(16)
 	layer16.Add(
 		Polygon(Pt{0, 0}, true, layer16SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer16SpiralL, 0.0),
@@ -350,7 +350,7 @@ func main() {
 	)
 	addVias(layer16)
 
-	layer18 := g.Layer18()
+	layer18 := g.LayerN(18)
 	layer18.Add(
 		Polygon(Pt{0, 0}, true, layer18SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer18SpiralL, 0.0),
@@ -375,7 +375,7 @@ func main() {
 	bottomMask := g.BottomSolderMask()
 	addVias(bottomMask)
 
-	layer3 := g.Layer3()
+	layer3 := g.LayerN(3)
 	layer3.Add(
 		Polygon(Pt{0, 0}, true, layer3SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer3SpiralL, 0.0),
@@ -386,7 +386,7 @@ func main() {
 	)
 	addVias(layer3)
 
-	layer5 := g.Layer5()
+	layer5 := g.LayerN(5)
 	layer5.Add(
 		Polygon(Pt{0, 0}, true, layer5SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer5SpiralL, 0.0),
@@ -397,7 +397,7 @@ func main() {
 	)
 	addVias(layer5)
 
-	layer7 := g.Layer7()
+	layer7 := g.LayerN(7)
 	layer7.Add(
 		Polygon(Pt{0, 0}, true, layer7SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer7SpiralL, 0.0),
@@ -408,7 +408,7 @@ func main() {
 	)
 	addVias(layer7)
 
-	layer9 := g.Layer9()
+	layer9 := g.LayerN(9)
 	layer9.Add(
 		Polygon(Pt{0, 0}, true, layer9SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer9SpiralL, 0.0),
@@ -419,7 +419,7 @@ func main() {
 	)
 	addVias(layer9)
 
-	layer11 := g.Layer11()
+	layer11 := g.LayerN(11)
 	layer11.Add(
 		Polygon(Pt{0, 0}, true, layer11SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer11SpiralL, 0.0),
@@ -430,7 +430,7 @@ func main() {
 	)
 	addVias(layer11)
 
-	layer13 := g.Layer13()
+	layer13 := g.LayerN(13)
 	layer13.Add(
 		Polygon(Pt{0, 0}, true, layer13SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer13SpiralL, 0.0),
@@ -441,7 +441,7 @@ func main() {
 	)
 	addVias(layer13)
 
-	layer15 := g.Layer15()
+	layer15 := g.LayerN(15)
 	layer15.Add(
 		Polygon(Pt{0, 0}, true, layer15SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer15SpiralL, 0.0),
@@ -452,7 +452,7 @@ func main() {
 	)
 	addVias(layer15)
 
-	layer17 := g.Layer17()
+	layer17 := g.LayerN(17)
 	layer17.Add(
 		Polygon(Pt{0, 0}, true, layer17SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer17SpiralL, 0.0),
@@ -463,7 +463,7 @@ func main() {
 	)
 	addVias(layer17)
 
-	layer19 := g.Layer19()
+	layer19 := g.LayerN(19)
 	layer19.Add(
 		Polygon(Pt{0, 0}, true, layer19SpiralR, 0.0),
 		Polygon(Pt{0, 0}, true, layer19SpiralL, 0.0),

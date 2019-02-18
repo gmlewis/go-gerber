@@ -1,6 +1,7 @@
 package gerber
 
 import (
+	"fmt"
 	"io"
 	"log"
 )
@@ -125,28 +126,10 @@ func (g *Gerber) BottomSilkscreen() *Layer {
 	return g.makeLayer("gbo")
 }
 
-// Layer2 adds a layer-2 copper layer to a four-layer or six-layer design
+// LayerN adds a layer-n copper layer to a multi-layer design
 // and returns the layer.
-func (g *Gerber) Layer2() *Layer {
-	return g.makeLayer("g2l")
-}
-
-// Layer3 adds a layer-3 copper layer to a four-layer or six-layer design
-// and returns the layer.
-func (g *Gerber) Layer3() *Layer {
-	return g.makeLayer("g3l")
-}
-
-// Layer4 adds a layer-4 copper layer to a six-layer design
-// and returns the layer.
-func (g *Gerber) Layer4() *Layer {
-	return g.makeLayer("g4l")
-}
-
-// Layer5 adds a layer-5 copper layer to a six-layer design
-// and returns the layer.
-func (g *Gerber) Layer5() *Layer {
-	return g.makeLayer("g5l")
+func (g *Gerber) LayerN(n int) *Layer {
+	return g.makeLayer(fmt.Sprintf("g%vl", n))
 }
 
 // Drill adds a drill layer to the design
@@ -159,74 +142,4 @@ func (g *Gerber) Drill() *Layer {
 // and returns the layer.
 func (g *Gerber) Outline() *Layer {
 	return g.makeLayer("gko")
-}
-
-// Layer6 adds another layer and returns it.
-func (g *Gerber) Layer6() *Layer {
-	return g.makeLayer("g6l")
-}
-
-// Layer7 adds another layer and returns it.
-func (g *Gerber) Layer7() *Layer {
-	return g.makeLayer("g7l")
-}
-
-// Layer8 adds another layer and returns it.
-func (g *Gerber) Layer8() *Layer {
-	return g.makeLayer("g8l")
-}
-
-// Layer9 adds another layer and returns it.
-func (g *Gerber) Layer9() *Layer {
-	return g.makeLayer("g9l")
-}
-
-// Layer10 adds another layer and returns it.
-func (g *Gerber) Layer10() *Layer {
-	return g.makeLayer("g10l")
-}
-
-// Layer11 adds another layer and returns it.
-func (g *Gerber) Layer11() *Layer {
-	return g.makeLayer("g11l")
-}
-
-// Layer12 adds another layer and returns it.
-func (g *Gerber) Layer12() *Layer {
-	return g.makeLayer("g12l")
-}
-
-// Layer13 adds another layer and returns it.
-func (g *Gerber) Layer13() *Layer {
-	return g.makeLayer("g13l")
-}
-
-// Layer14 adds another layer and returns it.
-func (g *Gerber) Layer14() *Layer {
-	return g.makeLayer("g14l")
-}
-
-// Layer15 adds another layer and returns it.
-func (g *Gerber) Layer15() *Layer {
-	return g.makeLayer("g15l")
-}
-
-// Layer16 adds another layer and returns it.
-func (g *Gerber) Layer16() *Layer {
-	return g.makeLayer("g16l")
-}
-
-// Layer17 adds another layer and returns it.
-func (g *Gerber) Layer17() *Layer {
-	return g.makeLayer("g17l")
-}
-
-// Layer18 adds another layer and returns it.
-func (g *Gerber) Layer18() *Layer {
-	return g.makeLayer("g18l")
-}
-
-// Layer19 adds another layer and returns it.
-func (g *Gerber) Layer19() *Layer {
-	return g.makeLayer("g19l")
 }
