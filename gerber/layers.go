@@ -155,3 +155,73 @@ func (g *Gerber) Drill() *Layer {
 func (g *Gerber) Outline() *Layer {
 	return g.makeLayer("gko")
 }
+
+// Layer6 adds another layer and returns it.
+func (g *Gerber) Layer6() *Layer {
+	return g.makeLayer("g6l")
+}
+
+// Layer7 adds another layer and returns it.
+func (g *Gerber) Layer7() *Layer {
+	return g.makeLayer("g7l")
+}
+
+// Layer8 adds another layer and returns it.
+func (g *Gerber) Layer8() *Layer {
+	return g.makeLayer("g8l")
+}
+
+// Layer9 adds another layer and returns it.
+func (g *Gerber) Layer9() *Layer {
+	return g.makeLayer("g9l")
+}
+
+// Layer10 adds another layer and returns it.
+func (g *Gerber) Layer10() *Layer {
+	return g.makeLayer("g10l")
+}
+
+// Layer11 adds another layer and returns it.
+func (g *Gerber) Layer11() *Layer {
+	return g.makeLayer("g11l")
+}
+
+// Layer12 adds another layer and returns it.
+func (g *Gerber) Layer12() *Layer {
+	return g.makeLayer("g12l")
+}
+
+// Layer13 adds another layer and returns it.
+func (g *Gerber) Layer13() *Layer {
+	return g.makeLayer("g13l")
+}
+
+// Layer14 adds another layer and returns it.
+func (g *Gerber) Layer14() *Layer {
+	return g.makeLayer("g14l")
+}
+
+// Layer15 adds another layer and returns it.
+func (g *Gerber) Layer15() *Layer {
+	return g.makeLayer("g15l")
+}
+
+// Layer16 adds another layer and returns it.
+func (g *Gerber) Layer16() *Layer {
+	return g.makeLayer("g16l")
+}
+
+// Layer17 adds another layer and returns it.
+func (g *Gerber) Layer17() *Layer {
+	return g.makeLayer("g17l")
+}
+
+// Layer18 adds another layer and returns it.
+func (g *Gerber) Layer18() *Layer {
+	return g.makeLayer("g18l")
+}
+
+// Layer19 adds another layer and returns it.
+func (g *Gerber) Layer19() *Layer {
+	return g.makeLayer("g19l")
+}
