@@ -121,7 +121,7 @@ func Gerber(g *gerber.Gerber) {
 	vc := initController(g, a)
 	vc.scaleToFit(800, 800)
 	vc.img = image.NewRGBA(image.Rect(0, 0, 800, 800))
-	c := canvas.NewRaster(vc.pixelFunc)
+	c := canvas.NewRaster(vc.imageFunc)
 	c.SetMinSize(fyne.Size{Width: 800, Height: 800})
 	vc.canvasObj = c
 
@@ -386,11 +386,11 @@ func (vc *viewController) Refresh() {
 	vc.img = dc.Image().(*image.RGBA)
 }
 
-func (vc *viewController) pixelFunc(x, y, w, h int) color.Color {
+func (vc *viewController) imageFunc(w, h int) image.Image {
 	if vc.lastW != w || vc.lastH != h {
 		vc.mu.Lock()
 		vc.Resize(w, h)
 		vc.mu.Unlock()
 	}
-	return vc.img.At(x, y)
+	return vc.img
 }
