@@ -2,6 +2,7 @@ package gerber
 
 import (
 	"io"
+	"log"
 )
 
 // Layer represents a printed circuit board layer.
@@ -70,6 +71,10 @@ func (l *Layer) MBB() MBB {
 			continue
 		}
 		l.mbb.Join(&v)
+	}
+	if l.mbb == nil { // no primitives
+		log.Printf("No primivites on layer %v", l.Filename)
+		l.mbb = &MBB{}
 	}
 
 	return *l.mbb
