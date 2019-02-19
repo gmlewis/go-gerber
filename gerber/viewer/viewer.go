@@ -56,7 +56,7 @@ type viewController struct {
 	mu sync.Mutex
 }
 
-func initController(g *gerber.Gerber, app fyne.App) *viewController {
+func initController(g *gerber.Gerber, app fyne.App, allLayersOn bool) *viewController {
 	mbb := g.MBB()
 	vc := &viewController{
 		g:                     g,
@@ -76,7 +76,6 @@ func initController(g *gerber.Gerber, app fyne.App) *viewController {
 	}
 
 	for i, layer := range g.Layers {
-		vc.drawLayer[i] = true
 
 		if m := layerRE.FindStringSubmatch(layer.Filename); len(m) == 2 {
 			n, err := strconv.Atoi(m[1])
@@ -87,9 +86,11 @@ func initController(g *gerber.Gerber, app fyne.App) *viewController {
 			if n > vc.maxN {
 				vc.maxN = n
 			}
+			vc.drawLayer[i] = allLayersOn
 			continue
 		}
 
+		vc.drawLayer[i] = true
 		switch layer.Filename[len(layer.Filename)-4:] {
 		case ".gtl":
 			vc.indexTop = i
@@ -115,10 +116,10 @@ func initController(g *gerber.Gerber, app fyne.App) *viewController {
 	return vc
 }
 
-func Gerber(g *gerber.Gerber) {
+func Gerber(g *gerber.Gerber, allLayersOn bool) {
 	a := app.New()
 
-	vc := initController(g, a)
+	vc := initController(g, a, allLayersOn)
 	vc.scaleToFit(800, 800)
 	vc.img = image.NewRGBA(image.Rect(0, 0, 800, 800))
 	c := canvas.NewRaster(vc.imageFunc)
@@ -130,11 +131,9 @@ func Gerber(g *gerber.Gerber) {
 		if index >= 0 {
 			check := widget.NewCheck(label, func(v bool) {
 				vc.drawLayer[index] = v
-				// widget.Refresh(vc)
 				vc.Refresh()
-				// canvas.Refresh(c)
 			})
-			check.SetChecked(true)
+			check.SetChecked(vc.drawLayer[index])
 			layers.Append(widget.NewHBox(check, layout.NewSpacer()))
 		}
 	}

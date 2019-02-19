@@ -415,7 +415,7 @@ func main() {
 	fmt.Println("Done.")
 
 	if *view {
-		viewer.Gerber(g)
+		viewer.Gerber(g, true)
 	}
 }
 
