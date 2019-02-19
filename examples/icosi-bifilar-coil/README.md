@@ -1,8 +1,8 @@
-# Icosi (20) bifilar coil
+# Icosi (20-layer) bifilar coil
 
 This is a design of an icosi bifilar coil, meaning that when this design is
-fabricated on a 20-layer printed circuit board (PCB), there will be 20
-bifilar coils wired in series, one bifilar coil per layer.
+fabricated on a 20-layer printed circuit board (PCB), there will be
+20 bifilar coils wired in series, one bifilar coil per layer.
 
 The theory is that when you drive the coil with a sine wave at its
 resonant frequency, it can transfer power at its greatest efficiency.
@@ -32,12 +32,6 @@ Here is an example icosi-bifilar-coil with N=20:
 Here is a diagram showing how it is wound:
 
 TBD: icosi-bifilar-coil-diagram icosi-bifilar-coil-diagram.png
-
-This shows the various layers on a small (n=12) coil to highlight
-the wiring and various layers of the PCB:
-
-TBD: icosi-bifilar-coil-layers icosi-bifilar-coil-layers.gif
-
 
 ## Parametric design
 
