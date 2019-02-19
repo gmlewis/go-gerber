@@ -73,7 +73,7 @@ func main() {
 	startTopR, topSpiralR, endTopR := s.genSpiral(1, 0, 0)
 	startTopL, topSpiralL, endTopL := s.genSpiral(1, math.Pi, 0)
 	startBotR, botSpiralR, endBotR := s.genSpiral(-1, 0, 0)
-	startBotL, botSpiralL, endBotL := s.genSpiral(-1, math.Pi, *trace+padD)
+	startBotL, botSpiralL, endBotL := s.genSpiral(-1, math.Pi, 0) // *trace+padD)
 
 	startLayerNR := map[int]Pt{}
 	startLayerNL := map[int]Pt{}
@@ -89,13 +89,21 @@ func main() {
 		startLayerNR[n], layerNSpiralR[n], endLayerNR[n] = s.genSpiral(1, af*angleDelta, 0)
 		startLayerNL[n], layerNSpiralL[n], endLayerNL[n] = s.genSpiral(1, math.Pi+af*angleDelta, 0)
 		startLayerNR[n+1], layerNSpiralR[n+1], endLayerNR[n+1] = s.genSpiral(-1, af*angleDelta, 0)
-		startLayerNL[n+1], layerNSpiralL[n+1], endLayerNL[n+1] = s.genSpiral(-1, math.Pi+af*angleDelta, 0)
+		trimY := 0.0
+		if n+1 == 7 { // 7L
+			trimY = *trace + padD
+		}
+		startLayerNL[n+1], layerNSpiralL[n+1], endLayerNL[n+1] = s.genSpiral(-1, math.Pi+af*angleDelta, trimY)
 
 		if n+2 < nlayers {
 			startLayerNR[n+2], layerNSpiralR[n+2], endLayerNR[n+2] = s.genSpiral(1, -af*angleDelta, 0)
 			startLayerNL[n+2], layerNSpiralL[n+2], endLayerNL[n+2] = s.genSpiral(1, math.Pi-af*angleDelta, 0)
 			startLayerNR[n+3], layerNSpiralR[n+3], endLayerNR[n+3] = s.genSpiral(-1, -af*angleDelta, 0)
-			startLayerNL[n+3], layerNSpiralL[n+3], endLayerNL[n+3] = s.genSpiral(-1, math.Pi-af*angleDelta, 0)
+			// trimY := 0.0
+			// if n+3 == 5 { // 5L
+			// 	trimY = *trace + padD
+			// }
+			startLayerNL[n+3], layerNSpiralL[n+3], endLayerNL[n+3] = s.genSpiral(-1, math.Pi-af*angleDelta, 0) // trimY)
 		}
 	}
 
@@ -110,46 +118,16 @@ func main() {
 		innerViaPts = append(innerViaPts, Pt{x, y})
 	}
 	innerHole := map[string]int{
-		"TR":  17,
-		"TL":  7,
-		"BR":  13,
-		"BL":  3,
-		"2R":  18,
-		"2L":  8,
-		"3R":  12,
-		"3L":  2,
-		"4R":  16,
-		"4L":  6,
-		"5R":  14,
-		"5L":  4,
-		"6R":  19,
-		"6L":  9,
-		"7R":  11,
-		"7L":  1,
-		"8R":  15,
-		"8L":  5,
-		"9R":  15,
-		"9L":  5,
-		"10R": 0,
-		"10L": 10,
-		"11R": 10,
-		"11L": 0,
-		"12R": 14,
-		"12L": 4,
-		"13R": 16,
-		"13L": 6,
-		"14R": 1,
-		"14L": 11,
-		"15R": 9,
-		"15L": 19,
-		"16R": 13,
-		"16L": 3,
-		"17R": 17,
-		"17L": 7,
-		"18R": 12,
-		"18L": 2,
-		"19R": 18,
-		"19L": 8,
+		"TR": 17, "TL": 7, "BR": 13, "BL": 3,
+		"2R": 18, "2L": 8, "3R": 12, "3L": 2,
+		"4R": 16, "4L": 6, "5R": 14, "5L": 4,
+		"6R": 19, "6L": 9, "7R": 11, "7L": 1,
+		"8R": 15, "8L": 5, "9R": 15, "9L": 5,
+		"10R": 0, "10L": 10, "11R": 10, "11L": 0,
+		"12R": 14, "12L": 4, "13R": 16, "13L": 6,
+		"14R": 1, "14L": 11, "15R": 9, "15L": 19,
+		"16R": 13, "16L": 3, "17R": 17, "17L": 7,
+		"18R": 12, "18L": 2, "19R": 18, "19L": 8,
 	}
 
 	outerR := (2.0*math.Pi + float64(*n)*2.0*math.Pi + *trace + *gap) / (3.0 * math.Pi)
@@ -167,46 +145,16 @@ func main() {
 	}
 	outerViaPts = append(outerViaPts, outerContactPt(0.5))
 	outerHole := map[string]int{
-		"TR":  0,
-		"TL":  10,
-		"BR":  10,
-		"BL":  20,
-		"2R":  1,
-		"2L":  11,
-		"3R":  9,
-		"3L":  19,
-		"4R":  19,
-		"4L":  9,
-		"5R":  11,
-		"5L":  1,
-		"6R":  2,
-		"6L":  12,
-		"7R":  8,
-		"7L":  18,
-		"8R":  18,
-		"8L":  8,
-		"9R":  12,
-		"9L":  2,
-		"10R": 3,
-		"10L": 13,
-		"11R": 7,
-		"11L": 17,
-		"12R": 17,
-		"12L": 7,
-		"13R": 13,
-		"13L": 3,
-		"14R": 4,
-		"14L": 14,
-		"15R": 6,
-		"15L": 16,
-		"16R": 16,
-		"16L": 6,
-		"17R": 14,
-		"17L": 4,
-		"18R": 15,
-		"18L": 5,
-		"19R": 15,
-		"19L": 5,
+		"TR": 18, "TL": 8, "BR": 12, "BL": 2,
+		"2R": 19, "2L": 9, "3R": 11, "3L": 1,
+		"4R": 17, "4L": 7, "5R": 13, "5L": 3,
+		"6R": 0, "6L": 10, "7R": 10, "7L": 20,
+		"8R": 16, "8L": 6, "9R": 14, "9L": 4,
+		"10R": 1, "10L": 11, "11R": 9, "11L": 19,
+		"12R": 15, "12L": 5, "13R": 15, "13L": 5,
+		"14R": 2, "14L": 12, "15R": 8, "15L": 18,
+		"16R": 14, "16L": 4, "17R": 16, "17L": 6,
+		"18R": 13, "18L": 3, "19R": 17, "19L": 7,
 	}
 
 	drill := g.Drill()
@@ -310,7 +258,7 @@ func main() {
 		}
 		outerLabel2 := func(label string) *TextT {
 			num := float64(outerHole[label])
-			if label == "BL" {
+			if outerHole[label] == 20 {
 				num = 0.5
 			}
 			r := outerR + 0.5**trace + *gap + 0.5*padD
@@ -322,87 +270,27 @@ func main() {
 		tss := g.TopSilkscreen()
 		tss.Add(
 			Text(0, 0.3*r, 1.0, message, *fontName, pts, &Center),
-			innerLabel("TR"),
-			innerLabel("TL"),
-			innerLabel("BR"),
-			innerLabel("BL"),
-			innerLabel("2R"),
-			innerLabel("2L"),
-			innerLabel("3R"),
-			innerLabel("3L"),
-			innerLabel("4R"),
-			innerLabel("4L"),
-			innerLabel("5R"),
-			innerLabel("5L"),
-			innerLabel("6R"),
-			innerLabel("6L"),
-			innerLabel("7R"),
-			innerLabel("7L"),
-			innerLabel("8R"),
-			innerLabel("8L"),
-			innerLabel2("9R"),
-			innerLabel2("9L"),
-			innerLabel("10R"),
-			innerLabel("10L"),
-			innerLabel2("11R"),
-			innerLabel2("11L"),
-			innerLabel2("12R"),
-			innerLabel2("12L"),
-			innerLabel2("13R"),
-			innerLabel2("13L"),
-			innerLabel2("14R"),
-			innerLabel2("14L"),
-			innerLabel2("15R"),
-			innerLabel2("15L"),
-			innerLabel2("16R"),
-			innerLabel2("16L"),
-			innerLabel2("17R"),
-			innerLabel2("17L"),
-			innerLabel2("18R"),
-			innerLabel2("18L"),
-			innerLabel2("19R"),
-			innerLabel2("19L"),
+			innerLabel("TR"), innerLabel("TL"), innerLabel("BR"), innerLabel("BL"),
+			innerLabel("2R"), innerLabel("2L"), innerLabel("3R"), innerLabel("3L"),
+			innerLabel("4R"), innerLabel("4L"), innerLabel("5R"), innerLabel("5L"),
+			innerLabel("6R"), innerLabel("6L"), innerLabel("7R"), innerLabel("7L"),
+			innerLabel("8R"), innerLabel("8L"), innerLabel2("9R"), innerLabel2("9L"),
+			innerLabel("10R"), innerLabel("10L"), innerLabel2("11R"), innerLabel2("11L"),
+			innerLabel2("12R"), innerLabel2("12L"), innerLabel2("13R"), innerLabel2("13L"),
+			innerLabel2("14R"), innerLabel2("14L"), innerLabel2("15R"), innerLabel2("15L"),
+			innerLabel2("16R"), innerLabel2("16L"), innerLabel2("17R"), innerLabel2("17L"),
+			innerLabel2("18R"), innerLabel2("18L"), innerLabel2("19R"), innerLabel2("19L"),
 
-			outerLabel2("TR"),
-			outerLabel("TL"),
-			outerLabel2("BR"),
-			outerLabel2("BL"),
-			outerLabel("2R"),
-			outerLabel("2L"),
-			outerLabel("3R"),
-			outerLabel("3L"),
-			outerLabel2("4R"),
-			outerLabel2("4L"),
-			outerLabel2("5R"),
-			outerLabel2("5L"),
-			outerLabel("6R"),
-			outerLabel("6L"),
-			outerLabel("7R"),
-			outerLabel("7L"),
-			outerLabel2("8R"),
-			outerLabel2("8L"),
-			outerLabel2("9R"),
-			outerLabel2("9L"),
-			outerLabel("10R"),
-			outerLabel("10L"),
-			outerLabel("11R"),
-			outerLabel("11L"),
-			outerLabel2("12R"),
-			outerLabel2("12L"),
-			outerLabel2("13R"),
-			outerLabel2("13L"),
-			outerLabel("14R"),
-			outerLabel("14L"),
-			outerLabel("15R"),
-			outerLabel("15L"),
-			outerLabel2("16R"),
-			outerLabel2("16L"),
-			outerLabel2("17R"),
-			outerLabel2("17L"),
-			outerLabel("18R"),
-			outerLabel("18L"),
-			outerLabel2("19R"),
-			outerLabel2("19L"),
+			outerLabel2("TR"), outerLabel("TL"), outerLabel2("BR"), outerLabel2("BL"),
+			outerLabel("2R"), outerLabel("2L"), outerLabel("3R"), outerLabel("3L"),
+			outerLabel2("4R"), outerLabel2("4L"), outerLabel2("5R"), outerLabel2("5L"),
+			outerLabel("6R"), outerLabel("6L"), outerLabel("7R"), outerLabel("7L"),
+			outerLabel2("8R"), outerLabel2("8L"), outerLabel2("9R"), outerLabel2("9L"),
+			outerLabel("10R"), outerLabel("10L"), outerLabel("11R"), outerLabel("11L"),
+			outerLabel2("12R"), outerLabel2("12L"), outerLabel2("13R"), outerLabel2("13L"),
+			outerLabel("14R"), outerLabel("14L"), outerLabel("15R"), outerLabel("15L"),
+			outerLabel2("16R"), outerLabel2("16L"), outerLabel2("17R"), outerLabel2("17L"),
+			outerLabel("18R"), outerLabel("18L"), outerLabel2("19R"), outerLabel2("19L"),
 
 			// Text(-0.5*r, -0.4*r, 1.0, message2, *fontName, pts, &Center),
 			// Text(0.5*r, -0.4*r, 1.0, message3, *fontName, pts, &Center),
@@ -415,7 +303,7 @@ func main() {
 	fmt.Println("Done.")
 
 	if *view {
-		viewer.Gerber(g, true)
+		viewer.Gerber(g, false)
 	}
 }
 
@@ -451,8 +339,8 @@ func newSpiral() *spiral {
 
 func (s *spiral) genSpiral(xScale, offset, trimY float64) (startPt Pt, pts []Pt, endPt Pt) {
 	halfTW := *trace * 0.5
-	endAngle := s.endAngle // - math.Pi/3.0
-	if trimY < 0 {         // Only for layer2SpiralL - extend another Pi/2
+	endAngle := s.endAngle - 4.0*math.Pi/nlayers
+	if trimY < 0 { // Only for layer2SpiralL - extend another Pi/2
 		endAngle += 0.5 * math.Pi
 	}
 	steps := int(0.5 + (endAngle-s.startAngle) / *step)

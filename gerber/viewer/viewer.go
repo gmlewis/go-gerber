@@ -168,6 +168,7 @@ func Gerber(g *gerber.Gerber, allLayersOn bool) {
 }
 
 func (vc *viewController) OnTypedRune(key rune) {
+	log.Printf("rune=%+q", key)
 	switch key {
 	case 'q', 'Q': // TODO: Switch this to Alt-q when available.
 		vc.app.Quit()
@@ -189,6 +190,7 @@ func (vc *viewController) OnTypedKey(event *fyne.KeyEvent) {
 	if event == nil {
 		return
 	}
+	log.Printf("event=%#v", *event)
 	switch event.Name {
 	case "Up":
 		vc.pan(0, -vc.canvasObj.Size().Height/5)
