@@ -19,19 +19,19 @@ drive the end tap with a sine wave at the resonant frequency of the
 remainder of the coil, and then get the amplified benefits of the
 remainder as in a secondary coil of a transformer.
 
-## How it is wound
+## How it is wired
 
 All coils are concentric and wind in the same direction.
 Therefore the magnetic field from each coil section combines uniformly
 with the other coils resulting in a stronger, cohesive field.
 
+Here is a diagram showing how it is wired:
+
+![icosi-bifilar-coil-diagram](icosi-bifilar-coil-diagram.png)
+
 Here is an example icosi-bifilar-coil with N=20:
 
 ![icosi-bifilar-coil](icosi-bifilar-coil.png)
-
-Here is a diagram showing how it is wound:
-
-TBD: icosi-bifilar-coil-diagram icosi-bifilar-coil-diagram.png
 
 ## Parametric design
 
