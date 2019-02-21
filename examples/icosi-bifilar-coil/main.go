@@ -83,9 +83,6 @@ func main() {
 	layerNSpiralL := map[int][]Pt{}
 	for n := 2; n < nlayers; n += 4 {
 		af := float64((n + 2) / 4)
-		if n+2 >= nlayers {
-			af = -af
-		}
 		startLayerNR[n], layerNSpiralR[n], endLayerNR[n] = s.genSpiral(1, af*angleDelta, 0)
 		startLayerNL[n], layerNSpiralL[n], endLayerNL[n] = s.genSpiral(1, math.Pi+af*angleDelta, 0)
 		startLayerNR[n+1], layerNSpiralR[n+1], endLayerNR[n+1] = s.genSpiral(-1, af*angleDelta, 0)
@@ -143,7 +140,7 @@ func main() {
 	outerHole := map[string]int{
 		"TR": 0, "TL": 10, "BR": 9, "BL": 19,
 		"2R": 1, "2L": 11, "3R": 8, "3L": 18,
-		"4R": 19, "4L": 9, "5R": 10, "5L": 0,
+		"4R": 19, "4L": 9, "5R": 10, "5L": 20,
 		"6R": 2, "6L": 12, "7R": 7, "7L": 17,
 		"8R": 18, "8L": 8, "9R": 11, "9L": 1,
 		"10R": 3, "10L": 13, "11R": 6, "11L": 16,
@@ -247,6 +244,9 @@ func main() {
 		}
 		outerLabel := func(label string) *TextT {
 			num := float64(outerHole[label])
+			if outerHole[label] != 20 {
+				num -= 0.5
+			}
 			r := outerR + 0.5**trace + *gap + 0.5*padD
 			x := r * math.Cos((0.3+num)*angleDelta)
 			y := r * math.Sin((0.3+num)*angleDelta)
@@ -255,7 +255,9 @@ func main() {
 		outerLabel2 := func(label string) *TextT {
 			num := float64(outerHole[label])
 			if outerHole[label] == 20 {
-				num = 0.5
+				num = 0.3
+			} else {
+				num -= 0.5
 			}
 			r := outerR + 0.5**trace + *gap + 0.5*padD
 			x := r * math.Cos((-0.3+num)*angleDelta)
@@ -318,13 +320,12 @@ type spiral struct {
 
 func newSpiral() *spiral {
 	startAngle := 7.71 * math.Pi
-	endAngle := 2.0*math.Pi + float64(*n)*2.0*math.Pi
+	endAngle := 2.0*math.Pi + float64(*n)*2.0*math.Pi + 0.15*math.Pi
 	p1 := genPt(1.0, endAngle, *trace*0.5, 0)
-	size := 2 * math.Abs(p1[0])
+	size := 2 * p1.Length()
 	p2 := genPt(1.0, endAngle, *trace*0.5, math.Pi)
-	xl := 2 * math.Abs(p2[0])
-	if xl > size {
-		size = xl
+	if v := 2 * p2.Length(); v > size {
+		size = v
 	}
 	return &spiral{
 		startAngle: startAngle,
