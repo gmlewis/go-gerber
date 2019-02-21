@@ -89,21 +89,17 @@ func main() {
 		startLayerNR[n], layerNSpiralR[n], endLayerNR[n] = s.genSpiral(1, af*angleDelta, 0)
 		startLayerNL[n], layerNSpiralL[n], endLayerNL[n] = s.genSpiral(1, math.Pi+af*angleDelta, 0)
 		startLayerNR[n+1], layerNSpiralR[n+1], endLayerNR[n+1] = s.genSpiral(-1, af*angleDelta, 0)
-		trimY := 0.0
-		if n+1 == 7 { // 7L
-			trimY = *trace + padD
-		}
-		startLayerNL[n+1], layerNSpiralL[n+1], endLayerNL[n+1] = s.genSpiral(-1, math.Pi+af*angleDelta, trimY)
+		startLayerNL[n+1], layerNSpiralL[n+1], endLayerNL[n+1] = s.genSpiral(-1, math.Pi+af*angleDelta, 0)
 
 		if n+2 < nlayers {
 			startLayerNR[n+2], layerNSpiralR[n+2], endLayerNR[n+2] = s.genSpiral(1, -af*angleDelta, 0)
 			startLayerNL[n+2], layerNSpiralL[n+2], endLayerNL[n+2] = s.genSpiral(1, math.Pi-af*angleDelta, 0)
 			startLayerNR[n+3], layerNSpiralR[n+3], endLayerNR[n+3] = s.genSpiral(-1, -af*angleDelta, 0)
-			// trimY := 0.0
-			// if n+3 == 5 { // 5L
-			// 	trimY = *trace + padD
-			// }
-			startLayerNL[n+3], layerNSpiralL[n+3], endLayerNL[n+3] = s.genSpiral(-1, math.Pi-af*angleDelta, 0) // trimY)
+			trimY := 0.0
+			if n+3 == 5 { // 5L
+				trimY = *trace + padD
+			}
+			startLayerNL[n+3], layerNSpiralL[n+3], endLayerNL[n+3] = s.genSpiral(-1, math.Pi-af*angleDelta, trimY)
 		}
 	}
 
@@ -127,7 +123,7 @@ func main() {
 		"12R": 14, "12L": 4, "13R": 16, "13L": 6,
 		"14R": 1, "14L": 11, "15R": 9, "15L": 19,
 		"16R": 13, "16L": 3, "17R": 17, "17L": 7,
-		"18R": 12, "18L": 2, "19R": 18, "19L": 8,
+		"18R": 2, "18L": 12, "19R": 8, "19L": 18,
 	}
 
 	outerR := (2.0*math.Pi + float64(*n)*2.0*math.Pi + *trace + *gap) / (3.0 * math.Pi)
@@ -140,21 +136,21 @@ func main() {
 
 	var outerViaPts []Pt
 	for i := 0; i < nlayers; i++ {
-		pt := outerContactPt(float64(i))
+		pt := outerContactPt(float64(i) - 0.5)
 		outerViaPts = append(outerViaPts, pt)
 	}
-	outerViaPts = append(outerViaPts, outerContactPt(0.5))
+	outerViaPts = append(outerViaPts, outerContactPt(0.0))
 	outerHole := map[string]int{
-		"TR": 18, "TL": 8, "BR": 12, "BL": 2,
-		"2R": 19, "2L": 9, "3R": 11, "3L": 1,
-		"4R": 17, "4L": 7, "5R": 13, "5L": 3,
-		"6R": 0, "6L": 10, "7R": 10, "7L": 20,
-		"8R": 16, "8L": 6, "9R": 14, "9L": 4,
-		"10R": 1, "10L": 11, "11R": 9, "11L": 19,
-		"12R": 15, "12L": 5, "13R": 15, "13L": 5,
-		"14R": 2, "14L": 12, "15R": 8, "15L": 18,
-		"16R": 14, "16L": 4, "17R": 16, "17L": 6,
-		"18R": 13, "18L": 3, "19R": 17, "19L": 7,
+		"TR": 0, "TL": 10, "BR": 9, "BL": 19,
+		"2R": 1, "2L": 11, "3R": 8, "3L": 18,
+		"4R": 19, "4L": 9, "5R": 10, "5L": 0,
+		"6R": 2, "6L": 12, "7R": 7, "7L": 17,
+		"8R": 18, "8L": 8, "9R": 11, "9L": 1,
+		"10R": 3, "10L": 13, "11R": 6, "11L": 16,
+		"12R": 17, "12L": 7, "13R": 12, "13L": 2,
+		"14R": 4, "14L": 14, "15R": 5, "15L": 15,
+		"16R": 16, "16L": 6, "17R": 13, "17L": 3,
+		"18R": 5, "18L": 15, "19R": 4, "19L": 14,
 	}
 
 	drill := g.Drill()
