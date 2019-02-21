@@ -94,7 +94,7 @@ func main() {
 			startLayerNR[n+3], layerNSpiralR[n+3], endLayerNR[n+3] = s.genSpiral(-1, -af*angleDelta, 0)
 			trimY := 0.0
 			if n+3 == 5 { // 5L
-				trimY = *trace + padD
+				trimY = 0.01
 			}
 			startLayerNL[n+3], layerNSpiralL[n+3], endLayerNL[n+3] = s.genSpiral(-1, math.Pi-af*angleDelta, trimY)
 		}
@@ -225,7 +225,7 @@ func main() {
 	if *fontName != "" {
 		pts := 36.0 * r / 139.18 // determined emperically
 		labelSize := pts * 4.0 / 18.0
-		outerLabelSize := 32.0 * r / 139.18 // determined emperically
+		outerLabelSize := 22.0 * r / 139.18 // determined emperically
 		message := fmt.Sprintf(messageFmt, *trace, *gap, *n)
 
 		innerLabel := func(label string) *TextT {
@@ -244,9 +244,7 @@ func main() {
 		}
 		outerLabel := func(label string) *TextT {
 			num := float64(outerHole[label])
-			if outerHole[label] != 20 {
-				num -= 0.5
-			}
+			num -= 0.5
 			r := outerR + 0.5**trace + *gap + 0.5*padD
 			x := r * math.Cos((0.3+num)*angleDelta)
 			y := r * math.Sin((0.3+num)*angleDelta)
@@ -254,12 +252,16 @@ func main() {
 		}
 		outerLabel2 := func(label string) *TextT {
 			num := float64(outerHole[label])
-			if outerHole[label] == 20 {
-				num = 0.3
-			} else {
-				num -= 0.5
-			}
+			num -= 0.5
 			r := outerR + 0.5**trace + *gap + 0.5*padD
+			x := r * math.Cos((-0.3+num)*angleDelta)
+			y := r * math.Sin((-0.3+num)*angleDelta)
+			return Text(x, y, 1.0, label, *fontName, outerLabelSize, &Center)
+		}
+		outerLabel3 := func(label string) *TextT {
+			num := float64(outerHole[label])
+			num = 0.3
+			r := outerR
 			x := r * math.Cos((-0.3+num)*angleDelta)
 			y := r * math.Sin((-0.3+num)*angleDelta)
 			return Text(x, y, 1.0, label, *fontName, outerLabelSize, &Center)
@@ -279,16 +281,16 @@ func main() {
 			innerLabel2("16R"), innerLabel2("16L"), innerLabel2("17R"), innerLabel2("17L"),
 			innerLabel2("18R"), innerLabel2("18L"), innerLabel2("19R"), innerLabel2("19L"),
 
-			outerLabel2("TR"), outerLabel("TL"), outerLabel2("BR"), outerLabel2("BL"),
+			outerLabel2("TR"), outerLabel("TL"), outerLabel("BR"), outerLabel2("BL"),
 			outerLabel("2R"), outerLabel("2L"), outerLabel("3R"), outerLabel("3L"),
-			outerLabel2("4R"), outerLabel2("4L"), outerLabel2("5R"), outerLabel2("5L"),
+			outerLabel("4R"), outerLabel2("4L"), outerLabel2("5R"), outerLabel3("5L"),
 			outerLabel("6R"), outerLabel("6L"), outerLabel("7R"), outerLabel("7L"),
 			outerLabel2("8R"), outerLabel2("8L"), outerLabel2("9R"), outerLabel2("9L"),
 			outerLabel("10R"), outerLabel("10L"), outerLabel("11R"), outerLabel("11L"),
 			outerLabel2("12R"), outerLabel2("12L"), outerLabel2("13R"), outerLabel2("13L"),
 			outerLabel("14R"), outerLabel("14L"), outerLabel("15R"), outerLabel("15L"),
 			outerLabel2("16R"), outerLabel2("16L"), outerLabel2("17R"), outerLabel2("17L"),
-			outerLabel("18R"), outerLabel("18L"), outerLabel2("19R"), outerLabel2("19L"),
+			outerLabel2("18R"), outerLabel2("18L"), outerLabel2("19R"), outerLabel2("19L"),
 
 			// Text(-0.5*r, -0.4*r, 1.0, message2, *fontName, pts, &Center),
 			// Text(0.5*r, -0.4*r, 1.0, message3, *fontName, pts, &Center),
@@ -320,7 +322,7 @@ type spiral struct {
 
 func newSpiral() *spiral {
 	startAngle := 7.71 * math.Pi
-	endAngle := 2.0*math.Pi + float64(*n)*2.0*math.Pi + 0.15*math.Pi
+	endAngle := 2.0*math.Pi + float64(*n)*2.0*math.Pi
 	p1 := genPt(1.0, endAngle, *trace*0.5, 0)
 	size := 2 * p1.Length()
 	p2 := genPt(1.0, endAngle, *trace*0.5, math.Pi)
@@ -336,10 +338,15 @@ func newSpiral() *spiral {
 
 func (s *spiral) genSpiral(xScale, offset, trimY float64) (startPt Pt, pts []Pt, endPt Pt) {
 	halfTW := *trace * 0.5
-	endAngle := s.endAngle - 4.0*math.Pi/nlayers
-	if trimY < 0 { // Only for layer2SpiralL - extend another Pi/2
-		endAngle += 0.5 * math.Pi
+	var endAngle float64
+	if xScale < 0 { // odd
+		endAngle = s.endAngle + 3.0*math.Pi/nlayers
+	} else { // even
+		endAngle = s.endAngle - 1.0*math.Pi/nlayers
 	}
+	// if trimY < 0 { // Only for layer2SpiralL - extend another Pi/2
+	// 	endAngle += 0.5 * math.Pi
+	// }
 	steps := int(0.5 + (endAngle-s.startAngle) / *step)
 	for i := 0; i < steps; i++ {
 		angle := s.startAngle + *step*float64(i)
