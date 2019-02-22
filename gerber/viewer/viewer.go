@@ -378,7 +378,7 @@ func (vc *viewController) Refresh() {
 	renderLayer(vc.indexBottomSolderMask, color.RGBA{R: 250, G: 50, B: 50, A: 255})
 	renderLayer(vc.indexBottom, color.RGBA{R: 50, G: 50, B: 250, A: 255})
 	for i := vc.maxN; i >= 2; i-- {
-		renderLayer(vc.indexLayerN[i], color.RGBA{R: 50, G: 150, B: 250, A: 255})
+		renderLayer(vc.indexLayerN[i], colors[(i-2)%len(colors)])
 	}
 	renderLayer(vc.indexTop, color.RGBA{R: 250, G: 50, B: 250, A: 255})
 	renderLayer(vc.indexTopSolderMask, color.RGBA{R: 0, G: 150, B: 200, A: 255})
@@ -394,4 +394,17 @@ func (vc *viewController) imageFunc(w, h int) image.Image {
 		vc.mu.Unlock()
 	}
 	return vc.img
+}
+
+var colors = []color.Color{
+	color.RGBA{R: 0, G: 0, B: 0x84, A: 255},
+	color.RGBA{R: 0x84, G: 0, B: 0, A: 255},
+	color.RGBA{R: 0xc2, G: 0xb8, B: 0x33, A: 255},
+	color.RGBA{R: 0, G: 0x48, B: 0, A: 255},
+	color.RGBA{R: 0x84, G: 0, B: 0x84, A: 255},
+	color.RGBA{R: 0xc2, G: 0xc2, B: 0xc2, A: 255},
+	color.RGBA{R: 0, G: 0x84, B: 0, A: 255},
+	color.RGBA{R: 0x84, G: 0, B: 0x84, A: 255},
+	color.RGBA{R: 0, G: 0x84, B: 0x84, A: 255},
+	color.RGBA{R: 0x84, G: 0x84, B: 0, A: 255},
 }

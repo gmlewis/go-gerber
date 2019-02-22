@@ -95,25 +95,18 @@ func main() {
 	hole10 := Point(innerHole6X, -0.5*(*trace+viaPadD))
 	hole11 := Point(-innerHole6X, 0.5*(*trace+viaPadD))
 
-	outerViaPt := func(pt Pt, angle float64) Pt {
-		r := *trace*1.5 + 0.5*viaPadD
-		dx := r * math.Cos(angle)
-		dy := r * math.Sin(angle)
-		return Point(pt[0]+dx, pt[1]+dy)
-	}
-
-	holeBL4L := outerViaPt(endBotL, math.Pi/3.0)
-	holeTL5L := outerViaPt(endTopL, 2.0*math.Pi/3.0)
-	hole2L3R := outerViaPt(endLayer2L, math.Pi)
-	holeBR4R := outerViaPt(endBotR, 4.0*math.Pi/3.0)
-	holeTR5R := outerViaPt(endTopR, 5.0*math.Pi/3.0)
-
 	outerContactPt := func(pt Pt, angle float64) Pt {
 		r := *trace*1.5 + 0.5*padD
 		dx := r * math.Cos(angle)
 		dy := r * math.Sin(angle)
 		return Point(pt[0]+dx, pt[1]+dy)
 	}
+
+	holeBL4L := outerContactPt(endBotL, math.Pi/3.0)
+	holeTL5L := outerContactPt(endTopL, 2.0*math.Pi/3.0)
+	hole2L3R := outerContactPt(endLayer2L, math.Pi)
+	holeBR4R := outerContactPt(endBotR, 4.0*math.Pi/3.0)
+	holeTR5R := outerContactPt(endTopR, 5.0*math.Pi/3.0)
 
 	hole2R := outerContactPt(endLayer2R, 0)
 	hole3L := outerContactPt(endLayer3L, 0)
@@ -139,11 +132,11 @@ func main() {
 		viaDrill(hole10),
 		viaDrill(hole11),
 
-		viaDrill(holeBL4L),
-		viaDrill(holeTL5L),
-		viaDrill(hole2L3R),
-		viaDrill(holeBR4R),
-		viaDrill(holeTR5R),
+		contactDrill(holeBL4L),
+		contactDrill(holeTL5L),
+		contactDrill(hole2L3R),
+		contactDrill(holeBR4R),
+		contactDrill(holeTR5R),
 		contactDrill(hole2R),
 		contactDrill(hole3L),
 	)
@@ -175,12 +168,12 @@ func main() {
 		viaPad(hole10),
 		viaPad(hole11),
 
-		viaPad(holeBL4L),
-		viaPad(holeTL5L),
+		contactPad(holeBL4L),
+		contactPad(holeTL5L),
 		padLine(endTopL, holeTL5L),
-		viaPad(hole2L3R),
-		viaPad(holeBR4R),
-		viaPad(holeTR5R),
+		contactPad(hole2L3R),
+		contactPad(holeBR4R),
+		contactPad(holeTR5R),
 		padLine(endTopR, holeTR5R),
 		contactPad(hole2R),
 		contactPad(hole3L),
@@ -203,12 +196,12 @@ func main() {
 		viaPad(hole11),
 		padLine(startLayer2L, hole11),
 
-		viaPad(holeBL4L),
-		viaPad(holeTL5L),
-		viaPad(hole2L3R),
+		contactPad(holeBL4L),
+		contactPad(holeTL5L),
+		contactPad(hole2L3R),
 		padLine(endLayer2L, hole2L3R),
-		viaPad(holeBR4R),
-		viaPad(holeTR5R),
+		contactPad(holeBR4R),
+		contactPad(holeTR5R),
 		contactPad(hole2R),
 		padLine(endLayer2R, hole2R),
 		contactPad(hole3L),
@@ -231,13 +224,13 @@ func main() {
 		viaPad(hole10),
 		viaPad(hole11),
 
-		viaPad(holeBL4L),
+		contactPad(holeBL4L),
 		padLine(endLayer4L, holeBL4L),
-		viaPad(holeTL5L),
-		viaPad(hole2L3R),
-		viaPad(holeBR4R),
+		contactPad(holeTL5L),
+		contactPad(hole2L3R),
+		contactPad(holeBR4R),
 		padLine(endLayer4R, holeBR4R),
-		viaPad(holeTR5R),
+		contactPad(holeTR5R),
 		contactPad(hole2R),
 		contactPad(hole3L),
 	)
@@ -254,11 +247,11 @@ func main() {
 		viaPad(hole10),
 		viaPad(hole11),
 
-		viaPad(holeBL4L),
-		viaPad(holeTL5L),
-		viaPad(hole2L3R),
-		viaPad(holeBR4R),
-		viaPad(holeTR5R),
+		contactPad(holeBL4L),
+		contactPad(holeTL5L),
+		contactPad(hole2L3R),
+		contactPad(holeBR4R),
+		contactPad(holeTR5R),
 		contactPad(hole2R),
 		contactPad(hole3L),
 	)
@@ -280,13 +273,13 @@ func main() {
 		viaPad(hole10),
 		viaPad(hole11),
 
-		viaPad(holeBL4L),
+		contactPad(holeBL4L),
 		padLine(endBotL, holeBL4L),
-		viaPad(holeTL5L),
-		viaPad(hole2L3R),
-		viaPad(holeBR4R),
+		contactPad(holeTL5L),
+		contactPad(hole2L3R),
+		contactPad(holeBR4R),
 		padLine(endBotR, holeBR4R),
-		viaPad(holeTR5R),
+		contactPad(holeTR5R),
 		contactPad(hole2R),
 		contactPad(hole3L),
 	)
@@ -308,12 +301,12 @@ func main() {
 		viaPad(hole10),
 		viaPad(hole11),
 
-		viaPad(holeBL4L),
-		viaPad(holeTL5L),
-		viaPad(hole2L3R),
+		contactPad(holeBL4L),
+		contactPad(holeTL5L),
+		contactPad(hole2L3R),
 		padLine(endLayer3R, hole2L3R),
-		viaPad(holeBR4R),
-		viaPad(holeTR5R),
+		contactPad(holeBR4R),
+		contactPad(holeTR5R),
 		contactPad(hole2R),
 		contactPad(hole3L),
 		padLine(endLayer3L, hole3L),
@@ -336,12 +329,12 @@ func main() {
 		viaPad(hole11),
 		padLine(startLayer5L, hole11),
 
-		viaPad(holeBL4L),
-		viaPad(holeTL5L),
+		contactPad(holeBL4L),
+		contactPad(holeTL5L),
 		padLine(endLayer5L, holeTL5L),
-		viaPad(hole2L3R),
-		viaPad(holeBR4R),
-		viaPad(holeTR5R),
+		contactPad(hole2L3R),
+		contactPad(holeBR4R),
+		contactPad(holeTR5R),
 		padLine(endLayer5R, holeTR5R),
 		contactPad(hole2R),
 		contactPad(hole3L),
@@ -359,11 +352,11 @@ func main() {
 		viaPad(hole10),
 		viaPad(hole11),
 
-		viaPad(holeBL4L),
-		viaPad(holeTL5L),
-		viaPad(hole2L3R),
-		viaPad(holeBR4R),
-		viaPad(holeTR5R),
+		contactPad(holeBL4L),
+		contactPad(holeTL5L),
+		contactPad(hole2L3R),
+		contactPad(holeBR4R),
+		contactPad(holeTR5R),
 		contactPad(hole2R),
 		contactPad(hole3L),
 	)
@@ -377,39 +370,54 @@ func main() {
 
 	if *fontName != "" {
 		pts := 36.0 * r / 139.18 // determined emperically
-		labelSize := pts * 4.0 / 18.0
+		labelSize := pts * 12.0 / 18.0
 		message := fmt.Sprintf(messageFmt, *trace, *gap, *n)
+
+		outerLabel := func(pt Pt, label string) *TextT {
+			r := math.Sqrt(pt[0]*pt[0] + pt[1]*pt[1])
+			angle := 0.15 + math.Atan2(pt[1], pt[0])
+			x := r * math.Cos(angle)
+			y := r * math.Sin(angle)
+			return Text(x, y, 1.0, label, *fontName, pts, &Center)
+		}
+		outerLabel2 := func(pt Pt, label string) *TextT {
+			r := math.Sqrt(pt[0]*pt[0] + pt[1]*pt[1])
+			angle := -0.15 + math.Atan2(pt[1], pt[0])
+			x := r * math.Cos(angle)
+			y := r * math.Sin(angle)
+			return Text(x, y, 1.0, label, *fontName, pts, &Center)
+		}
 
 		tss := g.TopSilkscreen()
 		tss.Add(
-			Text(0, 0.3*r, 1.0, message, *fontName, pts, &Center),
+			Text(0, 0.5*r, 1.0, message, *fontName, pts, &Center),
 			Text(hole1[0], hole1[1]+viaPadD, 1.0, "TL/BL", *fontName, labelSize, &BottomCenter),
 			Text(hole3[0], hole3[1]-viaPadD, 1.0, "TR/BR", *fontName, labelSize, &TopCenter),
 			Text(hole6[0]+viaPadD, hole6[1]-0.5*viaPadD, 1.0, "3L/4L", *fontName, labelSize, &BottomLeft),
 			Text(hole7[0]-viaPadD, hole7[1]+0.5*viaPadD, 1.0, "3R/4R", *fontName, labelSize, &TopRight),
 			Text(hole10[0]+viaPadD, hole10[1]+0.5*viaPadD, 1.0, "2R/5R", *fontName, labelSize, &TopLeft),
 			Text(hole11[0]-viaPadD, hole11[1]-0.5*viaPadD, 1.0, "2L/5L", *fontName, labelSize, &BottomRight),
-			Text(-0.5*r, -0.4*r, 1.0, message2, *fontName, pts, &Center),
-			Text(0.5*r, -0.4*r, 1.0, message3, *fontName, pts, &Center),
+			Text(-0.5*r, -0.3*r, 1.0, message2, *fontName, pts, &Center),
+			Text(0.5*r, -0.3*r, 1.0, message3, *fontName, pts, &Center),
 
 			// Outer connections
-			Text(holeTR5R[0], holeTR5R[1]+viaPadD, 1.0, "5R", *fontName, labelSize, &BottomCenter),
-			Text(holeTR5R[0], holeTR5R[1]-viaPadD, 1.0, "TR", *fontName, labelSize, &TopCenter),
+			outerLabel(holeTR5R, "5R"),
+			outerLabel2(holeTR5R, "TR"),
 
-			Text(holeTL5L[0], holeTL5L[1]+viaPadD, 1.0, "TL", *fontName, labelSize, &BottomCenter),
-			Text(holeTL5L[0], holeTL5L[1]-viaPadD, 1.0, "5L", *fontName, labelSize, &TopCenter),
+			outerLabel(holeTL5L, "TL"),
+			outerLabel2(holeTL5L, "5L"),
 
-			Text(holeBR4R[0], holeBR4R[1]+viaPadD, 1.0, "4R", *fontName, labelSize, &BottomCenter),
-			Text(holeBR4R[0], holeBR4R[1]-viaPadD, 1.0, "BR", *fontName, labelSize, &TopCenter),
+			outerLabel(holeBR4R, "4R"),
+			outerLabel2(holeBR4R, "BR"),
 
-			Text(holeBL4L[0], holeBL4L[1]+viaPadD, 1.0, "BL", *fontName, labelSize, &BottomCenter),
-			Text(holeBL4L[0], holeBL4L[1]-viaPadD, 1.0, "4L", *fontName, labelSize, &TopCenter),
+			outerLabel(holeBL4L, "BL"),
+			outerLabel2(holeBL4L, "4L"),
 
-			Text(hole2L3R[0], hole2L3R[1]+viaPadD, 1.0, "3R", *fontName, labelSize, &BottomCenter),
-			Text(hole2L3R[0], hole2L3R[1]-viaPadD, 1.0, "2L", *fontName, labelSize, &TopCenter),
+			outerLabel(hole2L3R, "3R"),
+			outerLabel2(hole2L3R, "2L"),
 
-			Text(endLayer3L[0]-0.5*padD, endLayer3L[1], 1.0, "3L", *fontName, pts, &BottomRight),
-			Text(endLayer2R[0]-0.5*padD, endLayer2R[1], 1.0, "2R", *fontName, pts, &TopRight),
+			outerLabel(hole3L, "3L"),
+			outerLabel2(hole2R, "2R"),
 		)
 	}
 
