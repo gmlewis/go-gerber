@@ -28,9 +28,9 @@ var (
 )
 
 const (
-	message = `With a trace and gap size of 0.15mm, this
-bifilar coil has a DC resistance of 182.2Ω.
-Each spiral has 100 coils.`
+	messageFmt = `Trace size = %0.2fmm.
+Gap size = %0.2fmm.
+Each spiral has %v coils.`
 )
 
 func main() {
@@ -147,11 +147,12 @@ func main() {
 
 	if *fontName != "" {
 		pts := 36.0 * r / 139.18 // determined emperically
-		labelSize := pts * 4.0 / 18.0
-		y := 0.3 * r
+		labelSize := pts
+		message := fmt.Sprintf(messageFmt, *trace, *gap, *n)
+
 		tss := g.TopSilkscreen()
 		tss.Add(
-			Text(0, y, 1.0, message, *fontName, pts, &Center),
+			Text(0, 0.5*r, 1.0, message, *fontName, pts, &Center),
 			Text(hole2[0]+0.5*padD, hole2[1], 1.0, "TR/TL", *fontName, labelSize, &CenterLeft),
 			Text(hole4[0]-0.5*padD, hole4[1], 1.0, "TL", *fontName, labelSize, &CenterRight),
 			Text(hole5[0]-0.6*padD, hole5[1], 1.0, "TR", *fontName, labelSize, &CenterRight),
