@@ -29,9 +29,10 @@ Here is a diagram showing how it is wired:
 
 ![icosi-bifilar-coil-diagram](icosi-bifilar-coil-diagram.png)
 
-Here is an example icosi-bifilar-coil with N=20:
+This shows the various layers on a small (n=20) coil to highlight
+the wiring and various layers of the PCB:
 
-![icosi-bifilar-coil](icosi-bifilar-coil.png)
+![icosi-bifilar-coil-layers](icosi-bifilar-coil-layers.gif)
 
 ## Parametric design
 

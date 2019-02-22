@@ -269,7 +269,7 @@ func main() {
 
 		tss := g.TopSilkscreen()
 		tss.Add(
-			Text(0, 0.3*r, 1.0, message, *fontName, pts, &Center),
+			Text(0, 0.5*r, 1.0, message, *fontName, pts, &Center),
 			innerLabel("TR"), innerLabel("TL"), innerLabel("BR"), innerLabel("BL"),
 			innerLabel("2R"), innerLabel("2L"), innerLabel("3R"), innerLabel("3L"),
 			innerLabel("4R"), innerLabel("4L"), innerLabel("5R"), innerLabel("5L"),
