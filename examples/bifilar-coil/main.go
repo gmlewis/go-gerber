@@ -29,7 +29,7 @@ var (
 
 const (
 	message = `With a trace and gap size of 0.15mm, this
-bifilar coil has a DC resistance of 232.2Ω.
+bifilar coil has a DC resistance of 182.2Ω.
 Each spiral has 100 coils.`
 )
 

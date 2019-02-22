@@ -49,8 +49,9 @@ number of coils per spiral = 100
 
 | From point | To point | DC resistance (Ω) | Resonant Frequency (Hz) |
 |   :---:    |  :---:   |      :---:        |         :---:           |
-|    TR      |  TR/TL   |                   |                         |
-|   TR/TL    |   TL     |                   |                         |
+|    TR      |  TR/TL   |       91.2        |                         |
+|   TR/TL    |   TL     |       91.2        |                         |
+|    TR      |   TL     |      182.2        |                         |
 
 ----------------------------------------------------------------------
 
