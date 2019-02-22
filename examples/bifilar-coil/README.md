@@ -9,11 +9,20 @@ resonant frequency, it can transfer power at its greatest efficiency.
 
 The beauty of this design is that it is parametric.
 
-## How it is wound
+## How it is wired
 
 Both coils are concentric and wind in the same direction.
 Therefore the magnetic field from each coil section combines uniformly
 with the other coil resulting in a stronger, cohesive field.
+
+Here is a diagram showing how it is wired:
+
+![bifilar-coil-diagram](bifilar-coil-diagram.png)
+
+This shows the various layers on a small (n=20) coil to highlight
+the wiring and various layers of the PCB:
+
+![bifilar-coil-layers](bifilar-coil-layers.gif)
 
 ## Parametric design
 
@@ -40,8 +49,8 @@ number of coils per spiral = 100
 
 | From point | To point | DC resistance (Ω) | Resonant Frequency (Hz) |
 |   :---:    |  :---:   |      :---:        |         :---:           |
-|   hole2    |  hole4   |                   |                         |
-|   hole4    |  hole5   |                   |                         |
+|    TR      |  TR/TL   |                   |                         |
+|   TR/TL    |   TL     |                   |                         |
 
 ----------------------------------------------------------------------
 

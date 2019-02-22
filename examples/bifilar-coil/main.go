@@ -65,7 +65,7 @@ func main() {
 
 	// Lower connecting trace between two spirals
 	hole1 := Point(startR[0], startR[1]+viaPadOffset)
-	hole2 := Point(endL[0]-viaPadOffset, endL[1])
+	hole2 := Point(endL[0]-padOffset, endL[1])
 	// Upper connecting trace for left spiral
 	hole3 := Point(startL[0], startL[1]-viaPadOffset)
 	hole4 := Point(endR[0]+padOffset, startL[1]+2*padOffset)
@@ -78,7 +78,7 @@ func main() {
 		Polygon(Pt{0, 0}, true, spiralL, 0.0),
 		// Lower connecting trace between two spirals
 		Circle(hole1, viaPadD),
-		Circle(hole2, viaPadD),
+		Circle(hole2, padD),
 		// Upper connecting trace for left spiral
 		Circle(hole3, viaPadD),
 		Circle(hole4, padD),
@@ -90,7 +90,7 @@ func main() {
 	topMask.Add(
 		// Lower connecting trace between two spirals
 		Circle(hole1, viaPadD),
-		Circle(hole2, viaPadD),
+		Circle(hole2, padD),
 		// Upper connecting trace for left spiral
 		Circle(hole3, viaPadD),
 		Circle(hole4, padD),
@@ -104,7 +104,7 @@ func main() {
 		Circle(hole1, viaPadD),
 		Line(startR[0], startR[1], endL[0], startR[1], RectShape, *trace),
 		Line(endL[0], startR[1], endL[0], endL[1], RectShape, *trace),
-		Circle(hole2, viaPadD),
+		Circle(hole2, padD),
 		// Upper connecting trace for left spiral
 		Circle(hole3, viaPadD),
 		Line(startL[0], startL[1], startL[0], startL[1]+padOffset, RectShape, *trace),
@@ -118,7 +118,7 @@ func main() {
 	bottomMask.Add(
 		// Lower connecting trace between two spirals
 		Circle(hole1, viaPadD),
-		Circle(hole2, viaPadD),
+		Circle(hole2, padD),
 		// Upper connecting trace for left spiral
 		Circle(hole3, viaPadD),
 		Circle(hole4, padD),
@@ -130,7 +130,7 @@ func main() {
 	drill.Add(
 		// Lower connecting trace between two spirals
 		Circle(hole1, viaDrillD),
-		Circle(hole2, viaDrillD),
+		Circle(hole2, drillD),
 		// Upper connecting trace for left spiral
 		Circle(hole3, viaDrillD),
 		Circle(hole4, drillD),
@@ -147,10 +147,14 @@ func main() {
 
 	if *fontName != "" {
 		pts := 36.0 * r / 139.18 // determined emperically
+		labelSize := pts * 4.0 / 18.0
 		y := 0.3 * r
 		tss := g.TopSilkscreen()
 		tss.Add(
 			Text(0, y, 1.0, message, *fontName, pts, &Center),
+			Text(hole2[0]+0.5*padD, hole2[1], 1.0, "TR/TL", *fontName, labelSize, &CenterLeft),
+			Text(hole4[0]-0.5*padD, hole4[1], 1.0, "TL", *fontName, labelSize, &CenterRight),
+			Text(hole5[0]-0.6*padD, hole5[1], 1.0, "TR", *fontName, labelSize, &CenterRight),
 		)
 	}
 
