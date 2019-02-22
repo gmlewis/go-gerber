@@ -4,25 +4,18 @@ This is an experimental package used to write Gerber (RS274X) files
 and bundle them into a ZIP file to send to printed circuit board (PCB)
 manufacturers, all from Go code.
 
-## Example
+## Examples
 
-```bash
-pushd examples/bifilar-coil
-go run main.go
-gerbview bifilar-coil.g* bifilar-coil.xln
-```
+Please see the examples in the various directories:
 
-generates:
-
-![bifilar-coil](images/bifilar-coil.png)
-
-and this shows the font and top/bottom silkscreen support:
-
-![with silkscreen](images/go-gerber-with-silkscreen.png)
+* 2-layer single bifilar coil: [bifilar-coil](examples/bifilar-coil)
+* 2-layer 2 bifilar coil: [dual-bifilar-coil](examples/dual-bifilar-coil)
+* 4-layer 4 bifilar coil: [quad-bifilar-coil](examples/quad-bifilar-coil)
+* 6-layer 6 bifilar coil: [hex-bifilar-coil](examples/hex-bifilar-coil)
+* 20-layer 20 bifilar coil: [icosi-bifilar-coil](examples/icosi-bifilar-coil)
 
 ## Status
 [![GoDoc](https://godoc.org/github.com/gmlewis/go-gerber/gerber?status.svg)](https://godoc.org/github.com/gmlewis/go-gerber/gerber)
-[![Build Status](https://travis-ci.org/gmlewis/go-gerber.png)](https://travis-ci.org/gmlewis/go-gerber)
 
 ----------------------------------------------------------------------
 
