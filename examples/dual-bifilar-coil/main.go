@@ -69,7 +69,7 @@ func main() {
 
 	// Lower connecting trace between two spirals
 	hole1 := Point(startR[0], startR[1]+viaPadOffset)
-	hole2 := Point(endL[0]-viaPadOffset, endL[1])
+	hole2 := Point(endL[0]-padOffset, endL[1])
 	// Upper connecting trace for left spiral
 	hole3 := Point(startL[0], startL[1]-viaPadOffset)
 	halfTW := *trace * 0.5
@@ -83,7 +83,7 @@ func main() {
 		Polygon(Pt{0, 0}, true, topSpiralL, 0.0),
 		// Lower connecting trace between two spirals
 		Circle(hole1, viaPadD),
-		Circle(hole2, viaPadD),
+		Circle(hole2, padD),
 		// Upper connecting trace for left spiral
 		Circle(hole3, viaPadD),
 		Circle(hole4, padD),
@@ -95,7 +95,7 @@ func main() {
 	topMask.Add(
 		// Lower connecting trace between two spirals
 		Circle(hole1, viaPadD),
-		Circle(hole2, viaPadD),
+		Circle(hole2, padD),
 		// Upper connecting trace for left spiral
 		Circle(hole3, viaPadD),
 		Circle(hole4, padD),
@@ -109,7 +109,7 @@ func main() {
 		Polygon(Pt{0, 0}, true, botSpiralL, 0.0),
 		// Lower connecting trace between two spirals
 		Circle(hole1, viaPadD),
-		Circle(hole2, viaPadD),
+		Circle(hole2, padD),
 		// Upper connecting trace for left spiral
 		Circle(hole3, viaPadD),
 		Circle(hole4, padD),
@@ -121,7 +121,7 @@ func main() {
 	bottomMask.Add(
 		// Lower connecting trace between two spirals
 		Circle(hole1, viaPadD),
-		Circle(hole2, viaPadD),
+		Circle(hole2, padD),
 		// Upper connecting trace for left spiral
 		Circle(hole3, viaPadD),
 		Circle(hole4, padD),
@@ -133,7 +133,7 @@ func main() {
 	drill.Add(
 		// Lower connecting trace between two spirals
 		Circle(hole1, viaDrillD),
-		Circle(hole2, viaDrillD),
+		Circle(hole2, drillD),
 		// Upper connecting trace for left spiral
 		Circle(hole3, viaDrillD),
 		Circle(hole4, drillD),
@@ -142,25 +142,26 @@ func main() {
 	)
 
 	outline := g.Outline()
+	r := 0.5*s.size + padD + *trace
 	outline.Add(
 		Arc(Pt{0, 0}, 0.5*s.size+padD, CircleShape, 1, 1, 0, 360, 0.1),
 	)
-	fmt.Printf("n=%v: (%.2f,%.2f)\n", *n, s.size+2*padD, s.size+2*padD)
+	fmt.Printf("n=%v: (%.2f,%.2f)\n", *n, 2*r, 2*r)
 
 	if *fontName != "" {
-		radius := -endL[0]
-		x := -0.75 * radius
-		y := 0.3 * radius
+		pts := 36.0 * r / 139.18 // determined emperically
+		x := -0.75 * r
+		y := 0.3 * r
 		labelSize := 6.0
 
 		tss := g.TopSilkscreen()
 		tss.Add(
-			Text(x, y, 1.0, message, *fontName, *pts, nil),
-			Text(hole1[0], hole1[1]-viaPadD, 1.0, "hole1", *fontName, labelSize, &TopCenter),
-			Text(hole2[0]+viaPadD, hole2[1], 1.0, "hole2", *fontName, labelSize, &CenterLeft),
-			Text(hole3[0], hole3[1]+viaPadD, 1.0, "hole3", *fontName, labelSize, &BottomCenter),
-			Text(hole4[0]-padD, hole4[1], 1.0, "hole4", *fontName, labelSize, &CenterRight),
-			Text(hole5[0]-padD, hole5[1], 1.0, "hole5", *fontName, labelSize, &CenterRight),
+			Text(x, y, 1.0, message, *fontName, pts, nil),
+			Text(hole1[0], hole1[1]-viaPadD, 1.0, "TR/BR", *fontName, labelSize, &TopCenter),
+			Text(hole2[0]+padD, hole2[1], 1.0, "BR/TL", *fontName, labelSize, &CenterLeft),
+			Text(hole3[0], hole3[1]+viaPadD, 1.0, "TL/BL", *fontName, labelSize, &BottomCenter),
+			Text(hole4[0]-padD, hole4[1], 1.0, "BL", *fontName, labelSize, &CenterRight),
+			Text(hole5[0]-padD, hole5[1], 1.0, "TR", *fontName, labelSize, &CenterRight),
 		)
 	}
 

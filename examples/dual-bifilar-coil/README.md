@@ -14,11 +14,20 @@ coils properly from the different tap points, this single coil design
 can potentially support the optimal energy transfer of multiple
 frequencies.
 
-## How it is wound
+## How it is wired
 
 All coils are concentric and wind in the same direction.
 Therefore the magnetic field from each coil section combines uniformly
 with the other coils resulting in a stronger, cohesive field.
+
+Here is a diagram showing how it is wired:
+
+![dual-bifilar-coil-diagram](dual-bifilar-coil-diagram.png)
+
+This shows the various layers on a small (n=20) coil to highlight
+the wiring and various layers of the PCB:
+
+![dual-bifilar-coil-layers](dual-bifilar-coil-layers.gif)
 
 ## Parametric design
 
@@ -45,8 +54,9 @@ number of coils per spiral = 100
 
 | From point | To point | DC resistance (Ω) | Resonant Frequency (Hz) |
 |   :---:    |  :---:   |      :---:        |         :---:           |
-|   hole2    |  hole4   |                   |                         |
-|   hole4    |  hole5   |                   |                         |
+|    TR      |  BR/TL   |                   |                         |
+|   BR/TL    |   BL     |                   |                         |
+|    TR      |   BL     |                   |                         |
 
 ----------------------------------------------------------------------
 
