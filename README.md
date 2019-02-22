@@ -14,7 +14,7 @@ Please see the examples in the various directories:
 * 6-layer 6 bifilar coil: [hex-bifilar-coil](examples/hex-bifilar-coil)
 * 20-layer 20 bifilar coil: [icosi-bifilar-coil](examples/icosi-bifilar-coil)
 
-## Status
+## Documentation
 [![GoDoc](https://godoc.org/github.com/gmlewis/go-gerber/gerber?status.svg)](https://godoc.org/github.com/gmlewis/go-gerber/gerber)
 
 ----------------------------------------------------------------------
