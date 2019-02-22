@@ -30,17 +30,16 @@ var (
 )
 
 const (
-	message = `With a trace and gap size of 0.15mm, this
-quad bifilar coil should have a DC resistance
-of approx. 928.8Ω. Each spiral has 100 coils.`
-	message2 = `Top layer: hole5 ⇨ hole6
-Bottom layer: hole6 ⇨ hole2
-Top layer: hole2 ⇨ hole7
-Bottom layer: hole7 ⇨ hole4
-Layer 3: hole4 ⇨ hole3
-Layer 2: hole3 ⇨ hole8
-Layer 3: hole8 ⇨ hole1
-Layer 2: hole1 ⇨ hole9`
+	messageFmt = `Trace size = %0.2fmm.
+Gap size = %0.2fmm.
+Each spiral has %v coils.`
+	message2 = `Top layer: TR ⇨ BR
+Bottom layer: BR ⇨ TL
+Top layer: TL ⇨ BL
+Bottom layer: BL ⇨ 3L
+Layer 3: 3L ⇨ 2R
+Layer 2: 2R ⇨ 3R
+Layer 3: 3R ⇨ 2L`
 )
 
 func main() {
@@ -85,8 +84,8 @@ func main() {
 	//	endLayer2L := genPt(1.0, s.endAngle, 0, math.Pi+shiftAngle)
 
 	viaOffset := math.Sqrt(0.5 * (*trace + viaPadD) * (*trace + viaPadD))
-	hole2Offset := 0.5 * (*trace + viaPadD)
-	hole4PadOffset := 0.5 * (viaPadD + *trace)
+	hole2Offset := 0.5 * (*trace + padD)
+	hole4PadOffset := 0.5 * (padD + *trace)
 	hole5PadOffset := 0.5 * (padD + *trace)
 
 	// Lower connecting trace between two spirals
@@ -112,11 +111,11 @@ func main() {
 		Polygon(Pt{0, 0}, true, topSpiralL, 0.0),
 		// Lower connecting trace between two spirals
 		Circle(hole1, viaPadD),
-		Circle(hole2, viaPadD),
+		Circle(hole2, padD),
 		Line(endL[0], endL[1], hole2[0], hole2[1], RectShape, *trace),
 		// Upper connecting trace for left spiral
 		Circle(hole3, viaPadD),
-		Circle(hole4, viaPadD),
+		Circle(hole4, padD),
 		// Lower connecting trace for right spiral
 		Circle(hole5, padD),
 		Line(endR[0], endR[1], hole5[0], hole5[1], RectShape, *trace),
@@ -126,7 +125,7 @@ func main() {
 		Line(startR[0], startR[1], hole6[0], hole6[1], RectShape, *trace),
 		Line(startL[0], startL[1], hole7[0], hole7[1], RectShape, *trace),
 		// Layer 2 and 3 outer connecting hole
-		Circle(hole8, viaPadD),
+		Circle(hole8, padD),
 		Circle(hole9, padD),
 	)
 
@@ -136,10 +135,10 @@ func main() {
 		Polygon(Pt{0, 0}, true, layer2SpiralL, 0.0),
 		// Lower connecting trace between two spirals
 		Circle(hole1, viaPadD),
-		Circle(hole2, viaPadD),
+		Circle(hole2, padD),
 		// Upper connecting trace for left spiral
 		Circle(hole3, viaPadD),
-		Circle(hole4, viaPadD),
+		Circle(hole4, padD),
 		// Lower connecting trace for right spiral
 		Circle(hole5, padD),
 		// Layer 2 and 3 inner connecting holes
@@ -150,7 +149,7 @@ func main() {
 		Line(startLayer2R[0], startLayer2R[1], hole3[0], hole3[1], RectShape, *trace),
 		Line(startLayer2L[0], startLayer2L[1], hole1[0], hole1[1], RectShape, *trace),
 		// Layer 2 and 3 outer connecting hole
-		Circle(hole8, viaPadD),
+		Circle(hole8, padD),
 		Line(layer2EndR[0], layer2EndR[1], hole8[0], hole8[1], RectShape, *trace),
 		Circle(hole9, padD),
 		Line(layer2EndL[0], layer2EndL[1], hole9[0], hole9[1], RectShape, *trace),
@@ -160,17 +159,17 @@ func main() {
 	topMask.Add(
 		// Lower connecting trace between two spirals
 		Circle(hole1, viaPadD),
-		Circle(hole2, viaPadD),
+		Circle(hole2, padD),
 		// Upper connecting trace for left spiral
 		Circle(hole3, viaPadD),
-		Circle(hole4, viaPadD),
+		Circle(hole4, padD),
 		// Lower connecting trace for right spiral
 		Circle(hole5, padD),
 		// Layer 2 and 3 inner connecting holes
 		Circle(hole6, viaPadD),
 		Circle(hole7, viaPadD),
 		// Layer 2 and 3 outer connecting hole
-		Circle(hole8, viaPadD),
+		Circle(hole8, padD),
 		Circle(hole9, padD),
 	)
 
@@ -181,11 +180,11 @@ func main() {
 		Line(endL[0], endL[1], hole2[0], hole2[1], RectShape, *trace),
 		// Lower connecting trace between two spirals
 		Circle(hole1, viaPadD),
-		Circle(hole2, viaPadD),
+		Circle(hole2, padD),
 		Line(endL[0], endL[1], hole2[0], hole2[1], RectShape, *trace),
 		// Upper connecting trace for left spiral
 		Circle(hole3, viaPadD),
-		Circle(hole4, viaPadD),
+		Circle(hole4, padD),
 		Line(botEndL[0], botEndL[1], hole4[0], hole4[1], RectShape, *trace),
 		// Lower connecting trace for right spiral
 		Circle(hole5, padD),
@@ -195,7 +194,7 @@ func main() {
 		Line(startR[0], startR[1], hole6[0], hole6[1], RectShape, *trace),
 		Line(startL[0], startL[1], hole7[0], hole7[1], RectShape, *trace),
 		// Layer 2 and 3 outer connecting hole
-		Circle(hole8, viaPadD),
+		Circle(hole8, padD),
 		Circle(hole9, padD),
 	)
 
@@ -205,10 +204,10 @@ func main() {
 		Polygon(Pt{0, 0}, true, layer3SpiralL, 0.0),
 		// Lower connecting trace between two spirals
 		Circle(hole1, viaPadD),
-		Circle(hole2, viaPadD),
+		Circle(hole2, padD),
 		// Upper connecting trace for left spiral
 		Circle(hole3, viaPadD),
-		Circle(hole4, viaPadD),
+		Circle(hole4, padD),
 		Line(layer3EndL[0], layer3EndL[1], hole4[0], hole4[1], RectShape, *trace),
 		// Lower connecting trace for right spiral
 		Circle(hole5, padD),
@@ -220,7 +219,7 @@ func main() {
 		Line(startLayer2R[0], startLayer2R[1], hole3[0], hole3[1], RectShape, *trace),
 		Line(startLayer2L[0], startLayer2L[1], hole1[0], hole1[1], RectShape, *trace),
 		// Layer 2 and 3 outer connecting hole
-		Circle(hole8, viaPadD),
+		Circle(hole8, padD),
 		Line(layer2EndR[0], layer2EndR[1], hole8[0], hole8[1], RectShape, *trace),
 		Circle(hole9, padD),
 	)
@@ -229,17 +228,17 @@ func main() {
 	bottomMask.Add(
 		// Lower connecting trace between two spirals
 		Circle(hole1, viaPadD),
-		Circle(hole2, viaPadD),
+		Circle(hole2, padD),
 		// Upper connecting trace for left spiral
 		Circle(hole3, viaPadD),
-		Circle(hole4, viaPadD),
+		Circle(hole4, padD),
 		// Lower connecting trace for right spiral
 		Circle(hole5, padD),
 		// Layer 2 and 3 inner connecting holes
 		Circle(hole6, viaPadD),
 		Circle(hole7, viaPadD),
 		// Layer 2 and 3 outer connecting hole
-		Circle(hole8, viaPadD),
+		Circle(hole8, padD),
 		Circle(hole9, padD),
 	)
 
@@ -247,17 +246,17 @@ func main() {
 	drill.Add(
 		// Lower connecting trace between two spirals
 		Circle(hole1, viaDrillD),
-		Circle(hole2, viaDrillD),
+		Circle(hole2, drillD),
 		// Upper connecting trace for left spiral
 		Circle(hole3, viaDrillD),
-		Circle(hole4, viaDrillD),
+		Circle(hole4, drillD),
 		// Lower connecting trace for right spiral
 		Circle(hole5, drillD),
 		// Layer 2 and 3 inner connecting holes
 		Circle(hole6, viaDrillD),
 		Circle(hole7, viaDrillD),
 		// Layer 2 and 3 outer connecting hole
-		Circle(hole8, viaDrillD),
+		Circle(hole8, drillD),
 		Circle(hole9, drillD),
 	)
 
@@ -269,22 +268,23 @@ func main() {
 	fmt.Printf("n=%v: (%.2f,%.2f)\n", *n, 2*r, 2*r)
 
 	if *fontName != "" {
-		radius := -endL[0]
-		labelSize := 6.0
+		pts := 36.0 * r / 139.18 // determined emperically
+		labelSize := pts
+		message := fmt.Sprintf(messageFmt, *trace, *gap, *n)
 
 		tss := g.TopSilkscreen()
 		tss.Add(
-			Text(0, 0.3*radius, 1.0, message, *fontName, *pts, &Center),
-			Text(hole1[0]+viaPadD, hole1[1], 1.0, "hole1", *fontName, labelSize, &CenterLeft),
-			Text(hole2[0]+viaPadD, hole2[1], 1.0, "hole2", *fontName, labelSize, &CenterLeft),
-			Text(hole3[0]-viaPadD, hole3[1], 1.0, "hole3", *fontName, labelSize, &CenterRight),
-			Text(hole4[0]-padD, hole4[1], 1.0, "hole4", *fontName, labelSize, &CenterRight),
-			Text(hole5[0]-padD, hole5[1], 1.0, "hole5", *fontName, labelSize, &CenterRight),
-			Text(hole6[0], hole6[1]+viaPadD, 1.0, "hole6", *fontName, labelSize, &BottomCenter),
-			Text(hole7[0], hole7[1]-viaPadD, 1.0, "hole7", *fontName, labelSize, &TopCenter),
-			Text(hole8[0], hole8[1]-viaPadD, 1.0, "hole8", *fontName, labelSize, &TopCenter),
-			Text(hole9[0]-padD, hole9[1], 1.0, "hole9", *fontName, labelSize, &CenterRight),
-			Text(0, -0.5*radius, 1.0, message2, *fontName, *pts, &Center),
+			Text(0, 0.5*r, 1.0, message, *fontName, pts, &Center),
+			Text(hole1[0]+viaPadD, hole1[1], 1.0, "3R/2L", *fontName, labelSize, &CenterLeft),
+			Text(hole2[0]+viaPadD, hole2[1], 1.0, "BR/TL", *fontName, labelSize, &CenterLeft),
+			Text(hole3[0]-viaPadD, hole3[1], 1.0, "3L/2R", *fontName, labelSize, &CenterRight),
+			Text(hole4[0]-padD, hole4[1], 1.0, "BL/3L", *fontName, labelSize, &CenterRight),
+			Text(hole5[0]-padD, hole5[1], 1.0, "TR", *fontName, labelSize, &CenterRight),
+			Text(hole6[0], hole6[1]+viaPadD, 1.0, "TR/BR", *fontName, labelSize, &BottomCenter),
+			Text(hole7[0], hole7[1]-viaPadD, 1.0, "TL/BL", *fontName, labelSize, &TopCenter),
+			Text(hole8[0], hole8[1]-viaPadD, 1.0, "2R/3R", *fontName, labelSize, &TopCenter),
+			Text(hole9[0]-padD, hole9[1], 1.0, "2L", *fontName, labelSize, &CenterRight),
+			Text(0, -0.5*r, 1.0, message2, *fontName, pts, &Center),
 		)
 	}
 

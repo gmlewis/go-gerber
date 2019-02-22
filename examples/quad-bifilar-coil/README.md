@@ -19,11 +19,20 @@ drive the end tap with a sine wave at the resonant frequency of the
 remainder of the coil, and then get the amplified benefits of the
 remainder as in a secondary coil of a transformer.
 
-## How it is wound
+## How it is wired
 
 All coils are concentric and wind in the same direction.
 Therefore the magnetic field from each coil section combines uniformly
 with the other coils resulting in a stronger, cohesive field.
+
+Here is a diagram showing how it is wired:
+
+![quad-bifilar-coil-diagram](quad-bifilar-coil-diagram.png)
+
+This shows the various layers on a small (n=20) coil to highlight
+the wiring and various layers of the PCB:
+
+![quad-bifilar-coil-layers](quad-bifilar-coil-layers.gif)
 
 ## Parametric design
 
@@ -50,10 +59,10 @@ number of coils per spiral = 100
 
 | From point | To point | DC resistance (Ω) | Resonant Frequency (Hz) |
 |   :---:    |  :---:   |      :---:        |         :---:           |
-|   hole5    |  hole2   |                   |                         |
-|   hole2    |  hole4   |                   |                         |
-|   hole4    |  hole8   |                   |                         |
-|   hole8    |  hole9   |                   |                         |
+|    TR      |  BR/TL   |                   |                         |
+|   BR/TL    |  BL/3L   |                   |                         |
+|   BL/3L    |  2R/3R   |                   |                         |
+|   2R/3R    |   2L     |                   |                         |
 
 ----------------------------------------------------------------------
 
