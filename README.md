@@ -12,6 +12,7 @@ Please see the examples in the various directories:
 * 2-layer 2 bifilar coil: [dual-bifilar-coil](examples/dual-bifilar-coil)
 * 3-layer 3 bifilar coil: [tri-bifilar-coil](examples/tri-bifilar-coil)
 * 4-layer 4 bifilar coil: [quad-bifilar-coil](examples/quad-bifilar-coil)
+* 5-layer 5 bifilar coil: [penta-bifilar-coil](examples/penta-bifilar-coil)
 * 6-layer 6 bifilar coil: [hex-bifilar-coil](examples/hex-bifilar-coil)
 * 20-layer 20 bifilar coil: [icosi-bifilar-coil](examples/icosi-bifilar-coil)
 
