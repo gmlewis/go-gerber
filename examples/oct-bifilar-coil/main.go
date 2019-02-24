@@ -32,7 +32,9 @@ const (
 	nlayers    = 8
 	angleDelta = 2.0 * math.Pi / nlayers
 
-	messageFmt = `Trace size = %0.2fmm.
+	messageFmt = `This is an oct (8-layer)
+bifilar coil.
+Trace size = %0.2fmm.
 Gap size = %0.2fmm.
 Each spiral has %v coils.`
 )

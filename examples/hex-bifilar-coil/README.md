@@ -1,4 +1,4 @@
-# Hex bifilar coil
+# Hex (6-layer) bifilar coil
 
 This is a design of a hex bifilar coil, meaning that when this design is
 fabricated on a six-layer printed circuit board (PCB), there will be six

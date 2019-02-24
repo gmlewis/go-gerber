@@ -30,7 +30,9 @@ var (
 )
 
 const (
-	messageFmt = `Trace size = %0.2fmm.
+	messageFmt = `This is a quad (4-layer)
+bifilar coil.
+Trace size = %0.2fmm.
 Gap size = %0.2fmm.
 Each spiral has %v coils.`
 	message2 = `Top layer: TR ⇨ BR

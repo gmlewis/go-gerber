@@ -1,4 +1,4 @@
-# Quad bifilar coil
+# Quad (4-layer) bifilar coil
 
 This is a design of a quad bifilar coil, meaning that when this design is
 fabricated on a four-layer printed circuit board (PCB), there will be four

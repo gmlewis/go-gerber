@@ -1,4 +1,4 @@
-# Dual bifilar coil
+# Dual (2-layer) bifilar coil
 
 This is a design of a dual bifilar coil, meaning that when this design is
 fabricated on a two-layer printed circuit board (PCB), there will be two
