@@ -32,23 +32,11 @@ const (
 	nlayers    = 20
 	angleDelta = 2.0 * math.Pi / nlayers
 
-	messageFmt = `This is a icosi (20-layer)
+	messageFmt = `This is an icosi (20-layer)
 bifilar coil.
 Trace size = %0.2fmm.
 Gap size = %0.2fmm.
 Each spiral has %v coils.`
-
-// 	message2 = `3L ⇨ 4L
-// 4L ⇨ BL
-// BL ⇨ TL
-// TL ⇨ 5L
-// 5L ⇨ 2L
-// 2L ⇨ 3R`
-// 	message3 = `3R ⇨ 4R
-// 4R ⇨ BR
-// BR ⇨ TR
-// TR ⇨ 5R
-// 5R ⇨ 2R`
 )
 
 func main() {
@@ -293,9 +281,6 @@ func main() {
 			outerLabel("14R"), outerLabel("14L"), outerLabel("15R"), outerLabel("15L"),
 			outerLabel2("16R"), outerLabel2("16L"), outerLabel2("17R"), outerLabel2("17L"),
 			outerLabel2("18R"), outerLabel2("18L"), outerLabel2("19R"), outerLabel2("19L"),
-
-			// Text(-0.5*r, -0.4*r, 1.0, message2, *fontName, pts, &Center),
-			// Text(0.5*r, -0.4*r, 1.0, message3, *fontName, pts, &Center),
 		)
 	}
 

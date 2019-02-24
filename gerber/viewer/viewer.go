@@ -137,6 +137,7 @@ func Gerber(g *gerber.Gerber, allLayersOn bool) {
 			layers.Append(widget.NewHBox(check, layout.NewSpacer()))
 		}
 	}
+	scroller := widget.NewScroller(layers)
 	addCheck(vc.indexDrill, "Drill")
 	addCheck(vc.indexTopSilkscreen, "Top Silkscreen")
 	addCheck(vc.indexTopSolderMask, "Top Solder Mask")
@@ -158,9 +159,9 @@ func Gerber(g *gerber.Gerber, allLayersOn bool) {
 	w.Canvas().SetOnTypedKey(vc.OnTypedKey)
 	w.SetContent(
 		fyne.NewContainerWithLayout(
-			layout.NewBorderLayout(nil, quit, nil, layers),
+			layout.NewBorderLayout(nil, quit, nil, scroller),
 			c,
-			layers,
+			scroller,
 			quit,
 		))
 
