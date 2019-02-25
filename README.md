@@ -8,13 +8,13 @@ manufacturers, all from Go code.
 
 Please see the examples in the various directories:
 
-* 2-layer single bifilar coil: [bifilar-coil](examples/bifilar-coil)
-* 2-layer 2 bifilar coil: [dual-bifilar-coil](examples/dual-bifilar-coil)
-* 4-layer 4 bifilar coil: [quad-bifilar-coil](examples/quad-bifilar-coil)
-* 6-layer 6 bifilar coil: [hex-bifilar-coil](examples/hex-bifilar-coil)
-* 8-layer 8 bifilar coil: [oct-bifilar-coil](examples/oct-bifilar-coil)
-* 20-layer 20 bifilar coil: [icosi-bifilar-coil](examples/icosi-bifilar-coil)
-* 334-layer 333 bifilar coil: [n333-bifilar-coil](examples/n333-bifilar-coil)
+* single bifilar coil: [bifilar-coil](examples/bifilar-coil)
+* 2 bifilar coil: [dual-bifilar-coil](examples/dual-bifilar-coil)
+* 4 bifilar coil: [quad-bifilar-coil](examples/quad-bifilar-coil)
+* 6 bifilar coil: [hex-bifilar-coil](examples/hex-bifilar-coil)
+* 8 bifilar coil: [oct-bifilar-coil](examples/oct-bifilar-coil)
+* 20 bifilar coil: [icosi-bifilar-coil](examples/icosi-bifilar-coil)
+* 333 bifilar coil: [n333-bifilar-coil](examples/n333-bifilar-coil)
 
 ## Documentation
 [![GoDoc](https://godoc.org/github.com/gmlewis/go-gerber/gerber?status.svg)](https://godoc.org/github.com/gmlewis/go-gerber/gerber)
