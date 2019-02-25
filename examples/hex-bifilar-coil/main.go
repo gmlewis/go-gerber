@@ -58,12 +58,12 @@ func main() {
 		defer pprof.StopCPUProfile()
 	}
 
-	if *n < 12 {
+	if *n < 4 {
 		flag.Usage()
-		log.Fatal("N must be >= 12.")
+		log.Fatal("N must be >= 4.")
 	}
 
-	g := New(*prefix)
+	g := New(fmt.Sprintf("%v-n%v", *prefix, *n))
 
 	s := newSpiral()
 
@@ -97,21 +97,22 @@ func main() {
 	hole10 := Point(innerHole6X, -0.5*(*trace+viaPadD))
 	hole11 := Point(-innerHole6X, 0.5*(*trace+viaPadD))
 
-	outerContactPt := func(pt Pt, angle float64) Pt {
-		r := *trace*1.5 + 0.5*padD
-		dx := r * math.Cos(angle)
-		dy := r * math.Sin(angle)
-		return Point(pt[0]+dx, pt[1]+dy)
+	outerR := (2.0*math.Pi + float64(*n)*2.0*math.Pi + *trace + *gap) / (3.0 * math.Pi)
+	outerContactPt := func(angle float64) Pt {
+		r := outerR + 0.5**trace + *gap + 0.5*padD
+		x := r * math.Cos(angle)
+		y := r * math.Sin(angle)
+		return Point(x, y)
 	}
 
-	holeBL4L := outerContactPt(endBotL, math.Pi/3.0)
-	holeTL5L := outerContactPt(endTopL, 2.0*math.Pi/3.0)
-	hole2L3R := outerContactPt(endLayer2L, math.Pi)
-	holeBR4R := outerContactPt(endBotR, 4.0*math.Pi/3.0)
-	holeTR5R := outerContactPt(endTopR, 5.0*math.Pi/3.0)
+	holeBL4L := outerContactPt(math.Pi / 3.0)
+	holeTL5L := outerContactPt(2.0 * math.Pi / 3.0)
+	hole2L3R := outerContactPt(math.Pi)
+	holeBR4R := outerContactPt(4.0 * math.Pi / 3.0)
+	holeTR5R := outerContactPt(5.0 * math.Pi / 3.0)
 
-	hole2R := outerContactPt(endLayer2R, 0)
-	hole3L := outerContactPt(endLayer3L, 0)
+	hole2R := outerContactPt(0)
+	hole3L := outerContactPt(math.Pi / 6.0)
 
 	viaDrill := func(pt Pt) *CircleT {
 		const viaDrillD = 0.25
@@ -371,20 +372,20 @@ func main() {
 	fmt.Printf("n=%v: (%.2f,%.2f)\n", *n, 2*r, 2*r)
 
 	if *fontName != "" {
-		pts := 36.0 * r / 139.18 // determined emperically
+		pts := 30.0 * r / 139.18 // determined emperically
 		labelSize := pts * 12.0 / 18.0
 		message := fmt.Sprintf(messageFmt, *trace, *gap, *n)
 
 		outerLabel := func(pt Pt, label string) *TextT {
 			r := math.Sqrt(pt[0]*pt[0] + pt[1]*pt[1])
-			angle := 0.15 + math.Atan2(pt[1], pt[0])
+			angle := 0.20 + math.Atan2(pt[1], pt[0])
 			x := r * math.Cos(angle)
 			y := r * math.Sin(angle)
 			return Text(x, y, 1.0, label, *fontName, pts, &Center)
 		}
 		outerLabel2 := func(pt Pt, label string) *TextT {
 			r := math.Sqrt(pt[0]*pt[0] + pt[1]*pt[1])
-			angle := -0.15 + math.Atan2(pt[1], pt[0])
+			angle := -0.20 + math.Atan2(pt[1], pt[0])
 			x := r * math.Cos(angle)
 			y := r * math.Sin(angle)
 			return Text(x, y, 1.0, label, *fontName, pts, &Center)
@@ -418,7 +419,7 @@ func main() {
 			outerLabel(hole2L3R, "3R"),
 			outerLabel2(hole2L3R, "2L"),
 
-			outerLabel(hole3L, "3L"),
+			outerLabel2(hole3L, "3L"),
 			outerLabel2(hole2R, "2R"),
 		)
 	}

@@ -48,7 +48,7 @@ func main() {
 		defer pprof.StopCPUProfile()
 	}
 
-	g := New(*prefix)
+	g := New(fmt.Sprintf("%v-n%v", *prefix, *n))
 
 	s := newSpiral()
 
@@ -152,7 +152,7 @@ func main() {
 
 	if *fontName != "" {
 		pts := 48.0 * r / 139.18 // determined emperically
-		labelSize := 6.0
+		labelSize := 2.0
 		message := fmt.Sprintf(messageFmt, *trace, *gap, *n)
 
 		tss := g.TopSilkscreen()

@@ -53,7 +53,7 @@ func main() {
 		log.Fatal("N must be >= 360.")
 	}
 
-	g := New(*prefix)
+	g := New(fmt.Sprintf("%v-n%v", *prefix, *n))
 
 	s := newSpiral()
 

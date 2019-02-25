@@ -60,12 +60,13 @@ number of coils per spiral = 100
 
 | From point | To point | DC resistance (Ω) | Resonant Frequency (Hz) |
 |    :---:   |   :---:  |      :---:        |         :---:           |
-|     3L     |   BL/4L  |                   |                         |
-|    BL/4L   |   TL/5L  |                   |                         |
-|    TL/5L   |   3R/2L  |                   |                         |
-|    3R/2L   |   4R/BR  |                   |                         |
-|    4R/BR   |   5R/TR  |                   |                         |
-|    5R/TR   |    2R    |                   |                         |
+|     3L     |   BL/4L  |       496         |                         |
+|    BL/4L   |   TL/5L  |       130.8 ?     |                         |
+|    TL/5L   |   3R/2L  |       496         |                         |
+|    3R/2L   |   4R/BR  |       496         |                         |
+|    4R/BR   |   5R/TR  |       130.8 ?     |                         |
+|    5R/TR   |    2R    |       496         |                         |
+|     3L     |    2R    |      2247         |                         |
 
 ----------------------------------------------------------------------
 

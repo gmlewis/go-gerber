@@ -52,11 +52,11 @@ gap width = 0.15mm
 number of coils per spiral = 100
 ```
 
-| From point | To point | DC resistance (Ω) | Resonant Frequency (Hz) |
-|   :---:    |  :---:   |      :---:        |         :---:           |
-|    TR      |  BR/TL   |                   |                         |
-|   BR/TL    |   BL     |                   |                         |
-|    TR      |   BL     |                   |                         |
+| From point | To point | DC resistance (Ω) | Resonant Frequency |
+|   :---:    |  :---:   |      :---:        |       :---:        |
+|    TR      |  BR/TL   |       162         |                    |
+|   BR/TL    |   BL     |       162         |                    |
+|    TR      |   BL     |       324         |       ~60kHz       |
 
 ----------------------------------------------------------------------
 

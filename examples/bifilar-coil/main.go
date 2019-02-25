@@ -46,7 +46,7 @@ func main() {
 		defer pprof.StopCPUProfile()
 	}
 
-	g := New(*prefix)
+	g := New(fmt.Sprintf("%v-n%v", *prefix, *n))
 
 	s := newSpiral()
 
