@@ -30,7 +30,7 @@ var (
 
 const (
 	messageFmt = `This is a hex (6-layer)
-bifilar coil.
+bifilar coil. Size=%0.2fmm.
 Trace size = %0.2fmm.
 Gap size = %0.2fmm.
 Each spiral has %v coils.`
@@ -78,7 +78,8 @@ func main() {
 	startLayer2R, layer2SpiralR, endLayer2R := s.genSpiral(1.0, shiftAngle, 0)
 	startLayer2L, layer2SpiralL, endLayer2L := s.genSpiral(1.0, math.Pi+shiftAngle, 0)
 	startLayer3R, layer3SpiralR, endLayer3R := s.genSpiral(-1.0, shiftAngle, 0)
-	startLayer3L, layer3SpiralL, endLayer3L := s.genSpiral(-1.0, math.Pi+shiftAngle, *trace+padD)
+	// startLayer3L, layer3SpiralL, endLayer3L := s.genSpiral(-1.0, math.Pi+shiftAngle, *trace+padD)
+	startLayer3L, layer3SpiralL, endLayer3L := s.genSpiral(-1.0, math.Pi+shiftAngle, 0.1)
 
 	shiftAngle = -math.Pi / 3.0
 	startLayer4R, layer4SpiralR, endLayer4R := s.genSpiral(1.0, shiftAngle, 0)
@@ -374,18 +375,19 @@ func main() {
 	if *fontName != "" {
 		pts := 30.0 * r / 139.18 // determined emperically
 		labelSize := pts * 12.0 / 18.0
-		message := fmt.Sprintf(messageFmt, *trace, *gap, *n)
+		message := fmt.Sprintf(messageFmt, 2*r, *trace, *gap, *n)
+		// TODO: Improve placement of labels and make font units match.
 
 		outerLabel := func(pt Pt, label string) *TextT {
-			r := math.Sqrt(pt[0]*pt[0] + pt[1]*pt[1])
-			angle := 0.20 + math.Atan2(pt[1], pt[0])
+			r := math.Sqrt(pt[0]*pt[0]+pt[1]*pt[1]) - padD
+			angle := math.Atan2(0.5*pts, r) + math.Atan2(pt[1], pt[0])
 			x := r * math.Cos(angle)
 			y := r * math.Sin(angle)
 			return Text(x, y, 1.0, label, *fontName, pts, &Center)
 		}
 		outerLabel2 := func(pt Pt, label string) *TextT {
-			r := math.Sqrt(pt[0]*pt[0] + pt[1]*pt[1])
-			angle := -0.20 + math.Atan2(pt[1], pt[0])
+			r := math.Sqrt(pt[0]*pt[0]+pt[1]*pt[1]) - padD
+			angle := -math.Atan2(0.5*pts, r) + math.Atan2(pt[1], pt[0])
 			x := r * math.Cos(angle)
 			y := r * math.Sin(angle)
 			return Text(x, y, 1.0, label, *fontName, pts, &Center)
@@ -467,8 +469,8 @@ func newSpiral() *spiral {
 func (s *spiral) genSpiral(xScale, offset, trimY float64) (startPt Pt, pts []Pt, endPt Pt) {
 	halfTW := *trace * 0.5
 	endAngle := s.endAngle - math.Pi/3.0
-	if trimY < 0 { // Only for layer2SpiralL - extend another Pi/2
-		endAngle += 0.5 * math.Pi
+	if trimY > 0 {
+		endAngle -= math.Pi / 6.0
 	}
 	steps := int(0.5 + (endAngle-s.startAngle) / *step)
 	for i := 0; i < steps; i++ {
@@ -478,47 +480,10 @@ func (s *spiral) genSpiral(xScale, offset, trimY float64) (startPt Pt, pts []Pt,
 		}
 		pts = append(pts, genPt(xScale, angle, halfTW, offset))
 	}
-	var trimYsteps int
-	if trimY > 0 {
-		trimYsteps++
-		for {
-			if pts[len(pts)-trimYsteps][1] > trimY {
-				break
-			}
-			trimYsteps++
-		}
-		lastStep := len(pts) - trimYsteps
-		trimYsteps--
-		pts = pts[0 : lastStep+1]
-		pts = append(pts, Pt{pts[lastStep][0], trimY})
-		angle := s.startAngle + *step*float64(steps-1-trimYsteps)
-		eX := genPt(xScale, angle, 0, offset)
-		endPt = Pt{eX[0], trimY}
-		nX := genPt(xScale, angle, -halfTW, offset)
-		pts = append(pts, Pt{nX[0], trimY})
-	} else if trimY < 0 { // Only for layer2SpiralL
-		trimYsteps++
-		for {
-			if pts[len(pts)-trimYsteps][1] < trimY {
-				break
-			}
-			trimYsteps++
-		}
-		lastStep := len(pts) - trimYsteps
-		trimYsteps--
-		pts = pts[0 : lastStep+1]
-		pts = append(pts, Pt{pts[lastStep][0], trimY})
-		angle := s.startAngle + *step*float64(steps-1-trimYsteps)
-		eX := genPt(xScale, angle, 0, offset)
-		endPt = Pt{eX[0], trimY}
-		nX := genPt(xScale, angle, -halfTW, offset)
-		pts = append(pts, Pt{nX[0], trimY})
-	} else {
-		pts = append(pts, genPt(xScale, endAngle, halfTW, offset))
-		endPt = genPt(xScale, endAngle, 0, offset)
-		pts = append(pts, genPt(xScale, endAngle, -halfTW, offset))
-	}
-	for i := steps - 1 - trimYsteps; i >= 0; i-- {
+	pts = append(pts, genPt(xScale, endAngle, halfTW, offset))
+	endPt = genPt(xScale, endAngle, 0, offset)
+	pts = append(pts, genPt(xScale, endAngle, -halfTW, offset))
+	for i := steps - 1; i >= 0; i-- {
 		angle := s.startAngle + *step*float64(i)
 		pts = append(pts, genPt(xScale, angle, -halfTW, offset))
 	}

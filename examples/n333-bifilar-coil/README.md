@@ -2,8 +2,8 @@
 
 This is a design of a 333-layer bifilar coil, meaning that if this design
 were to be fabricated on a 334-layer printed circuit board (PCB), there would
-be 333 bifilar coils wired in series, one bifilar coil per layer. The 334th
-layer is required to connect the windings in the proper order. Note that
+be 333 bifilar coils wired in series, one bifilar coil per layer (with the
+334th layer to connect the windings in the proper order). Note that
 I'm not aware of any PCB manufacturer anywhere in the world that can handle
 fabricating a 334-layer PCB... so the question becomes:
 
@@ -26,9 +26,9 @@ can potentially support the optimal energy transfer of multiple
 frequencies.
 
 Another experiment to try is to ground the second tap from the end,
-drive the end tap with a sine wave at the resonant frequency of the
-remainder of the coil, and then get the amplified benefits of the
-remainder as in a secondary coil of a transformer.
+drive the first tap with a sine wave at the resonant frequency of the
+remaining coil, and then get the amplified benefits at the end tap
+as in a secondary coil of a transformer.
 
 ## How it is wired
 
@@ -36,11 +36,12 @@ All coils are concentric and wind in the same direction.
 Therefore the magnetic field from each coil section combines uniformly
 with the other coils resulting in a stronger, cohesive field.
 
-Here is a diagram showing how it is wired:
+Here is a diagram showing how it is wired (you may need to zoom in
+to see the labels):
 
 ![n333-bifilar-coil-diagram](n333-bifilar-coil-diagram.png)
 
-This shows the the top layer on an N=360 coil:
+This shows the top layer on an N=360 coil:
 
 ![n333-bifilar-coil-layers](n333-bifilar-coil-layers.png)
 
