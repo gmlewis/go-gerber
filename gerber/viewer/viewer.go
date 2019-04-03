@@ -137,7 +137,7 @@ func Gerber(g *gerber.Gerber, allLayersOn bool) {
 			layers.Append(widget.NewHBox(check, layout.NewSpacer()))
 		}
 	}
-	scroller := widget.NewScroller(layers)
+	scroller := widget.NewScrollContainer(layers)
 	addCheck(vc.indexDrill, "Drill")
 	addCheck(vc.indexTopSilkscreen, "Top Silkscreen")
 	addCheck(vc.indexTopSolderMask, "Top Solder Mask")
