@@ -11,8 +11,7 @@ require (
 	github.com/golang/protobuf v1.3.1 // indirect
 	github.com/srwiley/oksvg v0.0.0-20190105194046-ccbc7673cdf3 // indirect
 	github.com/srwiley/rasterx v0.0.0-20181219215540-696f7edb7a7e // indirect
-	golang.org/x/crypto v0.0.0-20190325154230-a5d413f7728c // indirect
+	golang.org/x/crypto v0.0.0-20190403202508-8e1b8d32e692 // indirect
 	golang.org/x/image v0.0.0-20190321063152-3fc05d484e9f // indirect
-	golang.org/x/net v0.0.0-20190328230028-74de082e2cca // indirect
-	golang.org/x/sys v0.0.0-20190402142545-baf5eb976a8c // indirect
+	golang.org/x/net v0.0.0-20190403144856-b630fd6fe46b // indirect
 )
