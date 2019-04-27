@@ -21,7 +21,7 @@ import (
 )
 
 var (
-	layerRE = regexp.MustCompile(`\.g(\d+)l$`)
+	layerRE = regexp.MustCompile(`\.gl(\d+)$`)
 )
 
 type viewController struct {
@@ -104,7 +104,7 @@ func initController(g *gerber.Gerber, app fyne.App, allLayersOn bool) *viewContr
 			vc.indexBottomSolderMask = i
 		case ".gbo":
 			vc.indexBottomSilkscreen = i
-		case ".xln":
+		case ".drl":
 			vc.indexDrill = i
 		case ".gko":
 			vc.indexOutline = i

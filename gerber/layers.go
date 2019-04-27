@@ -129,13 +129,13 @@ func (g *Gerber) BottomSilkscreen() *Layer {
 // LayerN adds a layer-n copper layer to a multi-layer design
 // and returns the layer.
 func (g *Gerber) LayerN(n int) *Layer {
-	return g.makeLayer(fmt.Sprintf("g%vl", n))
+	return g.makeLayer(fmt.Sprintf("gl%v", n))
 }
 
 // Drill adds a drill layer to the design
 // and returns the layer.
 func (g *Gerber) Drill() *Layer {
-	return g.makeLayer("xln")
+	return g.makeLayer("drl")
 }
 
 // Outline adds an outline layer to the design

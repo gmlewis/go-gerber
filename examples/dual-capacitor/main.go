@@ -115,7 +115,10 @@ func main() {
 	outline := g.Outline()
 	border := []Pt{{0, 0}, {*width, 0}, {*width, *height}, {0, *height}}
 	outline.Add(
-		Polygon(Pt{0, 0}, true, border, 0.0),
+		Line(border[0][0], border[0][1], border[1][0], border[1][1], CircleShape, 0.1),
+		Line(border[1][0], border[1][1], border[2][0], border[2][1], CircleShape, 0.1),
+		Line(border[2][0], border[2][1], border[3][0], border[3][1], CircleShape, 0.1),
+		Line(border[3][0], border[3][1], border[0][0], border[0][1], CircleShape, 0.1),
 	)
 
 	// if *fontName != "" {
