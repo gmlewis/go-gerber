@@ -50,6 +50,8 @@ available.
 
 ### Coil 1
 
+![hex-bifilar-coil-1.jpg](/images/hex-bifilar-coil-1.jpg)
+
 Coil 1 consists of:
 
 ```

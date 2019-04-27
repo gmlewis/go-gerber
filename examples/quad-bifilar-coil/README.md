@@ -49,6 +49,8 @@ available.
 
 ### Coil 1
 
+![quad-bifilar-coil-1.jpg](/images/quad-bifilar-coil-1.jpg)
+
 Coil 1 consists of:
 
 ```
