@@ -1,7 +1,7 @@
-# Quad (4-layer) capacitor
+# Hex (6-layer) capacitor
 
-This is a design of a quad-layer capacitor, meaning that when this design is
-fabricated on a four-layer printed circuit board (PCB), there will be eight
+This is a design of a hex-layer capacitor, meaning that when this design is
+fabricated on a six-layer printed circuit board (PCB), there will be 12
 capacitor plates (two per layer) creating a dielectric field between the
 traces within a single layer and between the traces across layers.
 
@@ -14,7 +14,7 @@ manufacturable size (from microscopic on up).
 
 This shows the various layers on a 100mm x 100mm PCB:
 
-![quad-capacitor-layers](quad-capacitor-layers.gif)
+![hex-capacitor-layers](hex-capacitor-layers.gif)
 
 ## Example capacitors
 
