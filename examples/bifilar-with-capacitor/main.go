@@ -65,47 +65,67 @@ func main() {
 
 	s := newSpiral()
 
-	startR, endR, spiralR := s.genSpiral(0)
-	startL, endL, spiralL := s.genSpiral(math.Pi)
+	startT, endT, spiralT := s.genSpiral(0)
+	startB, endB, spiralB := s.genSpiral(0.5 * math.Pi)
 
 	centerHole := Point(0.5**width, 0.5**height)
 	padLine := func(pt1, pt2 Pt) *LineT {
 		return Line(pt1[0], pt1[1], pt2[0], pt2[1], CircleShape, padD)
 	}
+	outerContact := func(pt Pt) Pt {
+		x := pt[0] - 0.5**width
+		y := pt[1] - 0.5**height
+		r := math.Sqrt(x*x+y*y) + *trace + *gap
+		angle := math.Atan2(y, x)
+		return Point(0.5**width+r*math.Cos(angle), 0.5**height+r*math.Sin(angle))
+	}
+
+	topOuter := outerContact(endT)
+	botOuter := outerContact(endB)
 
 	top := g.TopCopper()
 	top.Add(
-		Polygon(Pt{0, 0}, true, spiralR, 0.0),
-		Circle(startR, padD),
+		Polygon(Pt{0, 0}, true, spiralT, 0.0),
+		Circle(startT, padD),
 		Circle(centerHole, padD),
+		Circle(topOuter, padD),
+		Circle(botOuter, padD),
+		padLine(topOuter, endT),
 	)
 
 	topMask := g.TopSolderMask()
 	topMask.Add(
-		Circle(startR, padD),
+		Circle(startT, padD),
 		Circle(centerHole, padD),
+		Circle(topOuter, padD),
+		Circle(botOuter, padD),
 	)
 
 	bottom := g.BottomCopper()
 	bottom.Add(
-		Polygon(Pt{0, 0}, true, spiralL, 0.0),
-		Circle(startR, padD),
+		Polygon(Pt{0, 0}, true, spiralB, 0.0),
+		Circle(startT, padD),
 		Circle(centerHole, padD),
-		padLine(startL, centerHole),
+		padLine(startB, centerHole),
+		Circle(topOuter, padD),
+		Circle(botOuter, padD),
+		padLine(botOuter, endB),
 	)
 
 	bottomMask := g.BottomSolderMask()
 	bottomMask.Add(
-		Circle(startR, padD),
+		Circle(startT, padD),
 		Circle(centerHole, padD),
+		Circle(topOuter, padD),
+		Circle(botOuter, padD),
 	)
 
 	drill := g.Drill()
 	drill.Add(
-		Circle(startR, drillD),
+		Circle(startT, drillD),
 		Circle(centerHole, drillD),
-		Circle(endR, drillD),
-		Circle(endL, drillD),
+		Circle(topOuter, drillD),
+		Circle(botOuter, drillD),
 	)
 
 	outline := g.Outline()
@@ -117,19 +137,39 @@ func main() {
 		Line(border[3][0], border[3][1], border[0][0], border[0][1], CircleShape, 0.1),
 	)
 
-	if *fontName != "" {
-		// pts := 36.0 * r / 139.18 // determined emperically
-		// labelSize := pts
-		// message := fmt.Sprintf(messageFmt, *trace, *gap, *n)
-
-		// tss := g.TopSilkscreen()
-		// tss.Add(
-		// 	Text(0, 0.5*r, 1.0, message, *fontName, pts, &Center),
-		// 	Text(hole2[0]+0.5*padD, hole2[1], 1.0, "TR/TL", *fontName, labelSize, &CenterLeft),
-		// 	Text(hole4[0]-0.5*padD, hole4[1], 1.0, "TL", *fontName, labelSize, &CenterRight),
-		// 	Text(hole5[0]-0.6*padD, hole5[1], 1.0, "TR", *fontName, labelSize, &CenterRight),
-		// )
+	// Now populate the board with breadboard points...
+	d := *trace + *gap
+	for y := 0.75 * *trace; y <= *height-0.5**trace; y += d {
+		ry := y - 0.5**height
+		n := -1
+		created := map[int]bool{}
+		for x := 0.75 * *trace; x <= *height-0.5**trace; x += d {
+			n++
+			rx := x - 0.5**width
+			r := math.Sqrt(rx*rx+ry*ry) - *gap
+			if ry >= 0.0 && r <= 0.5**width {
+				continue
+			}
+			if ry < 0 && r-*trace-*gap <= 0.5**width {
+				continue
+			}
+			created[n] = true
+			c := Circle(Point(x, y), padD)
+			top.Add(c)
+			topMask.Add(c)
+			bottom.Add(c)
+			bottomMask.Add(c)
+			drill.Add(Circle(Point(x, y), drillD))
+			if created[n-1] && n%2 == 1 {
+				line := padLine(Point(x-d, y), Point(x, y))
+				top.Add(line)
+				bottom.Add(line)
+			}
+		}
 	}
+
+	// if *fontName != "" {
+	// }
 
 	if err := g.WriteGerber(); err != nil {
 		log.Fatal(err)
