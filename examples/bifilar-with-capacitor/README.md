@@ -28,11 +28,7 @@ Additionally, this design differs in that the two coils are directly
 sandwiched together via the board's dielectric such that the capacitance
 is stronger between the coils.
 
-Here is a diagram showing how it is wired:
-
-![bifilar-with-capacitor-diagram](bifilar-with-capacitor-diagram.png)
-
-This shows the various layers on a small (n=20) coil to highlight
+This shows the various layers on a small (100mm x 100mm) coil to highlight
 the wiring and various layers of the PCB:
 
 ![bifilar-with-capacitor-layers](bifilar-with-capacitor-layers.gif)
