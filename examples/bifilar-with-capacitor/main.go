@@ -45,8 +45,9 @@ Trace size = %0.2fmm.
 Gap size = %0.2fmm.
 Each spiral has %v coils.`
 
-	padD = 2
-	padR = padD / 2
+	padD   = 2
+	padR   = padD / 2
+	drillD = padD / 2
 )
 
 func main() {
@@ -64,99 +65,50 @@ func main() {
 
 	s := newSpiral()
 
-	spiralR := s.genSpiral(0)
-	spiralL := s.genSpiral(math.Pi)
-	// startR := genPt(s.startAngle, 0, 0)
-	endR := genPt(s.endAngle, 0, 0)
-	startL := genPt(s.startAngle, 0, math.Pi)
-	endL := genPt(s.endAngle, 0, math.Pi)
+	startR, endR, spiralR := s.genSpiral(0)
+	startL, endL, spiralL := s.genSpiral(math.Pi)
 
-	// viaPadD := 0.5
-	// viaDrillD := 0.25
-	// viaPadOffset := 0.5 * (viaPadD - *trace)
-
-	padD := 2.0
-	drillD := 1.0
-	padOffset := 0.5 * (padD - *trace)
-
-	// // Lower connecting trace between two spirals
-	// hole1 := Point(startR[0], startR[1]+viaPadOffset)
-	hole2 := Point(endL[0]-padOffset, endL[1])
-	// // Upper connecting trace for left spiral
-	// hole3 := Point(startL[0], startL[1]-viaPadOffset)
-	hole4 := Point(endR[0]+padOffset, startL[1]+2*padOffset)
-	// // Lower connecting trace for right spiral
-	hole5 := Point(endR[0]+padOffset, endR[1])
+	centerHole := Point(0.5**width, 0.5**height)
+	padLine := func(pt1, pt2 Pt) *LineT {
+		return Line(pt1[0], pt1[1], pt2[0], pt2[1], CircleShape, padD)
+	}
 
 	top := g.TopCopper()
 	top.Add(
 		Polygon(Pt{0, 0}, true, spiralR, 0.0),
-		// Polygon(Pt{0, 0}, true, spiralL, 0.0),
-		// // Lower connecting trace between two spirals
-		// Circle(hole1, viaPadD),
-		// Circle(hole2, padD),
-		// // Upper connecting trace for left spiral
-		// Circle(hole3, viaPadD),
-		// Circle(hole4, padD),
-		// // Lower connecting trace for right spiral
-		// Circle(hole5, padD),
+		Circle(startR, padD),
+		Circle(centerHole, padD),
 	)
 
 	topMask := g.TopSolderMask()
 	topMask.Add(
-	// // Lower connecting trace between two spirals
-	// Circle(hole1, viaPadD),
-	// Circle(hole2, padD),
-	// // Upper connecting trace for left spiral
-	// Circle(hole3, viaPadD),
-	// Circle(hole4, padD),
-	// // Lower connecting trace for right spiral
-	// Circle(hole5, padD),
+		Circle(startR, padD),
+		Circle(centerHole, padD),
 	)
 
 	bottom := g.BottomCopper()
 	bottom.Add(
 		Polygon(Pt{0, 0}, true, spiralL, 0.0),
-		// // Lower connecting trace between two spirals
-		// Circle(hole1, viaPadD),
-		// Line(startR[0], startR[1], endL[0], startR[1], RectShape, *trace),
-		// Line(endL[0], startR[1], endL[0], endL[1], RectShape, *trace),
-		// Circle(hole2, padD),
-		// // Upper connecting trace for left spiral
-		// Circle(hole3, viaPadD),
-		// Line(startL[0], startL[1], startL[0], startL[1]+padOffset, RectShape, *trace),
-		// Line(startL[0], startL[1]+padOffset, endR[0]+padOffset, startL[1]+padOffset, RectShape, *trace),
-		// Circle(hole4, padD),
-		// // Lower connecting trace for right spiral
-		// Circle(hole5, padD),
+		Circle(startR, padD),
+		Circle(centerHole, padD),
+		padLine(startL, centerHole),
 	)
 
 	bottomMask := g.BottomSolderMask()
 	bottomMask.Add(
-	// // Lower connecting trace between two spirals
-	// Circle(hole1, viaPadD),
-	// Circle(hole2, padD),
-	// // Upper connecting trace for left spiral
-	// Circle(hole3, viaPadD),
-	// Circle(hole4, padD),
-	// // Lower connecting trace for right spiral
-	// Circle(hole5, padD),
+		Circle(startR, padD),
+		Circle(centerHole, padD),
 	)
 
 	drill := g.Drill()
 	drill.Add(
-		// Lower connecting trace between two spirals
-		// Circle(hole1, viaDrillD),
-		Circle(hole2, drillD),
-		// Upper connecting trace for left spiral
-		// Circle(hole3, viaDrillD),
-		Circle(hole4, drillD),
-		// Lower connecting trace for right spiral
-		Circle(hole5, drillD),
+		Circle(startR, drillD),
+		Circle(centerHole, drillD),
+		Circle(endR, drillD),
+		Circle(endL, drillD),
 	)
 
 	outline := g.Outline()
-	// r := 0.5*s.size + padD + *trace
 	border := []Pt{{0, 0}, {*width, 0}, {*width, *height}, {0, *height}}
 	outline.Add(
 		Line(border[0][0], border[0][1], border[1][0], border[1][1], CircleShape, 0.1),
@@ -204,7 +156,7 @@ type spiral struct {
 
 func newSpiral() *spiral {
 	startAngle := 2.5 * math.Pi
-	n := math.Floor(0.5**width/(*trace+*gap)) - 0.5
+	n := math.Floor(0.5**width/(*trace+*gap)) - 0.375
 	endAngle := 2.0 * math.Pi * n
 	log.Printf("n=%v, start=%v, end=%v", n, genPt(startAngle, *trace*0.5, 0.0), genPt(endAngle, *trace*0.5, 0.0))
 
@@ -223,21 +175,22 @@ func newSpiral() *spiral {
 	}
 }
 
-func (s *spiral) genSpiral(angleOffset float64) []Pt {
+func (s *spiral) genSpiral(angleOffset float64) (startPt, endPt Pt, pts []Pt) {
 	start := s.startAngle + angleOffset
+	end := s.endAngle + angleOffset
 	halfTW := *trace * 0.5
-	var pts []Pt
-	steps := int(0.5 + (s.endAngle-start) / *step)
+
+	steps := int(0.5 + (end-start) / *step)
 	for i := 0; i < steps; i++ {
 		angle := start + *step*float64(i)
 		pts = append(pts, genPt(angle, halfTW, 0.0))
 	}
-	pts = append(pts, genPt(s.endAngle, halfTW, 0.0))
-	pts = append(pts, genPt(s.endAngle, -halfTW, 0.0))
+	pts = append(pts, genPt(end, halfTW, 0.0))
+	pts = append(pts, genPt(end, -halfTW, 0.0))
 	for i := steps - 1; i >= 0; i-- {
 		angle := start + *step*float64(i)
 		pts = append(pts, genPt(angle, -halfTW, 0.0))
 	}
 	pts = append(pts, pts[0])
-	return pts
+	return genPt(start, 0.0, 0.0), genPt(end, 0.0, 0.0), pts
 }
