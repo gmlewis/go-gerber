@@ -1,7 +1,7 @@
-*.g2l
-*.g3l
-*.g4l
-*.g5l
+*.gl2
+*.gl3
+*.gl4
+*.gl5
 *.gbl
 *.gbo
 *.gbs
@@ -9,5 +9,6 @@
 *.gtl
 *.gto
 *.gts
-*.xln
+*.drl
 *.zip
+*.sh
