@@ -46,6 +46,15 @@ In this section, we will document emperically-measured resistances
 and resonant frequencies of fabricated coils as they become
 available.
 
+# Coil 1
+
+Here is a large (400mm x 400mm) PCB with 92 windings per coil:
+
+![big-bifilar-cap-layers](big-bifilar-cap-layers.gif)
+
+Please visit [Master Ivo's YouTube channel](https://www.youtube.com/channel/UCVZQj8Cl06UDheK3B4N7d9w)
+to see some novel uses of bifilar coils.
+
 ----------------------------------------------------------------------
 
 Enjoy!
