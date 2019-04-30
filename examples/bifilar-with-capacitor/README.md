@@ -46,7 +46,7 @@ In this section, we will document emperically-measured resistances
 and resonant frequencies of fabricated coils as they become
 available.
 
-# Coil 1
+### Coil 1
 
 Here is a large (400mm x 400mm) PCB with 92 windings per coil:
 
