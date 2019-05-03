@@ -15,6 +15,10 @@ Please see the examples in the various directories:
 * 8 bifilar coil: [oct-bifilar-coil](examples/oct-bifilar-coil)
 * 20 bifilar coil: [icosi-bifilar-coil](examples/icosi-bifilar-coil)
 * 333 bifilar coil: [n333-bifilar-coil](examples/n333-bifilar-coil)
+* bifilar coil w/ capacitor: [bifilar-with-capacitor](examples/bifilar-with-capacitor)
+* 2-layer capacitor: [dual-capacitor](examples/dual-capacitor)
+* 4-layer capacitor: [quad-capacitor](examples/quad-capacitor)
+* 6-layer capacitor: [hex-capacitor](examples/hex-capacitor)
 
 ## Documentation
 [![GoDoc](https://godoc.org/github.com/gmlewis/go-gerber/gerber?status.svg)](https://godoc.org/github.com/gmlewis/go-gerber/gerber)
