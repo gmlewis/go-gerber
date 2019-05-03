@@ -46,10 +46,7 @@ type TextT struct {
 	Render   *fonts.Render
 }
 
-// Text returns a text primitive.
-// All dimensions are in millimeters.
-// xScale is 1.0 for top silkscreen and -1.0 for bottom silkscreen.
-func Text(x, y, xScale float64, message, fontName string, pts float64, opts *TextOpts) *TextT {
+func verifyOrSubstituteFont(fontName string) string {
 	if len(fonts.Fonts) == 0 {
 		log.Fatal("No fonts available")
 	}
@@ -62,6 +59,36 @@ func Text(x, y, xScale float64, message, fontName string, pts float64, opts *Tex
 		log.Printf("Could not find font %q: using %q instead", fontName, name)
 		fontName = name
 	}
+	return fontName
+}
+
+// TextBox returns a text primitive where the text fills the MBB and aligns
+// the text according to TextOpts.
+// All dimensions are in millimeters.
+// xScale is 1.0 for top silkscreen and -1.0 for bottom silkscreen.
+func TextBox(mbb MBB, xScale float64, message, fontName string, opts *TextOpts) *TextT {
+	fontName = verifyOrSubstituteFont(fontName)
+
+	x, y, pts, err := fonts.FillBox(mbb, xScale, 1.0, message, fontName, opts)
+	if err != nil {
+		log.Fatalf("fonts.FillBox: %v", err)
+	}
+	return &TextT{
+		x:        x,
+		y:        y,
+		xScale:   xScale,
+		opts:     opts,
+		message:  message,
+		fontName: fontName,
+		pts:      pts / mmPerPt,
+	}
+}
+
+// Text returns a text primitive.
+// All dimensions are in millimeters.
+// xScale is 1.0 for top silkscreen and -1.0 for bottom silkscreen.
+func Text(x, y, xScale float64, message, fontName string, pts float64, opts *TextOpts) *TextT {
+	fontName = verifyOrSubstituteFont(fontName)
 
 	return &TextT{
 		x:        x,

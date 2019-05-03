@@ -11,15 +11,19 @@
 // of one coil to the outer terminal of the other coil (with the added
 // benefit of being able to insert a tuning capacitor in between the
 // two coils.)
+//
+// Copyright 2019 Glenn M. Lewis. All Rights Reserved.
 package main
 
 import (
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"math"
 	"os"
 	"runtime/pprof"
+	"strings"
 
 	_ "github.com/gmlewis/go-fonts/fonts/freeserif"
 	. "github.com/gmlewis/go-gerber/gerber"
@@ -27,24 +31,20 @@ import (
 )
 
 var (
-	width      = flag.Float64("width", 100.0, "Width of PCB")
-	height     = flag.Float64("height", 100.0, "Height of PCB")
-	step       = flag.Float64("step", 0.01, "Resolution (in radians) of the spiral")
-	gap        = flag.Float64("gap", 0.15, "Gap between traces in mm (6mil = 0.15mm)")
-	trace      = flag.Float64("trace", 2.0, "Width of traces in mm")
-	prefix     = flag.String("prefix", "bifilar-cap", "Filename prefix for all Gerber files and zip")
-	fontName   = flag.String("font", "freeserif", "Name of font to use for writing source on PCB (empty to not write)")
+	width  = flag.Float64("width", 400.0, "Width of PCB")
+	height = flag.Float64("height", 400.0, "Height of PCB")
+	step   = flag.Float64("step", 0.01, "Resolution (in radians) of the spiral")
+	gap    = flag.Float64("gap", 0.15, "Gap between traces in mm (6mil = 0.15mm)")
+	trace  = flag.Float64("trace", 2.0, "Width of traces in mm")
+	prefix = flag.String("prefix", "bifilar-cap",
+		"Filename prefix for all Gerber files and zip")
+	fontName = flag.String("font", "freeserif",
+		"Name of font to use for writing source on PCB (empty to not write)")
 	view       = flag.Bool("view", false, "View the resulting design using Fyne")
 	cpuprofile = flag.String("cpuprofile", "", "write cpu profile to file")
 )
 
 const (
-	messageFmt = `This is a single (2-layer)
-bifilar coil with one coil per layer.
-Trace size = %0.2fmm.
-Gap size = %0.2fmm.
-Each spiral has %v coils.`
-
 	padD   = 2
 	padR   = padD / 2
 	drillD = padD / 2
@@ -65,8 +65,8 @@ func main() {
 
 	s := newSpiral()
 
-	startT, endT, spiralT := s.genSpiral(0)
-	startB, endB, spiralB := s.genSpiral(0.5 * math.Pi)
+	startT, endT, spiralT := s.genSpiral(0, 0)
+	startB, endB, spiralB := s.genSpiral(0.5*math.Pi, 0.5)
 
 	centerHole := Point(0.5**width, 0.5**height)
 	padLine := func(pt1, pt2 Pt) *LineT {
@@ -77,7 +77,8 @@ func main() {
 		y := pt[1] - 0.5**height
 		r := math.Sqrt(x*x+y*y) + *trace + *gap
 		angle := math.Atan2(y, x)
-		return Point(0.5**width+r*math.Cos(angle), 0.5**height+r*math.Sin(angle))
+		return Point(0.5**width+r*math.Cos(angle),
+			0.5**height+r*math.Sin(angle))
 	}
 
 	topOuter := outerContact(endT)
@@ -147,10 +148,7 @@ func main() {
 			n++
 			rx := x - 0.5**width
 			r := math.Sqrt(rx*rx+ry*ry) - *gap
-			if ry >= 0.0 && r <= 0.5**width {
-				continue
-			}
-			if ry < 0 && r-*trace-*gap <= 0.5**width {
+			if r-*trace-*gap <= 0.5**width {
 				continue
 			}
 			created[n] = true
@@ -168,8 +166,38 @@ func main() {
 		}
 	}
 
-	// if *fontName != "" {
-	// }
+	if *fontName != "" {
+		buf, err := ioutil.ReadFile("main.go")
+		if err != nil {
+			log.Fatalf("ReadFile: %v", err)
+		}
+		lines := strings.Split(string(buf), "\n")
+		quarter := len(lines) / 4
+		if quarter*4 < len(lines) {
+			quarter++
+		}
+		t1 := strings.Join(lines[0:quarter], "\n")
+		t2 := strings.Join(lines[quarter:2*quarter], "\n")
+		t3 := strings.Join(lines[2*quarter:3*quarter], "\n")
+		t4 := strings.Join(lines[3*quarter:], "\n")
+
+		const margin = 3
+		mbbL := MBB{Min: Pt{margin, margin},
+			Max: Pt{0.5**width - margin, *height - margin}}
+		mbbR := MBB{Min: Pt{0.5**width + margin, margin},
+			Max: Pt{*width - margin, *height - margin}}
+		tss := g.TopSilkscreen()
+		tss.Add(
+			TextBox(mbbL, 1.0, t1, *fontName, &Center),
+			TextBox(mbbR, 1.0, t2, *fontName, &Center),
+		)
+
+		bss := g.BottomSilkscreen()
+		bss.Add(
+			TextBox(mbbR, -1.0, t3, *fontName, &Center),
+			TextBox(mbbL, -1.0, t4, *fontName, &Center),
+		)
+	}
 
 	if err := g.WriteGerber(); err != nil {
 		log.Fatal(err)
@@ -198,7 +226,6 @@ func newSpiral() *spiral {
 	startAngle := 2.5 * math.Pi
 	n := math.Floor(0.5**width/(*trace+*gap)) - 0.375
 	endAngle := 2.0 * math.Pi * n
-	log.Printf("n=%v, start=%v, end=%v", n, genPt(startAngle, *trace*0.5, 0.0), genPt(endAngle, *trace*0.5, 0.0))
 
 	p1 := genPt(endAngle, *trace*0.5, 0)
 	size := 2 * math.Abs(p1[0])
@@ -207,7 +234,6 @@ func newSpiral() *spiral {
 	if xl > size {
 		size = xl
 	}
-	log.Printf("startAngle=%v, endAngle=%v, size=%v", startAngle, endAngle, size)
 	return &spiral{
 		startAngle: startAngle,
 		endAngle:   endAngle,
@@ -215,9 +241,10 @@ func newSpiral() *spiral {
 	}
 }
 
-func (s *spiral) genSpiral(angleOffset float64) (startPt, endPt Pt, pts []Pt) {
-	start := s.startAngle + angleOffset
-	end := s.endAngle + angleOffset
+func (s *spiral) genSpiral(
+	startAngleOffset, endAngleOffset float64) (startPt, endPt Pt, pts []Pt) {
+	start := s.startAngle + startAngleOffset
+	end := s.endAngle + endAngleOffset
 	halfTW := *trace * 0.5
 
 	steps := int(0.5 + (end-start) / *step)
