@@ -35,6 +35,7 @@ var (
 	height = flag.Float64("height", 400.0, "Height of PCB")
 	step   = flag.Float64("step", 0.01, "Resolution (in radians) of the spiral")
 	gap    = flag.Float64("gap", 0.15, "Gap between traces in mm (6mil = 0.15mm)")
+	padGap = flag.Float64("pad_gap", 0.2, "Gap between pads in mm")
 	trace  = flag.Float64("trace", 2.0, "Width of traces in mm")
 	prefix = flag.String("prefix", "bifilar-cap",
 		"Filename prefix for all Gerber files and zip")
@@ -139,7 +140,7 @@ func main() {
 	)
 
 	// Now populate the board with breadboard points...
-	d := *trace + *gap
+	d := *trace + *padGap
 	for y := 0.75 * *trace; y <= *height-0.5**trace; y += d {
 		ry := y - 0.5**height
 		n := -1
@@ -147,8 +148,8 @@ func main() {
 		for x := 0.75 * *trace; x <= *height-0.5**trace; x += d {
 			n++
 			rx := x - 0.5**width
-			r := math.Sqrt(rx*rx+ry*ry) - *gap
-			if r-*trace-*gap <= 0.5**width {
+			r := math.Sqrt(rx*rx+ry*ry) - *padGap
+			if r-*trace-4**padGap <= 0.5**width {
 				continue
 			}
 			created[n] = true
