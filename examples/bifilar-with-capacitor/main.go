@@ -87,13 +87,15 @@ func main() {
 
 	top := g.TopCopper()
 	top.Add(
-		Polygon(Pt{0, 0}, true, spiralT, 0.0),
 		Circle(startT, padD),
 		Circle(centerHole, padD),
 		Circle(topOuter, padD),
 		Circle(botOuter, padD),
 		padLine(topOuter, endT),
 	)
+	for _, pts := range spiralT {
+		top.Add(Polygon(Pt{0, 0}, true, pts, 0.0))
+	}
 
 	topMask := g.TopSolderMask()
 	topMask.Add(
@@ -105,7 +107,6 @@ func main() {
 
 	bottom := g.BottomCopper()
 	bottom.Add(
-		Polygon(Pt{0, 0}, true, spiralB, 0.0),
 		Circle(startT, padD),
 		Circle(centerHole, padD),
 		padLine(startB, centerHole),
@@ -113,6 +114,9 @@ func main() {
 		Circle(botOuter, padD),
 		padLine(botOuter, endB),
 	)
+	for _, pts := range spiralB {
+		bottom.Add(Polygon(Pt{0, 0}, true, pts, 0.0))
+	}
 
 	bottomMask := g.BottomSolderMask()
 	bottomMask.Add(
@@ -243,22 +247,35 @@ func newSpiral() *spiral {
 }
 
 func (s *spiral) genSpiral(
-	startAngleOffset, endAngleOffset float64) (startPt, endPt Pt, pts []Pt) {
+	startAngleOffset, endAngleOffset float64) (startPt, endPt Pt, pts [][]Pt) {
 	start := s.startAngle + startAngleOffset
 	end := s.endAngle + endAngleOffset
+
+	quarterSteps := int(0.5 + math.Pi / *step)
+	steps := int(0.5 + (end-start) / *step)
+	for i := 0; i < steps; i += (quarterSteps - 1) {
+		section := genSpiralSection(i, quarterSteps, steps, start, end)
+		pts = append(pts, section)
+	}
+	return genPt(start, 0.0, 0.0), genPt(end, 0.0, 0.0), pts
+}
+
+func genSpiralSection(startCount, quarterSteps, steps int, start, end float64) (pts []Pt) {
 	halfTW := *trace * 0.5
 
-	steps := int(0.5 + (end-start) / *step)
-	for i := 0; i < steps; i++ {
+	i := startCount
+	for ; i <= startCount+quarterSteps && i < steps; i++ {
 		angle := start + *step*float64(i)
 		pts = append(pts, genPt(angle, halfTW, 0.0))
 	}
-	pts = append(pts, genPt(end, halfTW, 0.0))
-	pts = append(pts, genPt(end, -halfTW, 0.0))
-	for i := steps - 1; i >= 0; i-- {
+	if i >= steps {
+		pts = append(pts, genPt(end, halfTW, 0.0))
+		pts = append(pts, genPt(end, -halfTW, 0.0))
+	}
+	for i--; i >= startCount; i-- {
 		angle := start + *step*float64(i)
 		pts = append(pts, genPt(angle, -halfTW, 0.0))
 	}
 	pts = append(pts, pts[0])
-	return genPt(start, 0.0, 0.0), genPt(end, 0.0, 0.0), pts
+	return pts
 }
