@@ -1,14 +1,18 @@
 // dual-capacitor creates Gerber files (and a bundled ZIP) representing
 // two-layer capactors for manufacture on a printed circuit
 // board (PCB).
+//
+// Copyright 2019 Glenn M. Lewis. All Rights Reserved.
 package main
 
 import (
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
 	"runtime/pprof"
+	"strings"
 
 	_ "github.com/gmlewis/go-fonts/fonts/freeserif"
 	. "github.com/gmlewis/go-gerber/gerber"
@@ -16,21 +20,22 @@ import (
 )
 
 var (
-	width      = flag.Float64("width", 100.0, "Width of PCB")
-	height     = flag.Float64("height", 100.0, "Height of PCB")
-	gap        = flag.Float64("gap", 0.15, "Gap between traces in mm (6mil = 0.15mm)")
-	trace      = flag.Float64("trace", 0.15, "Width of traces in mm")
-	prefix     = flag.String("prefix", "dual-capacitor", "Filename prefix for all Gerber files and zip")
-	fontName   = flag.String("font", "freeserif", "Name of font to use for writing source on PCB (empty to not write)")
-	view       = flag.Bool("view", false, "View the resulting design using Fyne")
-	cpuprofile = flag.String("cpuprofile", "", "write cpu profile to file")
+	width  = flag.Float64("width", 100.0, "Width of PCB")
+	height = flag.Float64("height", 100.0, "Height of PCB")
+	gap    = flag.Float64("gap", 0.15,
+		"Gap between traces in mm (6mil = 0.15mm)")
+	trace  = flag.Float64("trace", 0.6, "Width of traces in mm")
+	prefix = flag.String("prefix", "dual-capacitor",
+		"Filename prefix for all Gerber files and zip")
+	fontName = flag.String("font", "freeserif",
+		"Name of font to use for writing source on PCB (''=no text)")
+	view = flag.Bool("view", false,
+		"View the resulting design using Fyne")
+	cpuprofile = flag.String("cpuprofile", "",
+		"write cpu profile to file")
 )
 
 const (
-	messageFmt = `This is a dual (2-layer)
-capacitor. Size=%0.2fmm x %0.2fmm.
-Trace size = %0.2fmm.
-Gap size = %0.2fmm.`
 	padD = 4
 	padR = padD / 2
 )
@@ -121,11 +126,38 @@ func main() {
 		Line(border[3][0], border[3][1], border[0][0], border[0][1], CircleShape, 0.1),
 	)
 
-	// if *fontName != "" {
-	// 	tss := g.TopSilkscreen()
-	// 	tsAdd(
-	// 	)
-	// }
+	if *fontName != "" {
+		buf, err := ioutil.ReadFile("main.go")
+		if err != nil {
+			log.Fatalf("ReadFile: %v", err)
+		}
+		lines := strings.Split(string(buf), "\n")
+		quarter := len(lines) / 4
+		if quarter*4 < len(lines) {
+			quarter++
+		}
+		t1 := strings.Join(lines[0:quarter], "\n")
+		t2 := strings.Join(lines[quarter:2*quarter], "\n")
+		t3 := strings.Join(lines[2*quarter:3*quarter], "\n")
+		t4 := strings.Join(lines[3*quarter:], "\n")
+
+		const margin = 3
+		mbbL := MBB{Min: Pt{margin, margin},
+			Max: Pt{0.5**width - margin, *height - margin}}
+		mbbR := MBB{Min: Pt{0.5**width + margin, margin},
+			Max: Pt{*width - margin, *height - margin}}
+		tss := g.TopSilkscreen()
+		tss.Add(
+			TextBox(mbbL, 1.0, t1, *fontName, &Center),
+			TextBox(mbbR, 1.0, t2, *fontName, &Center),
+		)
+
+		bss := g.BottomSilkscreen()
+		bss.Add(
+			TextBox(mbbR, -1.0, t3, *fontName, &Center),
+			TextBox(mbbL, -1.0, t4, *fontName, &Center),
+		)
+	}
 
 	if err := g.WriteGerber(); err != nil {
 		log.Fatal(err)
@@ -143,7 +175,7 @@ func genLeftLines() (lines []Primitive) {
 
 	for x := padD + *gap + 0.5**trace; x < *width-padD-*gap; x += 2 * dx {
 		lines = append(lines,
-			Line(x, padR, x, topY, CircleShape, *trace),
+			Line(x, padR, x, topY, RectShape, *trace),
 		)
 	}
 
@@ -156,7 +188,7 @@ func genRightLines() (lines []Primitive) {
 
 	for x := padD + 2**gap + 1.5**trace; x < *width-padD-*gap; x += 2 * dx {
 		lines = append(lines,
-			Line(x, botY, x, *height-padR, CircleShape, *trace),
+			Line(x, botY, x, *height-padR, RectShape, *trace),
 		)
 	}
 

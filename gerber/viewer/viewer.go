@@ -293,8 +293,13 @@ func (vc *viewController) Refresh() {
 			// Render this primitive.
 			switch v := p.(type) {
 			case *gerber.ArcT:
-				// TODO: account for line shape.
 				dc.SetLineWidth(v.Thickness * vc.scale)
+				switch v.Shape {
+				case gerber.CircleShape:
+					dc.SetLineCapRound()
+				case gerber.RectShape:
+					dc.SetLineCapSquare()
+				}
 				delta := v.EndAngle - v.StartAngle
 				length := delta * v.Radius
 				// Resolution of segments is 0.1mm
@@ -319,8 +324,13 @@ func (vc *viewController) Refresh() {
 				dc.DrawCircle(xf(x), yf(y), r*vc.scale)
 				dc.Fill()
 			case *gerber.LineT:
-				// TODO: account for line shape.
 				dc.SetLineWidth(v.Thickness * vc.scale)
+				switch v.Shape {
+				case gerber.CircleShape:
+					dc.SetLineCapRound()
+				case gerber.RectShape:
+					dc.SetLineCapSquare()
+				}
 				dc.DrawLine(xf(v.P1[0]), yf(v.P1[1]), xf(v.P2[0]), yf(v.P2[1]))
 				dc.Stroke()
 			case *gerber.TextT:
