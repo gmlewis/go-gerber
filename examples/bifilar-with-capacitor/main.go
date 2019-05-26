@@ -31,12 +31,12 @@ import (
 )
 
 var (
-	width  = flag.Float64("width", 400.0, "Width of PCB")
-	height = flag.Float64("height", 400.0, "Height of PCB")
+	width  = flag.Float64("width", 100.0, "Width of PCB")
+	height = flag.Float64("height", 100.0, "Height of PCB")
 	step   = flag.Float64("step", 0.01, "Resolution (in radians) of the spiral")
 	gap    = flag.Float64("gap", 0.15, "Gap between traces in mm (6mil = 0.15mm)")
 	padGap = flag.Float64("pad_gap", 0.2, "Gap between pads in mm")
-	trace  = flag.Float64("trace", 2.0, "Width of traces in mm")
+	trace  = flag.Float64("trace", 0.6, "Width of traces in mm")
 	prefix = flag.String("prefix", "bifilar-cap",
 		"Filename prefix for all Gerber files and zip")
 	fontName = flag.String("font", "freeserif",
@@ -67,16 +67,17 @@ func main() {
 	s := newSpiral()
 
 	startT, endT, spiralT := s.genSpiral(0, 0)
-	startB, endB, spiralB := s.genSpiral(0.5*math.Pi, 0.5)
+	startB, endB, spiralB := s.genSpiral(math.Pi, 0.5)
 
-	centerHole := Point(0.5**width, 0.5**height)
-	padLine := func(pt1, pt2 Pt) *LineT {
-		return Line(pt1[0], pt1[1], pt2[0], pt2[1], CircleShape, padD)
+	centerT := Point(0.5**width, startT[1]-padR)
+	centerB := Point(0.5**width, 0.5*(*height-*gap)-padR)
+	padLine := func(pt1, pt2 Pt, width float64) *LineT {
+		return Line(pt1[0], pt1[1], pt2[0], pt2[1], CircleShape, width)
 	}
 	outerContact := func(pt Pt) Pt {
 		x := pt[0] - 0.5**width
 		y := pt[1] - 0.5**height
-		r := math.Sqrt(x*x+y*y) + *trace + *gap
+		r := math.Sqrt(x*x+y*y) + padR + *gap + 0.5**trace
 		angle := math.Atan2(y, x)
 		return Point(0.5**width+r*math.Cos(angle),
 			0.5**height+r*math.Sin(angle))
@@ -87,11 +88,12 @@ func main() {
 
 	top := g.TopCopper()
 	top.Add(
-		Circle(startT, padD),
-		Circle(centerHole, padD),
+		Circle(centerT, padD),
+		padLine(startT, centerT, *trace),
+		Circle(centerB, padD),
 		Circle(topOuter, padD),
 		Circle(botOuter, padD),
-		padLine(topOuter, endT),
+		padLine(topOuter, endT, *trace),
 	)
 	for _, pts := range spiralT {
 		top.Add(Polygon(Pt{0, 0}, true, pts, 0.0))
@@ -99,20 +101,20 @@ func main() {
 
 	topMask := g.TopSolderMask()
 	topMask.Add(
-		Circle(startT, padD),
-		Circle(centerHole, padD),
+		Circle(centerT, padD),
+		Circle(centerB, padD),
 		Circle(topOuter, padD),
 		Circle(botOuter, padD),
 	)
 
 	bottom := g.BottomCopper()
 	bottom.Add(
-		Circle(startT, padD),
-		Circle(centerHole, padD),
-		padLine(startB, centerHole),
+		Circle(centerT, padD),
+		Circle(centerB, padD),
+		padLine(startB, centerB, *trace),
 		Circle(topOuter, padD),
 		Circle(botOuter, padD),
-		padLine(botOuter, endB),
+		padLine(botOuter, endB, *trace),
 	)
 	for _, pts := range spiralB {
 		bottom.Add(Polygon(Pt{0, 0}, true, pts, 0.0))
@@ -120,16 +122,16 @@ func main() {
 
 	bottomMask := g.BottomSolderMask()
 	bottomMask.Add(
-		Circle(startT, padD),
-		Circle(centerHole, padD),
+		Circle(centerT, padD),
+		Circle(centerB, padD),
 		Circle(topOuter, padD),
 		Circle(botOuter, padD),
 	)
 
 	drill := g.Drill()
 	drill.Add(
-		Circle(startT, drillD),
-		Circle(centerHole, drillD),
+		Circle(centerT, drillD),
+		Circle(centerB, drillD),
 		Circle(topOuter, drillD),
 		Circle(botOuter, drillD),
 	)
@@ -144,16 +146,19 @@ func main() {
 	)
 
 	// Now populate the board with breadboard points...
-	d := *trace + *padGap
-	for y := 0.75 * *trace; y <= *height-0.5**trace; y += d {
+	d := padD + *padGap
+	for y := 0.75 * padD; y <= *height-0.5*padD; y += d {
 		ry := y - 0.5**height
 		n := -1
 		created := map[int]bool{}
-		for x := 0.75 * *trace; x <= *height-0.5**trace; x += d {
+		for x := 0.75 * padD; x <= *height-0.5*padD; x += d {
 			n++
 			rx := x - 0.5**width
 			r := math.Sqrt(rx*rx+ry*ry) - *padGap
-			if r-*trace-4**padGap <= 0.5**width {
+			if ry < 0 && rx < 0 && r-padD-4**padGap <= 0.5**width {
+				continue
+			}
+			if rx > 0 && r <= 0.5**width || rx < 0 && r-padR <= 0.5**width {
 				continue
 			}
 			created[n] = true
@@ -164,7 +169,7 @@ func main() {
 			bottomMask.Add(c)
 			drill.Add(Circle(Point(x, y), drillD))
 			if created[n-1] && n%2 == 1 {
-				line := padLine(Point(x-d, y), Point(x, y))
+				line := padLine(Point(x-d, y), Point(x, y), padD)
 				top.Add(line)
 				bottom.Add(line)
 			}
@@ -228,7 +233,7 @@ type spiral struct {
 }
 
 func newSpiral() *spiral {
-	startAngle := 2.5 * math.Pi
+	startAngle := 6.5 * math.Pi
 	n := math.Floor(0.5**width/(*trace+*gap)) - 0.375
 	endAngle := 2.0 * math.Pi * n
 
