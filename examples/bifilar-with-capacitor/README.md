@@ -55,6 +55,14 @@ Here is a large (400mm x 400mm) PCB with 92 windings per coil:
 Please visit [Master Ivo's YouTube channel](https://www.youtube.com/channel/UCVZQj8Cl06UDheK3B4N7d9w)
 to see some novel uses of bifilar coils.
 
+### Coil 2
+
+Here is a small (100mm x 100mm) PCB with 21 windings per coil:
+
+![IMG_20190609_190535.jpg](IMG_20190609_190535.jpg)
+
+It measures 2.8Ω and 0.07mH. Its board thickness is 1.6mm.
+
 ----------------------------------------------------------------------
 
 Enjoy!
