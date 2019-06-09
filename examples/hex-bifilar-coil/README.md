@@ -52,6 +52,8 @@ available.
 
 ![hex-bifilar-coil-1.jpg](/images/hex-bifilar-coil-1.jpg)
 
+![IMG_20190608_193011.jpg](IMG_20190608_193011.jpg)
+
 Coil 1 consists of:
 
 ```
