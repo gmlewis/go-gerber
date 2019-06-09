@@ -51,6 +51,8 @@ available.
 
 ![quad-bifilar-coil-1.jpg](/images/quad-bifilar-coil-1.jpg)
 
+![IMG_20190608_193223.jpg](IMG_20190608_193223.jpg)
+
 Coil 1 consists of:
 
 ```
