@@ -21,11 +21,11 @@ This shows the various layers on a 100mm x 100mm PCB:
 In this section, we will document emperically-measured
 capacitances as they become available.
 
-## Capacitor 1
+### Capacitor 1
 
 ![IMG_20190608_194453.jpg](IMG_20190608_194453.jpg)
 
-## Capacitor 2
+### Capacitor 2
 
 ![IMG_20190608_194901.jpg](IMG_20190608_194901.jpg)
 
