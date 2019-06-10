@@ -25,13 +25,13 @@ capacitances as they become available.
 
 ![IMG_20190608_195309.jpg](IMG_20190608_195309.jpg)
 
-This capacitor uses 0.15mm traces, 1.6mm thick PCB, and measures 12.26nF.
+Capacitor 1 uses 0.15mm traces, 1.6mm thick PCB, and measures 12.26nF.
 
 ### Capacitor 2
 
 ![IMG_20190608_195650.jpg](IMG_20190608_195650.jpg)
 
-This board is from the same manufacturing batch as Capacitor 1, but
+Capacitor 2 is from the same manufacturing batch as Capacitor 1, but
 measures 11.64nF.
 
 ----------------------------------------------------------------------
