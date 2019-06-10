@@ -57,6 +57,7 @@ available.
 Coil 1 consists of:
 
 ```
+PCB thickness = 1.6mm
 trace width = 0.15mm (6 mils)
 gap width = 0.15mm
 number of coils per spiral = 100
@@ -70,7 +71,7 @@ number of coils per spiral = 100
 |    3R/2L   |   4R/BR  |       496         |                    |
 |    4R/BR   |   5R/TR  |       130.8 ?     |                    |
 |    5R/TR   |    2R    |       496         |                    |
-|     3L     |    2R    |      2247         |       ~10kHz       |
+|     3L     |    2R    |      2230         |       ~10kHz       |
 
 ----------------------------------------------------------------------
 
