@@ -56,8 +56,8 @@ number of coils per spiral = 100
 
 | From point | To point | DC resistance (Ω) | Inductance (mH) | Resonant Frequency |
 |   :---:    |  :---:   |      :---:        |      :---:      |       :---:        |
-|    TR      |  BR/TL   |       162         |                 |                    |
-|   BR/TL    |   BL     |       162         |                 |                    |
+|    TR      |  BR/TL   |      160.3        |                 |                    |
+|   BR/TL    |   BL     |      160.3        |                 |                    |
 |    TR      |   BL     |      321.4        |       10.9      |       ~60kHz       |
 
 ----------------------------------------------------------------------

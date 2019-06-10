@@ -25,9 +25,13 @@ capacitances as they become available.
 
 ![IMG_20190608_194453.jpg](IMG_20190608_194453.jpg)
 
+Capacitor 1 uses a 0.6mm PCB with 0.6mm traces and measures 1650pF.
+
 ### Capacitor 2
 
-![IMG_20190608_194901.jpg](IMG_20190608_194901.jpg)
+![IMG_20190608_201138.jpg](IMG_20190608_201138.jpg)
+
+Capacitor 2 uses a 0.6mm PCB with 0.15mm traces and measures 2527pF.
 
 ----------------------------------------------------------------------
 

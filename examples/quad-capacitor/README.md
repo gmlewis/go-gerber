@@ -21,6 +21,13 @@ This shows the various layers on a 100mm x 100mm PCB:
 In this section, we will document emperically-measured
 capacitances as they become available.
 
+### Capacitor 1
+
+![IMG_20190608_194901.jpg](IMG_20190608_194901.jpg)
+
+Capacitor 1 uses a 1.6mm PCB with 0.15mm traces and measures 6229pF.
+
+
 ----------------------------------------------------------------------
 
 Enjoy!
