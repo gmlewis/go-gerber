@@ -39,19 +39,22 @@ available.
 
 ### Coil 1
 
+![IMG_20190608_201438.jpg](IMG_20190608_201438.jpg)
+
 Coil 1 consists of:
 
 ```
+PCB thickness = 1.6mm
 trace width = 0.15mm (6 mils)
 gap width = 0.15mm
 number of coils per spiral = 100
 ```
 
-| From point | To point | DC resistance (Ω) | Resonant Frequency (Hz) |
-|   :---:    |  :---:   |      :---:        |         :---:           |
-|    TR      |  TR/TL   |       91.2        |                         |
-|   TR/TL    |   TL     |       91.2        |                         |
-|    TR      |   TL     |      182.2        |                         |
+| From point | To point | DC resistance (Ω) | Inductance (mH) | Resonant Frequency (Hz) |
+|   :---:    |  :---:   |      :---:        |      :---:      |         :---:           |
+|    TR      |  TR/TL   |       91.2        |                 |                         |
+|   TR/TL    |   TL     |       91.2        |                 |                         |
+|    TR      |   TL     |      179.8        |       2.9       |                         |
 
 ----------------------------------------------------------------------
 
