@@ -31,13 +31,13 @@ import (
 )
 
 var (
-	width  = flag.Float64("width", 100.0, "Width of PCB")
-	height = flag.Float64("height", 100.0, "Height of PCB")
+	width  = flag.Float64("width", 400.0, "Width of PCB")
+	height = flag.Float64("height", 400.0, "Height of PCB")
 	step   = flag.Float64("step", 0.01, "Resolution (in radians) of the spiral")
 	gap    = flag.Float64("gap", 0.15, "Gap between traces in mm (6mil = 0.15mm)")
 	padGap = flag.Float64("pad_gap", 0.2, "Gap between pads in mm")
-	trace  = flag.Float64("trace", 0.6, "Width of traces in mm")
-	prefix = flag.String("prefix", "bifilar-cap",
+	trace  = flag.Float64("trace", 4.0, "Width of traces in mm")
+	prefix = flag.String("prefix", "big-bifilar-cap2",
 		"Filename prefix for all Gerber files and zip")
 	fontName = flag.String("font", "freeserif",
 		"Name of font to use for writing source on PCB (empty to not write)")
@@ -46,9 +46,9 @@ var (
 )
 
 const (
-	padD   = 2
-	padR   = padD / 2
-	drillD = padD / 2
+	padD   = 4.0
+	padR   = 0.5 * padD
+	drillD = 1.5
 )
 
 func main() {
@@ -77,7 +77,7 @@ func main() {
 	outerContact := func(pt Pt) Pt {
 		x := pt[0] - 0.5**width
 		y := pt[1] - 0.5**height
-		r := math.Sqrt(x*x+y*y) + padR + *gap + 0.5**trace
+		r := math.Sqrt(x*x+y*y) + 4.0*padR
 		angle := math.Atan2(y, x)
 		return Point(0.5**width+r*math.Cos(angle),
 			0.5**height+r*math.Sin(angle))
@@ -144,37 +144,6 @@ func main() {
 		Line(border[2][0], border[2][1], border[3][0], border[3][1], CircleShape, 0.1),
 		Line(border[3][0], border[3][1], border[0][0], border[0][1], CircleShape, 0.1),
 	)
-
-	// Now populate the board with breadboard points...
-	d := padD + *padGap
-	for y := 0.75 * padD; y <= *height-0.5*padD; y += d {
-		ry := y - 0.5**height
-		n := -1
-		created := map[int]bool{}
-		for x := 0.75 * padD; x <= *height-0.5*padD; x += d {
-			n++
-			rx := x - 0.5**width
-			r := math.Sqrt(rx*rx+ry*ry) - *padGap
-			if ry < 0 && rx < 0 && r-padD-4**padGap <= 0.5**width {
-				continue
-			}
-			if rx > 0 && r <= 0.5**width || rx < 0 && r-padR <= 0.5**width {
-				continue
-			}
-			created[n] = true
-			c := Circle(Point(x, y), padD)
-			top.Add(c)
-			topMask.Add(c)
-			bottom.Add(c)
-			bottomMask.Add(c)
-			drill.Add(Circle(Point(x, y), drillD))
-			if created[n-1] && n%2 == 1 {
-				line := padLine(Point(x-d, y), Point(x, y), padD)
-				top.Add(line)
-				bottom.Add(line)
-			}
-		}
-	}
 
 	if *fontName != "" {
 		buf, err := ioutil.ReadFile("main.go")

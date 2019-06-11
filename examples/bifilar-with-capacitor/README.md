@@ -59,6 +59,9 @@ and measurements on the coil:
 ![20190610_151523.jpg](20190610_151523.jpg)
 ![20190610_155238.jpg](20190610_155238.jpg)
 
+It has 2.0mm trace width, 2.0mm pad diameter, 1.0mm drill hole diameter, and 0.15mm trace gap.
+Its board thickness is 0.6mm.
+
 Please visit [Master Ivo's YouTube channel](https://www.youtube.com/channel/UCVZQj8Cl06UDheK3B4N7d9w)
 to see some novel uses of bifilar coils.
 
@@ -69,6 +72,8 @@ Here is a small (100mm x 100mm) PCB with 21 windings per coil:
 ![IMG_20190609_190535.jpg](IMG_20190609_190535.jpg)
 
 ![IMG_20190609_192140.jpg](IMG_20190609_192140.jpg)
+
+It has 0.6mm trace width, 2.0mm pad diameter, 1.0mm drill hole diameter, and 0.15mm trace gap.
 
 It measures 2.8Ω, 0.07mH, and 222pF. Its board thickness is 1.6mm.
 
