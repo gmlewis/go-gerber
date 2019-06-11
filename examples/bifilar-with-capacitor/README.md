@@ -52,6 +52,13 @@ Here is a large (400mm x 400mm) PCB with 92 windings per coil:
 
 ![big-bifilar-cap-layers](big-bifilar-cap-layers.gif)
 
+and measurements on the coil:
+
+![20190610_154844.jpg](20190610_154844.jpg)
+![20190610_153519.jpg](20190610_153519.jpg)
+![20190610_151523.jpg](20190610_151523.jpg)
+![20190610_155238.jpg](20190610_155238.jpg)
+
 Please visit [Master Ivo's YouTube channel](https://www.youtube.com/channel/UCVZQj8Cl06UDheK3B4N7d9w)
 to see some novel uses of bifilar coils.
 
