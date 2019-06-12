@@ -46,9 +46,11 @@ var (
 )
 
 const (
-	padD   = 4.0
-	padR   = 0.5 * padD
-	drillD = 1.5
+	padD             = 4.0
+	padR             = 0.5 * padD
+	drillD           = 1.5
+	mountDrillD      = 2.5
+	mountDrillMargin = 20.0
 )
 
 func main() {
@@ -134,6 +136,11 @@ func main() {
 		Circle(centerB, drillD),
 		Circle(topOuter, drillD),
 		Circle(botOuter, drillD),
+		// Mounting drill holes - no solder:
+		Circle(Pt{mountDrillMargin, mountDrillMargin}, mountDrillD),
+		Circle(Pt{*width - mountDrillMargin, mountDrillMargin}, mountDrillD),
+		Circle(Pt{*width - mountDrillMargin, *height - mountDrillMargin}, mountDrillD),
+		Circle(Pt{mountDrillMargin, *height - mountDrillMargin}, mountDrillD),
 	)
 
 	outline := g.Outline()
