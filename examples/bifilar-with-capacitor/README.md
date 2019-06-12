@@ -77,6 +77,13 @@ It has 2.0mm trace width, 2.0mm pad diameter, 1.0mm drill hole diameter, and 0.1
 
 It measures 2.8Ω, 0.07mH, and 222pF. Its board thickness is 1.6mm.
 
+### Coil 3
+
+Coil 3 is a large (400mm x 400mm) PCB with 45 windings per coil.
+
+It has 4.0mm trace width, 4.0mm pad diameter, 1.5mm drill hole diameter, and 0.15mm trace gap.
+Its board thickness is 0.6mm.
+
 ----------------------------------------------------------------------
 
 Enjoy!
