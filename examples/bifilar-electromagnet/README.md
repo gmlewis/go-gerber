@@ -1,7 +1,7 @@
 # Bifilar Electromagnet
 
 Nikola Tesla patented the bifilar coil in [U.S. Patent 512340](
-https://teslauniverse.com/nikola-tesla/patents/us-patent-512340-coil-electro-magnets)
+https://teslauniverse.com/nikola-tesla/patents/us-patent-512340-coil-electro-magnets).
 
 The point of the bifilar coil is to add internal capacitance to the coil
 between the windings and maximize the voltage between every pair of adjacent
