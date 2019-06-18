@@ -15,7 +15,10 @@ Here is a diagram of the first winding:
 ![winding 1 diagram](coil1-winding-120turns-6920mm.png)
 
 The second winding is kept separate from the first so that an external
-capacitor could be added between the two windings.
+capacitor could be added between the two windings. It is wound similarly
+to the first coil, in the same direction:
+
+![winding 2 diagram](coil2-winding-120turns-7664mm.png)
 
 ----------------------------------------------------------------------
 
