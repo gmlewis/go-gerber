@@ -20,6 +20,15 @@ to the first coil, in the same direction:
 
 ![winding 2 diagram](coil2-winding-120turns-7664mm.png)
 
+The third winding is a continuation of the wire from the first winding.
+Here is a view from the front of the coil:
+
+![winding 3 front](coil3-front.png)
+
+Here is a view from the back of the coil:
+
+![winding 3 rear](coil3-rear.png)
+
 ----------------------------------------------------------------------
 
 Enjoy!
