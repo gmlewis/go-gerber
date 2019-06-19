@@ -8,7 +8,27 @@ between the windings and maximize the voltage between every pair of adjacent
 wires. I was thinking that if a coil could be wound in such a manner, why
 couldn't an electromagnet?
 
-## How it is wired
+## Electromagnet 1 - How it is wired
+
+This electromagnet is wound with two wires. They remain separate until the
+very end. First, `wire 1` is used to wind `coil 1`. Then `wire 2` is used
+to wind `coil 2` directly on top of `coil 1`. Then `wire 1` is wrapped back
+around (through the center air gap) to the front of the electromagnet spool
+holder and is used to wind `coil 3`. Then `wire 2` is wrapped back around
+and used to wind `coil 4`. They alternate back and forth until 14 total
+coils are wrapped.
+
+Each coil has 120 turns.
+
+Finally, the end of `wire 1` (coils 1, 3, 5, 7, 9, 11, and 13) can be
+connected to the start of `wire 2` (coils 2, 4, 6, 8, 10, 12, and 14)
+and the end of `wire 2` can return to the circuit.
+
+Optionally, instead of connecting the end of `wire 1` to the start of `wire 2`,
+a capacitor (or variable capacitor) can be placed in between (in series)
+in order to tune the capacitance to ideally make the resonant frequency
+of the coil the same as its main oscillating frequency (in the case of
+a brushless motor, for example).
 
 Here is a diagram of the first winding:
 
