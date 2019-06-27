@@ -71,6 +71,10 @@ Here is a view from the back of the coil:
 |Total (mm) |  160822     |   77961     |   82861     |
 |Total (ft) |  527.64     |   255.78    |   271.85    |
 
+### Final assembly
+
+![final-assembly-electromagnet.png](final-assembly-electromagnet.png)
+
 ----------------------------------------------------------------------
 
 Enjoy!
