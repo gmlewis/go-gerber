@@ -70,6 +70,8 @@ Here is a view from the back of the coil:
 |thru middle|    2100     |    6.89     |    1050     |    1050     |                   |                 |
 |  Total    |  160822     |  527.63     |   77961     |   82861     |                   |                 |
 
+The capacitance between Wire 1 and Wire 2 is:
+
 ### Final assembly
 
 ![final-assembly-electromagnet.png](final-assembly-electromagnet.png)
