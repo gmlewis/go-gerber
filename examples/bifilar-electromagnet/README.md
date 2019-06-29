@@ -74,6 +74,8 @@ Here is a view from the back of the coil:
 
 ![final-assembly-electromagnet.png](final-assembly-electromagnet.png)
 
+![IMG_20190629_160843.jpg](IMG_20190629_160843.jpg)
+
 ----------------------------------------------------------------------
 
 Enjoy!
