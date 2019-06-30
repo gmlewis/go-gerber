@@ -49,7 +49,7 @@ Here is a view from the back of the coil:
 
 ![winding 3 rear](coil3-rear.png)
 
-### Winding lengths (approximate)
+### Winding data (lengths are approximate)
 
 |  Winding  | Length (mm) | Length (ft) | Wire 1 (mm) | Wire 2 (mm) | DC resistance (Ω) | Inductance (mH) |
 |   :---:   |   :---:     |   :---:     |   :---:     |   :---:     |      :---:        |      :---:      |
