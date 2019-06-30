@@ -68,11 +68,27 @@ Here is a view from the back of the coil:
 |    13      |   15834     |   51.95     |   15834     |             |       1.0         |      0.07       |
 |    14      |   16211     |   53.19     |             |   16211     |       1.2         |      0.07       |
 |thru middle |    2100     |    6.89     |    1050     |    1050     |       ---         |       ---       |
-|Total Wire 1|             |             |   77961     |             |                   |                 |
-|Total Wire 2|             |             |             |   82861     |                   |                 |
-| Coil Total |  160822     |  527.63     |             |             |                   |                 |
+|Total Wire 1|             |             |   77961     |             |       2.8         |      2.47       |
+|Total Wire 2|             |             |             |   82861     |       2.8         |      2.53       |
+| Coil Total |  160822     |  527.63     |             |             |       4.5         |      9.81       |
 
-The capacitance between Wire 1 and Wire 2 is:
+The capacitance between Wire 1 and Wire 2 is: 23.28nF.
+
+While soldering the windings together, I took measurements along the way.
+("S" means start, "E", means end of each winding.)
+
+| From |  To | DC resistance (Ω) | Inductance (mH) |
+| :---:|:---:|      :---:        |     :---:       |
+|  S1  | E3  |       1.2         |      0.10       |
+|  S1  | E5  |       1.3         |      0.28       |
+|  S1  | E7  |       1.8         |      0.56       |
+|  S1  | E9  |       2.0         |      1.03       |
+|  S1  | E11 |       2.4         |      1.67       |
+|  S2  | E4  |       1.1         |      0.09       |
+|  S2  | E6  |       1.4         |      0.25       |
+|  S2  | E8  |       1.7         |      0.58       |
+|  S2  | E10 |       2.0         |      1.05       |
+|  S2  | E12 |       2.5         |      1.72       |
 
 ### Final assembly
 
