@@ -72,10 +72,11 @@ Here is a view from the back of the coil:
 |Total Wire 2|             |             |             |   82861     |       2.8         |      2.53       |
 | Coil Total |  160822     |  527.63     |             |             |       4.5         |      9.81       |
 
-The capacitance between Wire 1 and Wire 2 is: 23.28nF.
+The capacitance between Wire 1 (coils 1, 3, 5, 7, 9, 11, 13) and Wire 2
+(coils 2, 4, 6, 8, 10, 12, 14) is: 23.28nF.
 
 While soldering the windings together, I took measurements along the way.
-("S" means start, "E", means end of each winding.)
+("S" means start, "E", means end of each coil winding.)
 
 | From |  To | DC resistance (Ω) | Inductance (mH) |
 | :---:|:---:|      :---:        |     :---:       |
@@ -84,17 +85,58 @@ While soldering the windings together, I took measurements along the way.
 |  S1  | E7  |       1.8         |      0.56       |
 |  S1  | E9  |       2.0         |      1.03       |
 |  S1  | E11 |       2.4         |      1.67       |
+|  S1  | E13 |       2.8         |      2.47       |
 |  S2  | E4  |       1.1         |      0.09       |
 |  S2  | E6  |       1.4         |      0.25       |
 |  S2  | E8  |       1.7         |      0.58       |
 |  S2  | E10 |       2.0         |      1.05       |
 |  S2  | E12 |       2.5         |      1.72       |
+|  S2  | E14 |       2.8         |      2.53       |
+|  S1  | E14 |       4.5         |      9.81       |
+
+Its theoretical resonant frequency is 10.532kHz.
 
 ### Final assembly
 
 ![final-assembly-electromagnet.png](final-assembly-electromagnet.png)
 
 ![IMG_20190629_160843.jpg](IMG_20190629_160843.jpg)
+
+## Electromagnet 2
+
+The second bifilar electromagnet is wound identically to the first.
+
+![electromagnet 2](electromagnet-2.png)
+
+### Winding data
+
+The capacitance between Wire 1 (coils 1, 3, 5, 7, 9, 11, 13) and Wire 2
+(coils 2, 4, 6, 8, 10, 12, 14) is: 33.39nF.
+
+![electromagnet 2 capacitance](electromagnet-2-capacitor.png)
+
+While soldering the windings together, I took measurements along the way.
+("S" means start, "E", means end of each coil winding.)
+
+| From |  To | DC resistance (Ω) | Inductance (mH) |
+| :---:|:---:|      :---:        |     :---:       |
+|  S1  | E3  |       1.4         |      0.10       |
+|  S1  | E5  |       1.7         |      0.26       |
+|  S1  | E7  |       1.8         |      0.55       |
+|  S1  | E9  |       2.7         |      1.02       |
+|  S1  | E11 |       4.8?        |      1.72       |
+|  S1  | E13 |       4.0         |      2.61       |
+|  S2  | E4  |       1.5         |      0.11       |
+|  S2  | E6  |       1.9         |      0.31       |
+|  S2  | E8  |       2.9         |      0.67       |
+|  S2  | E10 |       2.9         |      1.22       |
+|  S2  | E12 |       3.2         |      2.02       |
+|  S2  | E14 |       4.4         |      3.03       |
+|  S1  | E14 |       6.2         |     11.01       |
+
+![electromagnet 2 inductance](electromagnet-2-inductor.png)
+
+Its theoretical resonant frequency is 8.3kHz.
 
 ----------------------------------------------------------------------
 
