@@ -41,7 +41,7 @@ to see the labels):
 
 ![n333-bifilar-coil-diagram](n333-bifilar-coil-diagram.png)
 
-This shows the top layer on an N=360 coil:
+This shows the top layer on an N=333 coil:
 
 ![n333-bifilar-coil-layers](n333-bifilar-coil-layers.png)
 
