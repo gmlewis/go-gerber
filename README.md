@@ -1,4 +1,6 @@
-# Write Gerber RS274X files (for PCBs) in Go
+# go-gerber: Write Gerber RS274X files (for PCBs) in Go
+
+[![Test Status](https://github.com/gmlewis/go-gerber/workflows/tests/badge.svg)](https://github.com/gmlewis/go-gerber/actions?query=workflow%3Atests)
 
 This is an experimental package used to write Gerber (RS274X) files
 and bundle them into a ZIP file to send to printed circuit board (PCB)

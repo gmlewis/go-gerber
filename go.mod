@@ -12,3 +12,5 @@ require (
 	github.com/srwiley/oksvg v0.0.0-20190414003808-c520f0a6c5cc // indirect
 	github.com/stretchr/objx v0.2.0 // indirect
 )
+
+go 1.13
