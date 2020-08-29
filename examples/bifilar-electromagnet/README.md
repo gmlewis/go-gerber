@@ -7,6 +7,16 @@ between the windings and maximize the voltage between every pair of adjacent
 wires. I was thinking that if a coil could be wound in such a manner, why
 couldn't an electromagnet?
 
+2020-08-29 Update: Note that this design below is still only radially
+capacitive because entire coils are singally wrapped sequentially. It later
+dawned on me that to maximize the capacitance of the windings, the coils
+coils can be interleaved also in the axial direction! However, to wind this
+manually is simply exhausting. I therefore started on a pursuit to model
+this radial+axial bifilar electromagnet and quickly exhausted the capabilities
+of modern CAD tool. I ended up inventing a new CAD file format called
+[IRMF](http://irmf.io) and was then able to realize the design of the
+[radial+axial bifilar electromagnet](https://github.com/gmlewis/irmf/tree/master/examples/012-bifilar-electromagnet#axial-radial-bifilar-electromagnet-1irmf).
+
 ## Electromagnet 1 - How it is wired
 
 This electromagnet is wound with two wires. They remain separate until the
