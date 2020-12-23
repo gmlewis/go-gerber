@@ -116,6 +116,29 @@ func initController(g *gerber.Gerber, app fyne.App, allLayersOn bool) *viewContr
 	return vc
 }
 
+// myCheck is an extended widget in fyne v1.4.2 to receive
+// key events and pass them to the canvas.
+type myCheck struct {
+	widget.Check
+	vc *viewController
+}
+
+func newMyCheck(vc *viewController, text string, onChanged func(bool)) *myCheck {
+	check := &myCheck{vc: vc}
+	check.Text = text
+	check.OnChanged = onChanged
+	check.ExtendBaseWidget(check)
+	return check
+}
+
+func (c *myCheck) TypedKey(key *fyne.KeyEvent) {
+	c.vc.OnTypedKey(key)
+}
+
+func (c *myCheck) TypedRune(r rune) {
+	c.vc.OnTypedRune(r)
+}
+
 func Gerber(g *gerber.Gerber, allLayersOn bool) {
 	a := app.New()
 
@@ -129,15 +152,16 @@ func Gerber(g *gerber.Gerber, allLayersOn bool) {
 	layers := widget.NewVBox()
 	addCheck := func(index int, label string) {
 		if index >= 0 {
-			check := widget.NewCheck(label, func(v bool) {
+			check := newMyCheck(vc, label, func(v bool) {
 				vc.drawLayer[index] = v
 				vc.Refresh()
+				canvas.Refresh(vc.canvasObj)
 			})
 			check.SetChecked(vc.drawLayer[index])
 			layers.Append(widget.NewHBox(check, layout.NewSpacer()))
 		}
 	}
-	scroller := widget.NewScrollContainer(layers)
+	scroller := widget.NewVScrollContainer(layers)
 	addCheck(vc.indexDrill, "Drill")
 	addCheck(vc.indexTopSilkscreen, "Top Silkscreen")
 	addCheck(vc.indexTopSolderMask, "Top Solder Mask")
@@ -150,6 +174,7 @@ func Gerber(g *gerber.Gerber, allLayersOn bool) {
 	addCheck(vc.indexBottomSilkscreen, "Bottom Silkscreen")
 	addCheck(vc.indexOutline, "Outline")
 	quit := widget.NewHBox(
+		widget.NewLabel("Use arrow keys to pan, +/- (or =/_) to zoom, q to quit."),
 		layout.NewSpacer(),
 		widget.NewButton("Quit", func() { a.Quit() }),
 	)
@@ -169,7 +194,7 @@ func Gerber(g *gerber.Gerber, allLayersOn bool) {
 }
 
 func (vc *viewController) OnTypedRune(key rune) {
-	log.Printf("rune=%+q", key)
+	// log.Printf("rune=%+q", key)
 	switch key {
 	case 'q', 'Q': // TODO: Switch this to Alt-q when available.
 		vc.app.Quit()
@@ -191,7 +216,7 @@ func (vc *viewController) OnTypedKey(event *fyne.KeyEvent) {
 	if event == nil {
 		return
 	}
-	log.Printf("event=%#v", *event)
+	// log.Printf("event=%#v", *event)
 	switch event.Name {
 	case "Up":
 		vc.pan(0, -vc.canvasObj.Size().Height/5)
@@ -201,6 +226,10 @@ func (vc *viewController) OnTypedKey(event *fyne.KeyEvent) {
 		vc.pan(vc.canvasObj.Size().Width/5, 0)
 	case "Right":
 		vc.pan(-vc.canvasObj.Size().Width/5, 0)
+	case "LeftShift", "RightShift", "LeftControl", "RightControl", "LeftAlt", "RightAlt": // ignored.
+	case "-", "_", "+", "=": // already handled by OnTypedRune.
+	case "q", "Q": // TODO: Switch this to Alt-q when available.
+		vc.app.Quit()
 	default:
 		log.Printf("Unhandled event=%#v", *event)
 	}
@@ -226,7 +255,7 @@ func (vc *viewController) scaleToFit(w, h int) {
 	if s := float64(h-1) / (vc.mbb.Max[1] - vc.mbb.Min[1]); s < vc.scale {
 		vc.scale = s
 	}
-	log.Printf("(%v,%v): mbb=%v, scale=%v", w, h, vc.mbb, vc.scale)
+	// log.Printf("(%v,%v): mbb=%v, scale=%v", w, h, vc.mbb, vc.scale)
 }
 
 func (vc *viewController) Resize(w, h int) {
