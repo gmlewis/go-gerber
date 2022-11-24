@@ -7,15 +7,17 @@ import (
 	"image/color"
 	"log"
 	"math"
+	"os"
 	"regexp"
 	"strconv"
 	"sync"
 
-	"fyne.io/fyne"
-	"fyne.io/fyne/app"
-	"fyne.io/fyne/canvas"
-	"fyne.io/fyne/layout"
-	"fyne.io/fyne/widget"
+	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/canvas"
+	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/layout"
+	"fyne.io/fyne/v2/widget"
 	"github.com/fogleman/gg"
 	"github.com/gmlewis/go-gerber/gerber"
 )
@@ -149,7 +151,7 @@ func Gerber(g *gerber.Gerber, allLayersOn bool) {
 	c.SetMinSize(fyne.Size{Width: 800, Height: 800})
 	vc.canvasObj = c
 
-	layers := widget.NewVBox()
+	layers := container.NewVBox()
 	addCheck := func(index int, label string) {
 		if index >= 0 {
 			check := newMyCheck(vc, label, func(v bool) {
@@ -158,10 +160,10 @@ func Gerber(g *gerber.Gerber, allLayersOn bool) {
 				canvas.Refresh(vc.canvasObj)
 			})
 			check.SetChecked(vc.drawLayer[index])
-			layers.Append(widget.NewHBox(check, layout.NewSpacer()))
+			layers.Add(container.NewHBox(check, layout.NewSpacer()))
 		}
 	}
-	scroller := widget.NewVScrollContainer(layers)
+	scroller := container.NewVScroll(layers)
 	addCheck(vc.indexDrill, "Drill")
 	addCheck(vc.indexTopSilkscreen, "Top Silkscreen")
 	addCheck(vc.indexTopSolderMask, "Top Solder Mask")
@@ -173,10 +175,11 @@ func Gerber(g *gerber.Gerber, allLayersOn bool) {
 	addCheck(vc.indexBottomSolderMask, "Bottom Solder Mask")
 	addCheck(vc.indexBottomSilkscreen, "Bottom Silkscreen")
 	addCheck(vc.indexOutline, "Outline")
-	quit := widget.NewHBox(
+	quit := container.NewHBox(
 		widget.NewLabel("Use arrow keys to pan, +/- (or =/_) to zoom, q to quit."),
 		layout.NewSpacer(),
-		widget.NewButton("Quit", func() { a.Quit() }),
+		// a.Quit hangs.  See: https://github.com/fyne-io/fyne/issues/2314
+		widget.NewButton("Quit", func() { os.Exit(0) }),
 	)
 
 	w := a.NewWindow("Gerber viewer")
@@ -219,13 +222,13 @@ func (vc *viewController) OnTypedKey(event *fyne.KeyEvent) {
 	// log.Printf("event=%#v", *event)
 	switch event.Name {
 	case "Up":
-		vc.pan(0, -vc.canvasObj.Size().Height/5)
+		vc.pan(0, int(-vc.canvasObj.Size().Height/5))
 	case "Down":
-		vc.pan(0, vc.canvasObj.Size().Height/5)
+		vc.pan(0, int(vc.canvasObj.Size().Height/5))
 	case "Left":
-		vc.pan(vc.canvasObj.Size().Width/5, 0)
+		vc.pan(int(vc.canvasObj.Size().Width/5), 0)
 	case "Right":
-		vc.pan(-vc.canvasObj.Size().Width/5, 0)
+		vc.pan(int(-vc.canvasObj.Size().Width/5), 0)
 	case "LeftShift", "RightShift", "LeftControl", "RightControl", "LeftAlt", "RightAlt": // ignored.
 	case "-", "_", "+", "=": // already handled by OnTypedRune.
 	case "q", "Q": // TODO: Switch this to Alt-q when available.
