@@ -71,7 +71,7 @@ func TextBox(mbb MBB, xScale float64, message, fontName string, opts *TextOpts) 
 
 	x, y, pts, err := fonts.FillBox(mbb, xScale, 1.0, message, fontName, opts)
 	if err != nil {
-		log.Fatalf("fonts.FillBox: %v", err)
+		log.Fatalf("TextBox(message=%q,fontName=%q): %v", message, fontName, err)
 	}
 	return &TextT{
 		x:        x,
@@ -115,7 +115,7 @@ func (t *TextT) renderText() error {
 
 func (t *TextT) MBB() MBB {
 	if err := t.renderText(); err != nil {
-		log.Fatal(err)
+		log.Fatalf("MBB (message=%q,fontName=%q): %v", t.message, t.fontName, err)
 	}
 	return t.Render.MBB
 }
@@ -123,7 +123,7 @@ func (t *TextT) MBB() MBB {
 // Width returns the width of the text in millimeters.
 func (t *TextT) Width() float64 {
 	if err := t.renderText(); err != nil {
-		log.Fatal(err)
+		log.Fatalf("Width (message=%q,fontName=%q): %v", t.message, t.fontName, err)
 	}
 	width := t.Render.MBB.Max[0] - t.Render.MBB.Min[0]
 	return width
@@ -132,7 +132,7 @@ func (t *TextT) Width() float64 {
 // Height returns the height of the text in millimeters
 func (t *TextT) Height() float64 {
 	if err := t.renderText(); err != nil {
-		log.Fatal(err)
+		log.Fatalf("Height (message=%q,fontName=%q): %v", t.message, t.fontName, err)
 	}
 	height := t.Render.MBB.Max[1] - t.Render.MBB.Min[1]
 	return height

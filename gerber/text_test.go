@@ -4,6 +4,7 @@ import (
 	"math"
 	"testing"
 
+	"github.com/gmlewis/go-fonts/fonts"
 	_ "github.com/gmlewis/go-fonts/fonts/freeserif"
 )
 
@@ -223,4 +224,20 @@ func TestText(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestText_Empty(t *testing.T) {
+	// See: https://github.com/gmlewis/go-gerber/issues/8
+	g := New("textbug")
+	g.TopSilkscreen().Add(
+		Text(
+			25, 25,
+			1.0,
+			"", // should not cause panic
+			"freeserif",
+			12,
+			&TextOpts{XAlign: fonts.XCenter, YAlign: fonts.YCenter},
+		),
+	)
+	g.MBB() // should not panic
 }
