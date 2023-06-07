@@ -3,14 +3,14 @@ module github.com/gmlewis/go-gerber
 go 1.19
 
 require (
-	fyne.io/fyne/v2 v2.3.4
+	fyne.io/fyne/v2 v2.3.5
 	github.com/fogleman/gg v1.3.0
 	github.com/gmlewis/go-fonts v0.0.12
 	github.com/gmlewis/go3d v0.0.2
 )
 
 require (
-	fyne.io/systray v1.10.1-0.20230403195833-7dc3c09283d6 // indirect
+	fyne.io/systray v1.10.1-0.20230602210930-b6a2d6ca2a7b // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fredbi/uri v0.1.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
