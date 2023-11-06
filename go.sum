@@ -87,8 +87,9 @@ github.com/fyne-io/image v0.0.0-20220602074514-4956b0afb3d2/go.mod h1:eO7W361vml
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
 github.com/gmlewis/go-fonts v0.0.12 h1:u4ziTSwWy2Nv8Wbl+Wh6gA7gzMbEgHcL1gawP8VZuVo=
 github.com/gmlewis/go-fonts v0.0.12/go.mod h1:x+RRa9O2dyOF1lthI7E37Fyp3xjiYpJ1wcncBItXNZE=
-github.com/gmlewis/go3d v0.0.2 h1:VtNVF1b9nW557xcIXoEYMVVprnKn6Iul/8IUbYeOMNM=
 github.com/gmlewis/go3d v0.0.2/go.mod h1:NQ7fN6W+8Nu+SEsFWMpMhy6IZlRBMb4hAwItuxqNMz0=
+github.com/gmlewis/go3d v0.0.4 h1:2ymApzgFXKZJ0nFgItUAAXt2z8n5tPOz5Wtu/SGZ1As=
+github.com/gmlewis/go3d v0.0.4/go.mod h1:kmNbdpGuKWLQCUigppF9tBmoHDLrsymSy6se+eBUOVk=
 github.com/go-gl/gl v0.0.0-20211210172815-726fda9656d6 h1:zDw5v7qm4yH7N8C8uWd+8Ii9rROdgWxQuGoJ9WDXxfk=
 github.com/go-gl/gl v0.0.0-20211210172815-726fda9656d6/go.mod h1:9YTyiznxEY1fVinfM7RvRcjRHbw2xLBJ3AAGIT0I4Nw=
 github.com/go-gl/glfw v0.0.0-20190409004039-e6da0acd62b1/go.mod h1:vR7hzQXu2zJy9AVAgeJqvqgH9Q5CA+iKCZ2gyEVpxRU=

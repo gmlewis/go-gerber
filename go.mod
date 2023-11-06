@@ -6,7 +6,7 @@ require (
 	fyne.io/fyne/v2 v2.4.1
 	github.com/fogleman/gg v1.3.0
 	github.com/gmlewis/go-fonts v0.0.12
-	github.com/gmlewis/go3d v0.0.2
+	github.com/gmlewis/go3d v0.0.4
 )
 
 require (
