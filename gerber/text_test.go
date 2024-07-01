@@ -4,7 +4,7 @@ import (
 	"math"
 	"testing"
 
-	_ "github.com/gmlewis/go-fonts/fonts/freeserif"
+	_ "github.com/gmlewis/go-fonts-f/fonts/freeserif"
 )
 
 func TestTextT_Primitive(t *testing.T) {

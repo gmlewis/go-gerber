@@ -3,8 +3,8 @@
 package main
 
 // To import any desired fonts, import them below:
-// _ "github.com/gmlewis/go-fonts/fonts/ubuntumonoregular"
-// _ "github.com/gmlewis/go-fonts/fonts/znikomitno24"
+// _ "github.com/gmlewis/go-fonts-u/fonts/ubuntumonoregular"
+// _ "github.com/gmlewis/go-fonts-z/fonts/znikomitno24"
 // etc.
 
 import (
@@ -15,8 +15,8 @@ import (
 	"sort"
 	"strings"
 
+	_ "github.com/gmlewis/go-fonts-z/fonts/znikomitno24"
 	"github.com/gmlewis/go-fonts/fonts"
-	_ "github.com/gmlewis/go-fonts/fonts/znikomitno24"
 	. "github.com/gmlewis/go-gerber/gerber"
 )
 

@@ -11,7 +11,7 @@ import (
 	"os"
 	"runtime/pprof"
 
-	_ "github.com/gmlewis/go-fonts/fonts/freeserif"
+	_ "github.com/gmlewis/go-fonts-f/fonts/freeserif"
 	. "github.com/gmlewis/go-gerber/gerber"
 	"github.com/gmlewis/go-gerber/gerber/viewer"
 )

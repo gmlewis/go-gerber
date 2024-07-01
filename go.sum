@@ -86,8 +86,12 @@ github.com/fyne-io/glfw-js v0.0.0-20220120001248-ee7290d23504/go.mod h1:gLRWYfYn
 github.com/fyne-io/image v0.0.0-20220602074514-4956b0afb3d2 h1:hnLq+55b7Zh7/2IRzWCpiTcAvjv/P8ERF+N7+xXbZhk=
 github.com/fyne-io/image v0.0.0-20220602074514-4956b0afb3d2/go.mod h1:eO7W361vmlPOrykIg+Rsh1SZ3tQBaOsfzZhsIOb/Lm0=
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
-github.com/gmlewis/go-fonts v0.0.13 h1:1P4rVyd9kwY8YvJGm/Jj+J6qxtj+N1qPAKVuCbN1e08=
-github.com/gmlewis/go-fonts v0.0.13/go.mod h1:zEWa2GwJbCO5JRE0u+h4Du7c1vtHQIfratAFDPMZZ2c=
+github.com/gmlewis/go-fonts v0.18.0 h1:r0GsBn9L7E5Ij2WI/7maxbg2no7VFsDBxFRm5JBKrfI=
+github.com/gmlewis/go-fonts v0.18.0/go.mod h1:OSTvYq6t/sv7lzRUTBtiIu0sQ6SeTvF52XYuSIwm/Hs=
+github.com/gmlewis/go-fonts-f/fonts/freeserif v0.0.0-20240628233602-f923b1251b49 h1:qVbSqsBk8biJzVeQSqo982z1x3uBCKZD1TssGGZPoNA=
+github.com/gmlewis/go-fonts-f/fonts/freeserif v0.0.0-20240628233602-f923b1251b49/go.mod h1:pRiewuvJeQJpOfx7R67GRqX4IstH6j8gVSDUO010mjw=
+github.com/gmlewis/go-fonts-z/fonts/znikomitno24 v0.0.0-20240628235854-19a342cac851 h1:9UNHVfpMvyUi/kDJy2g5bhERl4824RyWqosvNPtujPk=
+github.com/gmlewis/go-fonts-z/fonts/znikomitno24 v0.0.0-20240628235854-19a342cac851/go.mod h1:B3MfHxGpedUUC655ZXdy1+j6o4uZdH1y3zEeCC/XM44=
 github.com/gmlewis/go3d v0.0.4 h1:2ymApzgFXKZJ0nFgItUAAXt2z8n5tPOz5Wtu/SGZ1As=
 github.com/gmlewis/go3d v0.0.4/go.mod h1:kmNbdpGuKWLQCUigppF9tBmoHDLrsymSy6se+eBUOVk=
 github.com/gmlewis/ponoko2d v0.0.0-20190404133045-d77d370bec9a h1:+f/EwY1eQ5vL78T1LwqOKSGoEGtZ3kkwAvONoJtDay0=
@@ -636,8 +640,8 @@ google.golang.org/protobuf v1.24.0/go.mod h1:r/3tXBNzIEhYS9I1OUVjXDlt8tc493IdKGj
 google.golang.org/protobuf v1.25.0/go.mod h1:9JNX74DMeImyA3h4bdi1ymwjUzf21/xIlbajtzgsN7c=
 google.golang.org/protobuf v1.26.0-rc.1/go.mod h1:jlhhOSvTdKEhbULTjvd4ARK9grFBp09yW+WbY/TyQbw=
 google.golang.org/protobuf v1.26.0/go.mod h1:9q0QmTI4eRPtz6boOQmLYwt+qCgq0jsYwAQnmE0givc=
-google.golang.org/protobuf v1.33.0 h1:uNO2rsAINq/JlFpSdYEKIZ0uKD/R9cpdv0T+yoGwGmI=
-google.golang.org/protobuf v1.33.0/go.mod h1:c6P6GXX6sHbq/GpV6MGZEdwhWPcYBgnhAHhKbcUYpos=
+google.golang.org/protobuf v1.34.2 h1:6xV6lTsCfpGD21XK49h7MhtcApnLqkfYgPcdHftf6hg=
+google.golang.org/protobuf v1.34.2/go.mod h1:qYOHts0dSfpeUzUFpOMr/WGzszTmLH+DiWniOlNbLDw=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 h1:qIbj1fsPNlZgppZ+VLlY7N33q108Sa+fhmuc+sWQYwY=
 gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
