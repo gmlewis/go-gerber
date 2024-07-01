@@ -1,11 +1,11 @@
 module github.com/gmlewis/go-gerber
 
 go 1.21.3
-
 require (
 	fyne.io/fyne/v2 v2.4.5
 	github.com/fogleman/gg v1.3.0
-	github.com/gmlewis/go-fonts v0.0.13
+	github.com/gmlewis/go-fonts v0.18.0
+	github.com/gmlewis/go-fonts/fonts/freeserif v0.0.0-20240626233958-3409c190883f
 	github.com/gmlewis/go3d v0.0.4
 )
 
@@ -38,7 +38,7 @@ require (
 	golang.org/x/net v0.23.0 // indirect
 	golang.org/x/sys v0.18.0 // indirect
 	golang.org/x/text v0.16.0 // indirect
-	google.golang.org/protobuf v1.33.0 // indirect
+	google.golang.org/protobuf v1.34.2 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	honnef.co/go/js/dom v0.0.0-20210725211120-f030747120f2 // indirect
 )
