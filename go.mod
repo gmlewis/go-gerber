@@ -1,11 +1,10 @@
 module github.com/gmlewis/go-gerber
 
 go 1.22.4
-
 require (
 	fyne.io/fyne/v2 v2.4.5
 	github.com/fogleman/gg v1.3.0
-	github.com/gmlewis/go-fonts v0.18.0
+	github.com/gmlewis/go-fonts v0.19.0
 	github.com/gmlewis/go-fonts-f/fonts/freeserif v0.0.0-20240628233602-f923b1251b49
 	github.com/gmlewis/go-fonts-z/fonts/znikomitno24 v0.0.0-20240628235854-19a342cac851
 	github.com/gmlewis/go3d v0.0.4
